@@ -7342,8 +7342,8 @@ begin
     begin
       Name := CXStringToString(P.Platform, False);
       Introduced := TVersion(P.Introduced);
-      Deprecated := TVersion(P.Deprecated);
-      Obsoleted := TVersion(P.Obsoleted);
+      DeprecatedVersion := TVersion(P.Deprecated);
+      ObsoletedVersion := TVersion(P.Obsoleted);
       Unavailable := (P.Unavailable <> 0);
       Message := CXStringToString(P.Message, False);
     end;
