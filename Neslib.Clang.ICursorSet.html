@@ -1,0 +1,101 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/1999/REC-html401-19991224/loose.dtd">
+<html>
+<head>
+<title>Neslib.Clang: Neslib.Clang: Interface ICursorSet</title>
+<meta name="generator" content="PasDoc 0.14.0">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<link rel="StyleSheet" type="text/css" href="pasdoc.css">
+</head>
+<body>
+<table class="container"><tr><td class="navigation">
+<h2>Neslib.Clang</h2><p><a href="introduction.html" class="navigation">Neslib.Clang</a></p><p><a href="AllUnits.html" class="navigation">Units</a></p><p><a href="ClassHierarchy.html" class="navigation">Class Hierarchy</a></p><p><a href="AllClasses.html" class="navigation">Classes, Interfaces, Objects and Records</a></p><p><a href="AllTypes.html" class="navigation">Types</a></p><p><a href="AllVariables.html" class="navigation">Variables</a></p><p><a href="AllConstants.html" class="navigation">Constants</a></p><p><a href="AllFunctions.html" class="navigation">Functions and Procedures</a></p><p><a href="AllIdentifiers.html" class="navigation">Identifiers</a></p><p><a href="conclusion.html" class="navigation">License</a></p></td><td class="content">
+<a name="ICursorSet"></a><h1 class="cio">Interface ICursorSet</h1>
+<table class="sections wide_list">
+<tr>
+<td><a class="section" href="#PasDoc-Description">Description</a></td><td><a class="section" href="#PasDoc-Hierarchy">Hierarchy</a></td><td>Fields</td><td><a class="section" href="#PasDoc-Methods">Methods</a></td><td><a class="section" href="#PasDoc-Properties">Properties</a></td></tr></table>
+<a name="PasDoc-Description"></a><h2 class="unit">Unit</h2>
+<p class="unitlink">
+<a  href="Neslib.Clang.html">Neslib.Clang</a></p>
+<h2 class="declaration">Declaration</h2>
+<p class="declaration">
+<code>type ICursorSet = interface(IInterface)</code></p>
+<h2 class="description">Description</h2>
+<p>
+A fast container representing a set of cursors. Implemented by <a class="normal" href="Neslib.Clang.TCursorSet.html">TCursorSet</a>.</p>
+<h6 class="description_section">Attributes</h6>
+<dl class="attributes">
+  <dt>GUID['{91598024-E848-45E5-B1C9-DD0EB27E7610}']</dt>
+  <dd></dd>
+</dl>
+<a name="PasDoc-Hierarchy"></a><h2 class="hierarchy">Hierarchy</h2>
+<ul class="hierarchy"><li class="ancestor">IInterface</li>
+<li class="thisitem">ICursorSet</li></ul><h2 class="overview">Overview</h2>
+<a name="PasDoc-Methods"></a><h3 class="summary">Methods</h3>
+<table class="summary wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a  href="Neslib.Clang.ICursorSet.html#GetHandle">GetHandle</a></b>: TCXCursorSet;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a  href="Neslib.Clang.ICursorSet.html#Contains">Contains</a></b>(const ACursor: <a  href="Neslib.Clang.TCursor.html">TCursor</a>): Boolean;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a  href="Neslib.Clang.ICursorSet.html#Insert">Insert</a></b>(const ACursor: <a  href="Neslib.Clang.TCursor.html">TCursor</a>): Boolean;</code></td>
+</tr>
+</table>
+<a name="PasDoc-Properties"></a><h3 class="summary">Properties</h3>
+<table class="summary wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.ICursorSet.html#Handle">Handle</a></b>: TCXCursorSet read <a  href="Neslib.Clang.ICursorSet.html#GetHandle">GetHandle</a>;</code></td>
+</tr>
+</table>
+<h2 class="description">Description</h2>
+<h3 class="detail">Methods</h3>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="GetHandle"></a><code>function <b>GetHandle</b>: TCXCursorSet;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="Contains"></a><code>function <b>Contains</b>(const ACursor: <a  href="Neslib.Clang.TCursor.html">TCursor</a>): Boolean;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Queries the cursor set to see if it <code>contains</code> a specific cursor.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="Insert"></a><code>function <b>Insert</b>(const ACursor: <a  href="Neslib.Clang.TCursor.html">TCursor</a>): Boolean;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Inserts a cursor into the cursor set.
+
+<p></p>
+<h6 class="description_section">Returns</h6>
+<p class="return">False if the cursor was already in the set.</p></td></tr>
+</table>
+<h3 class="detail">Properties</h3>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="Handle"></a><code>property <b>Handle</b>: TCXCursorSet read <a  href="Neslib.Clang.ICursorSet.html#GetHandle">GetHandle</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Internal <code>handle</code> to C API</p>
+</td></tr>
+</table>
+<div style="height:1000px"></div><hr noshade size="1"><span class="appinfo"><em>Generated by <a  href="https://github.com/neslib/PasDocEx">PasDocEx</a>, based on <a  href="http://pasdoc.sourceforge.net/">PasDoc 0.14.0</a>. </em>
+</span>
+</td></tr></table></body></html>

@@ -1,0 +1,189 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/1999/REC-html401-19991224/loose.dtd">
+<html>
+<head>
+<title>Neslib.Clang: Neslib.Clang: record TCompletionString</title>
+<meta name="generator" content="PasDoc 0.14.0">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<link rel="StyleSheet" type="text/css" href="pasdoc.css">
+</head>
+<body>
+<table class="container"><tr><td class="navigation">
+<h2>Neslib.Clang</h2><p><a href="introduction.html" class="navigation">Neslib.Clang</a></p><p><a href="AllUnits.html" class="navigation">Units</a></p><p><a href="ClassHierarchy.html" class="navigation">Class Hierarchy</a></p><p><a href="AllClasses.html" class="navigation">Classes, Interfaces, Objects and Records</a></p><p><a href="AllTypes.html" class="navigation">Types</a></p><p><a href="AllVariables.html" class="navigation">Variables</a></p><p><a href="AllConstants.html" class="navigation">Constants</a></p><p><a href="AllFunctions.html" class="navigation">Functions and Procedures</a></p><p><a href="AllIdentifiers.html" class="navigation">Identifiers</a></p><p><a href="conclusion.html" class="navigation">License</a></p></td><td class="content">
+<a name="TCompletionString"></a><h1 class="cio">record TCompletionString</h1>
+<table class="sections wide_list">
+<tr>
+<td><a class="section" href="#PasDoc-Description">Description</a></td><td>Hierarchy</td><td>Fields</td><td><a class="section" href="#PasDoc-Methods">Methods</a></td><td><a class="section" href="#PasDoc-Properties">Properties</a></td></tr></table>
+<a name="PasDoc-Description"></a><h2 class="unit">Unit</h2>
+<p class="unitlink">
+<a  href="Neslib.Clang.html">Neslib.Clang</a></p>
+<h2 class="declaration">Declaration</h2>
+<p class="declaration">
+<code>type TCompletionString = record</code></p>
+<h2 class="description">Description</h2>
+<p>
+A semantic string that describes a code-completion result.
+
+<p>A semantic string that describes the formatting of a code-completion result as a single &quot;template&quot; of text that should be inserted into the source buffer when a particular code-completion result is selected. Each semantic string is made up of some number of &quot;chunks&quot;, each of which contains some text along with a description of what that text means, e.g., the name of the entity being referenced, whether the text chunk is part of the template, or whether it is a &quot;placeholder&quot; that the user should replace with actual code, of a specific kind. See <a class="normal" href="Neslib.Clang.html#TCompletionChunkKind">TCompletionChunkKind</a> for a description of the different kinds of chunks.</p>
+<h2 class="overview">Overview</h2>
+<a name="PasDoc-Methods"></a><h3 class="summary">Methods</h3>
+<table class="summary wide_list">
+<tr class="list">
+<td class="itemcode"><code>function <b><a  href="Neslib.Clang.TCompletionString.html#IsNull">IsNull</a></b>: Boolean; inline;</code></td>
+</tr>
+</table>
+<a name="PasDoc-Properties"></a><h3 class="summary">Properties</h3>
+<table class="summary wide_list">
+<tr class="list">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TCompletionString.html#ChunkCount">ChunkCount</a></b>: Integer read GetChunkCount;</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TCompletionString.html#ChunkKind">ChunkKind</a></b>[constAIndex:Integer]: <a  href="Neslib.Clang.html#TCompletionChunkKind">TCompletionChunkKind</a> read GetChunkKind;</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TCompletionString.html#ChunkText">ChunkText</a></b>[constAIndex:Integer]: String read GetChunkText;</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TCompletionString.html#ChunkCompletionString">ChunkCompletionString</a></b>[constAIndex:Integer]: <a  href="Neslib.Clang.TCompletionString.html">TCompletionString</a> read GetChunkCompletionString;</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TCompletionString.html#Priority">Priority</a></b>: Integer read GetPriority;</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TCompletionString.html#Availability">Availability</a></b>: <a  href="Neslib.Clang.html#TAvailabilityKind">TAvailabilityKind</a> read GetAvailability;</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TCompletionString.html#AnnotationCount">AnnotationCount</a></b>: Integer read GetAnnotationCount;</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TCompletionString.html#Annotations">Annotations</a></b>[constAIndex:Integer]: String read GetAnnotation;</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TCompletionString.html#Parent">Parent</a></b>: String read GetParent;</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TCompletionString.html#BriefComment">BriefComment</a></b>: String read GetBriefComment;</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TCompletionString.html#Handle">Handle</a></b>: TCXCompletionString read FHandle;</code></td>
+</tr>
+</table>
+<h2 class="description">Description</h2>
+<h3 class="detail">Methods</h3>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="IsNull"></a><code>function <b>IsNull</b>: Boolean; inline;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Whether the string is assigned or not.</p>
+</td></tr>
+</table>
+<h3 class="detail">Properties</h3>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="ChunkCount"></a><code>property <b>ChunkCount</b>: Integer read GetChunkCount;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Number of chunks in the code-completion string.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="ChunkKind"></a><code>property <b>ChunkKind</b>[constAIndex:Integer]: <a  href="Neslib.Clang.html#TCompletionChunkKind">TCompletionChunkKind</a> read GetChunkKind;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+The kind of a particular chunk within the completion string.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="ChunkText"></a><code>property <b>ChunkText</b>[constAIndex:Integer]: String read GetChunkText;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+The text associated with a particular chunk within the completion string.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="ChunkCompletionString"></a><code>property <b>ChunkCompletionString</b>[constAIndex:Integer]: <a  href="Neslib.Clang.TCompletionString.html">TCompletionString</a> read GetChunkCompletionString;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+The completion string associated with a particular chunk within the completion string.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="Priority"></a><code>property <b>Priority</b>: Integer read GetPriority;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+The <code>priority</code> of this code completion.
+
+<p>The <code>priority</code> of a code completion indicates how likely it is that this particular completion is the completion that the user will select. The <code>priority</code> is selected by various internal heuristics.
+
+<p>Smaller values indicate higher-<code>priority</code> (more likely) completions.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="Availability"></a><code>property <b>Availability</b>: <a  href="Neslib.Clang.html#TAvailabilityKind">TAvailabilityKind</a> read GetAvailability;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+The <code>availability</code> of the entity that this code-completion string refers to.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="AnnotationCount"></a><code>property <b>AnnotationCount</b>: Integer read GetAnnotationCount;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+The number of <a class="normal" href="Neslib.Clang.TCompletionString.html#Annotations">annotations</a> associated with the completion string.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="Annotations"></a><code>property <b>Annotations</b>[constAIndex:Integer]: String read GetAnnotation;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+The <code>annotations</code> associated with the completion string.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="Parent"></a><code>property <b>Parent</b>: String read GetParent;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+The <code>parent</code> context of the completion string, e.g., &quot;NSObject&quot; if the completion string represents a method in the NSObject class.
+
+<p>The <code>parent</code> context of a completion string is the semantic <code>parent</code> of the declaration (if any) that the code completion represents. For example, a code completion for an Objective-C method would have the method's class or protocol as its context.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="BriefComment"></a><code>property <b>BriefComment</b>: String read GetBriefComment;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+The brief documentation comment attached to the declaration that corresponds to the completion string.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="Handle"></a><code>property <b>Handle</b>: TCXCompletionString read FHandle;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Internal <code>handle</code> to C API</p>
+</td></tr>
+</table>
+<div style="height:1000px"></div><hr noshade size="1"><span class="appinfo"><em>Generated by <a  href="https://github.com/neslib/PasDocEx">PasDocEx</a>, based on <a  href="http://pasdoc.sourceforge.net/">PasDoc 0.14.0</a>. </em>
+</span>
+</td></tr></table></body></html>

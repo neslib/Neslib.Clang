@@ -1,0 +1,131 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/1999/REC-html401-19991224/loose.dtd">
+<html>
+<head>
+<title>Neslib.Clang: Neslib.Clang: record TSourceRange</title>
+<meta name="generator" content="PasDoc 0.14.0">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<link rel="StyleSheet" type="text/css" href="pasdoc.css">
+</head>
+<body>
+<table class="container"><tr><td class="navigation">
+<h2>Neslib.Clang</h2><p><a href="introduction.html" class="navigation">Neslib.Clang</a></p><p><a href="AllUnits.html" class="navigation">Units</a></p><p><a href="ClassHierarchy.html" class="navigation">Class Hierarchy</a></p><p><a href="AllClasses.html" class="navigation">Classes, Interfaces, Objects and Records</a></p><p><a href="AllTypes.html" class="navigation">Types</a></p><p><a href="AllVariables.html" class="navigation">Variables</a></p><p><a href="AllConstants.html" class="navigation">Constants</a></p><p><a href="AllFunctions.html" class="navigation">Functions and Procedures</a></p><p><a href="AllIdentifiers.html" class="navigation">Identifiers</a></p><p><a href="conclusion.html" class="navigation">License</a></p></td><td class="content">
+<a name="TSourceRange"></a><h1 class="cio">record TSourceRange</h1>
+<table class="sections wide_list">
+<tr>
+<td><a class="section" href="#PasDoc-Description">Description</a></td><td>Hierarchy</td><td>Fields</td><td><a class="section" href="#PasDoc-Methods">Methods</a></td><td><a class="section" href="#PasDoc-Properties">Properties</a></td></tr></table>
+<a name="PasDoc-Description"></a><h2 class="unit">Unit</h2>
+<p class="unitlink">
+<a  href="Neslib.Clang.html">Neslib.Clang</a></p>
+<h2 class="declaration">Declaration</h2>
+<p class="declaration">
+<code>type TSourceRange = record</code></p>
+<h2 class="description">Description</h2>
+<p>
+Identifies a half-open character range in the source code.</p>
+<h2 class="overview">Overview</h2>
+<a name="PasDoc-Methods"></a><h3 class="summary">Methods</h3>
+<table class="summary wide_list">
+<tr class="list">
+<td class="itemcode"><code>constructor <b><a  href="Neslib.Clang.TSourceRange.html#Create">Create</a></b>(const ABegin, AEnd: <a  href="Neslib.Clang.TSourceLocation.html">TSourceLocation</a>);</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>class operator <b><a  href="Neslib.Clang.TSourceRange.html#Equal">Equal</a></b>(const ALeft, ARight: <a  href="Neslib.Clang.TSourceRange.html">TSourceRange</a>): Boolean; inline; static;</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>class operator <b><a  href="Neslib.Clang.TSourceRange.html#NotEqual">NotEqual</a></b>(const ALeft, ARight: <a  href="Neslib.Clang.TSourceRange.html">TSourceRange</a>): Boolean; inline; static;</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>function <b><a  href="Neslib.Clang.TSourceRange.html#IsNull">IsNull</a></b>: Boolean; inline;</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>class function <b><a  href="Neslib.Clang.TSourceRange.html#Null">Null</a></b>: <a  href="Neslib.Clang.TSourceRange.html">TSourceRange</a>; inline; static;</code></td>
+</tr>
+</table>
+<a name="PasDoc-Properties"></a><h3 class="summary">Properties</h3>
+<table class="summary wide_list">
+<tr class="list">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TSourceRange.html#First">First</a></b>: <a  href="Neslib.Clang.TSourceLocation.html">TSourceLocation</a> read GetFirst;</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TSourceRange.html#Last">Last</a></b>: <a  href="Neslib.Clang.TSourceLocation.html">TSourceLocation</a> read GetLast;</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TSourceRange.html#Handle">Handle</a></b>: TCXSourceRange read FHandle;</code></td>
+</tr>
+</table>
+<h2 class="description">Description</h2>
+<h3 class="detail">Methods</h3>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="Create"></a><code>constructor <b>Create</b>(const ABegin, AEnd: <a  href="Neslib.Clang.TSourceLocation.html">TSourceLocation</a>);</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+<code>Create</code> a source range given the beginning and ending source locations.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="Equal"></a><code>class operator <b>Equal</b>(const ALeft, ARight: <a  href="Neslib.Clang.TSourceRange.html">TSourceRange</a>): Boolean; inline; static;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Equality operators. Determine whether two ranges are equivalent.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="NotEqual"></a><code>class operator <b>NotEqual</b>(const ALeft, ARight: <a  href="Neslib.Clang.TSourceRange.html">TSourceRange</a>): Boolean; inline; static;</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="IsNull"></a><code>function <b>IsNull</b>: Boolean; inline;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Whether the source range is assigned or not.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="Null"></a><code>class function <b>Null</b>: <a  href="Neslib.Clang.TSourceRange.html">TSourceRange</a>; inline; static;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+A <code>Null</code> (invalid) source location</p>
+</td></tr>
+</table>
+<h3 class="detail">Properties</h3>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="First"></a><code>property <b>First</b>: <a  href="Neslib.Clang.TSourceLocation.html">TSourceLocation</a> read GetFirst;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Source location representing the <code>first</code> character within a source range.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="Last"></a><code>property <b>Last</b>: <a  href="Neslib.Clang.TSourceLocation.html">TSourceLocation</a> read GetLast;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Source location representing the <code>last</code> character within a source range.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="Handle"></a><code>property <b>Handle</b>: TCXSourceRange read FHandle;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Internal <code>handle</code> to C API</p>
+</td></tr>
+</table>
+<div style="height:1000px"></div><hr noshade size="1"><span class="appinfo"><em>Generated by <a  href="https://github.com/neslib/PasDocEx">PasDocEx</a>, based on <a  href="http://pasdoc.sourceforge.net/">PasDoc 0.14.0</a>. </em>
+</span>
+</td></tr></table></body></html>

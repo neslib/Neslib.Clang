@@ -1,0 +1,703 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/1999/REC-html401-19991224/loose.dtd">
+<html>
+<head>
+<title>Neslib.Clang: Neslib.Clang: Interface ITranslationUnit</title>
+<meta name="generator" content="PasDoc 0.14.0">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<link rel="StyleSheet" type="text/css" href="pasdoc.css">
+</head>
+<body>
+<table class="container"><tr><td class="navigation">
+<h2>Neslib.Clang</h2><p><a href="introduction.html" class="navigation">Neslib.Clang</a></p><p><a href="AllUnits.html" class="navigation">Units</a></p><p><a href="ClassHierarchy.html" class="navigation">Class Hierarchy</a></p><p><a href="AllClasses.html" class="navigation">Classes, Interfaces, Objects and Records</a></p><p><a href="AllTypes.html" class="navigation">Types</a></p><p><a href="AllVariables.html" class="navigation">Variables</a></p><p><a href="AllConstants.html" class="navigation">Constants</a></p><p><a href="AllFunctions.html" class="navigation">Functions and Procedures</a></p><p><a href="AllIdentifiers.html" class="navigation">Identifiers</a></p><p><a href="conclusion.html" class="navigation">License</a></p></td><td class="content">
+<a name="ITranslationUnit"></a><h1 class="cio">Interface ITranslationUnit</h1>
+<table class="sections wide_list">
+<tr>
+<td><a class="section" href="#PasDoc-Description">Description</a></td><td><a class="section" href="#PasDoc-Hierarchy">Hierarchy</a></td><td>Fields</td><td><a class="section" href="#PasDoc-Methods">Methods</a></td><td><a class="section" href="#PasDoc-Properties">Properties</a></td></tr></table>
+<a name="PasDoc-Description"></a><h2 class="unit">Unit</h2>
+<p class="unitlink">
+<a  href="Neslib.Clang.html">Neslib.Clang</a></p>
+<h2 class="declaration">Declaration</h2>
+<p class="declaration">
+<code>type ITranslationUnit = interface(IInterface)</code></p>
+<h2 class="description">Description</h2>
+<p>
+A single translation unit, which resides in an <a class="normal" href="Neslib.Clang.IIndex.html">IIndex</a>.</p>
+<h6 class="description_section">Attributes</h6>
+<dl class="attributes">
+  <dt>GUID['{FC9A4ABF-B285-47AF-A063-C8C85CABE02E}']</dt>
+  <dd></dd>
+</dl>
+<a name="PasDoc-Hierarchy"></a><h2 class="hierarchy">Hierarchy</h2>
+<ul class="hierarchy"><li class="ancestor">IInterface</li>
+<li class="thisitem">ITranslationUnit</li></ul><h2 class="overview">Overview</h2>
+<a name="PasDoc-Methods"></a><h3 class="summary">Methods</h3>
+<table class="summary wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a  href="Neslib.Clang.ITranslationUnit.html#GetDiagnosticCount">GetDiagnosticCount</a></b>: Integer;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a  href="Neslib.Clang.ITranslationUnit.html#GetDiagnostic">GetDiagnostic</a></b>(const AIndex: Integer): <a  href="Neslib.Clang.IDiagnostic.html">IDiagnostic</a>;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a  href="Neslib.Clang.ITranslationUnit.html#GetAllDiagnostics">GetAllDiagnostics</a></b>: <a  href="Neslib.Clang.IDiagnosticSet.html">IDiagnosticSet</a>;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a  href="Neslib.Clang.ITranslationUnit.html#GetSpelling">GetSpelling</a></b>: String;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a  href="Neslib.Clang.ITranslationUnit.html#GetResourceUsage">GetResourceUsage</a></b>: <a  href="Neslib.Clang.IResourceUsage.html">IResourceUsage</a>;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a  href="Neslib.Clang.ITranslationUnit.html#GetTargetInfo">GetTargetInfo</a></b>: <a  href="Neslib.Clang.ITargetInfo.html">ITargetInfo</a>;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a  href="Neslib.Clang.ITranslationUnit.html#GetCursor">GetCursor</a></b>: <a  href="Neslib.Clang.TCursor.html">TCursor</a>; overload;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a  href="Neslib.Clang.ITranslationUnit.html#GetHandle">GetHandle</a></b>: TCXTranslationUnit;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a  href="Neslib.Clang.ITranslationUnit.html#GetFile">GetFile</a></b>(const AFilename: String): <a  href="Neslib.Clang.TFile.html">TFile</a>;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a  href="Neslib.Clang.ITranslationUnit.html#GetFileContents">GetFileContents</a></b>(const AFile: <a  href="Neslib.Clang.TFile.html">TFile</a>): TBytes;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a  href="Neslib.Clang.ITranslationUnit.html#IsFileMultipleIncludeGuarded">IsFileMultipleIncludeGuarded</a></b>(const AFile: <a  href="Neslib.Clang.TFile.html">TFile</a>): Boolean;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a  href="Neslib.Clang.ITranslationUnit.html#GetLocation">GetLocation</a></b>(const AFile: <a  href="Neslib.Clang.TFile.html">TFile</a>; const ALine, AColumn: Integer): <a  href="Neslib.Clang.TSourceLocation.html">TSourceLocation</a>; overload;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a  href="Neslib.Clang.ITranslationUnit.html#GetLocation">GetLocation</a></b>(const AFile: <a  href="Neslib.Clang.TFile.html">TFile</a>; const AOffset: Integer): <a  href="Neslib.Clang.TSourceLocation.html">TSourceLocation</a>; overload;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a  href="Neslib.Clang.ITranslationUnit.html#GetSkippedRanges">GetSkippedRanges</a></b>(const AFile: <a  href="Neslib.Clang.TFile.html">TFile</a>): <a  href="Neslib.Clang.ISourceRangeList.html">ISourceRangeList</a>;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a  href="Neslib.Clang.ITranslationUnit.html#GetAllSkippedRanges">GetAllSkippedRanges</a></b>: <a  href="Neslib.Clang.ISourceRangeList.html">ISourceRangeList</a>;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a  href="Neslib.Clang.ITranslationUnit.html#Save">Save</a></b>(const AFilename: String): <a  href="Neslib.Clang.html#TSaveResult">TSaveResult</a>;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>procedure <b><a  href="Neslib.Clang.ITranslationUnit.html#Suspend">Suspend</a></b>;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a  href="Neslib.Clang.ITranslationUnit.html#Reparse">Reparse</a></b>(const AUnsavedFiles: TArray&lt;<a  href="Neslib.Clang.TUnsavedFile.html">TUnsavedFile</a>&gt; = nil): <a  href="Neslib.Clang.html#TError">TError</a>;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a  href="Neslib.Clang.ITranslationUnit.html#GetCursor">GetCursor</a></b>(const ASourceLocation: <a  href="Neslib.Clang.TSourceLocation.html">TSourceLocation</a>): <a  href="Neslib.Clang.TCursor.html">TCursor</a>; overload;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a  href="Neslib.Clang.ITranslationUnit.html#GetModule">GetModule</a></b>(const AFile: <a  href="Neslib.Clang.TFile.html">TFile</a>): <a  href="Neslib.Clang.TModule.html">TModule</a>;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a  href="Neslib.Clang.ITranslationUnit.html#GetTopLevelHeaderCount">GetTopLevelHeaderCount</a></b>(const AModule: <a  href="Neslib.Clang.TModule.html">TModule</a>): Integer;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a  href="Neslib.Clang.ITranslationUnit.html#GetTopLevelHeader">GetTopLevelHeader</a></b>(const AModule: <a  href="Neslib.Clang.TModule.html">TModule</a>; const AIndex: Integer): <a  href="Neslib.Clang.TFile.html">TFile</a>;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a  href="Neslib.Clang.ITranslationUnit.html#Tokenize">Tokenize</a></b>(const ARange: <a  href="Neslib.Clang.TSourceRange.html">TSourceRange</a>): <a  href="Neslib.Clang.ITokenList.html">ITokenList</a>;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a  href="Neslib.Clang.ITranslationUnit.html#AnnotateTokens">AnnotateTokens</a></b>(const ATokens: <a  href="Neslib.Clang.ITokenList.html">ITokenList</a>): TArray&lt;<a  href="Neslib.Clang.TCursor.html">TCursor</a>&gt;; overload;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a  href="Neslib.Clang.ITranslationUnit.html#AnnotateTokens">AnnotateTokens</a></b>(const ATokens: TArray&lt;<a  href="Neslib.Clang.TToken.html">TToken</a>&gt;): TArray&lt;<a  href="Neslib.Clang.TCursor.html">TCursor</a>&gt;; overload;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a  href="Neslib.Clang.ITranslationUnit.html#GetTokenSpelling">GetTokenSpelling</a></b>(const AToken: <a  href="Neslib.Clang.TToken.html">TToken</a>): String;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a  href="Neslib.Clang.ITranslationUnit.html#GetTokenLocation">GetTokenLocation</a></b>(const AToken: <a  href="Neslib.Clang.TToken.html">TToken</a>): <a  href="Neslib.Clang.TSourceLocation.html">TSourceLocation</a>;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a  href="Neslib.Clang.ITranslationUnit.html#GetTokenExtent">GetTokenExtent</a></b>(const AToken: <a  href="Neslib.Clang.TToken.html">TToken</a>): <a  href="Neslib.Clang.TSourceRange.html">TSourceRange</a>;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a  href="Neslib.Clang.ITranslationUnit.html#CodeCompleteAt">CodeCompleteAt</a></b>(const ACompleteFilename: String; const ACompleteLine, ACompleteColumn: Integer; const AUnsavedFiles: TArray&lt;<a  href="Neslib.Clang.TUnsavedFile.html">TUnsavedFile</a>&gt; = nil; const AOptions: <a  href="Neslib.Clang.html#TCodeCompleteFlags">TCodeCompleteFlags</a> = []): <a  href="Neslib.Clang.ICodeCompleteResults.html">ICodeCompleteResults</a>;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>procedure <b><a  href="Neslib.Clang.ITranslationUnit.html#GetInclusions">GetInclusions</a></b>(const AVisitor: <a  href="Neslib.Clang.html#TInclusionVisitor">TInclusionVisitor</a>); overload;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>procedure <b><a  href="Neslib.Clang.ITranslationUnit.html#GetInclusions">GetInclusions</a></b>(const AVisitor: <a  href="Neslib.Clang.html#TInclusionVisitorMethod">TInclusionVisitorMethod</a>); overload;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a  href="Neslib.Clang.ITranslationUnit.html#FindIncludesInFile">FindIncludesInFile</a></b>(const AFile: <a  href="Neslib.Clang.TFile.html">TFile</a>; const AVisitor: <a  href="Neslib.Clang.html#TCursorAndRangeVisitor">TCursorAndRangeVisitor</a>): <a  href="Neslib.Clang.html#TVisitResult">TVisitResult</a>; overload;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a  href="Neslib.Clang.ITranslationUnit.html#FindIncludesInFile">FindIncludesInFile</a></b>(const AFile: <a  href="Neslib.Clang.TFile.html">TFile</a>; const AVisitor: <a  href="Neslib.Clang.html#TCursorAndRangeVisitorMethod">TCursorAndRangeVisitorMethod</a>): <a  href="Neslib.Clang.html#TVisitResult">TVisitResult</a>; overload;</code></td>
+</tr>
+</table>
+<a name="PasDoc-Properties"></a><h3 class="summary">Properties</h3>
+<table class="summary wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.ITranslationUnit.html#DiagnosticCount">DiagnosticCount</a></b>: Integer read <a  href="Neslib.Clang.ITranslationUnit.html#GetDiagnosticCount">GetDiagnosticCount</a>;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.ITranslationUnit.html#Diagnostics">Diagnostics</a></b>[constAIndex:Integer]: <a  href="Neslib.Clang.IDiagnostic.html">IDiagnostic</a> read <a  href="Neslib.Clang.ITranslationUnit.html#GetDiagnostic">GetDiagnostic</a>;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.ITranslationUnit.html#AllDiagnostics">AllDiagnostics</a></b>: <a  href="Neslib.Clang.IDiagnosticSet.html">IDiagnosticSet</a> read <a  href="Neslib.Clang.ITranslationUnit.html#GetAllDiagnostics">GetAllDiagnostics</a>;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.ITranslationUnit.html#Spelling">Spelling</a></b>: String read <a  href="Neslib.Clang.ITranslationUnit.html#GetSpelling">GetSpelling</a>;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.ITranslationUnit.html#ResourceUsage">ResourceUsage</a></b>: <a  href="Neslib.Clang.IResourceUsage.html">IResourceUsage</a> read <a  href="Neslib.Clang.ITranslationUnit.html#GetResourceUsage">GetResourceUsage</a>;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.ITranslationUnit.html#TargetInfo">TargetInfo</a></b>: <a  href="Neslib.Clang.ITargetInfo.html">ITargetInfo</a> read <a  href="Neslib.Clang.ITranslationUnit.html#GetTargetInfo">GetTargetInfo</a>;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.ITranslationUnit.html#Cursor">Cursor</a></b>: <a  href="Neslib.Clang.TCursor.html">TCursor</a> read <a  href="Neslib.Clang.ITranslationUnit.html#GetCursor">GetCursor</a>;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.ITranslationUnit.html#Handle">Handle</a></b>: TCXTranslationUnit read <a  href="Neslib.Clang.ITranslationUnit.html#GetHandle">GetHandle</a>;</code></td>
+</tr>
+</table>
+<h2 class="description">Description</h2>
+<h3 class="detail">Methods</h3>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="GetDiagnosticCount"></a><code>function <b>GetDiagnosticCount</b>: Integer;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="GetDiagnostic"></a><code>function <b>GetDiagnostic</b>(const AIndex: Integer): <a  href="Neslib.Clang.IDiagnostic.html">IDiagnostic</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="GetAllDiagnostics"></a><code>function <b>GetAllDiagnostics</b>: <a  href="Neslib.Clang.IDiagnosticSet.html">IDiagnosticSet</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="GetSpelling"></a><code>function <b>GetSpelling</b>: String;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="GetResourceUsage"></a><code>function <b>GetResourceUsage</b>: <a  href="Neslib.Clang.IResourceUsage.html">IResourceUsage</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="GetTargetInfo"></a><code>function <b>GetTargetInfo</b>: <a  href="Neslib.Clang.ITargetInfo.html">ITargetInfo</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="GetCursor"></a><code>function <b>GetCursor</b>: <a  href="Neslib.Clang.TCursor.html">TCursor</a>; overload;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="GetHandle"></a><code>function <b>GetHandle</b>: TCXTranslationUnit;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="GetFile"></a><code>function <b>GetFile</b>(const AFilename: String): <a  href="Neslib.Clang.TFile.html">TFile</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Retrieve a file <a class="normal" href="Neslib.Clang.ITranslationUnit.html#Handle">handle</a> within this translation unit.
+
+<p>
+
+<p></p>
+<h6 class="description_section">Parameters</h6>
+<dl class="parameters">
+<dt>AFilename</dt>
+<dd>the name of the file.</dd>
+</dl>
+<h6 class="description_section">Returns</h6>
+<p class="return">The file <a class="normal" href="Neslib.Clang.ITranslationUnit.html#Handle">handle</a> for the named file in the translation unit, or a Null file <a class="normal" href="Neslib.Clang.ITranslationUnit.html#Handle">handle</a> if the file was not a part of this translation unit.</p></td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="GetFileContents"></a><code>function <b>GetFileContents</b>(const AFile: <a  href="Neslib.Clang.TFile.html">TFile</a>): TBytes;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Retrieve the buffer associated with the given file.
+
+<p>
+
+<p></p>
+<h6 class="description_section">Parameters</h6>
+<dl class="parameters">
+<dt>AFile</dt>
+<dd>the file for which to retrieve the buffer.</dd>
+</dl>
+<h6 class="description_section">Returns</h6>
+<p class="return">The contents of the file, or nil when the file is not loaded.</p></td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="IsFileMultipleIncludeGuarded"></a><code>function <b>IsFileMultipleIncludeGuarded</b>(const AFile: <a  href="Neslib.Clang.TFile.html">TFile</a>): Boolean;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Determine whether the given header is guarded against multiple inclusions, either with the conventional #ifndef, #define, #endif macro guards or with #pragma once.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="GetLocation"></a><code>function <b>GetLocation</b>(const AFile: <a  href="Neslib.Clang.TFile.html">TFile</a>; const ALine, AColumn: Integer): <a  href="Neslib.Clang.TSourceLocation.html">TSourceLocation</a>; overload;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Retrieves the source location associated with a given file/line/column in a particular translation unit.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="GetLocation"></a><code>function <b>GetLocation</b>(const AFile: <a  href="Neslib.Clang.TFile.html">TFile</a>; const AOffset: Integer): <a  href="Neslib.Clang.TSourceLocation.html">TSourceLocation</a>; overload;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Retrieves the source location associated with a given character offset in a particular translation unit.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="GetSkippedRanges"></a><code>function <b>GetSkippedRanges</b>(const AFile: <a  href="Neslib.Clang.TFile.html">TFile</a>): <a  href="Neslib.Clang.ISourceRangeList.html">ISourceRangeList</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Retrieve all ranges that were skipped by the preprocessor.
+
+<p>The preprocessor will skip lines when they are surrounded by an if/ifdef/ifndef directive whose condition does not evaluate to True.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="GetAllSkippedRanges"></a><code>function <b>GetAllSkippedRanges</b>: <a  href="Neslib.Clang.ISourceRangeList.html">ISourceRangeList</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Retrieve all ranges from all files that were skipped by the preprocessor.
+
+<p>The preprocessor will skip lines when they are surrounded by an if/ifdef/ifndef directive whose condition does not evaluate to True.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="Save"></a><code>function <b>Save</b>(const AFilename: String): <a  href="Neslib.Clang.html#TSaveResult">TSaveResult</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Saves the translation unit into a serialized representation of that translation unit on disk.
+
+<p>
+
+<p> Any translation unit that was parsed without error can be saved into a file. The translation unit can then be deserialized into a new <a class="normal" href="Neslib.Clang.ITranslationUnit.html">ITranslationUnit</a> with <a class="normal" href="Neslib.Clang.IIndex.html#CreateTranslationUnit">IIndex.CreateTranslationUnit</a> or, if it is an incomplete translation unit that corresponds to a header, used as a precompiled header when parsing other translation units.</p>
+<h6 class="description_section">Parameters</h6>
+<dl class="parameters">
+<dt>AFilename</dt>
+<dd>The file to which the translation unit will be saved.</dd>
+</dl>
+<h6 class="description_section">Returns</h6>
+<p class="return"><code>Save</code> result.</p></td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="Suspend"></a><code>procedure <b>Suspend</b>;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+<code>Suspend</code> a translation unit in order to free memory associated with it.
+
+<p>A suspended translation unit uses significantly less memory but on the other side does not support any other calls than <a class="normal" href="Neslib.Clang.ITranslationUnit.html#Reparse">Reparse</a> to resume it.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="Reparse"></a><code>function <b>Reparse</b>(const AUnsavedFiles: TArray&lt;<a  href="Neslib.Clang.TUnsavedFile.html">TUnsavedFile</a>&gt; = nil): <a  href="Neslib.Clang.html#TError">TError</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+<code>Reparse</code> the source files that produced this translation unit.
+
+<p>
+
+<p> This routine can be used to re-parse the source files that originally created the given translation unit, for example because those source files have changed (either on disk or as passed via AUnsavedFiles). The source code will be reparsed with the same command-line options as it was originally parsed.
+
+<p>Reparsing a translation unit invalidates all cursors and source locations that refer into that translation unit. This makes reparsing a translation unit semantically equivalent to destroying the translation unit and then creating a new translation unit with the same command-line arguments. However, it may be more efficient to <code>reparse</code> a translation unit using this routine.
+
+<p>NOTE: The translation unit must originally have been built with <a class="normal" href="Neslib.Clang.IIndex.html#CreateTranslationUnitFromSource">IIndex.CreateTranslationUnitFromSource</a>.</p>
+<h6 class="description_section">Parameters</h6>
+<dl class="parameters">
+<dt>AUnsavedFiles</dt>
+<dd>(optional) array of files that have not yet been saved to disk but may be required for code completion, including the contents of those files.</dd>
+</dl>
+<h6 class="description_section">Returns</h6>
+<p class="return">AN error code.</p></td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="GetCursor"></a><code>function <b>GetCursor</b>(const ASourceLocation: <a  href="Neslib.Clang.TSourceLocation.html">TSourceLocation</a>): <a  href="Neslib.Clang.TCursor.html">TCursor</a>; overload;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Map a source location to the <a class="normal" href="Neslib.Clang.ITranslationUnit.html#Cursor">cursor</a> that describes the entity at that location in the source code.
+
+<p> Maps an arbitrary source location within the translation unit down to the most specific <a class="normal" href="Neslib.Clang.ITranslationUnit.html#Cursor">cursor</a> that describes the entity at that location. For example, given an expression &quot;x + y&quot;, invoking <code>GetCursor</code> with a source location pointing to &quot;x&quot; will return the <a class="normal" href="Neslib.Clang.ITranslationUnit.html#Cursor">cursor</a> for &quot;x&quot;; similarly for &quot;y&quot;. If the <a class="normal" href="Neslib.Clang.ITranslationUnit.html#Cursor">cursor</a> points anywhere between &quot;x&quot; or &quot;y&quot; (e.g., on the + or the whitespace around it), clang_getCursor() will return a <a class="normal" href="Neslib.Clang.ITranslationUnit.html#Cursor">cursor</a> referring to the &quot;+&quot; expression.</p>
+<h6 class="description_section">Returns</h6>
+<p class="return">A <a class="normal" href="Neslib.Clang.ITranslationUnit.html#Cursor">cursor</a> representing the entity at the given source location, or a NULL <a class="normal" href="Neslib.Clang.ITranslationUnit.html#Cursor">cursor</a> if no such entity can be found.</p></td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="GetModule"></a><code>function <b>GetModule</b>(const AFile: <a  href="Neslib.Clang.TFile.html">TFile</a>): <a  href="Neslib.Clang.TModule.html">TModule</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Given a <a class="normal" href="Neslib.Clang.TFile.html">TFile</a> header file, return the module that contains it, if one exists.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="GetTopLevelHeaderCount"></a><code>function <b>GetTopLevelHeaderCount</b>(const AModule: <a  href="Neslib.Clang.TModule.html">TModule</a>): Integer;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+The number of top level headers associated with a module.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="GetTopLevelHeader"></a><code>function <b>GetTopLevelHeader</b>(const AModule: <a  href="Neslib.Clang.TModule.html">TModule</a>; const AIndex: Integer): <a  href="Neslib.Clang.TFile.html">TFile</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+The top level headers associated with a module.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="Tokenize"></a><code>function <b>Tokenize</b>(const ARange: <a  href="Neslib.Clang.TSourceRange.html">TSourceRange</a>): <a  href="Neslib.Clang.ITokenList.html">ITokenList</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+<code>Tokenize</code> the source code described by the given range into raw lexical tokens.
+
+<p>
+
+<p></p>
+<h6 class="description_section">Parameters</h6>
+<dl class="parameters">
+<dt>ARange</dt>
+<dd>the source range in which text should be tokenized. All of the tokens produced by tokenization will fall within this source range,</dd>
+</dl>
+<h6 class="description_section">Returns</h6>
+<p class="return">The list of tokens.</p></td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="AnnotateTokens"></a><code>function <b>AnnotateTokens</b>(const ATokens: <a  href="Neslib.Clang.ITokenList.html">ITokenList</a>): TArray&lt;<a  href="Neslib.Clang.TCursor.html">TCursor</a>&gt;; overload;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="AnnotateTokens"></a><code>function <b>AnnotateTokens</b>(const ATokens: TArray&lt;<a  href="Neslib.Clang.TToken.html">TToken</a>&gt;): TArray&lt;<a  href="Neslib.Clang.TCursor.html">TCursor</a>&gt;; overload;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Annotate the given set of tokens by providing cursors for each token that can be mapped to a specific entity within the abstract syntax tree.
+
+<p>
+
+<p> This token-annotation routine is equivalent to invoking <a class="normal" href="Neslib.Clang.ITranslationUnit.html#GetCursor">GetCursor</a> for the source locations of each of the tokens. The cursors provided are filtered, so that only those cursors that have a direct correspondence to the token are accepted. For example, given a function call &quot;f(x)&quot;, <a class="normal" href="Neslib.Clang.ITranslationUnit.html#GetCursor">GetCursor</a> would provide the following cursors: </p>
+
+<ul class="compact_spacing">
+  <li><p>when the <a class="normal" href="Neslib.Clang.ITranslationUnit.html#Cursor">cursor</a> is over the 'f', a DeclRefExpr <a class="normal" href="Neslib.Clang.ITranslationUnit.html#Cursor">cursor</a> referring to 'f'.</p></li>
+  <li><p>when the <a class="normal" href="Neslib.Clang.ITranslationUnit.html#Cursor">cursor</a> is over the '(' or the ')', a CallExpr referring to 'f'.</p></li>
+  <li><p>when the <a class="normal" href="Neslib.Clang.ITranslationUnit.html#Cursor">cursor</a> is over the 'x', a DeclRefExpr <a class="normal" href="Neslib.Clang.ITranslationUnit.html#Cursor">cursor</a> referring to 'x'.</p></li>
+</ul>
+
+<p> Only the first and last of these cursors will occur within the annotate, since the tokens &quot;f&quot; and &quot;x&quot; directly refer to a function and a variable, respectively, but the parentheses are just a small part of the full syntax of the function call expression, which is not provided as an annotation.</p>
+<h6 class="description_section">Parameters</h6>
+<dl class="parameters">
+<dt>ATokens</dt>
+<dd>the set of tokens to annotate.</dd>
+</dl>
+<h6 class="description_section">Returns</h6>
+<p class="return">The cursors corresponding to each token.</p></td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="GetTokenSpelling"></a><code>function <b>GetTokenSpelling</b>(const AToken: <a  href="Neslib.Clang.TToken.html">TToken</a>): String;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Determine the <a class="normal" href="Neslib.Clang.ITranslationUnit.html#Spelling">spelling</a> of the given token.
+
+<p>The <a class="normal" href="Neslib.Clang.ITranslationUnit.html#Spelling">spelling</a> of a token is the textual representation of that token, e.g., the text of an identifier or keyword.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="GetTokenLocation"></a><code>function <b>GetTokenLocation</b>(const AToken: <a  href="Neslib.Clang.TToken.html">TToken</a>): <a  href="Neslib.Clang.TSourceLocation.html">TSourceLocation</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Retrieve the source location of the given token.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="GetTokenExtent"></a><code>function <b>GetTokenExtent</b>(const AToken: <a  href="Neslib.Clang.TToken.html">TToken</a>): <a  href="Neslib.Clang.TSourceRange.html">TSourceRange</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Retrieve a source range that covers the given token.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="CodeCompleteAt"></a><code>function <b>CodeCompleteAt</b>(const ACompleteFilename: String; const ACompleteLine, ACompleteColumn: Integer; const AUnsavedFiles: TArray&lt;<a  href="Neslib.Clang.TUnsavedFile.html">TUnsavedFile</a>&gt; = nil; const AOptions: <a  href="Neslib.Clang.html#TCodeCompleteFlags">TCodeCompleteFlags</a> = []): <a  href="Neslib.Clang.ICodeCompleteResults.html">ICodeCompleteResults</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Perform code completion at a given location in the translation unit.
+
+<p>    
+
+<p> This function performs code completion at a particular file, line, and column within source code, providing results that suggest potential code snippets based on the context of the completion. The basic model for code completion is that Clang will parse a complete source file, performing syntax checking up to the location where code-completion has been requested. At that point, a special code-completion token is passed to the parser, which recognizes this token and determines, based on the current location in the C/Objective-C/C++ grammar and the state of semantic analysis, what completions to provide. These completions are returned via a new <a class="normal" href="Neslib.Clang.ICodeCompleteResults.html">ICodeCompleteResults</a> object.
+
+<p>Code completion itself is meant to be triggered by the client when the user types punctuation characters or whitespace, at which point the code-completion location will coincide with the <a class="normal" href="Neslib.Clang.ITranslationUnit.html#Cursor">cursor</a>. For example, if &quot;p&quot; is a pointer, code-completion might be triggered after the &quot;-&quot; and then after the &quot;&gt;&quot; in &quot;p-&gt;&quot;. When the code-completion location is afer the &quot;&gt;&quot;, the completion results will provide, e.g., the members of the struct that &quot;p&quot; points to. The client is responsible for placing the <a class="normal" href="Neslib.Clang.ITranslationUnit.html#Cursor">cursor</a> at the beginning of the token currently being typed, then filtering the results based on the contents of the token. For example, when code-completing for the expression &quot;p-&gt;get&quot;, the client should provide the location just after the &quot;&gt;&quot; (e.g., pointing at the &quot;g&quot;) to this code-completion hook. Then, the client can filter the results based on the current token text (&quot;get&quot;), only showing those results that start with &quot;get&quot;. The intent of this interface is to separate the relatively high-latency acquisition of code-completion results from the filtering of results on a per-character basis, which must have a lower latency.
+
+<p>NOTE: The source files for this translation unit need not be completely up-to-date (and the contents of those source files may be overridden via AUnsavedFiles). Cursors referring into the translation unit may be invalidated by this invocation.</p>
+<h6 class="description_section">Parameters</h6>
+<dl class="parameters">
+<dt>ACompleteFilename</dt>
+<dd>The name of the source file where code completion should be performed. This filename may be any file included in the translation unit.</dd>
+<dt>ACompleteLine</dt>
+<dd>The line at which code-completion should occur.</dd>
+<dt>ACompleteColumn</dt>
+<dd>The column at which code-completion should occur. Note that the column should point just after the syntactic construct that initiated code completion, and not in the middle of a lexical token.</dd>
+<dt>AUnsavedFiles</dt>
+<dd>(optional) array of files that have not yet been saved to disk but may be required for parsing or code completion, including the contents of those files.</dd>
+<dt>AOptions</dt>
+<dd>(optional) extra options that control the behavior of code completion. The <a class="normal" href="Neslib.Clang.html#GetDefaultCodeCompleteOptions">GetDefaultCodeCompleteOptions</a> function returns a default set of code-completion options.</dd>
+</dl>
+<h6 class="description_section">Returns</h6>
+<p class="return">If successful, a new <a class="normal" href="Neslib.Clang.ICodeCompleteResults.html">ICodeCompleteResults</a> object containing code-completion results. If code completion fails, returns nil.</p></td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="GetInclusions"></a><code>procedure <b>GetInclusions</b>(const AVisitor: <a  href="Neslib.Clang.html#TInclusionVisitor">TInclusionVisitor</a>); overload;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="GetInclusions"></a><code>procedure <b>GetInclusions</b>(const AVisitor: <a  href="Neslib.Clang.html#TInclusionVisitorMethod">TInclusionVisitorMethod</a>); overload;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Visit the set of preprocessor inclusions in a translation unit. The visitor (anonymous) method is called with the provided data for every included file. This does not include headers included by the PCH file (unless one is inspecting the inclusions in the PCH file itself).</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="FindIncludesInFile"></a><code>function <b>FindIncludesInFile</b>(const AFile: <a  href="Neslib.Clang.TFile.html">TFile</a>; const AVisitor: <a  href="Neslib.Clang.html#TCursorAndRangeVisitor">TCursorAndRangeVisitor</a>): <a  href="Neslib.Clang.html#TVisitResult">TVisitResult</a>; overload;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="FindIncludesInFile"></a><code>function <b>FindIncludesInFile</b>(const AFile: <a  href="Neslib.Clang.TFile.html">TFile</a>; const AVisitor: <a  href="Neslib.Clang.html#TCursorAndRangeVisitorMethod">TCursorAndRangeVisitorMethod</a>): <a  href="Neslib.Clang.html#TVisitResult">TVisitResult</a>; overload;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Find #import/#include directives in a specific file.
+
+<p> 
+
+<p></p>
+<h6 class="description_section">Parameters</h6>
+<dl class="parameters">
+<dt>AFile</dt>
+<dd>file to search for #import/#include directives.</dd>
+<dt>AVisitor</dt>
+<dd>visitor callback that will receive pairs of <a class="normal" href="Neslib.Clang.TCursor.html">TCursor</a>/<a class="normal" href="Neslib.Clang.TSourceRange.html">TSourceRange</a> for each directive found.</dd>
+</dl>
+<h6 class="description_section">Returns</h6>
+<p class="return">A visit result</p></td></tr>
+</table>
+<h3 class="detail">Properties</h3>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="DiagnosticCount"></a><code>property <b>DiagnosticCount</b>: Integer read <a  href="Neslib.Clang.ITranslationUnit.html#GetDiagnosticCount">GetDiagnosticCount</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+The number of <a class="normal" href="Neslib.Clang.ITranslationUnit.html#Diagnostics">diagnostics</a> produced for this translation unit.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="Diagnostics"></a><code>property <b>Diagnostics</b>[constAIndex:Integer]: <a  href="Neslib.Clang.IDiagnostic.html">IDiagnostic</a> read <a  href="Neslib.Clang.ITranslationUnit.html#GetDiagnostic">GetDiagnostic</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+The <code>diagnostics</code> produced for this translation unit.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="AllDiagnostics"></a><code>property <b>AllDiagnostics</b>: <a  href="Neslib.Clang.IDiagnosticSet.html">IDiagnosticSet</a> read <a  href="Neslib.Clang.ITranslationUnit.html#GetAllDiagnostics">GetAllDiagnostics</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+The complete set of <a class="normal" href="Neslib.Clang.ITranslationUnit.html#Diagnostics">diagnostics</a> associated with a translation unit.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="Spelling"></a><code>property <b>Spelling</b>: String read <a  href="Neslib.Clang.ITranslationUnit.html#GetSpelling">GetSpelling</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Get the original translation unit source file name.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="ResourceUsage"></a><code>property <b>ResourceUsage</b>: <a  href="Neslib.Clang.IResourceUsage.html">IResourceUsage</a> read <a  href="Neslib.Clang.ITranslationUnit.html#GetResourceUsage">GetResourceUsage</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+The memory usage of this translation unit.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="TargetInfo"></a><code>property <b>TargetInfo</b>: <a  href="Neslib.Clang.ITargetInfo.html">ITargetInfo</a> read <a  href="Neslib.Clang.ITranslationUnit.html#GetTargetInfo">GetTargetInfo</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Target information for this translation unit.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="Cursor"></a><code>property <b>Cursor</b>: <a  href="Neslib.Clang.TCursor.html">TCursor</a> read <a  href="Neslib.Clang.ITranslationUnit.html#GetCursor">GetCursor</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+The <code>cursor</code> that represents this translation unit.
+
+<p>The translation unit <code>cursor</code> can be used to start traversing the various declarations within the given translation unit.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="Handle"></a><code>property <b>Handle</b>: TCXTranslationUnit read <a  href="Neslib.Clang.ITranslationUnit.html#GetHandle">GetHandle</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Internal <code>handle</code> to C API</p>
+</td></tr>
+</table>
+<div style="height:1000px"></div><hr noshade size="1"><span class="appinfo"><em>Generated by <a  href="https://github.com/neslib/PasDocEx">PasDocEx</a>, based on <a  href="http://pasdoc.sourceforge.net/">PasDoc 0.14.0</a>. </em>
+</span>
+</td></tr></table></body></html>

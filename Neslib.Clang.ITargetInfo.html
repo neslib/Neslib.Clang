@@ -1,0 +1,122 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/1999/REC-html401-19991224/loose.dtd">
+<html>
+<head>
+<title>Neslib.Clang: Neslib.Clang: Interface ITargetInfo</title>
+<meta name="generator" content="PasDoc 0.14.0">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<link rel="StyleSheet" type="text/css" href="pasdoc.css">
+</head>
+<body>
+<table class="container"><tr><td class="navigation">
+<h2>Neslib.Clang</h2><p><a href="introduction.html" class="navigation">Neslib.Clang</a></p><p><a href="AllUnits.html" class="navigation">Units</a></p><p><a href="ClassHierarchy.html" class="navigation">Class Hierarchy</a></p><p><a href="AllClasses.html" class="navigation">Classes, Interfaces, Objects and Records</a></p><p><a href="AllTypes.html" class="navigation">Types</a></p><p><a href="AllVariables.html" class="navigation">Variables</a></p><p><a href="AllConstants.html" class="navigation">Constants</a></p><p><a href="AllFunctions.html" class="navigation">Functions and Procedures</a></p><p><a href="AllIdentifiers.html" class="navigation">Identifiers</a></p><p><a href="conclusion.html" class="navigation">License</a></p></td><td class="content">
+<a name="ITargetInfo"></a><h1 class="cio">Interface ITargetInfo</h1>
+<table class="sections wide_list">
+<tr>
+<td><a class="section" href="#PasDoc-Description">Description</a></td><td><a class="section" href="#PasDoc-Hierarchy">Hierarchy</a></td><td>Fields</td><td><a class="section" href="#PasDoc-Methods">Methods</a></td><td><a class="section" href="#PasDoc-Properties">Properties</a></td></tr></table>
+<a name="PasDoc-Description"></a><h2 class="unit">Unit</h2>
+<p class="unitlink">
+<a  href="Neslib.Clang.html">Neslib.Clang</a></p>
+<h2 class="declaration">Declaration</h2>
+<p class="declaration">
+<code>type ITargetInfo = interface(IInterface)</code></p>
+<h2 class="description">Description</h2>
+<p>
+Target information for a translation unit.</p>
+<h6 class="description_section">Attributes</h6>
+<dl class="attributes">
+  <dt>GUID['{3588F66D-5D4E-4128-8438-77D649BF550E}']</dt>
+  <dd></dd>
+</dl>
+<a name="PasDoc-Hierarchy"></a><h2 class="hierarchy">Hierarchy</h2>
+<ul class="hierarchy"><li class="ancestor">IInterface</li>
+<li class="thisitem">ITargetInfo</li></ul><h2 class="overview">Overview</h2>
+<a name="PasDoc-Methods"></a><h3 class="summary">Methods</h3>
+<table class="summary wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a  href="Neslib.Clang.ITargetInfo.html#GetTriple">GetTriple</a></b>: String;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a  href="Neslib.Clang.ITargetInfo.html#GetPointerWidth">GetPointerWidth</a></b>: Integer;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a  href="Neslib.Clang.ITargetInfo.html#GetHandle">GetHandle</a></b>: TCXTargetInfo;</code></td>
+</tr>
+</table>
+<a name="PasDoc-Properties"></a><h3 class="summary">Properties</h3>
+<table class="summary wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.ITargetInfo.html#Triple">Triple</a></b>: String read <a  href="Neslib.Clang.ITargetInfo.html#GetTriple">GetTriple</a>;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.ITargetInfo.html#PointerWidth">PointerWidth</a></b>: Integer read <a  href="Neslib.Clang.ITargetInfo.html#GetPointerWidth">GetPointerWidth</a>;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.ITargetInfo.html#Handle">Handle</a></b>: TCXTargetInfo read <a  href="Neslib.Clang.ITargetInfo.html#GetHandle">GetHandle</a>;</code></td>
+</tr>
+</table>
+<h2 class="description">Description</h2>
+<h3 class="detail">Methods</h3>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="GetTriple"></a><code>function <b>GetTriple</b>: String;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="GetPointerWidth"></a><code>function <b>GetPointerWidth</b>: Integer;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="GetHandle"></a><code>function <b>GetHandle</b>: TCXTargetInfo;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<h3 class="detail">Properties</h3>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="Triple"></a><code>property <b>Triple</b>: String read <a  href="Neslib.Clang.ITargetInfo.html#GetTriple">GetTriple</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+The normalized target <code>triple</code> as a string. Returns the empty string in case of any error.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="PointerWidth"></a><code>property <b>PointerWidth</b>: Integer read <a  href="Neslib.Clang.ITargetInfo.html#GetPointerWidth">GetPointerWidth</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+The pointer width of the target in bits. Returns -1 in case of error.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="Handle"></a><code>property <b>Handle</b>: TCXTargetInfo read <a  href="Neslib.Clang.ITargetInfo.html#GetHandle">GetHandle</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Internal <code>handle</code> to C API</p>
+</td></tr>
+</table>
+<div style="height:1000px"></div><hr noshade size="1"><span class="appinfo"><em>Generated by <a  href="https://github.com/neslib/PasDocEx">PasDocEx</a>, based on <a  href="http://pasdoc.sourceforge.net/">PasDoc 0.14.0</a>. </em>
+</span>
+</td></tr></table></body></html>

@@ -1,0 +1,502 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/1999/REC-html401-19991224/loose.dtd">
+<html>
+<head>
+<title>Neslib.Clang: Neslib.Clang: record TComment</title>
+<meta name="generator" content="PasDoc 0.14.0">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<link rel="StyleSheet" type="text/css" href="pasdoc.css">
+</head>
+<body>
+<table class="container"><tr><td class="navigation">
+<h2>Neslib.Clang</h2><p><a href="introduction.html" class="navigation">Neslib.Clang</a></p><p><a href="AllUnits.html" class="navigation">Units</a></p><p><a href="ClassHierarchy.html" class="navigation">Class Hierarchy</a></p><p><a href="AllClasses.html" class="navigation">Classes, Interfaces, Objects and Records</a></p><p><a href="AllTypes.html" class="navigation">Types</a></p><p><a href="AllVariables.html" class="navigation">Variables</a></p><p><a href="AllConstants.html" class="navigation">Constants</a></p><p><a href="AllFunctions.html" class="navigation">Functions and Procedures</a></p><p><a href="AllIdentifiers.html" class="navigation">Identifiers</a></p><p><a href="conclusion.html" class="navigation">License</a></p></td><td class="content">
+<a name="TComment"></a><h1 class="cio">record TComment</h1>
+<table class="sections wide_list">
+<tr>
+<td><a class="section" href="#PasDoc-Description">Description</a></td><td>Hierarchy</td><td>Fields</td><td>Methods</td><td><a class="section" href="#PasDoc-Properties">Properties</a></td></tr></table>
+<a name="PasDoc-Description"></a><h2 class="unit">Unit</h2>
+<p class="unitlink">
+<a  href="Neslib.Clang.html">Neslib.Clang</a></p>
+<h2 class="declaration">Declaration</h2>
+<p class="declaration">
+<code>type TComment = record</code></p>
+<h2 class="description">Description</h2>
+<p>
+A parsed comment.</p>
+<h2 class="overview">Overview</h2>
+<a name="PasDoc-Properties"></a><h3 class="summary">Properties</h3>
+<table class="summary wide_list">
+<tr class="list">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TComment.html#Kind">Kind</a></b>: <a  href="Neslib.Clang.html#TCommentKind">TCommentKind</a> read GetKind;</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TComment.html#ChildCount">ChildCount</a></b>: Integer read GetChildCount;</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TComment.html#Children">Children</a></b>[constAIndex:Integer]: <a  href="Neslib.Clang.TComment.html">TComment</a> read GetChild;</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TComment.html#IsWhitespace">IsWhitespace</a></b>: Boolean read GetIsWhitespace;</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TComment.html#HasTrailingNewline">HasTrailingNewline</a></b>: Boolean read GetHasTrailingNewline;</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TComment.html#Text">Text</a></b>: String read GetText;</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TComment.html#InlineCommandName">InlineCommandName</a></b>: String read GetInlineCommandName;</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TComment.html#InlineCommandRenderKind">InlineCommandRenderKind</a></b>: <a  href="Neslib.Clang.html#TCommentInlineCommandRenderKind">TCommentInlineCommandRenderKind</a> read GetInlineCommandRenderKind;</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TComment.html#InlineCommandArgCount">InlineCommandArgCount</a></b>: Integer read GetInlineCommandArgCount;</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TComment.html#InlineCommandArgs">InlineCommandArgs</a></b>[constAIndex:Integer]: String read GetInlineCommandArg;</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TComment.html#HtmlTagName">HtmlTagName</a></b>: String read GetHtmlTagName;</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TComment.html#HtmlTagIsSelfClosing">HtmlTagIsSelfClosing</a></b>: Boolean read GetHtmlTagIsSelfClosing;</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TComment.html#HtmlTagAttrCount">HtmlTagAttrCount</a></b>: Integer read GetHtmlTagAttrCount;</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TComment.html#HtmlTagAttrNames">HtmlTagAttrNames</a></b>[constAIndex:Integer]: String read GetHtmlTagAttrName;</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TComment.html#HtmlTagAttrValues">HtmlTagAttrValues</a></b>[constAIndex:Integer]: String read GetHtmlTagAttrValue;</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TComment.html#BlockCommandName">BlockCommandName</a></b>: String read GetBlockCommandName;</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TComment.html#BlockCommandArgCount">BlockCommandArgCount</a></b>: Integer read GetBlockCommandArgCount;</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TComment.html#BlockCommandArgs">BlockCommandArgs</a></b>[constAIndex:Integer]: String read GetBlockCommandArg;</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TComment.html#BlockCommandParagraph">BlockCommandParagraph</a></b>: <a  href="Neslib.Clang.TComment.html">TComment</a> read GetBlockCommandParagraph;</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TComment.html#ParamCommandParamName">ParamCommandParamName</a></b>: String read GetParamCommandParamName;</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TComment.html#ParamCommandIsParamIndexValid">ParamCommandIsParamIndexValid</a></b>: Boolean read GetParamCommandIsParamIndexValid;</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TComment.html#ParamCommandParamIndex">ParamCommandParamIndex</a></b>: Integer read GetParamCommandParamIndex;</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TComment.html#ParamCommandIsDirectionExplicit">ParamCommandIsDirectionExplicit</a></b>: Boolean read GetParamCommandIsDirectionExplicit;</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TComment.html#ParamCommandDirection">ParamCommandDirection</a></b>: <a  href="Neslib.Clang.html#TCommentParamPassDirection">TCommentParamPassDirection</a> read GetParamCommandDirection;</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TComment.html#TParamCommandParamName">TParamCommandParamName</a></b>: String read GetTParamCommandParamName;</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TComment.html#TParamCommandIsParamPositionValied">TParamCommandIsParamPositionValied</a></b>: Boolean read GetTParamCommandIsParamPositionValied;</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TComment.html#TParamCommandDepth">TParamCommandDepth</a></b>: Integer read GetTParamCommandDepth;</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TComment.html#TParamCommandIndex">TParamCommandIndex</a></b>[constADepth:Integer]: Integer read GetTParamCommandIndex;</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TComment.html#VerbatimBlockLineText">VerbatimBlockLineText</a></b>: String read GetVerbatimBlockLineText;</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TComment.html#VerbatimLineText">VerbatimLineText</a></b>: String read GetVerbatimLineText;</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TComment.html#HtmlTagAsString">HtmlTagAsString</a></b>: String read GetHtmlTagAsString;</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TComment.html#FullCommentAsHtml">FullCommentAsHtml</a></b>: String read GetFullCommentAsHtml;</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TComment.html#FullCommentASXml">FullCommentASXml</a></b>: String read GetFullCommentASXml;</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TComment.html#Handle">Handle</a></b>: TCXComment read FHandle;</code></td>
+</tr>
+</table>
+<h2 class="description">Description</h2>
+<h3 class="detail">Properties</h3>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="Kind"></a><code>property <b>Kind</b>: <a  href="Neslib.Clang.html#TCommentKind">TCommentKind</a> read GetKind;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+<code>Kind</code> of comment</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="ChildCount"></a><code>property <b>ChildCount</b>: Integer read GetChildCount;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Number of comment <a class="normal" href="Neslib.Clang.TComment.html#Children">children</a> of this node</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="Children"></a><code>property <b>Children</b>[constAIndex:Integer]: <a  href="Neslib.Clang.TComment.html">TComment</a> read GetChild;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Comment <code>children</code> of this node</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="IsWhitespace"></a><code>property <b>IsWhitespace</b>: Boolean read GetIsWhitespace;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Whether this comment is whitespace. A Paragraph node is considered whitespace if it contains only <a class="normal" href="Neslib.Clang.TComment.html#Text">Text</a> nodes that are empty or whitespace.
+
+<p>Other AST nodes (except Paragraph and <a class="normal" href="Neslib.Clang.TComment.html#Text">Text</a>) are never considered whitespace.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="HasTrailingNewline"></a><code>property <b>HasTrailingNewline</b>: Boolean read GetHasTrailingNewline;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Whether this is an inline content and has a newline immediately following it in the comment <a class="normal" href="Neslib.Clang.TComment.html#Text">text</a>. Newlines between paragraphs do not count.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="Text"></a><code>property <b>Text</b>: String read GetText;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+For <code>Text</code> AST nodes, the <code>text</code> of the comment</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="InlineCommandName"></a><code>property <b>InlineCommandName</b>: String read GetInlineCommandName;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+For InlineCommand AST nodes, the name of the command</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="InlineCommandRenderKind"></a><code>property <b>InlineCommandRenderKind</b>: <a  href="Neslib.Clang.html#TCommentInlineCommandRenderKind">TCommentInlineCommandRenderKind</a> read GetInlineCommandRenderKind;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+For InlineCommand AST nodes, the most appropriate rendering mode, chosen on command semantics in Doxygen.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="InlineCommandArgCount"></a><code>property <b>InlineCommandArgCount</b>: Integer read GetInlineCommandArgCount;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+For InlineCommand AST nodes, the number of command arguments</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="InlineCommandArgs"></a><code>property <b>InlineCommandArgs</b>[constAIndex:Integer]: String read GetInlineCommandArg;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+For InlineCommand AST nodes, the command arguments</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="HtmlTagName"></a><code>property <b>HtmlTagName</b>: String read GetHtmlTagName;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+For HtmlStartTag and HtmlEndTag AST nodes, the tag name</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="HtmlTagIsSelfClosing"></a><code>property <b>HtmlTagIsSelfClosing</b>: Boolean read GetHtmlTagIsSelfClosing;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+For HtmlStartTag AST nodes, whether the tag is self-closing (for example <code>&lt;br /&gt;</code>)</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="HtmlTagAttrCount"></a><code>property <b>HtmlTagAttrCount</b>: Integer read GetHtmlTagAttrCount;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+For HtmlStartTag AST nodes, the number of attributes (name-value pairs) attached to the tag.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="HtmlTagAttrNames"></a><code>property <b>HtmlTagAttrNames</b>[constAIndex:Integer]: String read GetHtmlTagAttrName;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+For HtmlStartTag AST nodes, the attribute names.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="HtmlTagAttrValues"></a><code>property <b>HtmlTagAttrValues</b>[constAIndex:Integer]: String read GetHtmlTagAttrValue;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+For HtmlStartTag AST nodes, the attribute values.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="BlockCommandName"></a><code>property <b>BlockCommandName</b>: String read GetBlockCommandName;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+For BlockCommand AST nodes, the name of the block command.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="BlockCommandArgCount"></a><code>property <b>BlockCommandArgCount</b>: Integer read GetBlockCommandArgCount;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+For BlockCommand AST nodes, the number of word-like arguments</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="BlockCommandArgs"></a><code>property <b>BlockCommandArgs</b>[constAIndex:Integer]: String read GetBlockCommandArg;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+For BlockCommand AST nodes, the word-like arguments</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="BlockCommandParagraph"></a><code>property <b>BlockCommandParagraph</b>: <a  href="Neslib.Clang.TComment.html">TComment</a> read GetBlockCommandParagraph;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+For BlockCommand or VerbatimBlockCommand AST nodes, the paragraph argument of the block command</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="ParamCommandParamName"></a><code>property <b>ParamCommandParamName</b>: String read GetParamCommandParamName;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+For ParamCommand AST nodes, the parameter name</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="ParamCommandIsParamIndexValid"></a><code>property <b>ParamCommandIsParamIndexValid</b>: Boolean read GetParamCommandIsParamIndexValid;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+For ParamCommand AST nodes, whether the parameter that this AST node represents was found in the function prototype and <a class="normal" href="Neslib.Clang.TComment.html#ParamCommandParamIndex">ParamCommandParamIndex</a> function will return a meaningful value.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="ParamCommandParamIndex"></a><code>property <b>ParamCommandParamIndex</b>: Integer read GetParamCommandParamIndex;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+For ParamCommand AST nodes, the zero-based parameter index in function prototype.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="ParamCommandIsDirectionExplicit"></a><code>property <b>ParamCommandIsDirectionExplicit</b>: Boolean read GetParamCommandIsDirectionExplicit;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+For ParamCommand AST nodes, whether a parameter passing direction was specified explicitly in the comment.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="ParamCommandDirection"></a><code>property <b>ParamCommandDirection</b>: <a  href="Neslib.Clang.html#TCommentParamPassDirection">TCommentParamPassDirection</a> read GetParamCommandDirection;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+For ParamCommand AST nodes, the parameter passing direction.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="TParamCommandParamName"></a><code>property <b>TParamCommandParamName</b>: String read GetTParamCommandParamName;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+For TParamCommand AST nodes, the template parameter name.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="TParamCommandIsParamPositionValied"></a><code>property <b>TParamCommandIsParamPositionValied</b>: Boolean read GetTParamCommandIsParamPositionValied;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+For TParamCommand AST nodes, whether the parameter that this AST node represents was found in the template parameter list and <a class="normal" href="Neslib.Clang.TComment.html#TParamCommandDepth">TParamCommandDepth</a> and <a class="normal" href="Neslib.Clang.TComment.html#TParamCommandIndex">TParamCommandIndex</a> functions will return meaningful values.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="TParamCommandDepth"></a><code>property <b>TParamCommandDepth</b>: Integer read GetTParamCommandDepth;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+For TParamCommand AST nodes, the zero-based nesting depth of this parameter in the template parameter list.
+
+<p>For example,
+
+<p></p>
+
+<pre class="preformatted">
+        template&lt;typename C, template&lt;typename T&gt; class TT&gt;
+        void test(TT&lt;int&gt; aaa);
+      </pre>
+
+<p>
+
+<p>For C and TT nesting depth is 0, for T nesting depth is 1.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="TParamCommandIndex"></a><code>property <b>TParamCommandIndex</b>[constADepth:Integer]: Integer read GetTParamCommandIndex;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+For TParamCommand AST nodes, the zero-based parameter index in the template parameter list at a given nesting depth.
+
+<p>For example,
+
+<p></p>
+
+<pre class="preformatted">
+        template&lt;typename C, template&lt;typename T&gt; class TT&gt;
+        void test(TT&lt;int&gt; aaa);
+      </pre>
+
+<p>
+
+<p>For C and TT nesting depth is 0, so we can ask for index at depth 0: at depth 0 C's index is 0, TT's index is 1.
+
+<p>For T nesting depth is 1, so we can ask for index at depth 0 and 1: at depth 0 T's index is 1 (same as TT's), at depth 1 T's index is 0.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="VerbatimBlockLineText"></a><code>property <b>VerbatimBlockLineText</b>: String read GetVerbatimBlockLineText;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+For VerbatimBlockLine AST nodes, the <a class="normal" href="Neslib.Clang.TComment.html#Text">text</a> contained in the AST node.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="VerbatimLineText"></a><code>property <b>VerbatimLineText</b>: String read GetVerbatimLineText;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+For VerbatimLine AST nodes, the <a class="normal" href="Neslib.Clang.TComment.html#Text">text</a> contained in the AST node.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="HtmlTagAsString"></a><code>property <b>HtmlTagAsString</b>: String read GetHtmlTagAsString;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+For HtmlStartTag and HtmlEndTag AST nodes, the tag converted to a string</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="FullCommentAsHtml"></a><code>property <b>FullCommentAsHtml</b>: String read GetFullCommentAsHtml;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+For FullComment AST nodes, the full parsed comment as an HTML fragment.
+
+<p>Specific details of HTML layout are subject to change. Don't try to parse this HTML back into an AST, use other APIs instead.
+
+<p>Currently the following CSS classes are used: </p>
+
+<ul class="compact_spacing">
+  <li><p>&quot;para-brief&quot; for \brief paragraph and equivalent commands;</p></li>
+  <li><p>&quot;para-returns&quot; for \returns paragraph and equivalent commands;</p></li>
+  <li><p>&quot;word-returns&quot; for the &quot;Returns&quot; word in \returns paragraph.</p></li>
+</ul>
+
+<p> Function argument documentation is rendered as a &lt;dl\&gt; list with arguments sorted in function prototype order. CSS classes used: </p>
+
+<ul class="compact_spacing">
+  <li><p>&quot;param-name-index-NUMBER&quot; for parameter name (&lt;dt\&gt;);</p></li>
+  <li><p>&quot;param-descr-index-NUMBER&quot; for parameter description (&lt;dd\&gt;);</p></li>
+  <li><p>&quot;param-name-index-invalid&quot; and &quot;param-descr-index-invalid&quot; are used if parameter index is invalid.</p></li>
+</ul>
+
+<p> Template parameter documentation is rendered as a &lt;dl\&gt; list with parameters sorted in template parameter list order. CSS classes used: </p>
+
+<ul class="compact_spacing">
+  <li><p>&quot;tparam-name-index-NUMBER&quot; for parameter name (&lt;dt\&gt;);</p></li>
+  <li><p>&quot;tparam-descr-index-NUMBER&quot; for parameter description (&lt;dd\&gt;);</p></li>
+  <li><p>&quot;tparam-name-index-other&quot; and &quot;tparam-descr-index-other&quot; are used for names inside template template parameters;</p></li>
+  <li><p>&quot;tparam-name-index-invalid&quot; and &quot;tparam-descr-index-invalid&quot; are used if parameter position is invalid.</p></li>
+</ul>
+
+<p></p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="FullCommentASXml"></a><code>property <b>FullCommentASXml</b>: String read GetFullCommentASXml;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+For FullComment AST nodes, the full parsed comment as an XML document.
+
+<p>A Relax NG schema for the XML can be found in comment-xml-schema.rng file inside clang source tree.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="Handle"></a><code>property <b>Handle</b>: TCXComment read FHandle;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Internal <code>handle</code> to C API</p>
+</td></tr>
+</table>
+<div style="height:1000px"></div><hr noshade size="1"><span class="appinfo"><em>Generated by <a  href="https://github.com/neslib/PasDocEx">PasDocEx</a>, based on <a  href="http://pasdoc.sourceforge.net/">PasDoc 0.14.0</a>. </em>
+</span>
+</td></tr></table></body></html>

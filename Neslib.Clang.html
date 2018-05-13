@@ -1,0 +1,2736 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/1999/REC-html401-19991224/loose.dtd">
+<html>
+<head>
+<title>Neslib.Clang: Neslib.Clang</title>
+<meta name="generator" content="PasDoc 0.14.0">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<link rel="StyleSheet" type="text/css" href="pasdoc.css">
+</head>
+<body>
+<table class="container"><tr><td class="navigation">
+<h2>Neslib.Clang</h2><p><a href="introduction.html" class="navigation">Neslib.Clang</a></p><p><a href="AllUnits.html" class="navigation">Units</a></p><p><a href="ClassHierarchy.html" class="navigation">Class Hierarchy</a></p><p><a href="AllClasses.html" class="navigation">Classes, Interfaces, Objects and Records</a></p><p><a href="AllTypes.html" class="navigation">Types</a></p><p><a href="AllVariables.html" class="navigation">Variables</a></p><p><a href="AllConstants.html" class="navigation">Constants</a></p><p><a href="AllFunctions.html" class="navigation">Functions and Procedures</a></p><p><a href="AllIdentifiers.html" class="navigation">Identifiers</a></p><p><a href="conclusion.html" class="navigation">License</a></p></td><td class="content">
+<h1 class="unit">Unit Neslib.Clang</h1>
+<table class="sections wide_list">
+<tr>
+<td><a class="section" href="#PasDoc-Description">Description</a></td><td>Uses</td><td><a class="section" href="#PasDoc-Classes">Classes, Interfaces, Objects and Records</a></td><td><a class="section" href="#PasDoc-FuncsProcs">Functions and Procedures</a></td><td><a class="section" href="#PasDoc-Types">Types</a></td><td><a class="section" href="#PasDoc-Constants">Constants</a></td><td>Variables</td></tr></table>
+<a name="PasDoc-Description"></a><h2 class="description">Description</h2>
+<p>
+Delphi wrappers for LibClang 6.0.0. The main entry point to LibClang is <a class="normal" href="Neslib.Clang.TIndex.html#Create">TIndex.Create</a>.</p>
+<a name="PasDoc-Uses"></a><h2 class="overview">Overview</h2>
+<a name="PasDoc-Classes"></a><h3 class="cio">Classes, Interfaces, Objects and Records</h3>
+<table class="classestable wide_list">
+<tr class="listheader">
+<th class="itemname">Name</th>
+<th class="itemdesc">Description</th>
+</tr>
+<tr class="list">
+<td class="itemname">record&nbsp;<a class="bold" href="Neslib.Clang.TGlobalOptionsHelper.html"><code>TGlobalOptionsHelper</code></a></td>
+<td class="itemdesc">Extends <a class="normal" href="Neslib.Clang.html#TGlobalOptions">TGlobalOptions</a></td>
+</tr>
+<tr class="list2">
+<td class="itemname">record&nbsp;<a class="bold" href="Neslib.Clang.TCursorKindHelper.html"><code>TCursorKindHelper</code></a></td>
+<td class="itemdesc">Extends <a class="normal" href="Neslib.Clang.html#TCursorKind">TCursorKind</a></td>
+</tr>
+<tr class="list">
+<td class="itemname">record&nbsp;<a class="bold" href="Neslib.Clang.TVersion.html"><code>TVersion</code></a></td>
+<td class="itemdesc">Describes a version number of the form major.minor.subminor.</td>
+</tr>
+<tr class="list2">
+<td class="itemname">record&nbsp;<a class="bold" href="Neslib.Clang.TPlatformAvailability.html"><code>TPlatformAvailability</code></a></td>
+<td class="itemdesc">Describes the availability of a given entity on particular <a class="normal" href="Neslib.Clang.TPlatformAvailability.html#Platforms">platforms</a>, e.g., a particular class might only be available on Mac OS 10.7 or newer.</td>
+</tr>
+<tr class="list">
+<td class="itemname">record&nbsp;<a class="bold" href="Neslib.Clang.TType.html"><code>TType</code></a></td>
+<td class="itemdesc">The type of an element in the abstract syntax tree.</td>
+</tr>
+<tr class="list2">
+<td class="itemname">record&nbsp;<a class="bold" href="Neslib.Clang.TFileUniqueId.html"><code>TFileUniqueId</code></a></td>
+<td class="itemdesc">Uniquely identifies a <a class="normal" href="Neslib.Clang.TFile.html">TFile</a>, that refers to the same underlying file, across an indexing session.</td>
+</tr>
+<tr class="list">
+<td class="itemname">record&nbsp;<a class="bold" href="Neslib.Clang.TFile.html"><code>TFile</code></a></td>
+<td class="itemdesc">A particular source file that is part of a translation unit.</td>
+</tr>
+<tr class="list2">
+<td class="itemname">record&nbsp;<a class="bold" href="Neslib.Clang.TSourceLocation.html"><code>TSourceLocation</code></a></td>
+<td class="itemdesc">Identifies a specific source location within a translation unit.</td>
+</tr>
+<tr class="list">
+<td class="itemname">record&nbsp;<a class="bold" href="Neslib.Clang.TSourceRange.html"><code>TSourceRange</code></a></td>
+<td class="itemdesc">Identifies a half-open character range in the source code.</td>
+</tr>
+<tr class="list2">
+<td class="itemname">Interface&nbsp;<a class="bold" href="Neslib.Clang.ISourceRangeList.html"><code>ISourceRangeList</code></a></td>
+<td class="itemdesc">A list of source <a class="normal" href="Neslib.Clang.ISourceRangeList.html#Ranges">ranges</a></td>
+</tr>
+<tr class="list">
+<td class="itemname">record&nbsp;<a class="bold" href="Neslib.Clang.TUnsavedFile.html"><code>TUnsavedFile</code></a></td>
+<td class="itemdesc">Provides the <a class="normal" href="Neslib.Clang.TUnsavedFile.html#Contents">contents</a> of a file that has not yet been saved to disk.</td>
+</tr>
+<tr class="list2">
+<td class="itemname">record&nbsp;<a class="bold" href="Neslib.Clang.TModule.html"><code>TModule</code></a></td>
+<td class="itemdesc">Information about a module.</td>
+</tr>
+<tr class="list">
+<td class="itemname">record&nbsp;<a class="bold" href="Neslib.Clang.TComment.html"><code>TComment</code></a></td>
+<td class="itemdesc">A parsed comment.</td>
+</tr>
+<tr class="list2">
+<td class="itemname">record&nbsp;<a class="bold" href="Neslib.Clang.TCompletionString.html"><code>TCompletionString</code></a></td>
+<td class="itemdesc">A semantic string that describes a code-completion result.</td>
+</tr>
+<tr class="list">
+<td class="itemname">Interface&nbsp;<a class="bold" href="Neslib.Clang.IEvalResult.html"><code>IEvalResult</code></a></td>
+<td class="itemdesc">Evaluation result of a cursor</td>
+</tr>
+<tr class="list2">
+<td class="itemname">record&nbsp;<a class="bold" href="Neslib.Clang.TUnifiedSymbolResolution.html"><code>TUnifiedSymbolResolution</code></a></td>
+<td class="itemdesc">A Unified Symbol Resolution (USR) is a string that identifies a particular entity (function, class, variable, etc.) within a program.</td>
+</tr>
+<tr class="list">
+<td class="itemname">record&nbsp;<a class="bold" href="Neslib.Clang.TCursor.html"><code>TCursor</code></a></td>
+<td class="itemdesc">A cursor representing some element in the abstract syntax tree for a translation unit.</td>
+</tr>
+<tr class="list2">
+<td class="itemname">record&nbsp;<a class="bold" href="Neslib.Clang.TCursorHelper.html"><code>TCursorHelper</code></a></td>
+<td class="itemdesc">Extends <a class="normal" href="Neslib.Clang.TCursor.html">TCursor</a></td>
+</tr>
+<tr class="list">
+<td class="itemname">record&nbsp;<a class="bold" href="Neslib.Clang.TTypeHelper.html"><code>TTypeHelper</code></a></td>
+<td class="itemdesc">Extends <a class="normal" href="Neslib.Clang.TType.html">TType</a></td>
+</tr>
+<tr class="list2">
+<td class="itemname">Interface&nbsp;<a class="bold" href="Neslib.Clang.ICursorSet.html"><code>ICursorSet</code></a></td>
+<td class="itemdesc">A fast container representing a set of cursors.</td>
+</tr>
+<tr class="list">
+<td class="itemname">record&nbsp;<a class="bold" href="Neslib.Clang.TToken.html"><code>TToken</code></a></td>
+<td class="itemdesc">Describes a single preprocessing token.</td>
+</tr>
+<tr class="list2">
+<td class="itemname">Interface&nbsp;<a class="bold" href="Neslib.Clang.ITokenList.html"><code>ITokenList</code></a></td>
+<td class="itemdesc">A list of <a class="normal" href="Neslib.Clang.ITokenList.html#Tokens">tokens</a></td>
+</tr>
+<tr class="list">
+<td class="itemname">record&nbsp;<a class="bold" href="Neslib.Clang.TCompletionResult.html"><code>TCompletionResult</code></a></td>
+<td class="itemdesc">A result of code-completion.</td>
+</tr>
+<tr class="list2">
+<td class="itemname">Interface&nbsp;<a class="bold" href="Neslib.Clang.IDiagnostic.html"><code>IDiagnostic</code></a></td>
+<td class="itemdesc">A single diagnostic, containing the diagnostic's <a class="normal" href="Neslib.Clang.IDiagnostic.html#Severity">severity</a>, <a class="normal" href="Neslib.Clang.IDiagnostic.html#Location">location</a>, text, source <a class="normal" href="Neslib.Clang.IDiagnostic.html#Ranges">ranges</a>, and fix-it hints.</td>
+</tr>
+<tr class="list">
+<td class="itemname">Interface&nbsp;<a class="bold" href="Neslib.Clang.IDiagnosticSet.html"><code>IDiagnosticSet</code></a></td>
+<td class="itemdesc">A group of IDiagnostics.</td>
+</tr>
+<tr class="list2">
+<td class="itemname">Interface&nbsp;<a class="bold" href="Neslib.Clang.ICodeCompleteResults.html"><code>ICodeCompleteResults</code></a></td>
+<td class="itemdesc">Contains the <a class="normal" href="Neslib.Clang.ICodeCompleteResults.html#Results">results</a> of code-completion.</td>
+</tr>
+<tr class="list">
+<td class="itemname">record&nbsp;<a class="bold" href="Neslib.Clang.TResourceUsageEntry.html"><code>TResourceUsageEntry</code></a></td>
+<td class="itemdesc">Entry in the <a class="normal" href="Neslib.Clang.IResourceUsage.html">IResourceUsage</a> list</td>
+</tr>
+<tr class="list2">
+<td class="itemname">Interface&nbsp;<a class="bold" href="Neslib.Clang.IResourceUsage.html"><code>IResourceUsage</code></a></td>
+<td class="itemdesc">The memory usage of an <a class="normal" href="Neslib.Clang.ITranslationUnit.html">ITranslationUnit</a>, broken into categories.</td>
+</tr>
+<tr class="list">
+<td class="itemname">Interface&nbsp;<a class="bold" href="Neslib.Clang.ITargetInfo.html"><code>ITargetInfo</code></a></td>
+<td class="itemdesc">Target information for a translation unit.</td>
+</tr>
+<tr class="list2">
+<td class="itemname">Interface&nbsp;<a class="bold" href="Neslib.Clang.ITranslationUnit.html"><code>ITranslationUnit</code></a></td>
+<td class="itemdesc">A single translation unit, which resides in an <a class="normal" href="Neslib.Clang.IIndex.html">IIndex</a>.</td>
+</tr>
+<tr class="list">
+<td class="itemname">record&nbsp;<a class="bold" href="Neslib.Clang.TIdxLoc.html"><code>TIdxLoc</code></a></td>
+<td class="itemdesc">Source location passed to <a class="normal" href="Neslib.Clang.IIndexerListener.html">IIndexerListener</a> callbacks.</td>
+</tr>
+<tr class="list2">
+<td class="itemname">record&nbsp;<a class="bold" href="Neslib.Clang.TIdxIncludedFileInfo.html"><code>TIdxIncludedFileInfo</code></a></td>
+<td class="itemdesc">Data for the <a class="normal" href="Neslib.Clang.IIndexerListener.html#IncludedFile">IIndexerListener.IncludedFile</a> callback</td>
+</tr>
+<tr class="list">
+<td class="itemname">record&nbsp;<a class="bold" href="Neslib.Clang.TIdxImportedAstFileInfo.html"><code>TIdxImportedAstFileInfo</code></a></td>
+<td class="itemdesc">Data for <a class="normal" href="Neslib.Clang.IIndexerListener.html#ImportedAstFile">IIndexerListener.ImportedAstFile</a>.</td>
+</tr>
+<tr class="list2">
+<td class="itemname">record&nbsp;<a class="bold" href="Neslib.Clang.TIdxAttrInfo.html"><code>TIdxAttrInfo</code></a></td>
+<td class="itemdesc">Information about an indexed attribute</td>
+</tr>
+<tr class="list">
+<td class="itemname">record&nbsp;<a class="bold" href="Neslib.Clang.TIdxEntityInfo.html"><code>TIdxEntityInfo</code></a></td>
+<td class="itemdesc">Data for <a class="normal" href="Neslib.Clang.TIdxDeclInfo.html#EntityInfo">TIdxDeclInfo.EntityInfo</a>.</td>
+</tr>
+<tr class="list2">
+<td class="itemname">record&nbsp;<a class="bold" href="Neslib.Clang.TIdxContainerInfo.html"><code>TIdxContainerInfo</code></a></td>
+<td class="itemdesc">Information about an indexed container</td>
+</tr>
+<tr class="list">
+<td class="itemname">record&nbsp;<a class="bold" href="Neslib.Clang.TIdxDeclInfo.html"><code>TIdxDeclInfo</code></a></td>
+<td class="itemdesc">Data for <a class="normal" href="Neslib.Clang.IIndexerListener.html#IndexDeclaration">IIndexerListener.IndexDeclaration</a>.</td>
+</tr>
+<tr class="list2">
+<td class="itemname">record&nbsp;<a class="bold" href="Neslib.Clang.TIdxObjCContainerDeclInfo.html"><code>TIdxObjCContainerDeclInfo</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list">
+<td class="itemname">record&nbsp;<a class="bold" href="Neslib.Clang.TIdxBaseClassInfo.html"><code>TIdxBaseClassInfo</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list2">
+<td class="itemname">record&nbsp;<a class="bold" href="Neslib.Clang.TIdxObjCProtocolRefInfo.html"><code>TIdxObjCProtocolRefInfo</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list">
+<td class="itemname">record&nbsp;<a class="bold" href="Neslib.Clang.TIdxObjCProtocolRefListInfo.html"><code>TIdxObjCProtocolRefListInfo</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list2">
+<td class="itemname">record&nbsp;<a class="bold" href="Neslib.Clang.TIdxObjCInterfaceDeclInfo.html"><code>TIdxObjCInterfaceDeclInfo</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list">
+<td class="itemname">record&nbsp;<a class="bold" href="Neslib.Clang.TIdxObjCCategoryDeclInfo.html"><code>TIdxObjCCategoryDeclInfo</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list2">
+<td class="itemname">record&nbsp;<a class="bold" href="Neslib.Clang.TIdxObjCPropertyDeclInfo.html"><code>TIdxObjCPropertyDeclInfo</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list">
+<td class="itemname">record&nbsp;<a class="bold" href="Neslib.Clang.TIdxIBOutletCollectionAttrInfo.html"><code>TIdxIBOutletCollectionAttrInfo</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list2">
+<td class="itemname">record&nbsp;<a class="bold" href="Neslib.Clang.TIdxAttrInfoHelper.html"><code>TIdxAttrInfoHelper</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list">
+<td class="itemname">record&nbsp;<a class="bold" href="Neslib.Clang.TIdxCxxClassDeclInfo.html"><code>TIdxCxxClassDeclInfo</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list2">
+<td class="itemname">record&nbsp;<a class="bold" href="Neslib.Clang.TIdxDeclInfoHelper.html"><code>TIdxDeclInfoHelper</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list">
+<td class="itemname">record&nbsp;<a class="bold" href="Neslib.Clang.TIdxEntityRefInfo.html"><code>TIdxEntityRefInfo</code></a></td>
+<td class="itemdesc">Data for <a class="normal" href="Neslib.Clang.IIndexerListener.html#IndexEntityReference">IIndexerListener.IndexEntityReference</a>.</td>
+</tr>
+<tr class="list2">
+<td class="itemname">Interface&nbsp;<a class="bold" href="Neslib.Clang.IIndexerListener.html"><code>IIndexerListener</code></a></td>
+<td class="itemdesc">A group of callbacks used by <a class="normal" href="Neslib.Clang.IIndexAction.html#IndexSourceFile">IIndexAction.IndexSourceFile</a> and <a class="normal" href="Neslib.Clang.IIndexAction.html#IndexTranslationUnit">IIndexAction.IndexTranslationUnit</a>.</td>
+</tr>
+<tr class="list">
+<td class="itemname">Interface&nbsp;<a class="bold" href="Neslib.Clang.IIndexAction.html"><code>IIndexAction</code></a></td>
+<td class="itemdesc">An indexing action/session, to be applied to one or multiple translation units.</td>
+</tr>
+<tr class="list2">
+<td class="itemname">Interface&nbsp;<a class="bold" href="Neslib.Clang.IIndex.html"><code>IIndex</code></a></td>
+<td class="itemdesc">An &quot;index&quot; that consists of a set of translation units that would typically be linked together into an executable or library.</td>
+</tr>
+<tr class="list">
+<td class="itemname">record&nbsp;<a class="bold" href="Neslib.Clang.TCompileCommand.html"><code>TCompileCommand</code></a></td>
+<td class="itemdesc">Represents the command line invocation to compile a specific file.</td>
+</tr>
+<tr class="list2">
+<td class="itemname">Interface&nbsp;<a class="bold" href="Neslib.Clang.ICompileCommands.html"><code>ICompileCommands</code></a></td>
+<td class="itemdesc">Contains the results of a search in the compilation database.</td>
+</tr>
+<tr class="list">
+<td class="itemname">Interface&nbsp;<a class="bold" href="Neslib.Clang.ICompilationDatabase.html"><code>ICompilationDatabase</code></a></td>
+<td class="itemdesc">A compilation database holds all information used to compile files in a project.</td>
+</tr>
+<tr class="list2">
+<td class="itemname">Interface&nbsp;<a class="bold" href="Neslib.Clang.IVirtualFileOverlay.html"><code>IVirtualFileOverlay</code></a></td>
+<td class="itemdesc">Object encapsulating information about overlaying virtual file/directories over the real file system.</td>
+</tr>
+<tr class="list">
+<td class="itemname">Interface&nbsp;<a class="bold" href="Neslib.Clang.IModuleMapDescriptor.html"><code>IModuleMapDescriptor</code></a></td>
+<td class="itemdesc">Object encapsulating information about a module.map file.</td>
+</tr>
+<tr class="list2">
+<td class="itemname">Interface&nbsp;<a class="bold" href="Neslib.Clang.IRemapping.html"><code>IRemapping</code></a></td>
+<td class="itemdesc">A remapping of original source files and their translated files.</td>
+</tr>
+<tr class="list">
+<td class="itemname">Class&nbsp;<a class="bold" href="Neslib.Clang.TIndex.html"><code>TIndex</code></a></td>
+<td class="itemdesc">Implements <a class="normal" href="Neslib.Clang.IIndex.html">IIndex</a></td>
+</tr>
+<tr class="list2">
+<td class="itemname">Class&nbsp;<a class="bold" href="Neslib.Clang.TCompilationDatabase.html"><code>TCompilationDatabase</code></a></td>
+<td class="itemdesc">Implements <a class="normal" href="Neslib.Clang.ICompilationDatabase.html">ICompilationDatabase</a></td>
+</tr>
+<tr class="list">
+<td class="itemname">Class&nbsp;<a class="bold" href="Neslib.Clang.TVirtualFileOverlay.html"><code>TVirtualFileOverlay</code></a></td>
+<td class="itemdesc">Implements <a class="normal" href="Neslib.Clang.IVirtualFileOverlay.html">IVirtualFileOverlay</a></td>
+</tr>
+<tr class="list2">
+<td class="itemname">Class&nbsp;<a class="bold" href="Neslib.Clang.TModuleMapDescriptor.html"><code>TModuleMapDescriptor</code></a></td>
+<td class="itemdesc">Implements <a class="normal" href="Neslib.Clang.IModuleMapDescriptor.html">IModuleMapDescriptor</a></td>
+</tr>
+<tr class="list">
+<td class="itemname">Class&nbsp;<a class="bold" href="Neslib.Clang.TDiagnosticSet.html"><code>TDiagnosticSet</code></a></td>
+<td class="itemdesc">Implements <a class="normal" href="Neslib.Clang.IDiagnosticSet.html">IDiagnosticSet</a></td>
+</tr>
+<tr class="list2">
+<td class="itemname">Class&nbsp;<a class="bold" href="Neslib.Clang.TCursorSet.html"><code>TCursorSet</code></a></td>
+<td class="itemdesc">Implements <a class="normal" href="Neslib.Clang.ICursorSet.html">ICursorSet</a></td>
+</tr>
+<tr class="list">
+<td class="itemname">Class&nbsp;<a class="bold" href="Neslib.Clang.TRemapping.html"><code>TRemapping</code></a></td>
+<td class="itemdesc">Implements <a class="normal" href="Neslib.Clang.IRemapping.html">IRemapping</a></td>
+</tr>
+</table>
+<a name="PasDoc-FuncsProcs"></a><h3 class="summary">Functions and Procedures</h3>
+<table class="summary wide_list">
+<tr class="list">
+<td class="itemcode"><code>function <b><a  href="Neslib.Clang.html#GetClangVersion">GetClangVersion</a></b>: String; inline;</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>procedure <b><a  href="Neslib.Clang.html#ToggleCrashRecovery">ToggleCrashRecovery</a></b>(const AEnable: Boolean); inline;</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>function <b><a  href="Neslib.Clang.html#GetBuildSessionTimestamp">GetBuildSessionTimestamp</a></b>: UInt64; inline;</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>function <b><a  href="Neslib.Clang.html#GetDefaultDiagnosticDisplayOptions">GetDefaultDiagnosticDisplayOptions</a></b>: <a  href="Neslib.Clang.html#TDiagnosticDisplayOptions">TDiagnosticDisplayOptions</a>; inline;</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>function <b><a  href="Neslib.Clang.html#GetDefaultCodeCompleteOptions">GetDefaultCodeCompleteOptions</a></b>: <a  href="Neslib.Clang.html#TCodeCompleteFlags">TCodeCompleteFlags</a>; inline;</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>function <b><a  href="Neslib.Clang.html#ConstructUsrForObjCClass">ConstructUsrForObjCClass</a></b>(const AClassName: String): <a  href="Neslib.Clang.TUnifiedSymbolResolution.html">TUnifiedSymbolResolution</a>; inline;</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>function <b><a  href="Neslib.Clang.html#ConstructUsrForObjCCategory">ConstructUsrForObjCCategory</a></b>(const AClassName, ACategoryName: String): <a  href="Neslib.Clang.TUnifiedSymbolResolution.html">TUnifiedSymbolResolution</a>; inline;</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>function <b><a  href="Neslib.Clang.html#ConstructUsrForObjCProtocol">ConstructUsrForObjCProtocol</a></b>(const AProtocolName: String): <a  href="Neslib.Clang.TUnifiedSymbolResolution.html">TUnifiedSymbolResolution</a>; inline;</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>function <b><a  href="Neslib.Clang.html#ConstructUsrForObjCIVar">ConstructUsrForObjCIVar</a></b>(const AName: String; const AClassUsr: <a  href="Neslib.Clang.TUnifiedSymbolResolution.html">TUnifiedSymbolResolution</a>): <a  href="Neslib.Clang.TUnifiedSymbolResolution.html">TUnifiedSymbolResolution</a>; inline;</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>function <b><a  href="Neslib.Clang.html#ConstructUsrForObjCMethod">ConstructUsrForObjCMethod</a></b>(const AName: String; const AIsInstanceMethod: Boolean; const AClassUsr: <a  href="Neslib.Clang.TUnifiedSymbolResolution.html">TUnifiedSymbolResolution</a>): <a  href="Neslib.Clang.TUnifiedSymbolResolution.html">TUnifiedSymbolResolution</a>; inline;</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>function <b><a  href="Neslib.Clang.html#ConstructUsrForObjCProperty">ConstructUsrForObjCProperty</a></b>(const AProperty: String; const AClassUsr: <a  href="Neslib.Clang.TUnifiedSymbolResolution.html">TUnifiedSymbolResolution</a>): <a  href="Neslib.Clang.TUnifiedSymbolResolution.html">TUnifiedSymbolResolution</a>; inline;</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>function <b><a  href="Neslib.Clang.html#CXStringToString">CXStringToString</a></b>(const ASource: TCXString; const ADispose: Boolean = True): String;</code></td>
+</tr>
+</table>
+<a name="PasDoc-Types"></a><h3 class="summary">Types</h3>
+<table class="summary wide_list">
+<tr class="list">
+<td class="itemcode"><code><b><a  href="Neslib.Clang.html#TError">TError</a></b> = (...);</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code><b><a  href="Neslib.Clang.html#TGlobalOption">TGlobalOption</a></b> = (...);</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code><b><a  href="Neslib.Clang.html#TGlobalOptions">TGlobalOptions</a></b> = set of <a  href="Neslib.Clang.html#TGlobalOption">TGlobalOption</a>;</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code><b><a  href="Neslib.Clang.html#TTranslationUnitFlag">TTranslationUnitFlag</a></b> = (...);</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code><b><a  href="Neslib.Clang.html#TTranslationUnitFlags">TTranslationUnitFlags</a></b> = set of <a  href="Neslib.Clang.html#TTranslationUnitFlag">TTranslationUnitFlag</a>;</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code><b><a  href="Neslib.Clang.html#TSaveResult">TSaveResult</a></b> = (...);</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code><b><a  href="Neslib.Clang.html#TCodeCompleteFlag">TCodeCompleteFlag</a></b> = (...);</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code><b><a  href="Neslib.Clang.html#TCodeCompleteFlags">TCodeCompleteFlags</a></b> = set of <a  href="Neslib.Clang.html#TCodeCompleteFlag">TCodeCompleteFlag</a>;</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code><b><a  href="Neslib.Clang.html#TVisitorResult">TVisitorResult</a></b> = (...);</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code><b><a  href="Neslib.Clang.html#TVisitResult">TVisitResult</a></b> = (...);</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code><b><a  href="Neslib.Clang.html#TChildVisitResult">TChildVisitResult</a></b> = (...);</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code><b><a  href="Neslib.Clang.html#TCursorKind">TCursorKind</a></b> = (...);</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code><b><a  href="Neslib.Clang.html#TTypeKind">TTypeKind</a></b> = (...);</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code><b><a  href="Neslib.Clang.html#TTemplateArgumentKind">TTemplateArgumentKind</a></b> = (...);</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code><b><a  href="Neslib.Clang.html#TLinkageKind">TLinkageKind</a></b> = (...);</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code><b><a  href="Neslib.Clang.html#TVisibility">TVisibility</a></b> = (...);</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code><b><a  href="Neslib.Clang.html#TAvailabilityKind">TAvailabilityKind</a></b> = (...);</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code><b><a  href="Neslib.Clang.html#TLanguageKind">TLanguageKind</a></b> = (...);</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code><b><a  href="Neslib.Clang.html#TCxxAccessSpecifier">TCxxAccessSpecifier</a></b> = (...);</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code><b><a  href="Neslib.Clang.html#TStorageClass">TStorageClass</a></b> = (...);</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code><b><a  href="Neslib.Clang.html#TTlsKind">TTlsKind</a></b> = (...);</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code><b><a  href="Neslib.Clang.html#TObjCPropertyAttrKind">TObjCPropertyAttrKind</a></b> = (...);</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code><b><a  href="Neslib.Clang.html#TObjCPropertyAttrKinds">TObjCPropertyAttrKinds</a></b> = set of <a  href="Neslib.Clang.html#TObjCPropertyAttrKind">TObjCPropertyAttrKind</a>;</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code><b><a  href="Neslib.Clang.html#TObjCDeclQualifierKind">TObjCDeclQualifierKind</a></b> = (...);</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code><b><a  href="Neslib.Clang.html#TObjCDeclQualifierKinds">TObjCDeclQualifierKinds</a></b> = set of <a  href="Neslib.Clang.html#TObjCDeclQualifierKind">TObjCDeclQualifierKind</a>;</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code><b><a  href="Neslib.Clang.html#TNameRefFlag">TNameRefFlag</a></b> = (...);</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code><b><a  href="Neslib.Clang.html#TNameRefFlags">TNameRefFlags</a></b> = set of <a  href="Neslib.Clang.html#TNameRefFlag">TNameRefFlag</a>;</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code><b><a  href="Neslib.Clang.html#TLoadDiagError">TLoadDiagError</a></b> = (...);</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code><b><a  href="Neslib.Clang.html#TDiagnosticDisplayOption">TDiagnosticDisplayOption</a></b> = (...);</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code><b><a  href="Neslib.Clang.html#TDiagnosticDisplayOptions">TDiagnosticDisplayOptions</a></b> = set of <a  href="Neslib.Clang.html#TDiagnosticDisplayOption">TDiagnosticDisplayOption</a>;</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code><b><a  href="Neslib.Clang.html#TDiagnosticSeverity">TDiagnosticSeverity</a></b> = (...);</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code><b><a  href="Neslib.Clang.html#TResourceUsageKind">TResourceUsageKind</a></b> = (...);</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code><b><a  href="Neslib.Clang.html#TCallingConv">TCallingConv</a></b> = (...);</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code><b><a  href="Neslib.Clang.html#TRefQualifierKind">TRefQualifierKind</a></b> = (...);</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code><b><a  href="Neslib.Clang.html#TTokenKind">TTokenKind</a></b> = (...);</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code><b><a  href="Neslib.Clang.html#TCompletionChunkKind">TCompletionChunkKind</a></b> = (...);</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code><b><a  href="Neslib.Clang.html#TEvalResultKind">TEvalResultKind</a></b> = (...);</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code><b><a  href="Neslib.Clang.html#TIndexOption">TIndexOption</a></b> = (...);</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code><b><a  href="Neslib.Clang.html#TIndexOptions">TIndexOptions</a></b> = set of <a  href="Neslib.Clang.html#TIndexOption">TIndexOption</a>;</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code><b><a  href="Neslib.Clang.html#TCommentKind">TCommentKind</a></b> = (...);</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code><b><a  href="Neslib.Clang.html#TCommentInlineCommandRenderKind">TCommentInlineCommandRenderKind</a></b> = (...);</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code><b><a  href="Neslib.Clang.html#TCommentParamPassDirection">TCommentParamPassDirection</a></b> = (...);</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code><b><a  href="Neslib.Clang.html#PSourceLocation">PSourceLocation</a></b> = &circ;<a  href="Neslib.Clang.TSourceLocation.html">TSourceLocation</a>;</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code><b><a  href="Neslib.Clang.html#TCursorVisitor">TCursorVisitor</a></b> = reference to function(const ACursor, AParent: <a  href="Neslib.Clang.TCursor.html">TCursor</a>): <a  href="Neslib.Clang.html#TChildVisitResult">TChildVisitResult</a>;</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code><b><a  href="Neslib.Clang.html#TCursorVisitorMethod">TCursorVisitorMethod</a></b> = function(const ACursor, AParent: <a  href="Neslib.Clang.TCursor.html">TCursor</a>): <a  href="Neslib.Clang.html#TChildVisitResult">TChildVisitResult</a> of object;</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code><b><a  href="Neslib.Clang.html#TCursorAndRangeVisitor">TCursorAndRangeVisitor</a></b> = reference to function(const ACursor: <a  href="Neslib.Clang.TCursor.html">TCursor</a>;
+    const ARange: <a  href="Neslib.Clang.TSourceRange.html">TSourceRange</a>): <a  href="Neslib.Clang.html#TVisitResult">TVisitResult</a>;</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code><b><a  href="Neslib.Clang.html#TCursorAndRangeVisitorMethod">TCursorAndRangeVisitorMethod</a></b> = function(const ACursor: <a  href="Neslib.Clang.TCursor.html">TCursor</a>; const ARange: <a  href="Neslib.Clang.TSourceRange.html">TSourceRange</a>): <a  href="Neslib.Clang.html#TVisitResult">TVisitResult</a> of object;</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code><b><a  href="Neslib.Clang.html#TFieldVisitor">TFieldVisitor</a></b> = reference to function(const ACursor: <a  href="Neslib.Clang.TCursor.html">TCursor</a>): <a  href="Neslib.Clang.html#TVisitorResult">TVisitorResult</a>;</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code><b><a  href="Neslib.Clang.html#TFieldVisitorMethod">TFieldVisitorMethod</a></b> = function(const ACursor: <a  href="Neslib.Clang.TCursor.html">TCursor</a>): <a  href="Neslib.Clang.html#TVisitorResult">TVisitorResult</a> of object;</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code><b><a  href="Neslib.Clang.html#TInclusionVisitor">TInclusionVisitor</a></b> = reference to procedure(const AIncludedFile: <a  href="Neslib.Clang.TFile.html">TFile</a>;
+    const AInclusionStack: <a  href="Neslib.Clang.html#PSourceLocation">PSourceLocation</a>; const AInclusionStackCount: Integer);</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code><b><a  href="Neslib.Clang.html#TInclusionVisitorMethod">TInclusionVisitorMethod</a></b> = procedure(const AIncludedFile: <a  href="Neslib.Clang.TFile.html">TFile</a>; const AInclusionStack: <a  href="Neslib.Clang.html#PSourceLocation">PSourceLocation</a>; const AInclusionStackCount: Integer) of object;</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code><b><a  href="Neslib.Clang.html#TIdxClientFile">TIdxClientFile</a></b> = Pointer;</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code><b><a  href="Neslib.Clang.html#TIdxClientContainer">TIdxClientContainer</a></b> = Pointer;</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code><b><a  href="Neslib.Clang.html#TIdxClientEntity">TIdxClientEntity</a></b> = Pointer;</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code><b><a  href="Neslib.Clang.html#TIdxEntityKind">TIdxEntityKind</a></b> = (...);</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code><b><a  href="Neslib.Clang.html#TIdxEntityCxxTemplateKind">TIdxEntityCxxTemplateKind</a></b> = (...);</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code><b><a  href="Neslib.Clang.html#TIdxEntityLanguage">TIdxEntityLanguage</a></b> = (...);</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code><b><a  href="Neslib.Clang.html#TIdxAttrKind">TIdxAttrKind</a></b> = (...);</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code><b><a  href="Neslib.Clang.html#TIdxObjCContainerKind">TIdxObjCContainerKind</a></b> = (...);</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code><b><a  href="Neslib.Clang.html#TIdxEntityRefKind">TIdxEntityRefKind</a></b> = (...);</code></td>
+</tr>
+</table>
+<a name="PasDoc-Constants"></a><h3 class="summary">Constants</h3>
+<table class="summary wide_list">
+<tr class="list">
+<td class="itemcode"><code><b><a  href="Neslib.Clang.html#TYPE_LAYOUT_ERROR_INVALID">TYPE_LAYOUT_ERROR_INVALID</a></b> =  CXTypeLayoutError_Invalid;</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code><b><a  href="Neslib.Clang.html#TYPE_LAYOUT_ERROR_INCOMPLETE">TYPE_LAYOUT_ERROR_INCOMPLETE</a></b> = CXTypeLayoutError_Incomplete;</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code><b><a  href="Neslib.Clang.html#TYPE_LAYOUT_ERROR_DEPENDENT">TYPE_LAYOUT_ERROR_DEPENDENT</a></b> = CXTypeLayoutError_Dependent;</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code><b><a  href="Neslib.Clang.html#TYPE_LAYOUT_ERROR_NOT_CONSTANT_SIZE">TYPE_LAYOUT_ERROR_NOT_CONSTANT_SIZE</a></b> = CXTypeLayoutError_NotConstantSize;</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code><b><a  href="Neslib.Clang.html#TYPE_LAYOUT_ERROR_INVALID_FIELDNAME">TYPE_LAYOUT_ERROR_INVALID_FIELDNAME</a></b> = CXTypeLayoutError_InvalidFieldName;</code></td>
+</tr>
+</table>
+<h2 class="description">Description</h2>
+<h3 class="detail">Functions and Procedures</h3>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="GetClangVersion"></a><code>function <b>GetClangVersion</b>: String; inline;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Return a version string, suitable for showing to a user, but not intended to be parsed (the format is not guaranteed to be stable).</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="ToggleCrashRecovery"></a><code>procedure <b>ToggleCrashRecovery</b>(const AEnable: Boolean); inline;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Enable/disable crash recovery.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="GetBuildSessionTimestamp"></a><code>function <b>GetBuildSessionTimestamp</b>: UInt64; inline;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Return the timestamp for use with Clang's -fbuild-session-timestamp= option.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="GetDefaultDiagnosticDisplayOptions"></a><code>function <b>GetDefaultDiagnosticDisplayOptions</b>: <a  href="Neslib.Clang.html#TDiagnosticDisplayOptions">TDiagnosticDisplayOptions</a>; inline;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+The set of display options most similar to the default behavior of the clang compiler.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="GetDefaultCodeCompleteOptions"></a><code>function <b>GetDefaultCodeCompleteOptions</b>: <a  href="Neslib.Clang.html#TCodeCompleteFlags">TCodeCompleteFlags</a>; inline;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Returns a default set of code-completion options that can be passed to <a class="normal" href="Neslib.Clang.ITranslationUnit.html#CodeCompleteAt">ITranslationUnit.CodeCompleteAt</a>.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="ConstructUsrForObjCClass"></a><code>function <b>ConstructUsrForObjCClass</b>(const AClassName: String): <a  href="Neslib.Clang.TUnifiedSymbolResolution.html">TUnifiedSymbolResolution</a>; inline;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Construct a USR for a specified Objective-C class.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="ConstructUsrForObjCCategory"></a><code>function <b>ConstructUsrForObjCCategory</b>(const AClassName, ACategoryName: String): <a  href="Neslib.Clang.TUnifiedSymbolResolution.html">TUnifiedSymbolResolution</a>; inline;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Construct a USR for a specified Objective-C category.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="ConstructUsrForObjCProtocol"></a><code>function <b>ConstructUsrForObjCProtocol</b>(const AProtocolName: String): <a  href="Neslib.Clang.TUnifiedSymbolResolution.html">TUnifiedSymbolResolution</a>; inline;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Construct a USR for a specified Objective-C protocol.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="ConstructUsrForObjCIVar"></a><code>function <b>ConstructUsrForObjCIVar</b>(const AName: String; const AClassUsr: <a  href="Neslib.Clang.TUnifiedSymbolResolution.html">TUnifiedSymbolResolution</a>): <a  href="Neslib.Clang.TUnifiedSymbolResolution.html">TUnifiedSymbolResolution</a>; inline;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Construct a USR for a specified Objective-C instance variable and the USR for its containing class.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="ConstructUsrForObjCMethod"></a><code>function <b>ConstructUsrForObjCMethod</b>(const AName: String; const AIsInstanceMethod: Boolean; const AClassUsr: <a  href="Neslib.Clang.TUnifiedSymbolResolution.html">TUnifiedSymbolResolution</a>): <a  href="Neslib.Clang.TUnifiedSymbolResolution.html">TUnifiedSymbolResolution</a>; inline;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Construct a USR for a specified Objective-C method and the USR for its containing class.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="ConstructUsrForObjCProperty"></a><code>function <b>ConstructUsrForObjCProperty</b>(const AProperty: String; const AClassUsr: <a  href="Neslib.Clang.TUnifiedSymbolResolution.html">TUnifiedSymbolResolution</a>): <a  href="Neslib.Clang.TUnifiedSymbolResolution.html">TUnifiedSymbolResolution</a>; inline;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Construct a USR for a specified Objective-C property and the USR for its containing class.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="CXStringToString"></a><code>function <b>CXStringToString</b>(const ASource: TCXString; const ADispose: Boolean = True): String;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Converts a clang-string to a Delphi string. Used internally.
+
+<p> 
+
+<p></p>
+<h6 class="description_section">Parameters</h6>
+<dl class="parameters">
+<dt>ASource</dt>
+<dd>the source clang-string.</dd>
+<dt>ADispose</dt>
+<dd>(optional) whether to dispose the original clang-string. Defaults to True.</dd>
+</dl>
+<h6 class="description_section">Returns</h6>
+<p class="return">The corresponding Delphi string.</p></td></tr>
+</table>
+<h3 class="detail">Types</h3>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="TError"></a><code><b>TError</b> = (...);</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Error codes returned by libclang routines. TError.Success is the only error code indicating success. Other error codes, including not yet assigned non-zero values, indicate errors.</p>
+<h6 class="description_section">Values</h6>
+<ul>
+<li>
+Success = CXError_Success: No error</li>
+<li>
+Failure = CXError_Failure: A generic error code, no further details are available.
+
+<p>Errors of this kind can get their own specific error codes in future libclang versions.</li>
+<li>
+Crashed = CXError_Crashed: libclang crashed while performing the requested operation.</li>
+<li>
+InvalidArguments = CXError_InvalidArguments: The function detected that the arguments violate the function contract.</li>
+<li>
+AstReadError = CXError_ASTReadError: An AST deserialization error has occurred.</li>
+</ul>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="TGlobalOption"></a><code><b>TGlobalOption</b> = (...);</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;<h6 class="description_section">Values</h6>
+<ul>
+<li>
+ThreadBackgroundPriorityForIndexing: Used to indicate that threads that libclang creates for indexing purposes should use background priority.</li>
+<li>
+ThreadBackgroundPriorityForEditing: Used to indicate that threads that libclang creates for editing purposes should use background priority.</li>
+</ul>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="TGlobalOptions"></a><code><b>TGlobalOptions</b> = set of <a  href="Neslib.Clang.html#TGlobalOption">TGlobalOption</a>;</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="TTranslationUnitFlag"></a><code><b>TTranslationUnitFlag</b> = (...);</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Flags that control the creation of translation units.</p>
+<h6 class="description_section">Values</h6>
+<ul>
+<li>
+DetailedPreprocessingRecord: Used to indicate that the parser should construct a &quot;detailed&quot; preprocessing record, including all macro definitions and instantiations.
+
+<p>Constructing a detailed preprocessing record requires more memory and time to parse, since the information contained in the record is usually not retained. However, it can be useful for applications that require more detailed information about the behavior of the preprocessor.</li>
+<li>
+Incomplete: Used to indicate that the translation unit is incomplete.
+
+<p>When a translation unit is considered &quot;incomplete&quot;, semantic analysis that is typically performed at the end of the translation unit will be suppressed. For example, this suppresses the completion of tentative declarations in C and of instantiation of implicitly-instantiation function templates in C++. This option is typically used when parsing a header with the intent of producing a precompiled header.</li>
+<li>
+PrecompiledPreamble: Used to indicate that the translation unit should be built with an implicit precompiled header for the preamble.
+
+<p>An implicit precompiled header is used as an optimization when a particular translation unit is likely to be reparsed many times when the sources aren't changing that often. In this case, an implicit precompiled header will be built containing all of the initial includes at the top of the main file (what we refer to as the &quot;preamble&quot; of the file). In subsequent parses, if the preamble or the files in it have not changed, <a class="normal" href="Neslib.Clang.ITranslationUnit.html#Reparse">ITranslationUnit.Reparse</a> will re-use the implicit precompiled header to improve parsing performance.</li>
+<li>
+CacheCompletionResults: Used to indicate that the translation unit should cache some code-completion results with each reparse of the source file.
+
+<p>Caching of code-completion results is a performance optimization that introduces some overhead to reparsing but improves the performance of code-completion operations.</li>
+<li>
+ForSerialization: Used to indicate that the translation unit will be serialized with <a class="normal" href="Neslib.Clang.ITranslationUnit.html#Save">ITranslationUnit.Save</a>.
+
+<p>This option is typically used when parsing a header with the intent of producing a precompiled header.</li>
+<li>
+CXXChainedPCH: DEPRECATED: Enabled chained precompiled preambles in C++.
+
+<p>Note: this is a *temporary* option that is available only while we are testing C++ precompiled preamble support. It is deprecated.</li>
+<li>
+SkipFunctionBodies: Used to indicate that function/method bodies should be skipped while parsing.
+
+<p>This option can be used to search for declarations/definitions while ignoring the usages.</li>
+<li>
+IncludeBriefCommentsInCodeCompletion: Used to indicate that brief documentation comments should be included into the set of code completions returned from this translation unit.</li>
+<li>
+CreatePreambleOnFirstParse: Used to indicate that the precompiled preamble should be created on the first parse. Otherwise it will be created on the first reparse. This trades runtime on the first parse (serializing the preamble takes time) for reduced runtime on the second parse (can now reuse the preamble).</li>
+<li>
+KeepGoing: Do not stop processing when fatal errors are encountered.
+
+<p>When fatal errors are encountered while parsing a translation unit, semantic analysis is typically stopped early when compiling code. A common source for fatal errors are unresolvable include files. For the purposes of an IDE, this is undesirable behavior and as much information as possible should be reported. Use this flag to enable this behavior.</li>
+<li>
+SingleFileParse: Sets the preprocessor in a mode for parsing a single file only.</li>
+</ul>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="TTranslationUnitFlags"></a><code><b>TTranslationUnitFlags</b> = set of <a  href="Neslib.Clang.html#TTranslationUnitFlag">TTranslationUnitFlag</a>;</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="TSaveResult"></a><code><b>TSaveResult</b> = (...);</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Describes the kind of error that occurred (if any) in a call to <a class="normal" href="Neslib.Clang.ITranslationUnit.html#Save">ITranslationUnit.Save</a>.</p>
+<h6 class="description_section">Values</h6>
+<ul>
+<li>
+OK = CXSaveError_None: Indicates that no error occurred while saving a translation unit.</li>
+<li>
+Unknown = CXSaveError_Unknown: Indicates that an unknown error occurred while attempting to save the file.
+
+<p>This error typically indicates that file I/O failed when attempting to write the file.</li>
+<li>
+TranslationErrors = CXSaveError_TranslationErrors: Indicates that errors during translation prevented this attempt to save the translation unit.
+
+<p>Errors that prevent the translation unit from being saved can be extracted <a class="normal" href="Neslib.Clang.ITranslationUnit.html#Diagnostics">ITranslationUnit.Diagnostics</a>.</li>
+<li>
+InvalidTranslationUnit = CXSaveError_InvalidTU: Indicates that the translation unit to be saved was somehow invalid.</li>
+</ul>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="TCodeCompleteFlag"></a><code><b>TCodeCompleteFlag</b> = (...);</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Flags that can be passed to <a class="normal" href="Neslib.Clang.ITranslationUnit.html#CodeCompleteAt">ITranslationUnit.CodeCompleteAt</a> to modify its behavior.</p>
+<h6 class="description_section">Values</h6>
+<ul>
+<li>
+IncludeMacros: Whether to include macros within the set of code completions returned.</li>
+<li>
+IncludeCodePatterns: Whether to include code patterns for language constructs within the set of code completions, e.g., for loops.</li>
+<li>
+IncludeBriefComments: Whether to include brief documentation within the set of code completions returned.</li>
+</ul>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="TCodeCompleteFlags"></a><code><b>TCodeCompleteFlags</b> = set of <a  href="Neslib.Clang.html#TCodeCompleteFlag">TCodeCompleteFlag</a>;</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="TVisitorResult"></a><code><b>TVisitorResult</b> = (...);</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Visitors must return one of these values.</p>
+<h6 class="description_section">Values</h6>
+<ul>
+<li>
+Break = CXVisit_Break: Stop the visitor process.</li>
+<li>
+Continue = CXVisit_Continue: Continue the visitor process.</li>
+</ul>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="TVisitResult"></a><code><b>TVisitResult</b> = (...);</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Result of a visitor function.</p>
+<h6 class="description_section">Values</h6>
+<ul>
+<li>
+Success = CXResult_Success: Function returned successfully.</li>
+<li>
+Invalid = CXResult_Invalid: One of the parameters was invalid for the function.</li>
+<li>
+VisitBreak = CXResult_VisitBreak: The function was terminated by a callback (e.g. it returned TVisitorResult.Break).</li>
+</ul>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="TChildVisitResult"></a><code><b>TChildVisitResult</b> = (...);</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Describes how the traversal of the children of a particular cursor should proceed after visiting a particular child cursor.
+
+<p>A value of this enumeration type should be returned by each <a class="normal" href="Neslib.Clang.html#TCursorVisitor">TCursorVisitor</a> to indicate how TCursor.VisitChildren proceeds.</p>
+<h6 class="description_section">Values</h6>
+<ul>
+<li>
+Break = CXChildVisit_Break: Terminates the cursor traversal.</li>
+<li>
+Continue = CXChildVisit_Continue: Continues the cursor traversal with the next sibling of the cursor just visited, without visiting its children.</li>
+<li>
+Recurse = CXChildVisit_Recurse: Recursively traverse the children of this cursor, using the same visitor.</li>
+</ul>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="TCursorKind"></a><code><b>TCursorKind</b> = (...);</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Describes the kind of entity that a cursor refers to.</p>
+<h6 class="description_section">Values</h6>
+<ul>
+<li>
+UnexposedDecl = CXCursor_UnexposedDecl: A declaration whose specific kind is not exposed via this interface.
+
+<p>Unexposed declarations have the same operations as any other kind of declaration; one can extract their location information, spelling, find their definitions, etc. However, the specific kind of the declaration is not reported.</li>
+<li>
+StructDecl = CXCursor_StructDecl: A C or C++ struct.</li>
+<li>
+UnionDecl = CXCursor_UnionDecl: A C or C++ union.</li>
+<li>
+ClassDecl = CXCursor_ClassDecl: A C++ class.</li>
+<li>
+EnumDecl = CXCursor_EnumDecl: An enumeration.</li>
+<li>
+FieldDecl = CXCursor_FieldDecl: A field (in C) or non-static data member (in C++) in a struct, union, or C++ class.</li>
+<li>
+EnumConstantDecl = CXCursor_EnumConstantDecl: An enumerator constant.</li>
+<li>
+FunctionDecl = CXCursor_FunctionDecl: A function.</li>
+<li>
+VarDecl = CXCursor_VarDecl: A variable.</li>
+<li>
+ParmDecl = CXCursor_ParmDecl: A function or method parameter.</li>
+<li>
+ObjCInterfaceDecl = CXCursor_ObjCInterfaceDecl: An Objective-C @interface.</li>
+<li>
+ObjCCategoryDecl = CXCursor_ObjCCategoryDecl: An Objective-C @interface for a category.</li>
+<li>
+ObjCProtocolDecl = CXCursor_ObjCProtocolDecl: An Objective-C @protocol declaration.</li>
+<li>
+ObjCPropertyDecl = CXCursor_ObjCPropertyDecl: An Objective-C @property declaration.</li>
+<li>
+ObjCIvarDecl = CXCursor_ObjCIvarDecl: An Objective-C instance variable.</li>
+<li>
+ObjCInstanceMethodDecl = CXCursor_ObjCInstanceMethodDecl: An Objective-C instance method.</li>
+<li>
+ObjCClassMethodDecl = CXCursor_ObjCClassMethodDecl: An Objective-C class method.</li>
+<li>
+ObjCImplementationDecl = CXCursor_ObjCImplementationDecl: An Objective-C @implementation.</li>
+<li>
+ObjCCategoryImplDecl = CXCursor_ObjCCategoryImplDecl: An Objective-C @implementation for a category.</li>
+<li>
+TypedefDecl = CXCursor_TypedefDecl: A typedef.</li>
+<li>
+CXXMethod = CXCursor_CXXMethod: A C++ class method.</li>
+<li>
+Namespace = CXCursor_Namespace: A C++ namespace.</li>
+<li>
+LinkageSpec = CXCursor_LinkageSpec: A linkage specification, e.g. 'extern &quot;C&quot;'.</li>
+<li>
+Cor = CXCursor_Constructor: A C++ constructor.</li>
+<li>
+Dtor = CXCursor_Destructor: A C++ destructor.</li>
+<li>
+ConversionFunction = CXCursor_ConversionFunction: A C++ conversion function.</li>
+<li>
+TemplateTypeParameter = CXCursor_TemplateTypeParameter: A C++ template type parameter.</li>
+<li>
+NonTypeTemplateParameter = CXCursor_NonTypeTemplateParameter: A C++ non-type template parameter.</li>
+<li>
+TemplateTemplateParameter = CXCursor_TemplateTemplateParameter: A C++ template template parameter.</li>
+<li>
+FunctionTemplate = CXCursor_FunctionTemplate: A C++ function template.</li>
+<li>
+ClassTemplate = CXCursor_ClassTemplate: A C++ class template.</li>
+<li>
+ClassTemplatePartialSpecialization = CXCursor_ClassTemplatePartialSpecialization: A C++ class template partial specialization.</li>
+<li>
+NamespaceAlias = CXCursor_NamespaceAlias: A C++ namespace alias declaration.</li>
+<li>
+UsingDirective = CXCursor_UsingDirective: A C++ using directive.</li>
+<li>
+UsingDeclaration = CXCursor_UsingDeclaration: A C++ using declaration.</li>
+<li>
+TypeAliasDecl = CXCursor_TypeAliasDecl: A C++ alias declaration</li>
+<li>
+ObjCSynthesizeDecl = CXCursor_ObjCSynthesizeDecl: An Objective-C @synthesize definition.</li>
+<li>
+ObjCDynamicDecl = CXCursor_ObjCDynamicDecl: An Objective-C @dynamic definition.</li>
+<li>
+CXXAccessSpecifier = CXCursor_CXXAccessSpecifier: An access specifier.</li>
+<li>
+FirstDecl = CXCursor_FirstDecl: &nbsp;</li>
+<li>
+LastDecl = CXCursor_LastDecl: &nbsp;</li>
+<li>
+FirstRef = CXCursor_FirstRef: References</li>
+<li>
+ObjCSuperClassRef = CXCursor_ObjCSuperClassRef: &nbsp;</li>
+<li>
+ObjCProtocolRef = CXCursor_ObjCProtocolRef: &nbsp;</li>
+<li>
+ObjCClassRef = CXCursor_ObjCClassRef: &nbsp;</li>
+<li>
+TypeRef = CXCursor_TypeRef: A reference to a type declaration.
+
+<p>A type reference occurs anywhere where a type is named but not declared. For example, given:
+
+<p></p>
+
+<pre class="preformatted">
+        typedef unsigned size_type;
+        size_type size;
+      </pre>
+
+<p>
+
+<p>The typedef is a declaration of size_type (TypedefDecl), while the type of the variable &quot;size&quot; is referenced. The cursor referenced by the type of size is the typedef for size_type.</li>
+<li>
+CXXBaseSpecifier = CXCursor_CXXBaseSpecifier: &nbsp;</li>
+<li>
+TemplateRef = CXCursor_TemplateRef: A reference to a class template, function template, template parameter, or class template partial specialization.</li>
+<li>
+NamespaceRef = CXCursor_NamespaceRef: A reference to a namespace or namespace alias.</li>
+<li>
+MemberRef = CXCursor_MemberRef: A reference to a member of a struct, union, or class that occurs in some non-expression context, e.g., a designated initializer.</li>
+<li>
+LabelRef = CXCursor_LabelRef: A reference to a labeled statement.
+
+<p>This cursor kind is used to describe the jump to &quot;start_over&quot; in the goto statement in the following example:
+
+<p></p>
+
+<pre class="preformatted">
+        start_over:
+          ++counter;
+
+          goto start_over;
+      </pre>
+
+<p>
+
+<p>A label reference cursor refers to a label statement.</li>
+<li>
+OverloadedDeclRef = CXCursor_OverloadedDeclRef: A reference to a set of overloaded functions or function templates that has not yet been resolved to a specific function or function template.
+
+<p>An overloaded declaration reference cursor occurs in C++ templates where a dependent name refers to a function. For example:
+
+<p></p>
+
+<pre class="preformatted">
+        template&lt;typename T&gt; void swap(T&amp;, T&amp;);
+
+        struct X { ... };
+        void swap(X&amp;, X&amp;);
+
+        template&lt;typename T&gt;
+        void reverse(T* first, T* last) {
+          while (first &lt; last - 1) {
+            swap(*first, *--last);
+            ++first;
+          }
+        }
+
+        struct Y { };
+        void swap(Y&amp;, Y&amp;);
+      </pre>
+
+<p>
+
+<p>Here, the identifier &quot;swap&quot; is associated with an overloaded declaration reference. In the template definition, &quot;swap&quot; refers to either of the two &quot;swap&quot; functions declared above, so both results will be available. At instantiation time, &quot;swap&quot; may also refer to other functions found via argument-dependent lookup (e.g., the &quot;swap&quot; function at the end of the example).
+
+<p>The property <a class="normal" href="Neslib.Clang.TCursor.html#OverloadedDecls">TCursor.OverloadedDecls</a> can be used to retrieve the definitions referenced by this cursor.</li>
+<li>
+VariableRef = CXCursor_VariableRef: A reference to a variable that occurs in some non-expression context, e.g., a C++ lambda capture list.</li>
+<li>
+LastRef = CXCursor_LastRef: &nbsp;</li>
+<li>
+FirstInvalid = CXCursor_FirstInvalid: Error conditions</li>
+<li>
+InvalidFile = CXCursor_InvalidFile: &nbsp;</li>
+<li>
+NoDeclFound = CXCursor_NoDeclFound: &nbsp;</li>
+<li>
+NotImplemented = CXCursor_NotImplemented: &nbsp;</li>
+<li>
+InvalidCode = CXCursor_InvalidCode: &nbsp;</li>
+<li>
+LastInvalid = CXCursor_LastInvalid: &nbsp;</li>
+<li>
+FirstExpr = CXCursor_FirstExpr: Expressions</li>
+<li>
+UnexposedExpr = CXCursor_UnexposedExpr: An expression whose specific kind is not exposed via this interface.
+
+<p>Unexposed expressions have the same operations as any other kind of expression; one can extract their location information, spelling, children, etc. However, the specific kind of the expression is not reported.</li>
+<li>
+DeclRefExpr = CXCursor_DeclRefExpr: An expression that refers to some value declaration, such as a function, variable, or enumerator.</li>
+<li>
+MemberRefExpr = CXCursor_MemberRefExpr: An expression that refers to a member of a struct, union, class, Objective-C class, etc.</li>
+<li>
+CallExpr = CXCursor_CallExpr: An expression that calls a function.</li>
+<li>
+ObjCMessageExpr = CXCursor_ObjCMessageExpr: An expression that sends a message to an Objective-C object or class.</li>
+<li>
+BlockExpr = CXCursor_BlockExpr: An expression that represents a block literal.</li>
+<li>
+IntegerLiteral = CXCursor_IntegerLiteral: An integer literal.</li>
+<li>
+FloatingLiteral = CXCursor_FloatingLiteral: A floating point number literal.</li>
+<li>
+ImaginaryLiteral = CXCursor_ImaginaryLiteral: An imaginary number literal.</li>
+<li>
+StringLiteral = CXCursor_StringLiteral: A string literal.</li>
+<li>
+CharacterLiteral = CXCursor_CharacterLiteral: A character literal.</li>
+<li>
+ParenExpr = CXCursor_ParenExpr: A parenthesized expression, e.g. &quot;(1)&quot;. This AST node is only formed if full location information is requested.</li>
+<li>
+UnaryOperator = CXCursor_UnaryOperator: This represents the unary-expression's (except sizeof and alignof).</li>
+<li>
+ArraySubscriptExpr = CXCursor_ArraySubscriptExpr: [C99 6.5.2.1] Array Subscripting.</li>
+<li>
+BinaryOperator = CXCursor_BinaryOperator: A builtin binary operation expression such as &quot;x + y&quot; or &quot;x &lt;= y&quot;.</li>
+<li>
+CompoundAssignOperator = CXCursor_CompoundAssignOperator: Compound assignment such as &quot;+=&quot;.</li>
+<li>
+ConditionalOperator = CXCursor_ConditionalOperator: The ?: ternary operator.</li>
+<li>
+CStyleCastExpr = CXCursor_CStyleCastExpr: An explicit cast in C (C99 6.5.4) or a C-style cast in C++ (C++ [expr.cast]), which uses the syntax (Type)expr. For example: (int)f.</li>
+<li>
+CompoundLiteralExpr = CXCursor_CompoundLiteralExpr: [C99 6.5.2.5]</li>
+<li>
+InitListExpr = CXCursor_InitListExpr: Describes an C or C++ initializer list.</li>
+<li>
+AddrLabelExpr = CXCursor_AddrLabelExpr: The GNU address of label extension, representing &amp;&amp;label.</li>
+<li>
+StmtExpr = CXCursor_StmtExpr: This is the GNU Statement Expression extension: ({int X=4; X;})</li>
+<li>
+GenericSelectionExpr = CXCursor_GenericSelectionExpr: Represents a C11 generic selection.</li>
+<li>
+GNUNullExpr = CXCursor_GNUNullExpr: Implements the GNU __null extension, which is a name for a null pointer constant that has integral type (e.g., int or long) and is the same size and alignment as a pointer.
+
+<p>The __null extension is typically only used by system headers, which define NULL as __null in C++ rather than using 0 (which is an integer that may not match the size of a pointer).</li>
+<li>
+CXXStaticCastExpr = CXCursor_CXXStaticCastExpr: C++'s static_cast&lt;&gt; expression.</li>
+<li>
+CXXDynamicCastExpr = CXCursor_CXXDynamicCastExpr: C++'s dynamic_cast&lt;&gt; expression.</li>
+<li>
+CXXReinterpretCastExpr = CXCursor_CXXReinterpretCastExpr: C++'s reinterpret_cast&lt;&gt; expression.</li>
+<li>
+CXXConstCastExpr = CXCursor_CXXConstCastExpr: C++'s const_cast&lt;&gt; expression.</li>
+<li>
+CXXFunctionalCastExpr = CXCursor_CXXFunctionalCastExpr: Represents an explicit C++ type conversion that uses &quot;functional&quot; notion (C++ [expr.type.conv]). Example: x = int(0.5);</li>
+<li>
+CXXTypeidExpr = CXCursor_CXXTypeidExpr: A C++ typeid expression (C++ [expr.typeid]).</li>
+<li>
+CXXBoolLiteralExpr = CXCursor_CXXBoolLiteralExpr: [C++ 2.13.5] C++ Boolean Literal.</li>
+<li>
+CXXNullPtrLiteralExpr = CXCursor_CXXNullPtrLiteralExpr: [C++0x 2.14.7] C++ Pointer Literal.</li>
+<li>
+CXXThisExpr = CXCursor_CXXThisExpr: Represents the &quot;this&quot; expression in C++</li>
+<li>
+CXXThrowExpr = CXCursor_CXXThrowExpr: [C++ 15] C++ Throw Expression. This handles 'throw' and 'throw' assignment-expression. When assignment-expression isn't present, Op will be null.</li>
+<li>
+CXXNewExpr = CXCursor_CXXNewExpr: A new expression for memory allocation and constructor calls, e.g: &quot;new CXXNewExpr(foo)&quot;.</li>
+<li>
+CXXDeleteExpr = CXCursor_CXXDeleteExpr: A delete expression for memory deallocation and destructor calls, e.g. &quot;delete[] pArray&quot;.</li>
+<li>
+UnaryExpr = CXCursor_UnaryExpr: A unary expression. (noexcept, sizeof, or other traits)</li>
+<li>
+ObjCStringLiteral = CXCursor_ObjCStringLiteral: An Objective-C string literal i.e. @&quot;foo&quot;.</li>
+<li>
+ObjCEncodeExpr = CXCursor_ObjCEncodeExpr: An Objective-C @encode expression.</li>
+<li>
+ObjCSelectorExpr = CXCursor_ObjCSelectorExpr: An Objective-C @selector expression.</li>
+<li>
+ObjCProtocolExpr = CXCursor_ObjCProtocolExpr: An Objective-C @protocol expression.</li>
+<li>
+ObjCBridgedCastExpr = CXCursor_ObjCBridgedCastExpr: An Objective-C &quot;bridged&quot; cast expression, which casts between Objective-C pointers and C pointers, transferring ownership in the process. NSString *str = (__bridge_transfer NSString *)CFCreateString();</li>
+<li>
+PackExpansionExpr = CXCursor_PackExpansionExpr: Represents a C++0x pack expansion that produces a sequence of expressions.
+
+<p>A pack expansion expression contains a pattern (which itself is an expression) followed by an ellipsis. For example:
+
+<p></p>
+
+<pre class="preformatted">
+        template&lt;typename F, typename ...Types&gt;
+        void forward(F f, Types &amp;&amp;...args) {
+          f(static_cast&lt;Types&amp;&amp;&gt;(args)...);
+        };
+      </pre>
+
+<p></li>
+<li>
+SizeOfPackExpr = CXCursor_SizeOfPackExpr: Represents an expression that computes the length of a parameter pack.
+
+<p>template&lt;typename ...Types&gt; struct count { static const unsigned value = sizeof...(Types); };</li>
+<li>
+LambdaExpr = CXCursor_LambdaExpr: Represents a C++ lambda expression that produces a local function object.
+
+<p>void abssort(float *x, unsigned N) { std::sort(x, x + N, [](float a, float b) { return std::abs(a) &lt; std::abs(b); }); }</li>
+<li>
+ObjCBoolLiteralExpr = CXCursor_ObjCBoolLiteralExpr: Objective-c Boolean Literal.</li>
+<li>
+ObjCSelfExpr = CXCursor_ObjCSelfExpr: Represents the &quot;self&quot; expression in an Objective-C method.</li>
+<li>
+OMPArraySectionExpr = CXCursor_OMPArraySectionExpr: OpenMP 4.0 [2.4, Array Section].</li>
+<li>
+ObjCAvailabilityCheckExpr = CXCursor_ObjCAvailabilityCheckExpr: Represents an @available(...) check.</li>
+<li>
+LastExpr = CXCursor_LastExpr: &nbsp;</li>
+<li>
+FirstStmt = CXCursor_FirstStmt: Statements</li>
+<li>
+UnexposedStmt = CXCursor_UnexposedStmt: A statement whose specific kind is not exposed via this interface.
+
+<p>Unexposed statements have the same operations as any other kind of statement; one can extract their location information, spelling, children, etc. However, the specific kind of the statement is not reported.</li>
+<li>
+LabelStmt = CXCursor_LabelStmt: A labelled statement in a function.
+
+<p>This cursor kind is used to describe the &quot;start_over:&quot; label statement in the following example:
+
+<p></p>
+
+<pre class="preformatted">
+        start_over:
+          ++counter;
+      </pre>
+
+<p></li>
+<li>
+CompoundStmt = CXCursor_CompoundStmt: A group of statements like { stmt stmt }.
+
+<p>This cursor kind is used to describe compound statements, e.g. function bodies.</li>
+<li>
+CaseStmt = CXCursor_CaseStmt: A case statement.</li>
+<li>
+DefaultStmt = CXCursor_DefaultStmt: A default statement.</li>
+<li>
+IfStmt = CXCursor_IfStmt: An if statement</li>
+<li>
+SwitchStmt = CXCursor_SwitchStmt: A switch statement.</li>
+<li>
+WhileStmt = CXCursor_WhileStmt: A while statement.</li>
+<li>
+DoStmt = CXCursor_DoStmt: A do statement.</li>
+<li>
+ForStmt = CXCursor_ForStmt: A for statement.</li>
+<li>
+GotoStmt = CXCursor_GotoStmt: A goto statement.</li>
+<li>
+IndirectGotoStmt = CXCursor_IndirectGotoStmt: An indirect goto statement.</li>
+<li>
+ContinueStmt = CXCursor_ContinueStmt: A continue statement.</li>
+<li>
+BreakStmt = CXCursor_BreakStmt: A break statement.</li>
+<li>
+ReturnStmt = CXCursor_ReturnStmt: A return statement.</li>
+<li>
+GCCAsmStmt = CXCursor_GCCAsmStmt: A GCC inline assembly statement extension.</li>
+<li>
+AsmStmt = CXCursor_AsmStmt: &nbsp;</li>
+<li>
+ObjCAtTryStmt = CXCursor_ObjCAtTryStmt: Objective-C's overall @try-@catch-@finally statement.</li>
+<li>
+ObjCAtCatchStmt = CXCursor_ObjCAtCatchStmt: Objective-C's @catch statement.</li>
+<li>
+ObjCAtFinallyStmt = CXCursor_ObjCAtFinallyStmt: Objective-C's @finally statement.</li>
+<li>
+ObjCAtThrowStmt = CXCursor_ObjCAtThrowStmt: Objective-C's @throw statement.</li>
+<li>
+ObjCAtSynchronizedStmt = CXCursor_ObjCAtSynchronizedStmt: Objective-C's @synchronized statement.</li>
+<li>
+ObjCAutoreleasePoolStmt = CXCursor_ObjCAutoreleasePoolStmt: Objective-C's autorelease pool statement.</li>
+<li>
+ObjCForCollectionStmt = CXCursor_ObjCForCollectionStmt: Objective-C's collection statement.</li>
+<li>
+CXXCatchStmt = CXCursor_CXXCatchStmt: C++'s catch statement.</li>
+<li>
+CXXTryStmt = CXCursor_CXXTryStmt: C++'s try statement.</li>
+<li>
+CXXForRangeStmt = CXCursor_CXXForRangeStmt: C++'s for (* : *) statement.</li>
+<li>
+SEHTryStmt = CXCursor_SEHTryStmt: Windows Structured Exception Handling's try statement.</li>
+<li>
+SEHExceptStmt = CXCursor_SEHExceptStmt: Windows Structured Exception Handling's except statement.</li>
+<li>
+SEHFinallyStmt = CXCursor_SEHFinallyStmt: Windows Structured Exception Handling's finally statement.</li>
+<li>
+MSAsmStmt = CXCursor_MSAsmStmt: A MS inline assembly statement extension.</li>
+<li>
+NullStmt = CXCursor_NullStmt: The null statement &quot;;&quot;: C99 6.8.3p3. This cursor kind is used to describe the null statement.</li>
+<li>
+DeclStmt = CXCursor_DeclStmt: Adaptor class for mixing declarations with statements and expressions.</li>
+<li>
+OMPParallelDirective = CXCursor_OMPParallelDirective: OpenMP parallel directive.</li>
+<li>
+OMPSimdDirective = CXCursor_OMPSimdDirective: OpenMP SIMD directive.</li>
+<li>
+OMPForDirective = CXCursor_OMPForDirective: OpenMP for directive.</li>
+<li>
+OMPSectionsDirective = CXCursor_OMPSectionsDirective: OpenMP sections directive.</li>
+<li>
+OMPSectionDirective = CXCursor_OMPSectionDirective: OpenMP section directive.</li>
+<li>
+OMPSingleDirective = CXCursor_OMPSingleDirective: OpenMP single directive.</li>
+<li>
+OMPParallelForDirective = CXCursor_OMPParallelForDirective: OpenMP parallel for directive.</li>
+<li>
+OMPParallelSectionsDirective = CXCursor_OMPParallelSectionsDirective: OpenMP parallel sections directive.</li>
+<li>
+OMPTaskDirective = CXCursor_OMPTaskDirective: OpenMP task directive.</li>
+<li>
+OMPMasterDirective = CXCursor_OMPMasterDirective: OpenMP master directive.</li>
+<li>
+OMPCriticalDirective = CXCursor_OMPCriticalDirective: OpenMP critical directive.</li>
+<li>
+OMPTaskyieldDirective = CXCursor_OMPTaskyieldDirective: OpenMP taskyield directive.</li>
+<li>
+OMPBarrierDirective = CXCursor_OMPBarrierDirective: OpenMP barrier directive.</li>
+<li>
+OMPTaskwaitDirective = CXCursor_OMPTaskwaitDirective: OpenMP taskwait directive.</li>
+<li>
+OMPFlushDirective = CXCursor_OMPFlushDirective: OpenMP flush directive.</li>
+<li>
+SEHLeaveStmt = CXCursor_SEHLeaveStmt: Windows Structured Exception Handling's leave statement.</li>
+<li>
+OMPOrderedDirective = CXCursor_OMPOrderedDirective: OpenMP ordered directive.</li>
+<li>
+OMPAtomicDirective = CXCursor_OMPAtomicDirective: OpenMP atomic directive.</li>
+<li>
+OMPForSimdDirective = CXCursor_OMPForSimdDirective: OpenMP for SIMD directive.</li>
+<li>
+OMPParallelForSimdDirective = CXCursor_OMPParallelForSimdDirective: OpenMP parallel for SIMD directive.</li>
+<li>
+OMPTargetDirective = CXCursor_OMPTargetDirective: OpenMP target directive.</li>
+<li>
+OMPTeamsDirective = CXCursor_OMPTeamsDirective: OpenMP teams directive.</li>
+<li>
+OMPTaskgroupDirective = CXCursor_OMPTaskgroupDirective: OpenMP taskgroup directive.</li>
+<li>
+OMPCancellationPointDirective = CXCursor_OMPCancellationPointDirective: OpenMP cancellation point directive.</li>
+<li>
+OMPCancelDirective = CXCursor_OMPCancelDirective: OpenMP cancel directive.</li>
+<li>
+OMPTargetDataDirective = CXCursor_OMPTargetDataDirective: OpenMP target data directive.</li>
+<li>
+OMPTaskLoopDirective = CXCursor_OMPTaskLoopDirective: OpenMP taskloop directive.</li>
+<li>
+OMPTaskLoopSimdDirective = CXCursor_OMPTaskLoopSimdDirective: OpenMP taskloop simd directive.</li>
+<li>
+OMPDistributeDirective = CXCursor_OMPDistributeDirective: OpenMP distribute directive.</li>
+<li>
+OMPTargetEnterDataDirective = CXCursor_OMPTargetEnterDataDirective: OpenMP target enter data directive.</li>
+<li>
+OMPTargetExitDataDirective = CXCursor_OMPTargetExitDataDirective: OpenMP target exit data directive.</li>
+<li>
+OMPTargetParallelDirective = CXCursor_OMPTargetParallelDirective: OpenMP target parallel directive.</li>
+<li>
+OMPTargetParallelForDirective = CXCursor_OMPTargetParallelForDirective: OpenMP target parallel for directive.</li>
+<li>
+OMPTargetUpdateDirective = CXCursor_OMPTargetUpdateDirective: OpenMP target update directive.</li>
+<li>
+OMPDistributeParallelForDirective = CXCursor_OMPDistributeParallelForDirective: OpenMP distribute parallel for directive.</li>
+<li>
+OMPDistributeParallelForSimdDirective = CXCursor_OMPDistributeParallelForSimdDirective: OpenMP distribute parallel for simd directive.</li>
+<li>
+OMPDistributeSimdDirective = CXCursor_OMPDistributeSimdDirective: OpenMP distribute simd directive.</li>
+<li>
+OMPTargetParallelForSimdDirective = CXCursor_OMPTargetParallelForSimdDirective: OpenMP target parallel for simd directive.</li>
+<li>
+OMPTargetSimdDirective = CXCursor_OMPTargetSimdDirective: OpenMP target simd directive.</li>
+<li>
+OMPTeamsDistributeDirective = CXCursor_OMPTeamsDistributeDirective: OpenMP teams distribute directive.</li>
+<li>
+OMPTeamsDistributeSimdDirective = CXCursor_OMPTeamsDistributeSimdDirective: OpenMP teams distribute simd directive.</li>
+<li>
+OMPTeamsDistributeParallelForSimdDirective = CXCursor_OMPTeamsDistributeParallelForSimdDirective: OpenMP teams distribute parallel for simd directive.</li>
+<li>
+OMPTeamsDistributeParallelForDirective = CXCursor_OMPTeamsDistributeParallelForDirective: OpenMP teams distribute parallel for directive.</li>
+<li>
+OMPTargetTeamsDirective = CXCursor_OMPTargetTeamsDirective: OpenMP target teams directive.</li>
+<li>
+OMPTargetTeamsDistributeDirective = CXCursor_OMPTargetTeamsDistributeDirective: OpenMP target teams distribute directive.</li>
+<li>
+OMPTargetTeamsDistributeParallelForDirective = CXCursor_OMPTargetTeamsDistributeParallelForDirective: OpenMP target teams distribute parallel for directive.</li>
+<li>
+OMPTargetTeamsDistributeParallelForSimdDirective = CXCursor_OMPTargetTeamsDistributeParallelForSimdDirective: OpenMP target teams distribute parallel for simd directive.</li>
+<li>
+OMPTargetTeamsDistributeSimdDirective = CXCursor_OMPTargetTeamsDistributeSimdDirective: OpenMP target teams distribute simd directive.</li>
+<li>
+LastStmt = CXCursor_LastStmt: &nbsp;</li>
+<li>
+TranslationUnit = CXCursor_TranslationUnit: Cursor that represents the translation unit itself.
+
+<p>The translation unit cursor exists primarily to act as the root cursor for traversing the contents of a translation unit.</li>
+<li>
+FirstAttr = CXCursor_FirstAttr: Attributes</li>
+<li>
+UnexposedAttr = CXCursor_UnexposedAttr: An attribute whose specific kind is not exposed via this interface.</li>
+<li>
+IBActionAttr = CXCursor_IBActionAttr: &nbsp;</li>
+<li>
+IBOutletAttr = CXCursor_IBOutletAttr: &nbsp;</li>
+<li>
+IBOutletCollectionAttr = CXCursor_IBOutletCollectionAttr: &nbsp;</li>
+<li>
+CXXFinalAttr = CXCursor_CXXFinalAttr: &nbsp;</li>
+<li>
+CXXOverrideAttr = CXCursor_CXXOverrideAttr: &nbsp;</li>
+<li>
+AnnotateAttr = CXCursor_AnnotateAttr: &nbsp;</li>
+<li>
+AsmLabelAttr = CXCursor_AsmLabelAttr: &nbsp;</li>
+<li>
+PackedAttr = CXCursor_PackedAttr: &nbsp;</li>
+<li>
+PureAttr = CXCursor_PureAttr: &nbsp;</li>
+<li>
+ConstAttr = CXCursor_ConstAttr: &nbsp;</li>
+<li>
+NoDuplicateAttr = CXCursor_NoDuplicateAttr: &nbsp;</li>
+<li>
+CUDAConstantAttr = CXCursor_CUDAConstantAttr: &nbsp;</li>
+<li>
+CUDADeviceAttr = CXCursor_CUDADeviceAttr: &nbsp;</li>
+<li>
+CUDAGlobalAttr = CXCursor_CUDAGlobalAttr: &nbsp;</li>
+<li>
+CUDAHostAttr = CXCursor_CUDAHostAttr: &nbsp;</li>
+<li>
+CUDASharedAttr = CXCursor_CUDASharedAttr: &nbsp;</li>
+<li>
+VisibilityAttr = CXCursor_VisibilityAttr: &nbsp;</li>
+<li>
+DLLExport = CXCursor_DLLExport: &nbsp;</li>
+<li>
+DLLImport = CXCursor_DLLImport: &nbsp;</li>
+<li>
+LastAttr = CXCursor_LastAttr: &nbsp;</li>
+<li>
+PreprocessingDirective = CXCursor_PreprocessingDirective: Preprocessing</li>
+<li>
+MacroDefinition = CXCursor_MacroDefinition: &nbsp;</li>
+<li>
+MacroExpansion = CXCursor_MacroExpansion: &nbsp;</li>
+<li>
+MacroInstantiation = CXCursor_MacroInstantiation: &nbsp;</li>
+<li>
+InclusionDirective = CXCursor_InclusionDirective: &nbsp;</li>
+<li>
+FirstPreprocessing = CXCursor_FirstPreprocessing: &nbsp;</li>
+<li>
+LastPreprocessing = CXCursor_LastPreprocessing: &nbsp;</li>
+<li>
+ModuleImportDecl = CXCursor_ModuleImportDecl: A module import declaration.</li>
+<li>
+TypeAliasTemplateDecl = CXCursor_TypeAliasTemplateDecl: &nbsp;</li>
+<li>
+StaticAssert = CXCursor_StaticAssert: A static_assert or _Static_assert node</li>
+<li>
+FriendDecl = CXCursor_FriendDecl: A friend declaration.</li>
+<li>
+FirstExtraDecl = CXCursor_FirstExtraDecl: &nbsp;</li>
+<li>
+LastExtraDecl = CXCursor_LastExtraDecl: &nbsp;</li>
+<li>
+OverloadCandidate = CXCursor_OverloadCandidate: A code completion overload candidate.</li>
+</ul>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="TTypeKind"></a><code><b>TTypeKind</b> = (...);</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Describes the kind of a type</p>
+<h6 class="description_section">Values</h6>
+<ul>
+<li>
+Invalid = CXType_Invalid: Represents an invalid type (e.g., where no type is available).</li>
+<li>
+Unexposed = CXType_Unexposed: A type whose specific kind is not exposed via this interface.</li>
+<li>
+Void = CXType_Void: Builtin types</li>
+<li>
+Bool = CXType_Bool: &nbsp;</li>
+<li>
+Char_U = CXType_Char_U: &nbsp;</li>
+<li>
+UChar = CXType_UChar: &nbsp;</li>
+<li>
+Char16 = CXType_Char16: &nbsp;</li>
+<li>
+Char32 = CXType_Char32: &nbsp;</li>
+<li>
+UShort = CXType_UShort: &nbsp;</li>
+<li>
+UInt = CXType_UInt: &nbsp;</li>
+<li>
+ULong = CXType_ULong: &nbsp;</li>
+<li>
+ULongLong = CXType_ULongLong: &nbsp;</li>
+<li>
+UInt128 = CXType_UInt128: &nbsp;</li>
+<li>
+Char_S = CXType_Char_S: &nbsp;</li>
+<li>
+SChar = CXType_SChar: &nbsp;</li>
+<li>
+WChar = CXType_WChar: &nbsp;</li>
+<li>
+Short = CXType_Short: &nbsp;</li>
+<li>
+Int = CXType_Int: &nbsp;</li>
+<li>
+Long = CXType_Long: &nbsp;</li>
+<li>
+LongLong = CXType_LongLong: &nbsp;</li>
+<li>
+Int128 = CXType_Int128: &nbsp;</li>
+<li>
+Float = CXType_Float: &nbsp;</li>
+<li>
+Double = CXType_Double: &nbsp;</li>
+<li>
+LongDouble = CXType_LongDouble: &nbsp;</li>
+<li>
+NullPtr = CXType_NullPtr: &nbsp;</li>
+<li>
+Overload = CXType_Overload: &nbsp;</li>
+<li>
+Dependent = CXType_Dependent: &nbsp;</li>
+<li>
+ObjCId = CXType_ObjCId: &nbsp;</li>
+<li>
+ObjCClass = CXType_ObjCClass: &nbsp;</li>
+<li>
+ObjCSel = CXType_ObjCSel: &nbsp;</li>
+<li>
+Float128 = CXType_Float128: &nbsp;</li>
+<li>
+Half = CXType_Half: &nbsp;</li>
+<li>
+Float16 = CXType_Float16: &nbsp;</li>
+<li>
+FirstBuiltin = CXType_FirstBuiltin: &nbsp;</li>
+<li>
+LastBuiltin = CXType_LastBuiltin: &nbsp;</li>
+<li>
+Complex = CXType_Complex: &nbsp;</li>
+<li>
+Pointer = CXType_Pointer: &nbsp;</li>
+<li>
+BlockPointer = CXType_BlockPointer: &nbsp;</li>
+<li>
+LValueReference = CXType_LValueReference: &nbsp;</li>
+<li>
+RValueReference = CXType_RValueReference: &nbsp;</li>
+<li>
+Rec = CXType_Record: &nbsp;</li>
+<li>
+Enum = CXType_Enum: &nbsp;</li>
+<li>
+Typedef = CXType_Typedef: &nbsp;</li>
+<li>
+ObjCInterface = CXType_ObjCInterface: &nbsp;</li>
+<li>
+ObjCObjectPointer = CXType_ObjCObjectPointer: &nbsp;</li>
+<li>
+FunctionNoProto = CXType_FunctionNoProto: &nbsp;</li>
+<li>
+FunctionProto = CXType_FunctionProto: &nbsp;</li>
+<li>
+ConstantArray = CXType_ConstantArray: &nbsp;</li>
+<li>
+Vector = CXType_Vector: &nbsp;</li>
+<li>
+IncompleteArray = CXType_IncompleteArray: &nbsp;</li>
+<li>
+VariableArray = CXType_VariableArray: &nbsp;</li>
+<li>
+DependentSizedArray = CXType_DependentSizedArray: &nbsp;</li>
+<li>
+MemberPointer = CXType_MemberPointer: &nbsp;</li>
+<li>
+Auto = CXType_Auto: &nbsp;</li>
+<li>
+Elaborated = CXType_Elaborated: Represents a type that was referred to using an elaborated type keyword. E.g., struct S, or via a qualified name, e.g., N::M::type, or both.</li>
+<li>
+Pipe = CXType_Pipe: OpenCL PipeType.</li>
+<li>
+OCLImage1dRO = CXType_OCLImage1dRO: OpenCL builtin types.</li>
+<li>
+OCLImage1dArrayRO = CXType_OCLImage1dArrayRO: &nbsp;</li>
+<li>
+OCLImage1dBufferRO = CXType_OCLImage1dBufferRO: &nbsp;</li>
+<li>
+OCLImage2dRO = CXType_OCLImage2dRO: &nbsp;</li>
+<li>
+OCLImage2dArrayRO = CXType_OCLImage2dArrayRO: &nbsp;</li>
+<li>
+OCLImage2dDepthRO = CXType_OCLImage2dDepthRO: &nbsp;</li>
+<li>
+OCLImage2dArrayDepthRO = CXType_OCLImage2dArrayDepthRO: &nbsp;</li>
+<li>
+OCLImage2dMSAARO = CXType_OCLImage2dMSAARO: &nbsp;</li>
+<li>
+OCLImage2dArrayMSAARO = CXType_OCLImage2dArrayMSAARO: &nbsp;</li>
+<li>
+OCLImage2dMSAADepthRO = CXType_OCLImage2dMSAADepthRO: &nbsp;</li>
+<li>
+OCLImage2dArrayMSAADepthRO = CXType_OCLImage2dArrayMSAADepthRO: &nbsp;</li>
+<li>
+OCLImage3dRO = CXType_OCLImage3dRO: &nbsp;</li>
+<li>
+OCLImage1dWO = CXType_OCLImage1dWO: &nbsp;</li>
+<li>
+OCLImage1dArrayWO = CXType_OCLImage1dArrayWO: &nbsp;</li>
+<li>
+OCLImage1dBufferWO = CXType_OCLImage1dBufferWO: &nbsp;</li>
+<li>
+OCLImage2dWO = CXType_OCLImage2dWO: &nbsp;</li>
+<li>
+OCLImage2dArrayWO = CXType_OCLImage2dArrayWO: &nbsp;</li>
+<li>
+OCLImage2dDepthWO = CXType_OCLImage2dDepthWO: &nbsp;</li>
+<li>
+OCLImage2dArrayDepthWO = CXType_OCLImage2dArrayDepthWO: &nbsp;</li>
+<li>
+OCLImage2dMSAAWO = CXType_OCLImage2dMSAAWO: &nbsp;</li>
+<li>
+OCLImage2dArrayMSAAWO = CXType_OCLImage2dArrayMSAAWO: &nbsp;</li>
+<li>
+OCLImage2dMSAADepthWO = CXType_OCLImage2dMSAADepthWO: &nbsp;</li>
+<li>
+OCLImage2dArrayMSAADepthWO = CXType_OCLImage2dArrayMSAADepthWO: &nbsp;</li>
+<li>
+OCLImage3dWO = CXType_OCLImage3dWO: &nbsp;</li>
+<li>
+OCLImage1dRW = CXType_OCLImage1dRW: &nbsp;</li>
+<li>
+OCLImage1dArrayRW = CXType_OCLImage1dArrayRW: &nbsp;</li>
+<li>
+OCLImage1dBufferRW = CXType_OCLImage1dBufferRW: &nbsp;</li>
+<li>
+OCLImage2dRW = CXType_OCLImage2dRW: &nbsp;</li>
+<li>
+OCLImage2dArrayRW = CXType_OCLImage2dArrayRW: &nbsp;</li>
+<li>
+OCLImage2dDepthRW = CXType_OCLImage2dDepthRW: &nbsp;</li>
+<li>
+OCLImage2dArrayDepthRW = CXType_OCLImage2dArrayDepthRW: &nbsp;</li>
+<li>
+OCLImage2dMSAARW = CXType_OCLImage2dMSAARW: &nbsp;</li>
+<li>
+OCLImage2dArrayMSAARW = CXType_OCLImage2dArrayMSAARW: &nbsp;</li>
+<li>
+OCLImage2dMSAADepthRW = CXType_OCLImage2dMSAADepthRW: &nbsp;</li>
+<li>
+OCLImage2dArrayMSAADepthRW = CXType_OCLImage2dArrayMSAADepthRW: &nbsp;</li>
+<li>
+OCLImage3dRW = CXType_OCLImage3dRW: &nbsp;</li>
+<li>
+OCLSampler = CXType_OCLSampler: &nbsp;</li>
+<li>
+OCLEvent = CXType_OCLEvent: &nbsp;</li>
+<li>
+OCLQueue = CXType_OCLQueue: &nbsp;</li>
+<li>
+OCLReserveID = CXType_OCLReserveID: &nbsp;</li>
+</ul>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="TTemplateArgumentKind"></a><code><b>TTemplateArgumentKind</b> = (...);</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Describes the kind of a template argument.</p>
+<h6 class="description_section">Values</h6>
+<ul>
+<li>
+Null = CXTemplateArgumentKind_Null: &nbsp;</li>
+<li>
+Typ = CXTemplateArgumentKind_Type: &nbsp;</li>
+<li>
+Declaration = CXTemplateArgumentKind_Declaration: &nbsp;</li>
+<li>
+NullPtr = CXTemplateArgumentKind_NullPtr: &nbsp;</li>
+<li>
+Integral = CXTemplateArgumentKind_Integral: &nbsp;</li>
+<li>
+Template = CXTemplateArgumentKind_Template: &nbsp;</li>
+<li>
+TemplateExpansion = CXTemplateArgumentKind_TemplateExpansion: &nbsp;</li>
+<li>
+Expression = CXTemplateArgumentKind_Expression: &nbsp;</li>
+<li>
+Pack = CXTemplateArgumentKind_Pack: &nbsp;</li>
+<li>
+Invalid = CXTemplateArgumentKind_Invalid: Indicates an error case, preventing the kind from being deduced.</li>
+</ul>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="TLinkageKind"></a><code><b>TLinkageKind</b> = (...);</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+The linkage of the entity referred to by a cursor.</p>
+<h6 class="description_section">Values</h6>
+<ul>
+<li>
+Invalid = CXLinkage_Invalid: This value indicates that no linkage information is available for a provided <a class="normal" href="Neslib.Clang.TCursor.html">TCursor</a>.</li>
+<li>
+NoLinkage = CXLinkage_NoLinkage: This is the linkage for variables, parameters, and so on that have automatic storage. This covers normal (non-extern) local variables.</li>
+<li>
+Internal = CXLinkage_Internal: This is the linkage for static variables and static functions.</li>
+<li>
+UniqueExternal = CXLinkage_UniqueExternal: This is the linkage for entities with external linkage that live in C++ anonymous namespaces.</li>
+<li>
+External = CXLinkage_External: This is the linkage for entities with true, external linkage.</li>
+</ul>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="TVisibility"></a><code><b>TVisibility</b> = (...);</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+The visibility of an entity referenced by a cursor.</p>
+<h6 class="description_section">Values</h6>
+<ul>
+<li>
+Invalid = CXVisibility_Invalid: This value indicates that no visibility information is available for a provided <a class="normal" href="Neslib.Clang.TCursor.html">TCursor</a>.</li>
+<li>
+Hidden = CXVisibility_Hidden: Symbol not seen by the linker.</li>
+<li>
+Protected = CXVisibility_Protected: Symbol seen by the linker but resolves to a symbol inside this object.</li>
+<li>
+Default = CXVisibility_Default: Symbol seen by the linker and acts like a normal symbol.</li>
+</ul>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="TAvailabilityKind"></a><code><b>TAvailabilityKind</b> = (...);</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+The availability of a particular entity, which indicates whether the use of this entity will result in a warning or error due to it being deprecated or unavailable.</p>
+<h6 class="description_section">Values</h6>
+<ul>
+<li>
+Available = CXAvailability_Available: The entity is available.</li>
+<li>
+Deprecated = CXAvailability_Deprecated: The entity is available, but has been deprecated (and its use is not recommended).</li>
+<li>
+NotAvailable = CXAvailability_NotAvailable: The entity is not available; any use of it will be an error.</li>
+<li>
+NotAccessible = CXAvailability_NotAccessible: The entity is available, but not accessible; any use of it will be an error.</li>
+</ul>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="TLanguageKind"></a><code><b>TLanguageKind</b> = (...);</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+The &quot;language&quot; of the entity referred to by a cursor</p>
+<h6 class="description_section">Values</h6>
+<ul>
+<li>
+Invalid = CXLanguage_Invalid: &nbsp;</li>
+<li>
+C = CXLanguage_C: &nbsp;</li>
+<li>
+ObjC = CXLanguage_ObjC: &nbsp;</li>
+<li>
+CPlusPlus = CXLanguage_CPlusPlus: &nbsp;</li>
+</ul>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="TCxxAccessSpecifier"></a><code><b>TCxxAccessSpecifier</b> = (...);</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+The C++ access control level to a base class for a cursor with kind CXXBaseSpecifier.</p>
+<h6 class="description_section">Values</h6>
+<ul>
+<li>
+Invalid = CX_CXXInvalidAccessSpecifier: &nbsp;</li>
+<li>
+Public = CX_CXXPublic: &nbsp;</li>
+<li>
+Protected = CX_CXXProtected: &nbsp;</li>
+<li>
+Private = CX_CXXPrivate: &nbsp;</li>
+</ul>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="TStorageClass"></a><code><b>TStorageClass</b> = (...);</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+The storage classes as declared in the source. Option Invalid was added for the case that the passed cursor in not a declaration.</p>
+<h6 class="description_section">Values</h6>
+<ul>
+<li>
+Invalid = CX_SC_Invalid: &nbsp;</li>
+<li>
+None = CX_SC_None: &nbsp;</li>
+<li>
+Extern = CX_SC_Extern: &nbsp;</li>
+<li>
+Static = CX_SC_Static: &nbsp;</li>
+<li>
+PrivateExtern = CX_SC_PrivateExtern: &nbsp;</li>
+<li>
+OpenCLWorkGroupLocal = CX_SC_OpenCLWorkGroupLocal: &nbsp;</li>
+<li>
+Auto = CX_SC_Auto: &nbsp;</li>
+<li>
+Register = CX_SC_Register: &nbsp;</li>
+</ul>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="TTlsKind"></a><code><b>TTlsKind</b> = (...);</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+The &quot;thread-local storage (TLS) kind&quot; of the declaration referred to by a cursor.</p>
+<h6 class="description_section">Values</h6>
+<ul>
+<li>
+None = CXTLS_None: &nbsp;</li>
+<li>
+Dynamic = CXTLS_Dynamic: &nbsp;</li>
+<li>
+Static = CXTLS_Static: &nbsp;</li>
+</ul>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="TObjCPropertyAttrKind"></a><code><b>TObjCPropertyAttrKind</b> = (...);</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Property attributes for a ObjCPropertyDecl cursors.</p>
+<h6 class="description_section">Values</h6>
+<ul>
+<li>
+ReadOnly: &nbsp;</li>
+<li>
+Getter: &nbsp;</li>
+<li>
+Assign: &nbsp;</li>
+<li>
+ReadWrite: &nbsp;</li>
+<li>
+Retain: &nbsp;</li>
+<li>
+Copy: &nbsp;</li>
+<li>
+NonAtomic: &nbsp;</li>
+<li>
+Setter: &nbsp;</li>
+<li>
+Atomic: &nbsp;</li>
+<li>
+Weak: &nbsp;</li>
+<li>
+Strong: &nbsp;</li>
+<li>
+UnsafeRetained: &nbsp;</li>
+<li>
+Clas: &nbsp;</li>
+</ul>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="TObjCPropertyAttrKinds"></a><code><b>TObjCPropertyAttrKinds</b> = set of <a  href="Neslib.Clang.html#TObjCPropertyAttrKind">TObjCPropertyAttrKind</a>;</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="TObjCDeclQualifierKind"></a><code><b>TObjCDeclQualifierKind</b> = (...);</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+'Qualifiers' written next to the return and parameter types in Objective-C method declarations.</p>
+<h6 class="description_section">Values</h6>
+<ul>
+<li>
+Input: &nbsp;</li>
+<li>
+InOut: &nbsp;</li>
+<li>
+Output: &nbsp;</li>
+<li>
+ByCopy: &nbsp;</li>
+<li>
+ByRef: &nbsp;</li>
+<li>
+OneWay: &nbsp;</li>
+</ul>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="TObjCDeclQualifierKinds"></a><code><b>TObjCDeclQualifierKinds</b> = set of <a  href="Neslib.Clang.html#TObjCDeclQualifierKind">TObjCDeclQualifierKind</a>;</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="TNameRefFlag"></a><code><b>TNameRefFlag</b> = (...);</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Name reference flags</p>
+<h6 class="description_section">Values</h6>
+<ul>
+<li>
+WantQualifier: Include the nested-name-specifier, e.g. Foo:: in x.Foo::y, in the range.</li>
+<li>
+WantTemplateArgs: Include the explicit template arguments, e.g. &lt;int&gt; in x.f&lt;int&gt;, in the range.</li>
+<li>
+WantSinglePiece: If the name is non-contiguous, return the full spanning range. Non-contiguous names occur in Objective-C when a selector with two or more parameters is used, or in C++ when using an operator:
+
+<p>[object doSomething:here withValue:there]; // Objective-C return some_vector[1]; // C++</li>
+</ul>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="TNameRefFlags"></a><code><b>TNameRefFlags</b> = set of <a  href="Neslib.Clang.html#TNameRefFlag">TNameRefFlag</a>;</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="TLoadDiagError"></a><code><b>TLoadDiagError</b> = (...);</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Describes the kind of error that occurred (if any) in a call to <a class="normal" href="Neslib.Clang.TDiagnosticSet.html#Load">TDiagnosticSet.Load</a></p>
+<h6 class="description_section">Values</h6>
+<ul>
+<li>
+None = CXLoadDiag_None: Indicates that no error occurred.</li>
+<li>
+Unknown = CXLoadDiag_Unknown: Indicates that an unknown error occurred while attempting to deserialize diagnostics.</li>
+<li>
+CannotLoad = CXLoadDiag_CannotLoad: Indicates that the file containing the serialized diagnostics could not be opened.</li>
+<li>
+InvalidFile = CXLoadDiag_InvalidFile: Indicates that the serialized diagnostics file is invalid or corrupt.</li>
+</ul>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="TDiagnosticDisplayOption"></a><code><b>TDiagnosticDisplayOption</b> = (...);</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Options to control the display of diagnostics.</p>
+<h6 class="description_section">Values</h6>
+<ul>
+<li>
+DisplaySourceLocation: Display the source-location information where the diagnostic was located.
+
+<p>When set, diagnostics will be prefixed by the file, line, and (optionally) column to which the diagnostic refers. For example,
+
+<p></p>
+
+<pre class="preformatted">
+        test.c:28: warning: extra tokens at end of #endif directive
+      </pre>
+
+<p>
+
+<p>This option corresponds to the clang flag -fshow-source-location.</li>
+<li>
+DisplayColumn: If displaying the source-location information of the diagnostic, also include the column number.
+
+<p>This option corresponds to the clang flag -fshow-column.</li>
+<li>
+DisplaySourceRanges: If displaying the source-location information of the diagnostic, also include information about source ranges in a machine-parsable format.
+
+<p>This option corresponds to the clang flag -fdiagnostics-print-source-range-info.</li>
+<li>
+DisplayOption: Display the option name associated with this diagnostic, if any.
+
+<p>The option name displayed (e.g., -Wconversion) will be placed in brackets after the diagnostic text. This option corresponds to the clang flag -fdiagnostics-show-option.</li>
+<li>
+DisplayCategoryId: Display the category number associated with this diagnostic, if any.
+
+<p>The category number is displayed within brackets after the diagnostic text. This option corresponds to the clang flag -fdiagnostics-show-category=id.</li>
+<li>
+DisplayCategoryName: Display the category name associated with this diagnostic, if any.
+
+<p>The category name is displayed within brackets after the diagnostic text. This option corresponds to the clang flag -fdiagnostics-show-category=name.</li>
+</ul>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="TDiagnosticDisplayOptions"></a><code><b>TDiagnosticDisplayOptions</b> = set of <a  href="Neslib.Clang.html#TDiagnosticDisplayOption">TDiagnosticDisplayOption</a>;</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="TDiagnosticSeverity"></a><code><b>TDiagnosticSeverity</b> = (...);</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+The severity of a particular diagnostic.</p>
+<h6 class="description_section">Values</h6>
+<ul>
+<li>
+Ignored = CXDiagnostic_Ignored: A diagnostic that has been suppressed, e.g., by a command-line option.</li>
+<li>
+Note = CXDiagnostic_Note: This diagnostic is a note that should be attached to the previous (non-note) diagnostic.</li>
+<li>
+Warning = CXDiagnostic_Warning: This diagnostic indicates suspicious code that may not be wrong.</li>
+<li>
+Error = CXDiagnostic_Error: This diagnostic indicates that the code is ill-formed.</li>
+<li>
+Fatal = CXDiagnostic_Fatal: This diagnostic indicates that the code is ill-formed such that future parser recovery is unlikely to produce useful results.</li>
+</ul>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="TResourceUsageKind"></a><code><b>TResourceUsageKind</b> = (...);</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Categorizes how memory is being used by a translation unit.</p>
+<h6 class="description_section">Values</h6>
+<ul>
+<li>
+AST = CXTUResourceUsage_AST: &nbsp;</li>
+<li>
+Identifiers = CXTUResourceUsage_Identifiers: &nbsp;</li>
+<li>
+Selectors = CXTUResourceUsage_Selectors: &nbsp;</li>
+<li>
+GlobalCompletionResults = CXTUResourceUsage_GlobalCompletionResults: &nbsp;</li>
+<li>
+SourceManagerContentCache = CXTUResourceUsage_SourceManagerContentCache: &nbsp;</li>
+<li>
+AST_SideTables = CXTUResourceUsage_AST_SideTables: &nbsp;</li>
+<li>
+SourceManager_Membuffer_Malloc = CXTUResourceUsage_SourceManager_Membuffer_Malloc: &nbsp;</li>
+<li>
+SourceManager_Membuffer_MMap = CXTUResourceUsage_SourceManager_Membuffer_MMap: &nbsp;</li>
+<li>
+ExternalASTSource_Membuffer_Malloc = CXTUResourceUsage_ExternalASTSource_Membuffer_Malloc: &nbsp;</li>
+<li>
+ExternalASTSource_Membuffer_MMap = CXTUResourceUsage_ExternalASTSource_Membuffer_MMap: &nbsp;</li>
+<li>
+Preprocessor = CXTUResourceUsage_Preprocessor: &nbsp;</li>
+<li>
+PreprocessingRecord = CXTUResourceUsage_PreprocessingRecord: &nbsp;</li>
+<li>
+SourceManager_DataStructures = CXTUResourceUsage_SourceManager_DataStructures: &nbsp;</li>
+<li>
+Preprocessor_HeaderSearch = CXTUResourceUsage_Preprocessor_HeaderSearch: &nbsp;</li>
+</ul>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="TCallingConv"></a><code><b>TCallingConv</b> = (...);</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Describes the calling convention of a function type</p>
+<h6 class="description_section">Values</h6>
+<ul>
+<li>
+Default = CXCallingConv_Default: &nbsp;</li>
+<li>
+C = CXCallingConv_C: &nbsp;</li>
+<li>
+X86StdCall = CXCallingConv_X86StdCall: &nbsp;</li>
+<li>
+X86FastCall = CXCallingConv_X86FastCall: &nbsp;</li>
+<li>
+X86ThisCall = CXCallingConv_X86ThisCall: &nbsp;</li>
+<li>
+X86Pascal = CXCallingConv_X86Pascal: &nbsp;</li>
+<li>
+AAPCS = CXCallingConv_AAPCS: &nbsp;</li>
+<li>
+AAPCS_VFP = CXCallingConv_AAPCS_VFP: &nbsp;</li>
+<li>
+X86RegCall = CXCallingConv_X86RegCall: &nbsp;</li>
+<li>
+IntelOclBicc = CXCallingConv_IntelOclBicc: &nbsp;</li>
+<li>
+Win64 = CXCallingConv_Win64: &nbsp;</li>
+<li>
+X86_64Win64 = CXCallingConv_X86_64Win64: &nbsp;</li>
+<li>
+X86_64SysV = CXCallingConv_X86_64SysV: &nbsp;</li>
+<li>
+X86VectorCall = CXCallingConv_X86VectorCall: &nbsp;</li>
+<li>
+Swift = CXCallingConv_Swift: &nbsp;</li>
+<li>
+PreserveMost = CXCallingConv_PreserveMost: &nbsp;</li>
+<li>
+PreserveAll = CXCallingConv_PreserveAll: &nbsp;</li>
+<li>
+Invalid = CXCallingConv_Invalid: &nbsp;</li>
+<li>
+Unexposed = CXCallingConv_Unexposed: &nbsp;</li>
+</ul>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="TRefQualifierKind"></a><code><b>TRefQualifierKind</b> = (...);</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Kinds of reference qualifiers</p>
+<h6 class="description_section">Values</h6>
+<ul>
+<li>
+None = CXRefQualifier_None: No ref-qualifier was provided.</li>
+<li>
+LValue = CXRefQualifier_LValue: An lvalue ref-qualifier was provided (&amp;).</li>
+<li>
+RValue = CXRefQualifier_RValue: An rvalue ref-qualifier was provided (&amp;&amp;).</li>
+</ul>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="TTokenKind"></a><code><b>TTokenKind</b> = (...);</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+A kind of token.</p>
+<h6 class="description_section">Values</h6>
+<ul>
+<li>
+Punctuation = CXToken_Punctuation: A token that contains some kind of punctuation.</li>
+<li>
+Keyword = CXToken_Keyword: A language keyword.</li>
+<li>
+Identifier = CXToken_Identifier: An identifier (that is not a keyword).</li>
+<li>
+Literal = CXToken_Literal: A numeric, string, or character literal.</li>
+<li>
+Comment = CXToken_Comment: A comment.</li>
+</ul>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="TCompletionChunkKind"></a><code><b>TCompletionChunkKind</b> = (...);</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Describes a single piece of text within a code-completion string.
+
+<p>Each &quot;chunk&quot; within a code-completion string <a class="normal" href="Neslib.Clang.TCompletionString.html">TCompletionString</a>) is either a piece of text with a specific &quot;kind&quot; that describes how that text should be interpreted by the client or is another completion string.</p>
+<h6 class="description_section">Values</h6>
+<ul>
+<li>
+Optional = CXCompletionChunk_Optional: A code-completion string that describes &quot;optional&quot; text that could be a part of the template (but is not required).
+
+<p>The Optional chunk is the only kind of chunk that has a code-completion string for its representation, which is accessible via <a class="normal" href="Neslib.Clang.TCompletionString.html#ChunkCompletionString">TCompletionString.ChunkCompletionString</a>. The code-completion string describes an additional part of the template that is completely optional. For example, optional chunks can be used to describe the placeholders for arguments that match up with defaulted function parameters, e.g. given:
+
+<p></p>
+
+<pre class="preformatted">
+        void f(int x, float y = 3.14, double z = 2.71828);
+      </pre>
+
+<p>
+
+<p>The code-completion string for this function would contain: </p>
+
+<pre class="preformatted">
+      - a TypedText chunk for &quot;f&quot;.
+      - a LeftParen chunk for &quot;(&quot;.
+      - a Placeholder chunk for &quot;int x&quot;
+      - an Optional chunk containing the remaining defaulted arguments, e.g.,
+        - a Comma chunk for &quot;,&quot;
+        - a Placeholder chunk for &quot;float y&quot;
+        - an Optional chunk containing the last defaulted argument:
+        - a Comma chunk for &quot;,&quot;
+        - a Placeholder chunk for &quot;double z&quot;
+      - a RightParen chunk for &quot;)&quot;
+      </pre>
+
+<p>
+
+<p>There are many ways to handle Optional chunks. Two simple approaches are: </p>
+
+<pre class="preformatted">
+      - Completely ignore optional chunks, in which case the template for the
+        function &quot;f&quot; would only include the first parameter (&quot;int x&quot;).
+      - Fully expand all optional chunks, in which case the template for the
+        function &quot;f&quot; would have all of the parameters.
+      </pre>
+
+<p></li>
+<li>
+TypedText = CXCompletionChunk_TypedText: Text that a user would be expected to type to get this code-completion result.
+
+<p>There will be exactly one &quot;typed text&quot; chunk in a semantic string, which will typically provide the spelling of a keyword or the name of a declaration that could be used at the current code point. Clients are expected to filter the code-completion results based on the text in this chunk.</li>
+<li>
+Text = CXCompletionChunk_Text: Text that should be inserted as part of a code-completion result.
+
+<p>A &quot;text&quot; chunk represents text that is part of the template to be inserted into user code should this particular code-completion result be selected.</li>
+<li>
+Placeholder = CXCompletionChunk_Placeholder: Placeholder text that should be replaced by the user.
+
+<p>A &quot;placeholder&quot; chunk marks a place where the user should insert text into the code-completion template. For example, placeholders might mark the function parameters for a function declaration, to indicate that the user should provide arguments for each of those parameters. The actual text in a placeholder is a suggestion for the text to display before the user replaces the placeholder with real code.</li>
+<li>
+Informative = CXCompletionChunk_Informative: Informative text that should be displayed but never inserted as part of the template.
+
+<p>An &quot;informative&quot; chunk contains annotations that can be displayed to help the user decide whether a particular code-completion result is the right option, but which is not part of the actual template to be inserted by code completion.</li>
+<li>
+CurrentParameter = CXCompletionChunk_CurrentParameter: Text that describes the current parameter when code-completion is referring to function call, message send, or template specialization.
+
+<p>A &quot;current parameter&quot; chunk occurs when code-completion is providing information about a parameter corresponding to the argument at the code-completion point. For example, given a function
+
+<p></p>
+
+<pre class="preformatted">
+      int add(int x, int y);
+    </pre>
+
+<p>
+
+<p>and the source code add(, where the code-completion point is after the &quot;(&quot;, the code-completion string will contain a &quot;current parameter&quot; chunk for &quot;int x&quot;, indicating that the current argument will initialize that parameter. After typing further, to add(17, (where the code-completion point is after the &quot;,&quot;), the code-completion string will contain a &quot;current paremeter&quot; chunk to &quot;int y&quot;.</li>
+<li>
+LeftParen = CXCompletionChunk_LeftParen: A left parenthesis ('('), used to initiate a function call or signal the beginning of a function parameter list.</li>
+<li>
+RightParent = CXCompletionChunk_RightParen: A right parenthesis (')'), used to finish a function call or signal the end of a function parameter list.</li>
+<li>
+LeftBracket = CXCompletionChunk_LeftBracket: A left bracket ('[').</li>
+<li>
+RightBracket = CXCompletionChunk_RightBracket: A right bracket (']').</li>
+<li>
+LeftBrace = CXCompletionChunk_LeftBrace: A left brace ('{').</li>
+<li>
+RightBrace = CXCompletionChunk_RightBrace: A right brace ('}').</li>
+<li>
+LeftAngle = CXCompletionChunk_LeftAngle: A left angle bracket ('&lt;').</li>
+<li>
+RightAngle = CXCompletionChunk_RightAngle: A right angle bracket ('&gt;').</li>
+<li>
+Comma = CXCompletionChunk_Comma: A comma separator (',').</li>
+<li>
+ResultType = CXCompletionChunk_ResultType: Text that specifies the result type of a given result.
+
+<p>This special kind of informative chunk is not meant to be inserted into the text buffer. Rather, it is meant to illustrate the type that an expression using the given completion string would have.</li>
+<li>
+Colon = CXCompletionChunk_Colon: A colon (':').</li>
+<li>
+SemiColon = CXCompletionChunk_SemiColon: A semicolon (';').</li>
+<li>
+Equal = CXCompletionChunk_Equal: An '=' sign.</li>
+<li>
+HorizontalSpace = CXCompletionChunk_HorizontalSpace: Horizontal space (' ').</li>
+<li>
+VerticalSpace = CXCompletionChunk_VerticalSpace: Vertical space (#10), after which it is generally a good idea to perform indentation.</li>
+</ul>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="TEvalResultKind"></a><code><b>TEvalResultKind</b> = (...);</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Kinds of evaluation results</p>
+<h6 class="description_section">Values</h6>
+<ul>
+<li>
+Unexposed = CXEval_UnExposed: &nbsp;</li>
+<li>
+Int = CXEval_Int: &nbsp;</li>
+<li>
+Float = CXEval_Float: &nbsp;</li>
+<li>
+ObjCStrLiteral = CXEval_ObjCStrLiteral: &nbsp;</li>
+<li>
+StrLiteral = CXEval_StrLiteral: &nbsp;</li>
+<li>
+CFStr = CXEval_CFStr: &nbsp;</li>
+<li>
+Other = CXEval_Other: &nbsp;</li>
+</ul>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="TIndexOption"></a><code><b>TIndexOption</b> = (...);</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Indexer options used by <a class="normal" href="Neslib.Clang.IIndexAction.html">IIndexAction</a></p>
+<h6 class="description_section">Values</h6>
+<ul>
+<li>
+SuppressRedundantRefs: Used to indicate that <a class="normal" href="Neslib.Clang.IIndexerListener.html#IndexEntityReference">IIndexerListener.IndexEntityReference</a> should be invoked for only one reference of an entity per source file that does not also include a declaration/definition of the entity.</li>
+<li>
+IndexFunctionLocalSymbols: Function-local symbols should be indexed. If this is not set function-local symbols will be ignored.</li>
+<li>
+IndexImplicitTemplateInstantiations: Implicit function/class template instantiations should be indexed. If this is not set, implicit instantiations will be ignored.</li>
+<li>
+SuppressWarnings: Suppress all compiler warnings when parsing for indexing.</li>
+<li>
+SkipParsedBodiesInSession: Skip a function/method body that was already parsed during an indexing session associated with an <a class="normal" href="Neslib.Clang.IIndexAction.html">IIndexAction</a> object. Bodies in system headers are always skipped.</li>
+</ul>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="TIndexOptions"></a><code><b>TIndexOptions</b> = set of <a  href="Neslib.Clang.html#TIndexOption">TIndexOption</a>;</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="TCommentKind"></a><code><b>TCommentKind</b> = (...);</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Describes the type of the comment AST node (<a class="normal" href="Neslib.Clang.TComment.html">TComment</a>). A comment node can be considered block content (e. g., paragraph), inline content (plain text) or neither (the root AST node).</p>
+<h6 class="description_section">Values</h6>
+<ul>
+<li>
+Null = CXComment_Null: Null comment. No AST node is constructed at the requested location because there is no text or a syntax error.</li>
+<li>
+Text = CXComment_Text: Plain text. Inline content.</li>
+<li>
+InlineCommand = CXComment_InlineCommand: A command with word-like arguments that is considered inline content.
+
+<p>For example: \c command.</li>
+<li>
+HtmlStartTag = CXComment_HTMLStartTag: HTML start tag with attributes (name-value pairs). Considered inline content. For example:
+
+<p></p>
+
+<pre class="preformatted">
+        @br &lt;br /&gt; &lt;a href=&quot;http://example.org/&quot;&gt;
+      </pre>
+
+<p></li>
+<li>
+HtmlEndTag = CXComment_HTMLEndTag: HTML end tag. Considered inline content. For example:
+
+<p></p>
+
+<pre class="preformatted">
+        &lt;/a&gt;
+      </pre>
+
+<p></li>
+<li>
+Paragraph = CXComment_Paragraph: A paragraph, contains inline comment. The paragraph itself is block content.</li>
+<li>
+BlockCommand = CXComment_BlockCommand: A command that has zero or more word-like arguments (number of word-like arguments depends on command name) and a paragraph as an argument. Block command is block content.
+
+<p>Paragraph argument is also a child of the block command.
+
+<p>For example: \brief has 0 word-like arguments and a paragraph argument.
+
+<p>AST nodes of special kinds that parser knows about (e.g., \param command) have their own node kinds.</li>
+<li>
+ParamCommand = CXComment_ParamCommand: A \param or \arg command that describes the function parameter (name, passing direction, description).
+
+<p>For example: \param [in] ParamName description.</li>
+<li>
+TParamCommand = CXComment_TParamCommand: A \tparam command that describes a template parameter (name and description).
+
+<p>For example: \tparam T description.</li>
+<li>
+VerbatimBlockCommand = CXComment_VerbatimBlockCommand: A verbatim block command (e. g., preformatted code). Verbatim block has an opening and a closing command and contains multiple lines of text (VerbatimBlockLine child nodes).
+
+<p>For example:
+
+<p></p>
+
+<pre class="preformatted">
+        \verbatim
+        aaa
+        \endverbatim
+      </pre>
+
+<p></li>
+<li>
+VerbatimBlockLine = CXComment_VerbatimBlockLine: A line of text that is contained within a VerbatimBlockCommand node.</li>
+<li>
+VerbatimLine = CXComment_VerbatimLine: A verbatim line command. Verbatim line has an opening command, a single line of text (up to the newline after the opening command) and has no closing command.</li>
+<li>
+FullComment = CXComment_FullComment: A full comment attached to a declaration, contains block content.</li>
+</ul>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="TCommentInlineCommandRenderKind"></a><code><b>TCommentInlineCommandRenderKind</b> = (...);</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+The most appropriate rendering mode for an inline command, chosen on command semantics in Doxygen.</p>
+<h6 class="description_section">Values</h6>
+<ul>
+<li>
+Normal = CXCommentInlineCommandRenderKind_Normal: Command argument should be rendered in a normal font.</li>
+<li>
+Bold = CXCommentInlineCommandRenderKind_Bold: Command argument should be rendered in a bold font.</li>
+<li>
+Monospaced = CXCommentInlineCommandRenderKind_Monospaced: Command argument should be rendered in a monospaced font.</li>
+<li>
+Emphasized = CXCommentInlineCommandRenderKind_Emphasized: Command argument should be rendered emphasized (typically italic font).</li>
+</ul>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="TCommentParamPassDirection"></a><code><b>TCommentParamPassDirection</b> = (...);</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Describes parameter passing direction for \param or \arg command.</p>
+<h6 class="description_section">Values</h6>
+<ul>
+<li>
+Input = CXCommentParamPassDirection_In: The parameter is an input parameter.</li>
+<li>
+Ouput = CXCommentParamPassDirection_Out: The parameter is an output parameter.</li>
+<li>
+InOut = CXCommentParamPassDirection_InOut: The parameter is an input and output parameter.</li>
+</ul>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="PSourceLocation"></a><code><b>PSourceLocation</b> = &circ;<a  href="Neslib.Clang.TSourceLocation.html">TSourceLocation</a>;</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="TCursorVisitor"></a><code><b>TCursorVisitor</b> = reference to function(const ACursor, AParent: <a  href="Neslib.Clang.TCursor.html">TCursor</a>): <a  href="Neslib.Clang.html#TChildVisitResult">TChildVisitResult</a>;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Visitor invoked for each cursor found by a traversal.
+
+<p>This visitor function will be invoked for each cursor found by TCursor.VisitChildren. Its first argument is the cursor being visited, its second argument is the parent visitor for that cursor.
+
+<p>The visitor should return one of the <a class="normal" href="Neslib.Clang.html#TChildVisitResult">TChildVisitResult</a> values to direct TCursor.VisitChildren.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="TCursorVisitorMethod"></a><code><b>TCursorVisitorMethod</b> = function(const ACursor, AParent: <a  href="Neslib.Clang.TCursor.html">TCursor</a>): <a  href="Neslib.Clang.html#TChildVisitResult">TChildVisitResult</a> of object;</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="TCursorAndRangeVisitor"></a><code><b>TCursorAndRangeVisitor</b> = reference to function(const ACursor: <a  href="Neslib.Clang.TCursor.html">TCursor</a>;
+    const ARange: <a  href="Neslib.Clang.TSourceRange.html">TSourceRange</a>): <a  href="Neslib.Clang.html#TVisitResult">TVisitResult</a>;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Visitor that receives a cursor and source range</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="TCursorAndRangeVisitorMethod"></a><code><b>TCursorAndRangeVisitorMethod</b> = function(const ACursor: <a  href="Neslib.Clang.TCursor.html">TCursor</a>; const ARange: <a  href="Neslib.Clang.TSourceRange.html">TSourceRange</a>): <a  href="Neslib.Clang.html#TVisitResult">TVisitResult</a> of object;</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="TFieldVisitor"></a><code><b>TFieldVisitor</b> = reference to function(const ACursor: <a  href="Neslib.Clang.TCursor.html">TCursor</a>): <a  href="Neslib.Clang.html#TVisitorResult">TVisitorResult</a>;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Visitor invoked for each field found by a traversal.
+
+<p>This visitor will be invoked for each field found by TType.VisitFields. Its argument is the cursor being visited.
+
+<p>The visitor should return one of the <a class="normal" href="Neslib.Clang.html#TVisitorResult">TVisitorResult</a> values to direct TType.VisitFields.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="TFieldVisitorMethod"></a><code><b>TFieldVisitorMethod</b> = function(const ACursor: <a  href="Neslib.Clang.TCursor.html">TCursor</a>): <a  href="Neslib.Clang.html#TVisitorResult">TVisitorResult</a> of object;</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="TInclusionVisitor"></a><code><b>TInclusionVisitor</b> = reference to procedure(const AIncludedFile: <a  href="Neslib.Clang.TFile.html">TFile</a>;
+    const AInclusionStack: <a  href="Neslib.Clang.html#PSourceLocation">PSourceLocation</a>; const AInclusionStackCount: Integer);</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Visitor invoked for each file in a translation unit (used with <a class="normal" href="Neslib.Clang.ITranslationUnit.html#GetInclusions">ITranslationUnit.GetInclusions</a>).
+
+<p>This visitor (anonymous) method will be invoked by <a class="normal" href="Neslib.Clang.ITranslationUnit.html#GetInclusions">ITranslationUnit.GetInclusions</a> for each file included (either at the top-level or by #include directives) within a translation unit. The first argument is the file being included, and the second and third arguments provide the inclusion stack. The array is sorted in order of immediate inclusion. For example, the first element refers to the location that included 'included_file'.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="TInclusionVisitorMethod"></a><code><b>TInclusionVisitorMethod</b> = procedure(const AIncludedFile: <a  href="Neslib.Clang.TFile.html">TFile</a>; const AInclusionStack: <a  href="Neslib.Clang.html#PSourceLocation">PSourceLocation</a>; const AInclusionStackCount: Integer) of object;</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="TIdxClientFile"></a><code><b>TIdxClientFile</b> = Pointer;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+The client's data object that is associated with a <a class="normal" href="Neslib.Clang.TFile.html">TFile</a>.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="TIdxClientContainer"></a><code><b>TIdxClientContainer</b> = Pointer;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+The client's data object that is associated with a semantic container of entities.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="TIdxClientEntity"></a><code><b>TIdxClientEntity</b> = Pointer;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+The client's data object that is associated with a semantic entity.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="TIdxEntityKind"></a><code><b>TIdxEntityKind</b> = (...);</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;<h6 class="description_section">Values</h6>
+<ul>
+<li>
+Unexposed = CXIdxEntity_Unexposed: &nbsp;</li>
+<li>
+Typedef = CXIdxEntity_Typedef: &nbsp;</li>
+<li>
+Func = CXIdxEntity_Function: &nbsp;</li>
+<li>
+Variable = CXIdxEntity_Variable: &nbsp;</li>
+<li>
+Field = CXIdxEntity_Field: &nbsp;</li>
+<li>
+EnumConstant = CXIdxEntity_EnumConstant: &nbsp;</li>
+<li>
+ObjCClass = CXIdxEntity_ObjCClass: &nbsp;</li>
+<li>
+ObjCProtocol = CXIdxEntity_ObjCProtocol: &nbsp;</li>
+<li>
+ObjCCategory = CXIdxEntity_ObjCCategory: &nbsp;</li>
+<li>
+ObjCInstanceMethod = CXIdxEntity_ObjCInstanceMethod: &nbsp;</li>
+<li>
+ObjCClassMethod = CXIdxEntity_ObjCClassMethod: &nbsp;</li>
+<li>
+ObjCProperty = CXIdxEntity_ObjCProperty: &nbsp;</li>
+<li>
+ObjCIvar = CXIdxEntity_ObjCIvar: &nbsp;</li>
+<li>
+Enum = CXIdxEntity_Enum: &nbsp;</li>
+<li>
+Struct = CXIdxEntity_Struct: &nbsp;</li>
+<li>
+Union = CXIdxEntity_Union: &nbsp;</li>
+<li>
+CXXClass = CXIdxEntity_CXXClass: &nbsp;</li>
+<li>
+CXXNamespace = CXIdxEntity_CXXNamespace: &nbsp;</li>
+<li>
+CXXNamespaceAlias = CXIdxEntity_CXXNamespaceAlias: &nbsp;</li>
+<li>
+CXXStaticVariable = CXIdxEntity_CXXStaticVariable: &nbsp;</li>
+<li>
+CXXStaticMethod = CXIdxEntity_CXXStaticMethod: &nbsp;</li>
+<li>
+CXXInstanceMethod = CXIdxEntity_CXXInstanceMethod: &nbsp;</li>
+<li>
+CXXConstructor = CXIdxEntity_CXXConstructor: &nbsp;</li>
+<li>
+CXXDestructor = CXIdxEntity_CXXDestructor: &nbsp;</li>
+<li>
+CXXConversionFunction = CXIdxEntity_CXXConversionFunction: &nbsp;</li>
+<li>
+CXXTypeAlias = CXIdxEntity_CXXTypeAlias: &nbsp;</li>
+<li>
+CXXInterface = CXIdxEntity_CXXInterface: &nbsp;</li>
+</ul>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="TIdxEntityCxxTemplateKind"></a><code><b>TIdxEntityCxxTemplateKind</b> = (...);</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;<h6 class="description_section">Values</h6>
+<ul>
+<li>
+NonTemplate = CXIdxEntity_NonTemplate: &nbsp;</li>
+<li>
+Template = CXIdxEntity_Template: &nbsp;</li>
+<li>
+TemplatePartialSpecialization = CXIdxEntity_TemplatePartialSpecialization: &nbsp;</li>
+<li>
+TemplateSpecialization = CXIdxEntity_TemplateSpecialization: &nbsp;</li>
+</ul>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="TIdxEntityLanguage"></a><code><b>TIdxEntityLanguage</b> = (...);</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;<h6 class="description_section">Values</h6>
+<ul>
+<li>
+None = CXIdxEntityLang_None: &nbsp;</li>
+<li>
+C = CXIdxEntityLang_C: &nbsp;</li>
+<li>
+ObjC = CXIdxEntityLang_ObjC: &nbsp;</li>
+<li>
+CXX = CXIdxEntityLang_CXX: &nbsp;</li>
+<li>
+Swift = CXIdxEntityLang_Swift: &nbsp;</li>
+</ul>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="TIdxAttrKind"></a><code><b>TIdxAttrKind</b> = (...);</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;<h6 class="description_section">Values</h6>
+<ul>
+<li>
+Unexposed = CXIdxAttr_Unexposed: &nbsp;</li>
+<li>
+IBAction = CXIdxAttr_IBAction: &nbsp;</li>
+<li>
+IBOutlet = CXIdxAttr_IBOutlet: &nbsp;</li>
+<li>
+IBOutletCollection = CXIdxAttr_IBOutletCollection: &nbsp;</li>
+</ul>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="TIdxObjCContainerKind"></a><code><b>TIdxObjCContainerKind</b> = (...);</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;<h6 class="description_section">Values</h6>
+<ul>
+<li>
+ForwardRef = CXIdxObjCContainer_ForwardRef: &nbsp;</li>
+<li>
+Interf = CXIdxObjCContainer_Interface: &nbsp;</li>
+<li>
+Impl = CXIdxObjCContainer_Implementation: &nbsp;</li>
+</ul>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="TIdxEntityRefKind"></a><code><b>TIdxEntityRefKind</b> = (...);</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Data for <a class="normal" href="Neslib.Clang.IIndexerListener.html#IndexEntityReference">IIndexerListener.IndexEntityReference</a>.</p>
+<h6 class="description_section">Values</h6>
+<ul>
+<li>
+Direct = CXIdxEntityRef_Direct: The entity is referenced directly in user's code.</li>
+<li>
+Implicit = CXIdxEntityRef_Implicit: An implicit reference, e.g. a reference of an Objective-C method via the dot syntax.</li>
+</ul>
+</td></tr>
+</table>
+<h3 class="detail">Constants</h3>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="TYPE_LAYOUT_ERROR_INVALID"></a><code><b>TYPE_LAYOUT_ERROR_INVALID</b> =  CXTypeLayoutError_Invalid;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Type is of kind TTypeKind.Invalid.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="TYPE_LAYOUT_ERROR_INCOMPLETE"></a><code><b>TYPE_LAYOUT_ERROR_INCOMPLETE</b> = CXTypeLayoutError_Incomplete;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+The type is an incomplete Type</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="TYPE_LAYOUT_ERROR_DEPENDENT"></a><code><b>TYPE_LAYOUT_ERROR_DEPENDENT</b> = CXTypeLayoutError_Dependent;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+The type is a dependent Type.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="TYPE_LAYOUT_ERROR_NOT_CONSTANT_SIZE"></a><code><b>TYPE_LAYOUT_ERROR_NOT_CONSTANT_SIZE</b> = CXTypeLayoutError_NotConstantSize;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+The type is not a constant size type.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="TYPE_LAYOUT_ERROR_INVALID_FIELDNAME"></a><code><b>TYPE_LAYOUT_ERROR_INVALID_FIELDNAME</b> = CXTypeLayoutError_InvalidFieldName;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+The Field name is not valid for this record.</p>
+</td></tr>
+</table>
+<div style="height:1000px"></div><hr noshade size="1"><span class="appinfo"><em>Generated by <a  href="https://github.com/neslib/PasDocEx">PasDocEx</a>, based on <a  href="http://pasdoc.sourceforge.net/">PasDoc 0.14.0</a>. </em>
+</span>
+</td></tr></table></body></html>

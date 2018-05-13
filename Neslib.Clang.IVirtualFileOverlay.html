@@ -1,0 +1,112 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/1999/REC-html401-19991224/loose.dtd">
+<html>
+<head>
+<title>Neslib.Clang: Neslib.Clang: Interface IVirtualFileOverlay</title>
+<meta name="generator" content="PasDoc 0.14.0">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<link rel="StyleSheet" type="text/css" href="pasdoc.css">
+</head>
+<body>
+<table class="container"><tr><td class="navigation">
+<h2>Neslib.Clang</h2><p><a href="introduction.html" class="navigation">Neslib.Clang</a></p><p><a href="AllUnits.html" class="navigation">Units</a></p><p><a href="ClassHierarchy.html" class="navigation">Class Hierarchy</a></p><p><a href="AllClasses.html" class="navigation">Classes, Interfaces, Objects and Records</a></p><p><a href="AllTypes.html" class="navigation">Types</a></p><p><a href="AllVariables.html" class="navigation">Variables</a></p><p><a href="AllConstants.html" class="navigation">Constants</a></p><p><a href="AllFunctions.html" class="navigation">Functions and Procedures</a></p><p><a href="AllIdentifiers.html" class="navigation">Identifiers</a></p><p><a href="conclusion.html" class="navigation">License</a></p></td><td class="content">
+<a name="IVirtualFileOverlay"></a><h1 class="cio">Interface IVirtualFileOverlay</h1>
+<table class="sections wide_list">
+<tr>
+<td><a class="section" href="#PasDoc-Description">Description</a></td><td><a class="section" href="#PasDoc-Hierarchy">Hierarchy</a></td><td>Fields</td><td><a class="section" href="#PasDoc-Methods">Methods</a></td><td><a class="section" href="#PasDoc-Properties">Properties</a></td></tr></table>
+<a name="PasDoc-Description"></a><h2 class="unit">Unit</h2>
+<p class="unitlink">
+<a  href="Neslib.Clang.html">Neslib.Clang</a></p>
+<h2 class="declaration">Declaration</h2>
+<p class="declaration">
+<code>type IVirtualFileOverlay = interface(IInterface)</code></p>
+<h2 class="description">Description</h2>
+<p>
+Object encapsulating information about overlaying virtual file/directories over the real file system.</p>
+<h6 class="description_section">Attributes</h6>
+<dl class="attributes">
+  <dt>GUID['{9FE70505-90FC-475F-A436-386D68399A5D}']</dt>
+  <dd></dd>
+</dl>
+<a name="PasDoc-Hierarchy"></a><h2 class="hierarchy">Hierarchy</h2>
+<ul class="hierarchy"><li class="ancestor">IInterface</li>
+<li class="thisitem">IVirtualFileOverlay</li></ul><h2 class="overview">Overview</h2>
+<a name="PasDoc-Methods"></a><h3 class="summary">Methods</h3>
+<table class="summary wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a  href="Neslib.Clang.IVirtualFileOverlay.html#GetHandle">GetHandle</a></b>: TCXVirtualFileOverlay;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a  href="Neslib.Clang.IVirtualFileOverlay.html#AddFileMapping">AddFileMapping</a></b>(const AVirtualPath, ARealPath: String): <a  href="Neslib.Clang.html#TError">TError</a>;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a  href="Neslib.Clang.IVirtualFileOverlay.html#SetCaseSensitivity">SetCaseSensitivity</a></b>(const ACaseSensitive: Boolean): <a  href="Neslib.Clang.html#TError">TError</a>;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a  href="Neslib.Clang.IVirtualFileOverlay.html#WriteToBuffer">WriteToBuffer</a></b>(out ABuffer: TBytes): <a  href="Neslib.Clang.html#TError">TError</a>;</code></td>
+</tr>
+</table>
+<a name="PasDoc-Properties"></a><h3 class="summary">Properties</h3>
+<table class="summary wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.IVirtualFileOverlay.html#Handle">Handle</a></b>: TCXVirtualFileOverlay read <a  href="Neslib.Clang.IVirtualFileOverlay.html#GetHandle">GetHandle</a>;</code></td>
+</tr>
+</table>
+<h2 class="description">Description</h2>
+<h3 class="detail">Methods</h3>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="GetHandle"></a><code>function <b>GetHandle</b>: TCXVirtualFileOverlay;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="AddFileMapping"></a><code>function <b>AddFileMapping</b>(const AVirtualPath, ARealPath: String): <a  href="Neslib.Clang.html#TError">TError</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Map an absolute virtual file path to an absolute real one. The virtual path must be canonicalized (not contain &quot;.&quot;/&quot;..&quot;).</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="SetCaseSensitivity"></a><code>function <b>SetCaseSensitivity</b>(const ACaseSensitive: Boolean): <a  href="Neslib.Clang.html#TError">TError</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Set the case sensitivity. The virtual file overlay object is case-sensitive by default, but this option can be used to override the default.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="WriteToBuffer"></a><code>function <b>WriteToBuffer</b>(out ABuffer: TBytes): <a  href="Neslib.Clang.html#TError">TError</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Write out the virtual file overlay object to a byte buffer.</p>
+</td></tr>
+</table>
+<h3 class="detail">Properties</h3>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="Handle"></a><code>property <b>Handle</b>: TCXVirtualFileOverlay read <a  href="Neslib.Clang.IVirtualFileOverlay.html#GetHandle">GetHandle</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Internal <code>handle</code> to C API</p>
+</td></tr>
+</table>
+<div style="height:1000px"></div><hr noshade size="1"><span class="appinfo"><em>Generated by <a  href="https://github.com/neslib/PasDocEx">PasDocEx</a>, based on <a  href="http://pasdoc.sourceforge.net/">PasDoc 0.14.0</a>. </em>
+</span>
+</td></tr></table></body></html>

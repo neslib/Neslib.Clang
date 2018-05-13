@@ -1,0 +1,1489 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/1999/REC-html401-19991224/loose.dtd">
+<html>
+<head>
+<title>Neslib.Clang: Neslib.Clang: record TCursor</title>
+<meta name="generator" content="PasDoc 0.14.0">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<link rel="StyleSheet" type="text/css" href="pasdoc.css">
+</head>
+<body>
+<table class="container"><tr><td class="navigation">
+<h2>Neslib.Clang</h2><p><a href="introduction.html" class="navigation">Neslib.Clang</a></p><p><a href="AllUnits.html" class="navigation">Units</a></p><p><a href="ClassHierarchy.html" class="navigation">Class Hierarchy</a></p><p><a href="AllClasses.html" class="navigation">Classes, Interfaces, Objects and Records</a></p><p><a href="AllTypes.html" class="navigation">Types</a></p><p><a href="AllVariables.html" class="navigation">Variables</a></p><p><a href="AllConstants.html" class="navigation">Constants</a></p><p><a href="AllFunctions.html" class="navigation">Functions and Procedures</a></p><p><a href="AllIdentifiers.html" class="navigation">Identifiers</a></p><p><a href="conclusion.html" class="navigation">License</a></p></td><td class="content">
+<a name="TCursor"></a><h1 class="cio">record TCursor</h1>
+<table class="sections wide_list">
+<tr>
+<td><a class="section" href="#PasDoc-Description">Description</a></td><td>Hierarchy</td><td>Fields</td><td><a class="section" href="#PasDoc-Methods">Methods</a></td><td><a class="section" href="#PasDoc-Properties">Properties</a></td></tr></table>
+<a name="PasDoc-Description"></a><h2 class="unit">Unit</h2>
+<p class="unitlink">
+<a  href="Neslib.Clang.html">Neslib.Clang</a></p>
+<h2 class="declaration">Declaration</h2>
+<p class="declaration">
+<code>type TCursor = record</code></p>
+<h2 class="description">Description</h2>
+<p>
+A cursor representing some element in the abstract syntax tree for a translation unit.
+
+<p>The cursor abstraction unifies the different kinds of entities in a program&ndash;declaration, statements, expressions, references to declarations, etc.&ndash;under a single &quot;cursor&quot; abstraction with a common set of operations. Common operation for a cursor include: getting the physical <a class="normal" href="Neslib.Clang.TCursor.html#Location">location</a> in a source file where the cursor points, getting the name associated with a cursor, and retrieving cursors for any child nodes of a particular cursor.
+
+<p>Cursors can be produced in two specific ways. <a class="normal" href="Neslib.Clang.ITranslationUnit.html#Cursor">ITranslationUnit.Cursor</a> produces a cursor for a translation unit, from which one can use VisitChildren to explore the rest of the translation unit.
+
+<p><a class="normal" href="Neslib.Clang.ITranslationUnit.html#GetCursor">ITranslationUnit.GetCursor</a> maps from a physical source <a class="normal" href="Neslib.Clang.TCursor.html#Location">location</a> to the entity that resides at that <a class="normal" href="Neslib.Clang.TCursor.html#Location">location</a>, allowing one to map from the source code into the AST.</p>
+<h2 class="overview">Overview</h2>
+<a name="PasDoc-Methods"></a><h3 class="summary">Methods</h3>
+<table class="summary wide_list">
+<tr class="list">
+<td class="itemcode"><code>class operator <b><a  href="Neslib.Clang.TCursor.html#Equal">Equal</a></b>(const ALeft, ARight: <a  href="Neslib.Clang.TCursor.html">TCursor</a>): Boolean; inline; static;</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>class operator <b><a  href="Neslib.Clang.TCursor.html#NotEqual">NotEqual</a></b>(const ALeft, ARight: <a  href="Neslib.Clang.TCursor.html">TCursor</a>): Boolean; inline; static;</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>function <b><a  href="Neslib.Clang.TCursor.html#Hash">Hash</a></b>: Cardinal; inline;</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>function <b><a  href="Neslib.Clang.TCursor.html#GetPlatformAvailability">GetPlatformAvailability</a></b>: <a  href="Neslib.Clang.TPlatformAvailability.html">TPlatformAvailability</a>;</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>function <b><a  href="Neslib.Clang.TCursor.html#GetOverriddenCursors">GetOverriddenCursors</a></b>: TArray&lt;<a  href="Neslib.Clang.TCursor.html">TCursor</a>&gt;;</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>function <b><a  href="Neslib.Clang.TCursor.html#GetSpellingNameRange">GetSpellingNameRange</a></b>(const APieceIndex: Integer): <a  href="Neslib.Clang.TSourceRange.html">TSourceRange</a>;</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>function <b><a  href="Neslib.Clang.TCursor.html#IsExternalSymbol">IsExternalSymbol</a></b>(out ALanguage: String; out ADefinedIn: String; out AIsGenerated: Boolean): Boolean;</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>function <b><a  href="Neslib.Clang.TCursor.html#GetReferenceNameRange">GetReferenceNameRange</a></b>(const AFlags: <a  href="Neslib.Clang.html#TNameRefFlags">TNameRefFlags</a>; const APieceIndex: Integer): <a  href="Neslib.Clang.TSourceRange.html">TSourceRange</a>; inline;</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>function <b><a  href="Neslib.Clang.TCursor.html#Evaluate">Evaluate</a></b>: <a  href="Neslib.Clang.IEvalResult.html">IEvalResult</a>;</code></td>
+</tr>
+</table>
+<a name="PasDoc-Properties"></a><h3 class="summary">Properties</h3>
+<table class="summary wide_list">
+<tr class="list">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TCursor.html#Null">Null</a></b>: <a  href="Neslib.Clang.TCursor.html">TCursor</a> read GetNull;</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TCursor.html#Kind">Kind</a></b>: <a  href="Neslib.Clang.html#TCursorKind">TCursorKind</a> read GetKind;</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TCursor.html#IsNull">IsNull</a></b>: Boolean read GetIsNull;</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TCursor.html#IsDeclaration">IsDeclaration</a></b>: Boolean read GetIsDeclaration;</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TCursor.html#IsReference">IsReference</a></b>: Boolean read GetIsReference;</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TCursor.html#IsExpression">IsExpression</a></b>: Boolean read GetIsExpression;</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TCursor.html#IsStatement">IsStatement</a></b>: Boolean read GetIsStatement;</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TCursor.html#IsAttribute">IsAttribute</a></b>: Boolean read GetIsAttribute;</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TCursor.html#HasAttributes">HasAttributes</a></b>: Boolean read GetHasAttributes;</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TCursor.html#IsInvalid">IsInvalid</a></b>: Boolean read GetIsInvalid;</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TCursor.html#IsTranslationUnit">IsTranslationUnit</a></b>: Boolean read GetIsTranslationUnit;</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TCursor.html#IsPreprocessing">IsPreprocessing</a></b>: Boolean read GetIsPreprocessing;</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TCursor.html#IsUnexposed">IsUnexposed</a></b>: Boolean read GetIsUnexposed;</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TCursor.html#Linkage">Linkage</a></b>: <a  href="Neslib.Clang.html#TLinkageKind">TLinkageKind</a> read GetLinkage;</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TCursor.html#Visibility">Visibility</a></b>: <a  href="Neslib.Clang.html#TVisibility">TVisibility</a> read GetVisibility;</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TCursor.html#Availability">Availability</a></b>: <a  href="Neslib.Clang.html#TAvailabilityKind">TAvailabilityKind</a> read GetAvailability;</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TCursor.html#Language">Language</a></b>: <a  href="Neslib.Clang.html#TLanguageKind">TLanguageKind</a> read GetLanguage;</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TCursor.html#TlsKind">TlsKind</a></b>: <a  href="Neslib.Clang.html#TTlsKind">TTlsKind</a> read GetTlsKind;</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TCursor.html#SemanticParent">SemanticParent</a></b>: <a  href="Neslib.Clang.TCursor.html">TCursor</a> read GetSemanticParent;</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TCursor.html#LexicalParent">LexicalParent</a></b>: <a  href="Neslib.Clang.TCursor.html">TCursor</a> read GetLexicalParent;</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TCursor.html#IncludedFile">IncludedFile</a></b>: <a  href="Neslib.Clang.TFile.html">TFile</a> read GetIncludedFile;</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TCursor.html#Location">Location</a></b>: <a  href="Neslib.Clang.TSourceLocation.html">TSourceLocation</a> read GetLocation;</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TCursor.html#Extent">Extent</a></b>: <a  href="Neslib.Clang.TSourceRange.html">TSourceRange</a> read GetExtent;</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TCursor.html#CursorType">CursorType</a></b>: <a  href="Neslib.Clang.TType.html">TType</a> read GetCursorType;</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TCursor.html#TypedefDeclUnderlyingType">TypedefDeclUnderlyingType</a></b>: <a  href="Neslib.Clang.TType.html">TType</a> read GetTypedefDeclUnderlyingType;</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TCursor.html#EnumDeclIntegerType">EnumDeclIntegerType</a></b>: <a  href="Neslib.Clang.TType.html">TType</a> read GetEnumDeclIntegerType;</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TCursor.html#EnumConstantDeclValue">EnumConstantDeclValue</a></b>: Int64 read GetEnumConstantDeclValue;</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TCursor.html#EnumConstantDeclUnsignedValue">EnumConstantDeclUnsignedValue</a></b>: UInt64 read GetEnumConstantDeclUnsignedValue;</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TCursor.html#FieldDeclBitWidth">FieldDeclBitWidth</a></b>: Integer read GetFieldDeclBitWidth;</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TCursor.html#ArgumentCount">ArgumentCount</a></b>: Integer read GetArgumentCount;</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TCursor.html#Arguments">Arguments</a></b>[constAIndex:Integer]: <a  href="Neslib.Clang.TCursor.html">TCursor</a> read GetArgument;</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TCursor.html#TemplateArgumentCount">TemplateArgumentCount</a></b>: Integer read GetTemplateArgumentCount;</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TCursor.html#TemplateArgumentKind">TemplateArgumentKind</a></b>[constAIndex:Integer]: <a  href="Neslib.Clang.html#TTemplateArgumentKind">TTemplateArgumentKind</a> read GetTemplateArgumentKind;</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TCursor.html#TemplateArgumentType">TemplateArgumentType</a></b>[constAIndex:Integer]: <a  href="Neslib.Clang.TType.html">TType</a> read GetTemplateArgumentType;</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TCursor.html#TemplateArgumentValue">TemplateArgumentValue</a></b>[constAIndex:Integer]: Int64 read GetTemplateArgumentValue;</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TCursor.html#TemplateArgumentUnsignedValue">TemplateArgumentUnsignedValue</a></b>[constAIndex:Integer]: UInt64 read GetTemplateArgumentUnsignedValue;</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TCursor.html#IsMacroFunctionLike">IsMacroFunctionLike</a></b>: Boolean read GetIsMacroFunctionLike;</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TCursor.html#IsMacroBuiltin">IsMacroBuiltin</a></b>: Boolean read GetIsMacroBuiltin;</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TCursor.html#IsFunctionInlined">IsFunctionInlined</a></b>: Boolean read GetIsFunctionInlined;</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TCursor.html#DeclObjCTypeEncoding">DeclObjCTypeEncoding</a></b>: String read GetDeclObjCTypeEncoding;</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TCursor.html#ResultType">ResultType</a></b>: <a  href="Neslib.Clang.TType.html">TType</a> read GetResultType;</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TCursor.html#ExceptionSpecificationType">ExceptionSpecificationType</a></b>: Integer read GetExceptionSpecificationType;</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TCursor.html#OffsetOfField">OffsetOfField</a></b>: Int64 read GetOffsetOfField;</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TCursor.html#IsAnonymous">IsAnonymous</a></b>: Boolean read GetIsAnonymous;</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TCursor.html#IsBitField">IsBitField</a></b>: Boolean read GetIsBitField;</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TCursor.html#IsVirtualBase">IsVirtualBase</a></b>: Boolean read GetIsVirtualBase;</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TCursor.html#CxxAccessSpecifier">CxxAccessSpecifier</a></b>: <a  href="Neslib.Clang.html#TCxxAccessSpecifier">TCxxAccessSpecifier</a> read GetCxxAccessSpecifier;</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TCursor.html#StorageClass">StorageClass</a></b>: <a  href="Neslib.Clang.html#TStorageClass">TStorageClass</a> read GetStorageClass;</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TCursor.html#OverloadedDeclCount">OverloadedDeclCount</a></b>: Integer read GetOverloadedDeclCount;</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TCursor.html#OverloadedDecls">OverloadedDecls</a></b>[constAIndex:Integer]: <a  href="Neslib.Clang.TCursor.html">TCursor</a> read GetOverloadedDecl;</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TCursor.html#IBOutletCollectionType">IBOutletCollectionType</a></b>: <a  href="Neslib.Clang.TType.html">TType</a> read GetIBOutletCollectionType;</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TCursor.html#Usr">Usr</a></b>: <a  href="Neslib.Clang.TUnifiedSymbolResolution.html">TUnifiedSymbolResolution</a> read GetUsr;</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TCursor.html#Spelling">Spelling</a></b>: String read GetSpelling;</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TCursor.html#DisplayName">DisplayName</a></b>: String read GetDisplayName;</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TCursor.html#Referenced">Referenced</a></b>: <a  href="Neslib.Clang.TCursor.html">TCursor</a> read GetReferenced;</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TCursor.html#Definition">Definition</a></b>: <a  href="Neslib.Clang.TCursor.html">TCursor</a> read GetDefinition;</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TCursor.html#IsDefinition">IsDefinition</a></b>: Boolean read GetIsDefinition;</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TCursor.html#Canonical">Canonical</a></b>: <a  href="Neslib.Clang.TCursor.html">TCursor</a> read GetCanonical;</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TCursor.html#ObjCSelectorIndex">ObjCSelectorIndex</a></b>: Integer read GetObjCSelectorIndex;</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TCursor.html#IsDynamicCall">IsDynamicCall</a></b>: Boolean read GetIsDynamicCall;</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TCursor.html#ReceiverType">ReceiverType</a></b>: <a  href="Neslib.Clang.TType.html">TType</a> read GetReceiverType;</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TCursor.html#ObjCPropertyAttributes">ObjCPropertyAttributes</a></b>: <a  href="Neslib.Clang.html#TObjCPropertyAttrKinds">TObjCPropertyAttrKinds</a> read GetObjCPropertyAttributes;</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TCursor.html#ObjCDeclQualifiers">ObjCDeclQualifiers</a></b>: <a  href="Neslib.Clang.html#TObjCDeclQualifierKinds">TObjCDeclQualifierKinds</a> read GetObjCDeclQualifiers;</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TCursor.html#IsObjCOptional">IsObjCOptional</a></b>: Boolean read GetIsObjCOptional;</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TCursor.html#IsVariadic">IsVariadic</a></b>: Boolean read GetIsVariadic;</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TCursor.html#CommentRange">CommentRange</a></b>: <a  href="Neslib.Clang.TSourceRange.html">TSourceRange</a> read GetCommentRange;</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TCursor.html#RawComment">RawComment</a></b>: String read GetRawComment;</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TCursor.html#BriefComment">BriefComment</a></b>: String read GetBriefComment;</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TCursor.html#Mangling">Mangling</a></b>: String read GetMangling;</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TCursor.html#CxxManglings">CxxManglings</a></b>: TArray&lt;String&gt; read GetCxxManglings;</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TCursor.html#ObjCManglings">ObjCManglings</a></b>: TArray&lt;String&gt; read GetObjCManglings;</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TCursor.html#Module">Module</a></b>: <a  href="Neslib.Clang.TModule.html">TModule</a> read GetModule;</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TCursor.html#CxxConstructorIsConvertingConstructor">CxxConstructorIsConvertingConstructor</a></b>: Boolean read GetCxxConstructorIsConvertingConstructor;</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TCursor.html#CxxConstructorIsCopyConstructor">CxxConstructorIsCopyConstructor</a></b>: Boolean read GetCxxConstructorIsCopyConstructor;</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TCursor.html#CxxConstructorIsDefaultConstructor">CxxConstructorIsDefaultConstructor</a></b>: Boolean read GetCxxConstructorIsDefaultConstructor;</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TCursor.html#CxxConstructorIsMoveConstructor">CxxConstructorIsMoveConstructor</a></b>: Boolean read GetCxxConstructorIsMoveConstructor;</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TCursor.html#CxxFieldIsMutable">CxxFieldIsMutable</a></b>: Boolean read GetCxxFieldIsMutable;</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TCursor.html#CxxMethodIsDefaulted">CxxMethodIsDefaulted</a></b>: Boolean read GetCxxMethodIsDefaulted;</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TCursor.html#CxxMethodIsPureVirtual">CxxMethodIsPureVirtual</a></b>: Boolean read GetCxxMethodIsPureVirtual;</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TCursor.html#CxxMethodIsStatic">CxxMethodIsStatic</a></b>: Boolean read GetCxxMethodIsStatic;</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TCursor.html#CxxMethodIsVirtual">CxxMethodIsVirtual</a></b>: Boolean read GetCxxMethodIsVirtual;</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TCursor.html#CxxRecordIsAbstract">CxxRecordIsAbstract</a></b>: Boolean read GetCxxRecordIsAbstract;</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TCursor.html#EnumDeclIsScoped">EnumDeclIsScoped</a></b>: Boolean read GetEnumDeclIsScoped;</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TCursor.html#CxxMethodIsConst">CxxMethodIsConst</a></b>: Boolean read GetCxxMethodIsConst;</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TCursor.html#TemplateCursorKind">TemplateCursorKind</a></b>: <a  href="Neslib.Clang.html#TCursorKind">TCursorKind</a> read GetTemplateCursorKind;</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TCursor.html#SpecializedCursorTemplate">SpecializedCursorTemplate</a></b>: <a  href="Neslib.Clang.TCursor.html">TCursor</a> read GetSpecializedCursorTemplate;</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TCursor.html#CompletionString">CompletionString</a></b>: <a  href="Neslib.Clang.TCompletionString.html">TCompletionString</a> read GetCompletionString;</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TCursor.html#ParsedComment">ParsedComment</a></b>: <a  href="Neslib.Clang.TComment.html">TComment</a> read GetParsedComment;</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TCursor.html#Handle">Handle</a></b>: TCXCursor read FHandle;</code></td>
+</tr>
+</table>
+<h2 class="description">Description</h2>
+<h3 class="detail">Methods</h3>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="Equal"></a><code>class operator <b>Equal</b>(const ALeft, ARight: <a  href="Neslib.Clang.TCursor.html">TCursor</a>): Boolean; inline; static;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Determine whether two cursors are equivalent.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="NotEqual"></a><code>class operator <b>NotEqual</b>(const ALeft, ARight: <a  href="Neslib.Clang.TCursor.html">TCursor</a>): Boolean; inline; static;</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="Hash"></a><code>function <b>Hash</b>: Cardinal; inline;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Compute a <code>hash</code> value for the given cursor.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="GetPlatformAvailability"></a><code>function <b>GetPlatformAvailability</b>: <a  href="Neslib.Clang.TPlatformAvailability.html">TPlatformAvailability</a>;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Determine the <a class="normal" href="Neslib.Clang.TCursor.html#Availability">availability</a> of the entity that this cursor refers to on any platforms for which <a class="normal" href="Neslib.Clang.TCursor.html#Availability">availability</a> information is known.
+
+<p></p>
+<h6 class="description_section">Returns</h6>
+<p class="return">Global and platform-specific availibility</p></td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="GetOverriddenCursors"></a><code>function <b>GetOverriddenCursors</b>: TArray&lt;<a  href="Neslib.Clang.TCursor.html">TCursor</a>&gt;;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Determine the set of methods that are overridden by the given method.
+
+<p> In both Objective-C and C++, a method (aka virtual member function, in C++) can override a virtual method in a base class. For Objective-C, a method is said to override any method in the class's base class, its protocols, or its categories' protocols, that has the same selector and is of the same <a class="normal" href="Neslib.Clang.TCursor.html#Kind">kind</a> (class or instance). If no such method exists, the search continues to the class's superclass, its protocols, and its categories, and so on. A method from an Objective-C implementation is considered to override the same methods as its corresponding method in the interface.
+
+<p>For C++, a virtual member function overrides any virtual member function with the same signature that occurs in its base classes. With multiple inheritance, a virtual member function can override several virtual member functions coming from different base classes.
+
+<p>In all cases, this function determines the immediate overridden method, rather than all of the overridden methods. For example, if a method is originally declared in a class A, then overridden in B (which in inherits from A) and also in C (which inherited from B), then the only overridden method returned from this function when invoked on C's method will be B's method. The client may then invoke this function again, given the previously-found overridden methods, to map out the complete method-override set.</p>
+<h6 class="description_section">Returns</h6>
+<p class="return">List of cursors, representing the set of overridden methods, or nil if there are no overridden methods.</p></td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="GetSpellingNameRange"></a><code>function <b>GetSpellingNameRange</b>(const APieceIndex: Integer): <a  href="Neslib.Clang.TSourceRange.html">TSourceRange</a>;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Retrieve a range for a piece that forms the cursors <a class="normal" href="Neslib.Clang.TCursor.html#Spelling">spelling</a> name.
+
+<p>
+
+<p> Most of the times there is only one range for the complete <a class="normal" href="Neslib.Clang.TCursor.html#Spelling">spelling</a> but for Objective-C methods and Objective-C message expressions, there are multiple pieces for each selector identifier.</p>
+<h6 class="description_section">Parameters</h6>
+<dl class="parameters">
+<dt>APieceIndex</dt>
+<dd>the index of the <a class="normal" href="Neslib.Clang.TCursor.html#Spelling">spelling</a> name piece.</dd>
+</dl>
+<h6 class="description_section">Returns</h6>
+<p class="return">The source range. If APieceIndex is greater than the actual number of pieces, it will return a NullL (invalid) range.</p></td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="IsExternalSymbol"></a><code>function <b>IsExternalSymbol</b>(out ALanguage: String; out ADefinedIn: String; out AIsGenerated: Boolean): Boolean;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Returns True if the cursor points to a symbol marked with external_source_symbol attribute.
+
+<p>  
+
+<p></p>
+<h6 class="description_section">Parameters</h6>
+<dl class="parameters">
+<dt>ALanguage</dt>
+<dd>if the attribute is present, will be set to the '<a class="normal" href="Neslib.Clang.TCursor.html#Language">language</a>' string from the attribute.</dd>
+<dt>ADefinedIn</dt>
+<dd>if the attribute is present, will be set to the 'definedIn' string from the attribute.</dd>
+<dt>AIsGenerated</dt>
+<dd>if the attribute is present, will be set to True if the 'generated_declaration' is set in the attribute.</dd>
+</dl>
+<h6 class="description_section">Returns</h6>
+<p class="return">True if the cursor points to a symbol marked with external_source_symbol attribute.</p></td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="GetReferenceNameRange"></a><code>function <b>GetReferenceNameRange</b>(const AFlags: <a  href="Neslib.Clang.html#TNameRefFlags">TNameRefFlags</a>; const APieceIndex: Integer): <a  href="Neslib.Clang.TSourceRange.html">TSourceRange</a>; inline;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Given a cursor that references something else, return the source range covering that reference.
+
+<p> 
+
+<p></p>
+<h6 class="description_section">Parameters</h6>
+<dl class="parameters">
+<dt>AFlags</dt>
+<dd>configuration flags.</dd>
+<dt>APieceIndex</dt>
+<dd>for contiguous names or when passing the flag WantSinglePiece, only one piece with index 0 is available. When the WantSinglePiece flag is not passed for a non-contiguous names, this index can be used to retrieve the individual pieces of the name.</dd>
+</dl>
+<h6 class="description_section">Returns</h6>
+<p class="return">The piece of the name pointed to by the given cursor. If there is no name, or if APieceIndex is out-of-range, a <a class="normal" href="Neslib.Clang.TCursor.html#Null">Null</a>-cursor will be returned.</p></td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="Evaluate"></a><code>function <b>Evaluate</b>: <a  href="Neslib.Clang.IEvalResult.html">IEvalResult</a>;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+If cursor is a statement declaration tries to <code>evaluate</code> the statement and if its variable, tries to <code>evaluate</code> its initializer, into its corresponding type.</p>
+</td></tr>
+</table>
+<h3 class="detail">Properties</h3>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="Null"></a><code>property <b>Null</b>: <a  href="Neslib.Clang.TCursor.html">TCursor</a> read GetNull;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+The <code>Null</code> cursor, which represents no entity.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="Kind"></a><code>property <b>Kind</b>: <a  href="Neslib.Clang.html#TCursorKind">TCursorKind</a> read GetKind;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+The <code>kind</code> of the cursor.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="IsNull"></a><code>property <b>IsNull</b>: Boolean read GetIsNull;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+True if this is a <a class="normal" href="Neslib.Clang.TCursor.html#Null">Null</a> cursor.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="IsDeclaration"></a><code>property <b>IsDeclaration</b>: Boolean read GetIsDeclaration;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Whether the cursor represents a declaration.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="IsReference"></a><code>property <b>IsReference</b>: Boolean read GetIsReference;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Whether the cursor represents a simple reference.
+
+<p>Note that other kinds of cursors (such as expressions) can also refer to other cursors. Use CursorReferenced to determine whether a particular cursor refers to another entity.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="IsExpression"></a><code>property <b>IsExpression</b>: Boolean read GetIsExpression;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Whether the cursor represents an expression.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="IsStatement"></a><code>property <b>IsStatement</b>: Boolean read GetIsStatement;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Whether the cursor represents a statement.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="IsAttribute"></a><code>property <b>IsAttribute</b>: Boolean read GetIsAttribute;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Whether the cursor represents an attribute.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="HasAttributes"></a><code>property <b>HasAttributes</b>: Boolean read GetHasAttributes;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Whether the cursor has any attributes.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="IsInvalid"></a><code>property <b>IsInvalid</b>: Boolean read GetIsInvalid;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Whether the cursor represents an invalid cursor.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="IsTranslationUnit"></a><code>property <b>IsTranslationUnit</b>: Boolean read GetIsTranslationUnit;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Whether the cursor represents a translation unit.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="IsPreprocessing"></a><code>property <b>IsPreprocessing</b>: Boolean read GetIsPreprocessing;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Whether the cursor represents a preprocessing element, such as a preprocessor directive or macro instantiation.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="IsUnexposed"></a><code>property <b>IsUnexposed</b>: Boolean read GetIsUnexposed;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Determine whether the cursor represents a currently unexposed piece of the AST (e.g., TCursorKind.UnexposedStmt).</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="Linkage"></a><code>property <b>Linkage</b>: <a  href="Neslib.Clang.html#TLinkageKind">TLinkageKind</a> read GetLinkage;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+The <code>linkage</code> of the entity referred to by the cursor.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="Visibility"></a><code>property <b>Visibility</b>: <a  href="Neslib.Clang.html#TVisibility">TVisibility</a> read GetVisibility;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+The <code>visibility</code> of the entity referred to by a cursor.
+
+<p>This returns the default <code>visibility</code> if not explicitly specified by a <code>visibility</code> attribute. The default <code>visibility</code> may be changed by commandline <a class="normal" href="Neslib.Clang.TCursor.html#Arguments">arguments</a>.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="Availability"></a><code>property <b>Availability</b>: <a  href="Neslib.Clang.html#TAvailabilityKind">TAvailabilityKind</a> read GetAvailability;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+The <code>availability</code> of the entity that this cursor refers to, taking the current target platform into account.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="Language"></a><code>property <b>Language</b>: <a  href="Neslib.Clang.html#TLanguageKind">TLanguageKind</a> read GetLanguage;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+The &quot;<code>language</code>&quot; of the entity referred to by the cursor.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="TlsKind"></a><code>property <b>TlsKind</b>: <a  href="Neslib.Clang.html#TTlsKind">TTlsKind</a> read GetTlsKind;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+The &quot;thread-local storage (TLS) <a class="normal" href="Neslib.Clang.TCursor.html#Kind">kind</a>&quot; of the declaration referred to by the cursor.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="SemanticParent"></a><code>property <b>SemanticParent</b>: <a  href="Neslib.Clang.TCursor.html">TCursor</a> read GetSemanticParent;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+The semantic parent of the given cursor.
+
+<p>The semantic parent of a cursor is the cursor that semantically contains the given cursor. For many declarations, the lexical and semantic parents are equivalent (the lexical parent is returned by <a class="normal" href="Neslib.Clang.TCursor.html#LexicalParent">LexicalParent</a>). They diverge when declarations or definitions are provided out-of-line. For example:
+
+<p></p>
+
+<pre class="preformatted">
+        class C {
+         void f();
+        };
+        void C::f() { }
+      </pre>
+
+<p>
+
+<p>In the out-of-line <a class="normal" href="Neslib.Clang.TCursor.html#Definition">definition</a> of C::f, the semantic parent is the class C, of which this function is a member. The lexical parent is the place where the declaration actually occurs in the source code; in this case, the <a class="normal" href="Neslib.Clang.TCursor.html#Definition">definition</a> occurs in the translation unit. In general, the lexical parent for a given entity can change without affecting the semantics of the program, and the lexical parent of different declarations of the same entity may be different. Changing the semantic parent of a declaration, on the other hand, can have a major impact on semantics, and redeclarations of a particular entity should all have the same semantic context.
+
+<p>In the example above, both declarations of C::f have C as their semantic context, while the lexical context of the first C::f is C and the lexical context of the second C::f is the translation unit.
+
+<p>For global declarations, the semantic parent is the translation unit.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="LexicalParent"></a><code>property <b>LexicalParent</b>: <a  href="Neslib.Clang.TCursor.html">TCursor</a> read GetLexicalParent;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+The lexical parent of the given cursor.
+
+<p>The lexical parent of a cursor is the cursor in which the given cursor was actually written. For many declarations, the lexical and semantic parents are equivalent (the semantic parent is returned by <a class="normal" href="Neslib.Clang.TCursor.html#SemanticParent">SemanticParent</a>). They diverge when declarations or definitions are provided out-of-line. For example:
+
+<p></p>
+
+<pre class="preformatted">
+        class C {
+         void f();
+        };
+
+        void C::f() { }
+      </pre>
+
+<p>
+
+<p>In the out-of-line <a class="normal" href="Neslib.Clang.TCursor.html#Definition">definition</a> of C::f, the semantic parent is the class C, of which this function is a member. The lexical parent is the place where the declaration actually occurs in the source code; in this case, the <a class="normal" href="Neslib.Clang.TCursor.html#Definition">definition</a> occurs in the translation unit. In general, the lexical parent for a given entity can change without affecting the semantics of the program, and the lexical parent of different declarations of the same entity may be different. Changing the semantic parent of a declaration, on the other hand, can have a major impact on semantics, and redeclarations of a particular entity should all have the same semantic context.
+
+<p>In the example above, both declarations of C::f have C as their semantic context, while the lexical context of the first C::f is C and the lexical context of the second C::f is the translation unit.
+
+<p>For declarations written in the global scope, the lexical parent is the translation unit.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="IncludedFile"></a><code>property <b>IncludedFile</b>: <a  href="Neslib.Clang.TFile.html">TFile</a> read GetIncludedFile;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+The file that is included by the given inclusion directive cursor.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="Location"></a><code>property <b>Location</b>: <a  href="Neslib.Clang.TSourceLocation.html">TSourceLocation</a> read GetLocation;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+The physical <code>location</code> of the source constructor <a class="normal" href="Neslib.Clang.TCursor.html#Referenced">referenced</a> by the cursor.
+
+<p>The <code>location</code> of a declaration is typically the <code>location</code> of the name of that declaration, where the name of that declaration would occur if it is unnamed, or some keyword that introduces that particular declaration. The <code>location</code> of a reference is where that reference occurs within the source code.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="Extent"></a><code>property <b>Extent</b>: <a  href="Neslib.Clang.TSourceRange.html">TSourceRange</a> read GetExtent;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+The physical <code>extent</code> of the source construct <a class="normal" href="Neslib.Clang.TCursor.html#Referenced">referenced</a> by the cursor.
+
+<p>The <code>extent</code> of a cursor starts with the file/line/column pointing at the first character within the source construct that the cursor refers to and ends with the last character within that source construct. For a declaration, the <code>extent</code> covers the declaration itself. For a reference, the <code>extent</code> covers the <a class="normal" href="Neslib.Clang.TCursor.html#Location">location</a> of the reference (e.g., where the <a class="normal" href="Neslib.Clang.TCursor.html#Referenced">referenced</a> entity was actually used).</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="CursorType"></a><code>property <b>CursorType</b>: <a  href="Neslib.Clang.TType.html">TType</a> read GetCursorType;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+The type of the Cursor (if any).</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="TypedefDeclUnderlyingType"></a><code>property <b>TypedefDeclUnderlyingType</b>: <a  href="Neslib.Clang.TType.html">TType</a> read GetTypedefDeclUnderlyingType;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+The underlying type of a typedef declaration.
+
+<p>If the cursor does not reference a typedef declaration, an invalid type is returned.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="EnumDeclIntegerType"></a><code>property <b>EnumDeclIntegerType</b>: <a  href="Neslib.Clang.TType.html">TType</a> read GetEnumDeclIntegerType;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+The integer type of an enum declaration.
+
+<p>If the cursor does not reference an enum declaration, an invalid type is returned.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="EnumConstantDeclValue"></a><code>property <b>EnumConstantDeclValue</b>: Int64 read GetEnumConstantDeclValue;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+The integer value of an enum constant declaration as a signed Int64.
+
+<p>If the cursor does not reference an enum constant declaration, Int64.MinValue is returned. Since this is also potentially a valid constant value, the <a class="normal" href="Neslib.Clang.TCursor.html#Kind">kind</a> of the cursor must be verified before calling this function.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="EnumConstantDeclUnsignedValue"></a><code>property <b>EnumConstantDeclUnsignedValue</b>: UInt64 read GetEnumConstantDeclUnsignedValue;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+The integer value of an enum constant declaration as an UInt64.
+
+<p>If the cursor does not reference an enum constant declaration, UInt64.MaxValue is returned. Since this is also potentially a valid constant value, the <a class="normal" href="Neslib.Clang.TCursor.html#Kind">kind</a> of the cursor must be verified before calling this function.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="FieldDeclBitWidth"></a><code>property <b>FieldDeclBitWidth</b>: Integer read GetFieldDeclBitWidth;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+The bit width of a bit field declaration as an integer. If a cursor that is not a bit field declaration is passed in, -1 is returned.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="ArgumentCount"></a><code>property <b>ArgumentCount</b>: Integer read GetArgumentCount;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+The number of non-variadic <a class="normal" href="Neslib.Clang.TCursor.html#Arguments">arguments</a> associated with the cursor.
+
+<p>The number of <a class="normal" href="Neslib.Clang.TCursor.html#Arguments">arguments</a> can be determined for calls as well as for declarations of functions or methods. For other cursors -1 is returned.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="Arguments"></a><code>property <b>Arguments</b>[constAIndex:Integer]: <a  href="Neslib.Clang.TCursor.html">TCursor</a> read GetArgument;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+The argument cursor of a function or method.
+
+<p>The argument cursor can be determined for calls as well as for declarations of functions or methods. For other cursors and for invalid indices, an invalid cursor is returned.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="TemplateArgumentCount"></a><code>property <b>TemplateArgumentCount</b>: Integer read GetTemplateArgumentCount;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+The number of template args of a function decl representing a template specialization.
+
+<p>If the argument cursor cannot be converted into a template function declaration, -1 is returned.
+
+<p>For example, for the following declaration and specialization:
+
+<p></p>
+
+<pre class="preformatted">
+        template &lt;typename T, int kInt, bool kBool&gt;
+        void foo() { ... }
+
+        template &lt;&gt;
+        void foo&lt;float, -7, true&gt;();
+      </pre>
+
+<p>
+
+<p>The value 3 would be returned from this property.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="TemplateArgumentKind"></a><code>property <b>TemplateArgumentKind</b>[constAIndex:Integer]: <a  href="Neslib.Clang.html#TTemplateArgumentKind">TTemplateArgumentKind</a> read GetTemplateArgumentKind;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+The <a class="normal" href="Neslib.Clang.TCursor.html#Kind">kind</a> of the I'th template argument of the cursor.
+
+<p>If the argument cursor does not represent a FunctionDecl, an invalid template argument <a class="normal" href="Neslib.Clang.TCursor.html#Kind">kind</a> is returned.
+
+<p>For example, for the following declaration and specialization:
+
+<p></p>
+
+<pre class="preformatted">
+        template &lt;typename T, int kInt, bool kBool&gt;
+        void foo() { ... }
+
+        template &lt;&gt;
+        void foo&lt;float, -7, true&gt;();
+      </pre>
+
+<p>
+
+<p>For I = 0, 1, and 2, Type, Integral, and Integral will be returned, respectively.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="TemplateArgumentType"></a><code>property <b>TemplateArgumentType</b>[constAIndex:Integer]: <a  href="Neslib.Clang.TType.html">TType</a> read GetTemplateArgumentType;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+The type of a TemplateArgument of a function decl representing a template specialization.
+
+<p>If the argument cursor does not represent a FunctionDecl whose I'th template argument has a <a class="normal" href="Neslib.Clang.TCursor.html#Kind">kind</a> of CXTemplateArgKind_Integral, an invalid type is returned.
+
+<p>For example, for the following declaration and specialization:
+
+<p></p>
+
+<pre class="preformatted">
+        template &lt;typename T, int kInt, bool kBool&gt;
+        void foo() { ... }
+
+        template &lt;&gt;
+        void foo&lt;float, -7, true&gt;();
+      </pre>
+
+<p>
+
+<p>If called with I = 0, &quot;float&quot;, will be returned. Invalid types will be returned for I = 1 or 2.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="TemplateArgumentValue"></a><code>property <b>TemplateArgumentValue</b>[constAIndex:Integer]: Int64 read GetTemplateArgumentValue;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+The value of an Integral TemplateArgument (of a function decl representing a template specialization) as a signed Int64.
+
+<p>It is undefined to call this function on a cursor that does not represent a FunctionDecl or whose I'th template argument is not an integral value.
+
+<p>For example, for the following declaration and specialization:
+
+<p></p>
+
+<pre class="preformatted">
+        template &lt;typename T, int kInt, bool kBool&gt;
+        void foo() { ... }
+
+        template &lt;&gt;
+        void foo&lt;float, -7, true&gt;();
+      </pre>
+
+<p>
+
+<p>If called with I = 1 or 2, -7 or true will be returned, respectively. For I = 0, this function's behavior is undefined.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="TemplateArgumentUnsignedValue"></a><code>property <b>TemplateArgumentUnsignedValue</b>[constAIndex:Integer]: UInt64 read GetTemplateArgumentUnsignedValue;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+The value of an Integral TemplateArgument (of a function decl representing a template specialization) as an UInt64.
+
+<p>It is undefined to call this function on a cursor that does not represent a FunctionDecl or whose I'th template argument is not an integral value.
+
+<p>For example, for the following declaration and specialization:
+
+<p></p>
+
+<pre class="preformatted">
+        template &lt;typename T, int kInt, bool kBool&gt;
+        void foo() { ... }
+
+        template &lt;&gt;
+        void foo&lt;float, 2147483649, true&gt;();
+      </pre>
+
+<p>
+
+<p>If called with I = 1 or 2, 2147483649 or true will be returned, respectively. For I = 0, this function's behavior is undefined.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="IsMacroFunctionLike"></a><code>property <b>IsMacroFunctionLike</b>: Boolean read GetIsMacroFunctionLike;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Whether the cursor that is a macro, is function like.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="IsMacroBuiltin"></a><code>property <b>IsMacroBuiltin</b>: Boolean read GetIsMacroBuiltin;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Whether the cursor that is a macro, is a builtin one.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="IsFunctionInlined"></a><code>property <b>IsFunctionInlined</b>: Boolean read GetIsFunctionInlined;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Whether the cursor that is a function declaration, is an inline declaration.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="DeclObjCTypeEncoding"></a><code>property <b>DeclObjCTypeEncoding</b>: String read GetDeclObjCTypeEncoding;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+The Objective-C type encoding for the specified declaration.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="ResultType"></a><code>property <b>ResultType</b>: <a  href="Neslib.Clang.TType.html">TType</a> read GetResultType;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+The return type associated with a given cursor.
+
+<p>This only returns a valid type if the cursor refers to a function or method.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="ExceptionSpecificationType"></a><code>property <b>ExceptionSpecificationType</b>: Integer read GetExceptionSpecificationType;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+The exception specification type associated with a given cursor.
+
+<p>This only returns a valid result if the cursor refers to a function or method.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="OffsetOfField"></a><code>property <b>OffsetOfField</b>: Int64 read GetOffsetOfField;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+The offset of the field represented by the Cursor.
+
+<p></p>
+
+<ul class="compact_spacing">
+  <li><p>If the cursor is not a field declaration, -1 is returned.</p></li>
+  <li><p>If the cursor semantic parent is not a record field declaration, <a class="normal" href="Neslib.Clang.html#TYPE_LAYOUT_ERROR_INVALID">TYPE_LAYOUT_ERROR_INVALID</a> is returned.</p></li>
+  <li><p>If the field's type declaration is an incomplete type, <a class="normal" href="Neslib.Clang.html#TYPE_LAYOUT_ERROR_INCOMPLETE">TYPE_LAYOUT_ERROR_INCOMPLETE</a> is returned.</p></li>
+  <li><p>If the field's type declaration is a dependent type, <a class="normal" href="Neslib.Clang.html#TYPE_LAYOUT_ERROR_DEPENDENT">TYPE_LAYOUT_ERROR_DEPENDENT</a> is returned.</p></li>
+  <li><p>If the field's name is not found, <a class="normal" href="Neslib.Clang.html#TYPE_LAYOUT_ERROR_INVALID_FIELDNAME">TYPE_LAYOUT_ERROR_INVALID_FIELDNAME</a> is returned.</p></li>
+</ul>
+
+<p></p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="IsAnonymous"></a><code>property <b>IsAnonymous</b>: Boolean read GetIsAnonymous;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Whether the cursor represents an anonymous record declaration.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="IsBitField"></a><code>property <b>IsBitField</b>: Boolean read GetIsBitField;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Whether the cursor specifies a Record member that is a bitfield.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="IsVirtualBase"></a><code>property <b>IsVirtualBase</b>: Boolean read GetIsVirtualBase;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Whether the base class specified by the cursor with <a class="normal" href="Neslib.Clang.TCursor.html#Kind">kind</a> CXXBaseSpecifier is virtual.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="CxxAccessSpecifier"></a><code>property <b>CxxAccessSpecifier</b>: <a  href="Neslib.Clang.html#TCxxAccessSpecifier">TCxxAccessSpecifier</a> read GetCxxAccessSpecifier;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+The access control level for the <a class="normal" href="Neslib.Clang.TCursor.html#Referenced">referenced</a> object.
+
+<p>If the cursor refers to a C++ declaration, its access control level within its parent scope is returned. Otherwise, if the cursor refers to a base specifier or access specifier, the specifier itself is returned.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="StorageClass"></a><code>property <b>StorageClass</b>: <a  href="Neslib.Clang.html#TStorageClass">TStorageClass</a> read GetStorageClass;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+The storage class for a function or variable declaration.
+
+<p>If the cursor is not a function or variable declaration, Invalid is returned else the storage class.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="OverloadedDeclCount"></a><code>property <b>OverloadedDeclCount</b>: Integer read GetOverloadedDeclCount;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+The number of overloaded declarations <a class="normal" href="Neslib.Clang.TCursor.html#Referenced">referenced</a> by a OverloadedDeclRef cursor. If it is not a OverloadedDeclRef cursor, returns 0.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="OverloadedDecls"></a><code>property <b>OverloadedDecls</b>[constAIndex:Integer]: <a  href="Neslib.Clang.TCursor.html">TCursor</a> read GetOverloadedDecl;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Retrieve a cursor for one of the overloaded declarations <a class="normal" href="Neslib.Clang.TCursor.html#Referenced">referenced</a> by a OverloadedDeclRef cursor.
+
+<p>If the cursor does not have an associated set of overloaded declarations, or if the index is out of bounds, <a class="normal" href="Neslib.Clang.TCursor.html#Null">TCursor.Null</a>.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="IBOutletCollectionType"></a><code>property <b>IBOutletCollectionType</b>: <a  href="Neslib.Clang.TType.html">TType</a> read GetIBOutletCollectionType;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+For cursors representing an iboutletcollection attribute, this property returns the collection element type.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="Usr"></a><code>property <b>Usr</b>: <a  href="Neslib.Clang.TUnifiedSymbolResolution.html">TUnifiedSymbolResolution</a> read GetUsr;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+The Unified Symbol Resolution (<code>USR</code>) for the entity <a class="normal" href="Neslib.Clang.TCursor.html#Referenced">referenced</a> by the given cursor.
+
+<p>A Unified Symbol Resolution (<code>USR</code>) is a string that identifies a particular entity (function, class, variable, etc.) within a program. USRs can be compared across translation units to determine, e.g., when references in one translation refer to an entity defined in another translation unit.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="Spelling"></a><code>property <b>Spelling</b>: String read GetSpelling;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+The name for the entity <a class="normal" href="Neslib.Clang.TCursor.html#Referenced">referenced</a> by this cursor.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="DisplayName"></a><code>property <b>DisplayName</b>: String read GetDisplayName;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+The display name for the entity <a class="normal" href="Neslib.Clang.TCursor.html#Referenced">referenced</a> by this cursor.
+
+<p>The display name contains extra information that helps identify the cursor, such as the parameters of a function or template or the <a class="normal" href="Neslib.Clang.TCursor.html#Arguments">arguments</a> of a class template specialization.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="Referenced"></a><code>property <b>Referenced</b>: <a  href="Neslib.Clang.TCursor.html">TCursor</a> read GetReferenced;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+For a cursor that is a reference, retrieve a cursor representing the entity that it references.
+
+<p>Reference cursors refer to other entities in the AST. For example, an Objective-C superclass reference cursor refers to an Objective-C class. This function produces the cursor for the Objective-C class from the cursor for the superclass reference. If the input cursor is a declaration or <a class="normal" href="Neslib.Clang.TCursor.html#Definition">definition</a>, it returns that declaration or <a class="normal" href="Neslib.Clang.TCursor.html#Definition">definition</a> unchanged. Otherwise, returns the <a class="normal" href="Neslib.Clang.TCursor.html#Null">Null</a> cursor.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="Definition"></a><code>property <b>Definition</b>: <a  href="Neslib.Clang.TCursor.html">TCursor</a> read GetDefinition;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+For a cursor that is either a reference to or a declaration of some entity, retrieve a cursor that describes the <code>definition</code> of that entity.
+
+<p>Some entities can be declared multiple times within a translation unit, but only one of those declarations can also be a <code>definition</code>. For example, given:
+
+<p></p>
+
+<pre class="preformatted">
+        int f(int, int);
+        int g(int x, int y) { return f(x, y); }
+        int f(int a, int b) { return a + b; }
+        int f(int, int);
+      </pre>
+
+<p>
+
+<p>there are three declarations of the function &quot;f&quot;, but only the second one is a <code>definition</code>. The <code>Definition</code> property will take any cursor pointing to a declaration of &quot;f&quot; (the first or fourth lines of the example) or a cursor <a class="normal" href="Neslib.Clang.TCursor.html#Referenced">referenced</a> that uses &quot;f&quot; (the call to &quot;f' inside &quot;g&quot;) and will return a declaration cursor pointing to the <code>definition</code> (the second &quot;f&quot; declaration).
+
+<p>If given a cursor for which there is no corresponding <code>definition</code>, e.g., because there is no <code>definition</code> of that entity within this translation unit, returns a <a class="normal" href="Neslib.Clang.TCursor.html#Null">Null</a> cursor.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="IsDefinition"></a><code>property <b>IsDefinition</b>: Boolean read GetIsDefinition;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Whether the declaration pointed to by this cursor is also a <a class="normal" href="Neslib.Clang.TCursor.html#Definition">definition</a> of that entity.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="Canonical"></a><code>property <b>Canonical</b>: <a  href="Neslib.Clang.TCursor.html">TCursor</a> read GetCanonical;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+The <code>canonical</code> cursor corresponding to the given cursor.
+
+<p>In the C family of languages, many kinds of entities can be declared several times within a single translation unit. For example, a structure type can be forward-declared (possibly multiple times) and later defined:
+
+<p></p>
+
+<pre class="preformatted">
+        struct X;
+        struct X;
+        struct X {
+          int member;
+        };
+      </pre>
+
+<p>
+
+<p>The declarations and the <a class="normal" href="Neslib.Clang.TCursor.html#Definition">definition</a> of X are represented by three different cursors, all of which are declarations of the same underlying entity. One of these cursor is considered the &quot;<code>canonical</code>&quot; cursor, which is effectively the representative for the underlying entity. One can determine if two cursors are declarations of the same underlying entity by comparing their <code>canonical</code> cursors.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="ObjCSelectorIndex"></a><code>property <b>ObjCSelectorIndex</b>: Integer read GetObjCSelectorIndex;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+If the cursor points to a selector identifier in an Objective-C method or message expression, this returns the selector index, otherwise it returns -1.
+
+<p>After getting a curso, this can be called to determine if the <a class="normal" href="Neslib.Clang.TCursor.html#Location">location</a> points to a selector identifier.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="IsDynamicCall"></a><code>property <b>IsDynamicCall</b>: Boolean read GetIsDynamicCall;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Given a cursor pointing to a C++ method call or an Objective-C message, returns True if the method/message is &quot;dynamic&quot;, meaning:
+
+<p>For a C++ method: the call is virtual. For an Objective-C message: the receiver is an object instance, not 'super' or a specific class.
+
+<p>If the method/message is &quot;static&quot; or the cursor does not point to a method/message, it will return False.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="ReceiverType"></a><code>property <b>ReceiverType</b>: <a  href="Neslib.Clang.TType.html">TType</a> read GetReceiverType;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Given a cursor pointing to an Objective-C message or property reference, or C++ method call, returns the <a class="normal" href="Neslib.Clang.TType.html">TType</a> of the receiver.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="ObjCPropertyAttributes"></a><code>property <b>ObjCPropertyAttributes</b>: <a  href="Neslib.Clang.html#TObjCPropertyAttrKinds">TObjCPropertyAttrKinds</a> read GetObjCPropertyAttributes;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Given a cursor that represents a property declaration, return the associated property attributes.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="ObjCDeclQualifiers"></a><code>property <b>ObjCDeclQualifiers</b>: <a  href="Neslib.Clang.html#TObjCDeclQualifierKinds">TObjCDeclQualifierKinds</a> read GetObjCDeclQualifiers;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Given a cursor that represents an Objective-C method or parameter declaration, return the associated Objective-C qualifiers for the return type or the parameter respectively.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="IsObjCOptional"></a><code>property <b>IsObjCOptional</b>: Boolean read GetIsObjCOptional;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Given a cursor that represents an Objective-C method or property declaration, return True if the declaration was affected by &quot;@optional&quot;. Returns False if the cursor is not such a declaration or it is &quot;@required&quot;.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="IsVariadic"></a><code>property <b>IsVariadic</b>: Boolean read GetIsVariadic;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+True if the cursor is a variadic function or method.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="CommentRange"></a><code>property <b>CommentRange</b>: <a  href="Neslib.Clang.TSourceRange.html">TSourceRange</a> read GetCommentRange;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Given a cursor that represents a declaration, return the associated comment's source range. The range may include multiple consecutive comments with whitespace in between.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="RawComment"></a><code>property <b>RawComment</b>: String read GetRawComment;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Given a cursor that represents a declaration, return the associated comment text, including comment markers.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="BriefComment"></a><code>property <b>BriefComment</b>: String read GetBriefComment;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Given a cursor that represents a documentable entity (e.g., declaration), return the associated &quot;brief&quot; paragraph; otherwise return the first paragraph.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="Mangling"></a><code>property <b>Mangling</b>: String read GetMangling;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+The mangled name of the cursor.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="CxxManglings"></a><code>property <b>CxxManglings</b>: TArray&lt;String&gt; read GetCxxManglings;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+The mangled symbols of the C++ constructor or destructor at the cursor.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="ObjCManglings"></a><code>property <b>ObjCManglings</b>: TArray&lt;String&gt; read GetObjCManglings;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+The mangled symbols of the ObjC class interface or implementation at the cursor.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="Module"></a><code>property <b>Module</b>: <a  href="Neslib.Clang.TModule.html">TModule</a> read GetModule;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Given a ModuleImportDecl cursor, return the associated <code>module</code>.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="CxxConstructorIsConvertingConstructor"></a><code>property <b>CxxConstructorIsConvertingConstructor</b>: Boolean read GetCxxConstructorIsConvertingConstructor;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Whether a C++ constructor is a converting constructor.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="CxxConstructorIsCopyConstructor"></a><code>property <b>CxxConstructorIsCopyConstructor</b>: Boolean read GetCxxConstructorIsCopyConstructor;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Whether a C++ constructor is a copy constructor.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="CxxConstructorIsDefaultConstructor"></a><code>property <b>CxxConstructorIsDefaultConstructor</b>: Boolean read GetCxxConstructorIsDefaultConstructor;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Whether a C++ constructor is the default constructor.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="CxxConstructorIsMoveConstructor"></a><code>property <b>CxxConstructorIsMoveConstructor</b>: Boolean read GetCxxConstructorIsMoveConstructor;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Whether a C++ constructor is a move constructor.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="CxxFieldIsMutable"></a><code>property <b>CxxFieldIsMutable</b>: Boolean read GetCxxFieldIsMutable;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Whether a C++ field is declared 'mutable'.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="CxxMethodIsDefaulted"></a><code>property <b>CxxMethodIsDefaulted</b>: Boolean read GetCxxMethodIsDefaulted;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Whether a C++ method is declared '= default'.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="CxxMethodIsPureVirtual"></a><code>property <b>CxxMethodIsPureVirtual</b>: Boolean read GetCxxMethodIsPureVirtual;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Whether a C++ member function or member function template is pure virtual.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="CxxMethodIsStatic"></a><code>property <b>CxxMethodIsStatic</b>: Boolean read GetCxxMethodIsStatic;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Whether a C++ member function or member function template is declared 'static'.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="CxxMethodIsVirtual"></a><code>property <b>CxxMethodIsVirtual</b>: Boolean read GetCxxMethodIsVirtual;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Whether a C++ member function or member function template is explicitly declared 'virtual' or if it overrides a virtual method from one of the base classes.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="CxxRecordIsAbstract"></a><code>property <b>CxxRecordIsAbstract</b>: Boolean read GetCxxRecordIsAbstract;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Whether a C++ record is abstract, i.e. whether a class or struct has a pure virtual member function.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="EnumDeclIsScoped"></a><code>property <b>EnumDeclIsScoped</b>: Boolean read GetEnumDeclIsScoped;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Whether an enum declaration refers to a scoped enum.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="CxxMethodIsConst"></a><code>property <b>CxxMethodIsConst</b>: Boolean read GetCxxMethodIsConst;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Whether a C++ member function or member function template is declared 'const'.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="TemplateCursorKind"></a><code>property <b>TemplateCursorKind</b>: <a  href="Neslib.Clang.html#TCursorKind">TCursorKind</a> read GetTemplateCursorKind;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Given a cursor that represents a template, determine the cursor <a class="normal" href="Neslib.Clang.TCursor.html#Kind">kind</a> of the specializations would be generated by instantiating the template.
+
+<p>This property can be used to determine what flavor of function template, class template, or class template partial specialization is stored in the cursor. For example, it can describe whether a class template cursor is declared with &quot;struct&quot;, &quot;class&quot; or &quot;union&quot;.
+
+<p>If the cursor is not a template, returns NoDeclFound.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="SpecializedCursorTemplate"></a><code>property <b>SpecializedCursorTemplate</b>: <a  href="Neslib.Clang.TCursor.html">TCursor</a> read GetSpecializedCursorTemplate;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Given a cursor that may represent a specialization or instantiation of a template, retrieve the cursor that represents the template that it specializes or from which it was instantiated.
+
+<p>This routine determines the template involved both for explicit specializations of templates and for implicit instantiations of the template, both of which are referred to as &quot;specializations&quot;. For a class template specialization (e.g., std::vector&lt;bool&gt;), this routine will return either the primary template (std::vector) or, if the specialization was instantiated from a class template partial specialization, the class template partial specialization. For a class template partial specialization and a function template specialization (including instantiations), this this routine will return the specialized template.
+
+<p>For members of a class template (e.g., member functions, member classes, or static data members), returns the specialized or instantiated member. Although not strictly &quot;templates&quot; in the C++ <a class="normal" href="Neslib.Clang.TCursor.html#Language">language</a>, members of class templates have the same notions of specializations and instantiations that templates do, so this routine treats them similarly.
+
+<p>If the cursor is NOT a specialization or instantiation of a template or a member thereof, returns a <a class="normal" href="Neslib.Clang.TCursor.html#Null">Null</a> cursor.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="CompletionString"></a><code>property <b>CompletionString</b>: <a  href="Neslib.Clang.TCompletionString.html">TCompletionString</a> read GetCompletionString;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+A non-context-sensitive completion string for declaration and macro <a class="normal" href="Neslib.Clang.TCursor.html#Definition">definition</a> cursors, or a <a class="normal" href="Neslib.Clang.TCursor.html#Null">Null</a> string for other kinds of cursors.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="ParsedComment"></a><code>property <b>ParsedComment</b>: <a  href="Neslib.Clang.TComment.html">TComment</a> read GetParsedComment;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Given a cursor that represents a documentable entity (e.g., declaration), return the associated parsed comment as aFullComment AST node.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="Handle"></a><code>property <b>Handle</b>: TCXCursor read FHandle;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Internal <code>handle</code> to C API</p>
+</td></tr>
+</table>
+<div style="height:1000px"></div><hr noshade size="1"><span class="appinfo"><em>Generated by <a  href="https://github.com/neslib/PasDocEx">PasDocEx</a>, based on <a  href="http://pasdoc.sourceforge.net/">PasDoc 0.14.0</a>. </em>
+</span>
+</td></tr></table></body></html>

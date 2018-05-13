@@ -1,0 +1,169 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/1999/REC-html401-19991224/loose.dtd">
+<html>
+<head>
+<title>Neslib.Clang: Neslib.Clang: record TIdxDeclInfo</title>
+<meta name="generator" content="PasDoc 0.14.0">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<link rel="StyleSheet" type="text/css" href="pasdoc.css">
+</head>
+<body>
+<table class="container"><tr><td class="navigation">
+<h2>Neslib.Clang</h2><p><a href="introduction.html" class="navigation">Neslib.Clang</a></p><p><a href="AllUnits.html" class="navigation">Units</a></p><p><a href="ClassHierarchy.html" class="navigation">Class Hierarchy</a></p><p><a href="AllClasses.html" class="navigation">Classes, Interfaces, Objects and Records</a></p><p><a href="AllTypes.html" class="navigation">Types</a></p><p><a href="AllVariables.html" class="navigation">Variables</a></p><p><a href="AllConstants.html" class="navigation">Constants</a></p><p><a href="AllFunctions.html" class="navigation">Functions and Procedures</a></p><p><a href="AllIdentifiers.html" class="navigation">Identifiers</a></p><p><a href="conclusion.html" class="navigation">License</a></p></td><td class="content">
+<a name="TIdxDeclInfo"></a><h1 class="cio">record TIdxDeclInfo</h1>
+<table class="sections wide_list">
+<tr>
+<td><a class="section" href="#PasDoc-Description">Description</a></td><td>Hierarchy</td><td>Fields</td><td>Methods</td><td><a class="section" href="#PasDoc-Properties">Properties</a></td></tr></table>
+<a name="PasDoc-Description"></a><h2 class="unit">Unit</h2>
+<p class="unitlink">
+<a  href="Neslib.Clang.html">Neslib.Clang</a></p>
+<h2 class="declaration">Declaration</h2>
+<p class="declaration">
+<code>type TIdxDeclInfo = record</code></p>
+<h2 class="description">Description</h2>
+<p>
+Data for <a class="normal" href="Neslib.Clang.IIndexerListener.html#IndexDeclaration">IIndexerListener.IndexDeclaration</a>.</p>
+<h2 class="overview">Overview</h2>
+<a name="PasDoc-Properties"></a><h3 class="summary">Properties</h3>
+<table class="summary wide_list">
+<tr class="list">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TIdxDeclInfo.html#EntityInfo">EntityInfo</a></b>: <a  href="Neslib.Clang.TIdxEntityInfo.html">TIdxEntityInfo</a> read GetEntityInfo;</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TIdxDeclInfo.html#Cursor">Cursor</a></b>: <a  href="Neslib.Clang.TCursor.html">TCursor</a> read GetCursor;</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TIdxDeclInfo.html#Loc">Loc</a></b>: <a  href="Neslib.Clang.TIdxLoc.html">TIdxLoc</a> read GetLoc;</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TIdxDeclInfo.html#SemanticContainer">SemanticContainer</a></b>: <a  href="Neslib.Clang.TIdxContainerInfo.html">TIdxContainerInfo</a> read GetSemanticContainer;</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TIdxDeclInfo.html#LexicalContainer">LexicalContainer</a></b>: <a  href="Neslib.Clang.TIdxContainerInfo.html">TIdxContainerInfo</a> read GetLexicalContainer;</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TIdxDeclInfo.html#IsRedeclaration">IsRedeclaration</a></b>: Boolean read GetIsRedeclaration;</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TIdxDeclInfo.html#IsDefinition">IsDefinition</a></b>: Boolean read GetIsDefinition;</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TIdxDeclInfo.html#IsContainer">IsContainer</a></b>: Boolean read GetIsContainer;</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TIdxDeclInfo.html#DeclAsContainer">DeclAsContainer</a></b>: <a  href="Neslib.Clang.TIdxContainerInfo.html">TIdxContainerInfo</a> read GetDeclAsContainer;</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TIdxDeclInfo.html#IsImplicit">IsImplicit</a></b>: Boolean read GetIsImplicit;</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TIdxDeclInfo.html#Attributes">Attributes</a></b>: TArray&lt;<a  href="Neslib.Clang.TIdxAttrInfo.html">TIdxAttrInfo</a>&gt; read GetAttributes;</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TIdxDeclInfo.html#Flags">Flags</a></b>: Cardinal read GetFlags;</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TIdxDeclInfo.html#Handle">Handle</a></b>: PCXIdxDeclInfo read FHandle;</code></td>
+</tr>
+</table>
+<h2 class="description">Description</h2>
+<h3 class="detail">Properties</h3>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="EntityInfo"></a><code>property <b>EntityInfo</b>: <a  href="Neslib.Clang.TIdxEntityInfo.html">TIdxEntityInfo</a> read GetEntityInfo;</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="Cursor"></a><code>property <b>Cursor</b>: <a  href="Neslib.Clang.TCursor.html">TCursor</a> read GetCursor;</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="Loc"></a><code>property <b>Loc</b>: <a  href="Neslib.Clang.TIdxLoc.html">TIdxLoc</a> read GetLoc;</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="SemanticContainer"></a><code>property <b>SemanticContainer</b>: <a  href="Neslib.Clang.TIdxContainerInfo.html">TIdxContainerInfo</a> read GetSemanticContainer;</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="LexicalContainer"></a><code>property <b>LexicalContainer</b>: <a  href="Neslib.Clang.TIdxContainerInfo.html">TIdxContainerInfo</a> read GetLexicalContainer;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Generally same as <a class="normal" href="Neslib.Clang.TIdxDeclInfo.html#SemanticContainer">SemanticContainer</a> but can be different in cases like out-of-line C++ member functions.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="IsRedeclaration"></a><code>property <b>IsRedeclaration</b>: Boolean read GetIsRedeclaration;</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="IsDefinition"></a><code>property <b>IsDefinition</b>: Boolean read GetIsDefinition;</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="IsContainer"></a><code>property <b>IsContainer</b>: Boolean read GetIsContainer;</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="DeclAsContainer"></a><code>property <b>DeclAsContainer</b>: <a  href="Neslib.Clang.TIdxContainerInfo.html">TIdxContainerInfo</a> read GetDeclAsContainer;</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="IsImplicit"></a><code>property <b>IsImplicit</b>: Boolean read GetIsImplicit;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Whether the declaration exists in code or was created implicitly by the compiler, e.g. implicit Objective-C methods for properties.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="Attributes"></a><code>property <b>Attributes</b>: TArray&lt;<a  href="Neslib.Clang.TIdxAttrInfo.html">TIdxAttrInfo</a>&gt; read GetAttributes;</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="Flags"></a><code>property <b>Flags</b>: Cardinal read GetFlags;</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="Handle"></a><code>property <b>Handle</b>: PCXIdxDeclInfo read FHandle;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Internal <code>handle</code> to C API</p>
+</td></tr>
+</table>
+<div style="height:1000px"></div><hr noshade size="1"><span class="appinfo"><em>Generated by <a  href="https://github.com/neslib/PasDocEx">PasDocEx</a>, based on <a  href="http://pasdoc.sourceforge.net/">PasDoc 0.14.0</a>. </em>
+</span>
+</td></tr></table></body></html>

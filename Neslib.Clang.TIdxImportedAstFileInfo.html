@@ -1,0 +1,93 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/1999/REC-html401-19991224/loose.dtd">
+<html>
+<head>
+<title>Neslib.Clang: Neslib.Clang: record TIdxImportedAstFileInfo</title>
+<meta name="generator" content="PasDoc 0.14.0">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<link rel="StyleSheet" type="text/css" href="pasdoc.css">
+</head>
+<body>
+<table class="container"><tr><td class="navigation">
+<h2>Neslib.Clang</h2><p><a href="introduction.html" class="navigation">Neslib.Clang</a></p><p><a href="AllUnits.html" class="navigation">Units</a></p><p><a href="ClassHierarchy.html" class="navigation">Class Hierarchy</a></p><p><a href="AllClasses.html" class="navigation">Classes, Interfaces, Objects and Records</a></p><p><a href="AllTypes.html" class="navigation">Types</a></p><p><a href="AllVariables.html" class="navigation">Variables</a></p><p><a href="AllConstants.html" class="navigation">Constants</a></p><p><a href="AllFunctions.html" class="navigation">Functions and Procedures</a></p><p><a href="AllIdentifiers.html" class="navigation">Identifiers</a></p><p><a href="conclusion.html" class="navigation">License</a></p></td><td class="content">
+<a name="TIdxImportedAstFileInfo"></a><h1 class="cio">record TIdxImportedAstFileInfo</h1>
+<table class="sections wide_list">
+<tr>
+<td><a class="section" href="#PasDoc-Description">Description</a></td><td>Hierarchy</td><td>Fields</td><td>Methods</td><td><a class="section" href="#PasDoc-Properties">Properties</a></td></tr></table>
+<a name="PasDoc-Description"></a><h2 class="unit">Unit</h2>
+<p class="unitlink">
+<a  href="Neslib.Clang.html">Neslib.Clang</a></p>
+<h2 class="declaration">Declaration</h2>
+<p class="declaration">
+<code>type TIdxImportedAstFileInfo = record</code></p>
+<h2 class="description">Description</h2>
+<p>
+Data for <a class="normal" href="Neslib.Clang.IIndexerListener.html#ImportedAstFile">IIndexerListener.ImportedAstFile</a>.</p>
+<h2 class="overview">Overview</h2>
+<a name="PasDoc-Properties"></a><h3 class="summary">Properties</h3>
+<table class="summary wide_list">
+<tr class="list">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TIdxImportedAstFileInfo.html#AstFile">AstFile</a></b>: <a  href="Neslib.Clang.TFile.html">TFile</a> read GetAstFile;</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TIdxImportedAstFileInfo.html#Module">Module</a></b>: <a  href="Neslib.Clang.TModule.html">TModule</a> read GetModule;</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TIdxImportedAstFileInfo.html#Loc">Loc</a></b>: <a  href="Neslib.Clang.TIdxLoc.html">TIdxLoc</a> read GetLoc;</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TIdxImportedAstFileInfo.html#IsImplicit">IsImplicit</a></b>: Boolean read GetIsImplicit;</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TIdxImportedAstFileInfo.html#Handle">Handle</a></b>: PCXIdxImportedASTFileInfo read FHandle;</code></td>
+</tr>
+</table>
+<h2 class="description">Description</h2>
+<h3 class="detail">Properties</h3>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="AstFile"></a><code>property <b>AstFile</b>: <a  href="Neslib.Clang.TFile.html">TFile</a> read GetAstFile;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Top level AST file containing the imported PCH, <a class="normal" href="Neslib.Clang.TIdxImportedAstFileInfo.html#Module">module</a> or submodule.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="Module"></a><code>property <b>Module</b>: <a  href="Neslib.Clang.TModule.html">TModule</a> read GetModule;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+The imported <code>module</code> or Null if the AST file is a PCH.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="Loc"></a><code>property <b>Loc</b>: <a  href="Neslib.Clang.TIdxLoc.html">TIdxLoc</a> read GetLoc;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Location where the file is imported. Applicable only for modules.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="IsImplicit"></a><code>property <b>IsImplicit</b>: Boolean read GetIsImplicit;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+True if an inclusion directive was automatically turned into a <a class="normal" href="Neslib.Clang.TIdxImportedAstFileInfo.html#Module">module</a> import. Applicable only for modules.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="Handle"></a><code>property <b>Handle</b>: PCXIdxImportedASTFileInfo read FHandle;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Internal <code>handle</code> to C API</p>
+</td></tr>
+</table>
+<div style="height:1000px"></div><hr noshade size="1"><span class="appinfo"><em>Generated by <a  href="https://github.com/neslib/PasDocEx">PasDocEx</a>, based on <a  href="http://pasdoc.sourceforge.net/">PasDoc 0.14.0</a>. </em>
+</span>
+</td></tr></table></body></html>

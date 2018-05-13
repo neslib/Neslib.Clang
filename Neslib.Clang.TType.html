@@ -1,0 +1,507 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/1999/REC-html401-19991224/loose.dtd">
+<html>
+<head>
+<title>Neslib.Clang: Neslib.Clang: record TType</title>
+<meta name="generator" content="PasDoc 0.14.0">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<link rel="StyleSheet" type="text/css" href="pasdoc.css">
+</head>
+<body>
+<table class="container"><tr><td class="navigation">
+<h2>Neslib.Clang</h2><p><a href="introduction.html" class="navigation">Neslib.Clang</a></p><p><a href="AllUnits.html" class="navigation">Units</a></p><p><a href="ClassHierarchy.html" class="navigation">Class Hierarchy</a></p><p><a href="AllClasses.html" class="navigation">Classes, Interfaces, Objects and Records</a></p><p><a href="AllTypes.html" class="navigation">Types</a></p><p><a href="AllVariables.html" class="navigation">Variables</a></p><p><a href="AllConstants.html" class="navigation">Constants</a></p><p><a href="AllFunctions.html" class="navigation">Functions and Procedures</a></p><p><a href="AllIdentifiers.html" class="navigation">Identifiers</a></p><p><a href="conclusion.html" class="navigation">License</a></p></td><td class="content">
+<a name="TType"></a><h1 class="cio">record TType</h1>
+<table class="sections wide_list">
+<tr>
+<td><a class="section" href="#PasDoc-Description">Description</a></td><td>Hierarchy</td><td>Fields</td><td><a class="section" href="#PasDoc-Methods">Methods</a></td><td><a class="section" href="#PasDoc-Properties">Properties</a></td></tr></table>
+<a name="PasDoc-Description"></a><h2 class="unit">Unit</h2>
+<p class="unitlink">
+<a  href="Neslib.Clang.html">Neslib.Clang</a></p>
+<h2 class="declaration">Declaration</h2>
+<p class="declaration">
+<code>type TType = record</code></p>
+<h2 class="description">Description</h2>
+<p>
+The type of an element in the abstract syntax tree.</p>
+<h2 class="overview">Overview</h2>
+<a name="PasDoc-Methods"></a><h3 class="summary">Methods</h3>
+<table class="summary wide_list">
+<tr class="list">
+<td class="itemcode"><code>class operator <b><a  href="Neslib.Clang.TType.html#Equal">Equal</a></b>(const ALeft, ARight: <a  href="Neslib.Clang.TType.html">TType</a>): Boolean; inline; static;</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>class operator <b><a  href="Neslib.Clang.TType.html#NotEqual">NotEqual</a></b>(const ALeft, ARight: <a  href="Neslib.Clang.TType.html">TType</a>): Boolean; inline; static;</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>function <b><a  href="Neslib.Clang.TType.html#GetOffsetOf">GetOffsetOf</a></b>(const AFieldName: String): Int64; inline;</code></td>
+</tr>
+</table>
+<a name="PasDoc-Properties"></a><h3 class="summary">Properties</h3>
+<table class="summary wide_list">
+<tr class="list">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TType.html#Kind">Kind</a></b>: <a  href="Neslib.Clang.html#TTypeKind">TTypeKind</a> read GetKind;</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TType.html#KindSpelling">KindSpelling</a></b>: String read GetKindSpelling;</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TType.html#Spelling">Spelling</a></b>: String read GetSpelling;</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TType.html#CanonicalType">CanonicalType</a></b>: <a  href="Neslib.Clang.TType.html">TType</a> read GetCanonicalType;</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TType.html#IsConstQualified">IsConstQualified</a></b>: Boolean read GetIsConstQualified;</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TType.html#IsVolatileQualified">IsVolatileQualified</a></b>: Boolean read GetIsVolatileQualified;</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TType.html#IsRestrictQualified">IsRestrictQualified</a></b>: Boolean read GetIsRestrictQualified;</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TType.html#IsFunctionVariadic">IsFunctionVariadic</a></b>: Boolean read GetIsFunctionVariadic;</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TType.html#IsPodType">IsPodType</a></b>: Boolean read GetIsPodType;</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TType.html#IsTransparentTagTypedef">IsTransparentTagTypedef</a></b>: Boolean read GetIsTransparentTagTypedef;</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TType.html#AddressSpace">AddressSpace</a></b>: Cardinal read GetAddressSpace;</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TType.html#TypedefName">TypedefName</a></b>: String read GetTypedefName;</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TType.html#PointeeType">PointeeType</a></b>: <a  href="Neslib.Clang.TType.html">TType</a> read GetPointeeType;</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TType.html#ObjCEncoding">ObjCEncoding</a></b>: String read GetObjCEncoding;</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TType.html#FunctionCallingConv">FunctionCallingConv</a></b>: <a  href="Neslib.Clang.html#TCallingConv">TCallingConv</a> read GetFunctionCallingConv;</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TType.html#ResultType">ResultType</a></b>: <a  href="Neslib.Clang.TType.html">TType</a> read GetResultType;</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TType.html#ExceptionSpecificationType">ExceptionSpecificationType</a></b>: Integer read GetExceptionSpecificationType;</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TType.html#ArgTypeCount">ArgTypeCount</a></b>: Integer read GetArgTypeCount;</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TType.html#ArgTypes">ArgTypes</a></b>[constAIndex:Integer]: <a  href="Neslib.Clang.TType.html">TType</a> read GetArgType;</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TType.html#ElementType">ElementType</a></b>: <a  href="Neslib.Clang.TType.html">TType</a> read GetElementType;</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TType.html#ElementCount">ElementCount</a></b>: Integer read GetElementCount;</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TType.html#ArrayElementType">ArrayElementType</a></b>: <a  href="Neslib.Clang.TType.html">TType</a> read GetArrayElementType;</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TType.html#ArraySize">ArraySize</a></b>: Int64 read GetArraySize;</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TType.html#NamedType">NamedType</a></b>: <a  href="Neslib.Clang.TType.html">TType</a> read GetNamedType;</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TType.html#AlignOf">AlignOf</a></b>: Int64 read GetAlignOf;</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TType.html#ClassType">ClassType</a></b>: <a  href="Neslib.Clang.TType.html">TType</a> read GetClassType;</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TType.html#SizeOf">SizeOf</a></b>: Int64 read GetSizeOf;</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TType.html#TemplateArgumentCount">TemplateArgumentCount</a></b>: Integer read GetTemplateArgumentCount;</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TType.html#TemplateArgumentTypes">TemplateArgumentTypes</a></b>[constAIndex:Integer]: <a  href="Neslib.Clang.TType.html">TType</a> read GetTemplateArgumentType;</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TType.html#CxxRefQualifier">CxxRefQualifier</a></b>: <a  href="Neslib.Clang.html#TRefQualifierKind">TRefQualifierKind</a> read GetCxxRefQualifier;</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TType.html#Handle">Handle</a></b>: TCXType read FHandle;</code></td>
+</tr>
+</table>
+<h2 class="description">Description</h2>
+<h3 class="detail">Methods</h3>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="Equal"></a><code>class operator <b>Equal</b>(const ALeft, ARight: <a  href="Neslib.Clang.TType.html">TType</a>): Boolean; inline; static;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Equality operators. Determine whether two <a class="normal" href="Neslib.Clang.TType.html">TType</a>'s represent the same type.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="NotEqual"></a><code>class operator <b>NotEqual</b>(const ALeft, ARight: <a  href="Neslib.Clang.TType.html">TType</a>): Boolean; inline; static;</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="GetOffsetOf"></a><code>function <b>GetOffsetOf</b>(const AFieldName: String): Int64; inline;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Get the offset of a field named AFieldName in a record of this type in bits as it would be returned by __offsetof__ as per C++11[18.2p4]
+
+<p></p>
+
+<ul class="compact_spacing">
+  <li><p>If the cursor is not a record field declaration, <a class="normal" href="Neslib.Clang.html#TYPE_LAYOUT_ERROR_INVALID">TYPE_LAYOUT_ERROR_INVALID</a> is returned.</p></li>
+  <li><p>If the field's type declaration is an incomplete type, <a class="normal" href="Neslib.Clang.html#TYPE_LAYOUT_ERROR_INCOMPLETE">TYPE_LAYOUT_ERROR_INCOMPLETE</a> is returned.</p></li>
+  <li><p>If the field's type declaration is a dependent type, <a class="normal" href="Neslib.Clang.html#TYPE_LAYOUT_ERROR_DEPENDENT">TYPE_LAYOUT_ERROR_DEPENDENT</a> is returned.</p></li>
+  <li><p>If the field's name S is not found, <a class="normal" href="Neslib.Clang.html#TYPE_LAYOUT_ERROR_INVALID_FIELDNAME">TYPE_LAYOUT_ERROR_INVALID_FIELDNAME</a> is returned.</p></li>
+</ul>
+
+<p></p>
+</td></tr>
+</table>
+<h3 class="detail">Properties</h3>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="Kind"></a><code>property <b>Kind</b>: <a  href="Neslib.Clang.html#TTypeKind">TTypeKind</a> read GetKind;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+The <code>kind</code> of the type</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="KindSpelling"></a><code>property <b>KindSpelling</b>: String read GetKindSpelling;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+The <a class="normal" href="Neslib.Clang.TType.html#Spelling">spelling</a> of the type <a class="normal" href="Neslib.Clang.TType.html#Kind">kind</a></p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="Spelling"></a><code>property <b>Spelling</b>: String read GetSpelling;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Pretty-print the underlying type using the rules of the language of the translation unit from which it came.
+
+<p>If the type is invalid, an empty string is returned.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="CanonicalType"></a><code>property <b>CanonicalType</b>: <a  href="Neslib.Clang.TType.html">TType</a> read GetCanonicalType;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+The canonical type for the type.
+
+<p>Clang's type system explicitly models typedefs and all the ways a specific type can be represented. The canonical type is the underlying type with all the &quot;sugar&quot; removed. For example, if 'T' is a typedef for 'int', the canonical type for 'T' would be 'int'.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="IsConstQualified"></a><code>property <b>IsConstQualified</b>: Boolean read GetIsConstQualified;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Whether this type has the &quot;const&quot; qualifier set, without looking through typedefs that may have added &quot;const&quot; at a different level.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="IsVolatileQualified"></a><code>property <b>IsVolatileQualified</b>: Boolean read GetIsVolatileQualified;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Whether this type has the &quot;volatile&quot; qualifier set, without looking through typedefs that may have added &quot;volatile&quot; at a different level.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="IsRestrictQualified"></a><code>property <b>IsRestrictQualified</b>: Boolean read GetIsRestrictQualified;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Whether this type has the &quot;restrict&quot; qualifier set, without looking through typedefs that may have added &quot;restrict&quot; at a different level.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="IsFunctionVariadic"></a><code>property <b>IsFunctionVariadic</b>: Boolean read GetIsFunctionVariadic;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Whether the type is a variadic function type.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="IsPodType"></a><code>property <b>IsPodType</b>: Boolean read GetIsPodType;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Whether the type is a POD (plain old data) type.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="IsTransparentTagTypedef"></a><code>property <b>IsTransparentTagTypedef</b>: Boolean read GetIsTransparentTagTypedef;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Whether a typedef is 'transparent' tag.
+
+<p>A typedef is considered 'transparent' if it shares a name and <a class="normal" href="Neslib.Clang.TType.html#Spelling">spelling</a> location with its underlying tag type, as is the case with the NS_ENUM macro.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="AddressSpace"></a><code>property <b>AddressSpace</b>: Cardinal read GetAddressSpace;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+The address space of the type.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="TypedefName"></a><code>property <b>TypedefName</b>: String read GetTypedefName;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+The typedef name of the type.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="PointeeType"></a><code>property <b>PointeeType</b>: <a  href="Neslib.Clang.TType.html">TType</a> read GetPointeeType;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+For pointer types, the type of the pointee.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="ObjCEncoding"></a><code>property <b>ObjCEncoding</b>: String read GetObjCEncoding;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+The Objective-C type encoding for the type.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="FunctionCallingConv"></a><code>property <b>FunctionCallingConv</b>: <a  href="Neslib.Clang.html#TCallingConv">TCallingConv</a> read GetFunctionCallingConv;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+The calling convention associated with a function type.
+
+<p>If a non-function type is passed in, nvalid is returned.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="ResultType"></a><code>property <b>ResultType</b>: <a  href="Neslib.Clang.TType.html">TType</a> read GetResultType;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+The return type associated with a function type.
+
+<p>If a non-function type is passed in, an invalid type is returned.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="ExceptionSpecificationType"></a><code>property <b>ExceptionSpecificationType</b>: Integer read GetExceptionSpecificationType;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+The exception specification type associated with a function type.
+
+<p>If a non-function type is passed in, an error code of -1 is returned.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="ArgTypeCount"></a><code>property <b>ArgTypeCount</b>: Integer read GetArgTypeCount;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+The number of non-variadic parameters associated with a function type.
+
+<p>If a non-function type is passed in, -1 is returned.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="ArgTypes"></a><code>property <b>ArgTypes</b>[constAIndex:Integer]: <a  href="Neslib.Clang.TType.html">TType</a> read GetArgType;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+The type of a parameter of a function type.
+
+<p>If a non-function type is passed in or the function does not have enough parameters, an invalid type is returned.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="ElementType"></a><code>property <b>ElementType</b>: <a  href="Neslib.Clang.TType.html">TType</a> read GetElementType;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+The element type of an array, complex, or vector type.
+
+<p>If the type is not an array, complex, or vector type, an invalid type is returned.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="ElementCount"></a><code>property <b>ElementCount</b>: Integer read GetElementCount;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+The number of elements of an array or vector type.
+
+<p>If the type is not an array or vector type, -1 is returned.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="ArrayElementType"></a><code>property <b>ArrayElementType</b>: <a  href="Neslib.Clang.TType.html">TType</a> read GetArrayElementType;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+The element type of an array type.
+
+<p>For non-array types, an invalid type is returned.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="ArraySize"></a><code>property <b>ArraySize</b>: Int64 read GetArraySize;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+the array size of a constant array.
+
+<p>For a non-array types, -1 is returned</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="NamedType"></a><code>property <b>NamedType</b>: <a  href="Neslib.Clang.TType.html">TType</a> read GetNamedType;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+The type named by the qualified-id.
+
+<p>For non-elaborated types, an invalid type is returned.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="AlignOf"></a><code>property <b>AlignOf</b>: Int64 read GetAlignOf;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+The alignment of the type in bytes as per C++[expr.alignof] standard.
+
+<p></p>
+
+<ul class="compact_spacing">
+  <li><p>If the type declaration is invalid, <a class="normal" href="Neslib.Clang.html#TYPE_LAYOUT_ERROR_INVALID">TYPE_LAYOUT_ERROR_INVALID</a> is returned.</p></li>
+  <li><p>If the type declaration is an incomplete type, <a class="normal" href="Neslib.Clang.html#TYPE_LAYOUT_ERROR_INCOMPLETE">TYPE_LAYOUT_ERROR_INCOMPLETE</a> is returned.</p></li>
+  <li><p>If the type declaration is a dependent type, <a class="normal" href="Neslib.Clang.html#TYPE_LAYOUT_ERROR_DEPENDENT">TYPE_LAYOUT_ERROR_DEPENDENT</a> is returned.</p></li>
+  <li><p>If the type declaration is not a constant size type, <a class="normal" href="Neslib.Clang.html#TYPE_LAYOUT_ERROR_NOT_CONSTANT_SIZE">TYPE_LAYOUT_ERROR_NOT_CONSTANT_SIZE</a> is returned.</p></li>
+</ul>
+
+<p></p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="ClassType"></a><code>property <b>ClassType</b>: <a  href="Neslib.Clang.TType.html">TType</a> read GetClassType;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+The class type of an member pointer type.
+
+<p>For non-member-pointer types, an invalid type is returned.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="SizeOf"></a><code>property <b>SizeOf</b>: Int64 read GetSizeOf;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+The size of a type in bytes as per C++[expr.sizeof] standard.
+
+<p></p>
+
+<ul class="compact_spacing">
+  <li><p>If the type declaration is invalid, <a class="normal" href="Neslib.Clang.html#TYPE_LAYOUT_ERROR_INVALID">TYPE_LAYOUT_ERROR_INVALID</a> is returned.</p></li>
+  <li><p>If the type declaration is an incomplete type, <a class="normal" href="Neslib.Clang.html#TYPE_LAYOUT_ERROR_INCOMPLETE">TYPE_LAYOUT_ERROR_INCOMPLETE</a> is returned.</p></li>
+  <li><p>If the type declaration is a dependent type, <a class="normal" href="Neslib.Clang.html#TYPE_LAYOUT_ERROR_DEPENDENT">TYPE_LAYOUT_ERROR_DEPENDENT</a> is returned.</p></li>
+</ul>
+
+<p></p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="TemplateArgumentCount"></a><code>property <b>TemplateArgumentCount</b>: Integer read GetTemplateArgumentCount;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+The number of template arguments for this template specialization, or -1 if this type is not a template specialization.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="TemplateArgumentTypes"></a><code>property <b>TemplateArgumentTypes</b>[constAIndex:Integer]: <a  href="Neslib.Clang.TType.html">TType</a> read GetTemplateArgumentType;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+The type template argument of this template class specialization at given index.
+
+<p>This property only returns template type arguments and does not <a class="normal" href="Neslib.Clang.TType.html#Handle">handle</a> template template arguments or variadic packs.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="CxxRefQualifier"></a><code>property <b>CxxRefQualifier</b>: <a  href="Neslib.Clang.html#TRefQualifierKind">TRefQualifierKind</a> read GetCxxRefQualifier;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+The ref-qualifier <a class="normal" href="Neslib.Clang.TType.html#Kind">kind</a> of a function or method.
+
+<p>The ref-qualifier is returned for C++ functions or methods. For other types or non-C++ declarations, None is returned.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="Handle"></a><code>property <b>Handle</b>: TCXType read FHandle;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Internal <code>handle</code> to C API</p>
+</td></tr>
+</table>
+<div style="height:1000px"></div><hr noshade size="1"><span class="appinfo"><em>Generated by <a  href="https://github.com/neslib/PasDocEx">PasDocEx</a>, based on <a  href="http://pasdoc.sourceforge.net/">PasDoc 0.14.0</a>. </em>
+</span>
+</td></tr></table></body></html>

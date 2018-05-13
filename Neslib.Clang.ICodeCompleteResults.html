@@ -1,0 +1,304 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/1999/REC-html401-19991224/loose.dtd">
+<html>
+<head>
+<title>Neslib.Clang: Neslib.Clang: Interface ICodeCompleteResults</title>
+<meta name="generator" content="PasDoc 0.14.0">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<link rel="StyleSheet" type="text/css" href="pasdoc.css">
+</head>
+<body>
+<table class="container"><tr><td class="navigation">
+<h2>Neslib.Clang</h2><p><a href="introduction.html" class="navigation">Neslib.Clang</a></p><p><a href="AllUnits.html" class="navigation">Units</a></p><p><a href="ClassHierarchy.html" class="navigation">Class Hierarchy</a></p><p><a href="AllClasses.html" class="navigation">Classes, Interfaces, Objects and Records</a></p><p><a href="AllTypes.html" class="navigation">Types</a></p><p><a href="AllVariables.html" class="navigation">Variables</a></p><p><a href="AllConstants.html" class="navigation">Constants</a></p><p><a href="AllFunctions.html" class="navigation">Functions and Procedures</a></p><p><a href="AllIdentifiers.html" class="navigation">Identifiers</a></p><p><a href="conclusion.html" class="navigation">License</a></p></td><td class="content">
+<a name="ICodeCompleteResults"></a><h1 class="cio">Interface ICodeCompleteResults</h1>
+<table class="sections wide_list">
+<tr>
+<td><a class="section" href="#PasDoc-Description">Description</a></td><td><a class="section" href="#PasDoc-Hierarchy">Hierarchy</a></td><td>Fields</td><td><a class="section" href="#PasDoc-Methods">Methods</a></td><td><a class="section" href="#PasDoc-Properties">Properties</a></td></tr></table>
+<a name="PasDoc-Description"></a><h2 class="unit">Unit</h2>
+<p class="unitlink">
+<a  href="Neslib.Clang.html">Neslib.Clang</a></p>
+<h2 class="declaration">Declaration</h2>
+<p class="declaration">
+<code>type ICodeCompleteResults = interface(IInterface)</code></p>
+<h2 class="description">Description</h2>
+<p>
+Contains the <a class="normal" href="Neslib.Clang.ICodeCompleteResults.html#Results">results</a> of code-completion.</p>
+<h6 class="description_section">Attributes</h6>
+<dl class="attributes">
+  <dt>GUID['{0CCB125C-8793-4038-9F96-8063BFC6FEDD}']</dt>
+  <dd></dd>
+</dl>
+<a name="PasDoc-Hierarchy"></a><h2 class="hierarchy">Hierarchy</h2>
+<ul class="hierarchy"><li class="ancestor">IInterface</li>
+<li class="thisitem">ICodeCompleteResults</li></ul><h2 class="overview">Overview</h2>
+<a name="PasDoc-Methods"></a><h3 class="summary">Methods</h3>
+<table class="summary wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a  href="Neslib.Clang.ICodeCompleteResults.html#GetCount">GetCount</a></b>: Integer;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a  href="Neslib.Clang.ICodeCompleteResults.html#GetResult">GetResult</a></b>(const AIndex: Integer): <a  href="Neslib.Clang.TCompletionResult.html">TCompletionResult</a>;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a  href="Neslib.Clang.ICodeCompleteResults.html#GetDiagnosticCount">GetDiagnosticCount</a></b>: Integer;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a  href="Neslib.Clang.ICodeCompleteResults.html#GetDiagnostic">GetDiagnostic</a></b>(const AIndex: Integer): <a  href="Neslib.Clang.IDiagnostic.html">IDiagnostic</a>;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a  href="Neslib.Clang.ICodeCompleteResults.html#GetContexts">GetContexts</a></b>: UInt64;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a  href="Neslib.Clang.ICodeCompleteResults.html#GetContainerKind">GetContainerKind</a></b>: <a  href="Neslib.Clang.html#TCursorKind">TCursorKind</a>;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a  href="Neslib.Clang.ICodeCompleteResults.html#GetContainerComplete">GetContainerComplete</a></b>: Boolean;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a  href="Neslib.Clang.ICodeCompleteResults.html#GetContainerUsr">GetContainerUsr</a></b>: <a  href="Neslib.Clang.TUnifiedSymbolResolution.html">TUnifiedSymbolResolution</a>;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a  href="Neslib.Clang.ICodeCompleteResults.html#GetObjCSelector">GetObjCSelector</a></b>: String;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a  href="Neslib.Clang.ICodeCompleteResults.html#GetHandle">GetHandle</a></b>: PCXCodeCompleteResults;</code></td>
+</tr>
+</table>
+<a name="PasDoc-Properties"></a><h3 class="summary">Properties</h3>
+<table class="summary wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.ICodeCompleteResults.html#Count">Count</a></b>: Integer read <a  href="Neslib.Clang.ICodeCompleteResults.html#GetCount">GetCount</a>;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.ICodeCompleteResults.html#Results">Results</a></b>[constAIndex:Integer]: <a  href="Neslib.Clang.TCompletionResult.html">TCompletionResult</a> read <a  href="Neslib.Clang.ICodeCompleteResults.html#GetResult">GetResult</a>;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.ICodeCompleteResults.html#DiagnosticCount">DiagnosticCount</a></b>: Integer read <a  href="Neslib.Clang.ICodeCompleteResults.html#GetDiagnosticCount">GetDiagnosticCount</a>;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.ICodeCompleteResults.html#Diagnostics">Diagnostics</a></b>[constAIndex:Integer]: <a  href="Neslib.Clang.IDiagnostic.html">IDiagnostic</a> read <a  href="Neslib.Clang.ICodeCompleteResults.html#GetDiagnostic">GetDiagnostic</a>;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.ICodeCompleteResults.html#Contexts">Contexts</a></b>: UInt64 read <a  href="Neslib.Clang.ICodeCompleteResults.html#GetContexts">GetContexts</a>;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.ICodeCompleteResults.html#ContainerKind">ContainerKind</a></b>: <a  href="Neslib.Clang.html#TCursorKind">TCursorKind</a> read <a  href="Neslib.Clang.ICodeCompleteResults.html#GetContainerKind">GetContainerKind</a>;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.ICodeCompleteResults.html#ContainerComplete">ContainerComplete</a></b>: Boolean read <a  href="Neslib.Clang.ICodeCompleteResults.html#GetContainerComplete">GetContainerComplete</a>;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.ICodeCompleteResults.html#ContainerUsr">ContainerUsr</a></b>: <a  href="Neslib.Clang.TUnifiedSymbolResolution.html">TUnifiedSymbolResolution</a> read <a  href="Neslib.Clang.ICodeCompleteResults.html#GetContainerUsr">GetContainerUsr</a>;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.ICodeCompleteResults.html#ObjCSelector">ObjCSelector</a></b>: String read <a  href="Neslib.Clang.ICodeCompleteResults.html#GetObjCSelector">GetObjCSelector</a>;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.ICodeCompleteResults.html#Handle">Handle</a></b>: PCXCodeCompleteResults read <a  href="Neslib.Clang.ICodeCompleteResults.html#GetHandle">GetHandle</a>;</code></td>
+</tr>
+</table>
+<h2 class="description">Description</h2>
+<h3 class="detail">Methods</h3>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="GetCount"></a><code>function <b>GetCount</b>: Integer;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="GetResult"></a><code>function <b>GetResult</b>(const AIndex: Integer): <a  href="Neslib.Clang.TCompletionResult.html">TCompletionResult</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="GetDiagnosticCount"></a><code>function <b>GetDiagnosticCount</b>: Integer;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="GetDiagnostic"></a><code>function <b>GetDiagnostic</b>(const AIndex: Integer): <a  href="Neslib.Clang.IDiagnostic.html">IDiagnostic</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="GetContexts"></a><code>function <b>GetContexts</b>: UInt64;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="GetContainerKind"></a><code>function <b>GetContainerKind</b>: <a  href="Neslib.Clang.html#TCursorKind">TCursorKind</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="GetContainerComplete"></a><code>function <b>GetContainerComplete</b>: Boolean;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="GetContainerUsr"></a><code>function <b>GetContainerUsr</b>: <a  href="Neslib.Clang.TUnifiedSymbolResolution.html">TUnifiedSymbolResolution</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="GetObjCSelector"></a><code>function <b>GetObjCSelector</b>: String;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="GetHandle"></a><code>function <b>GetHandle</b>: PCXCodeCompleteResults;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<h3 class="detail">Properties</h3>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="Count"></a><code>property <b>Count</b>: Integer read <a  href="Neslib.Clang.ICodeCompleteResults.html#GetCount">GetCount</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Number of code completion <a class="normal" href="Neslib.Clang.ICodeCompleteResults.html#Results">results</a></p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="Results"></a><code>property <b>Results</b>[constAIndex:Integer]: <a  href="Neslib.Clang.TCompletionResult.html">TCompletionResult</a> read <a  href="Neslib.Clang.ICodeCompleteResults.html#GetResult">GetResult</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Code completion <code>results</code></p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="DiagnosticCount"></a><code>property <b>DiagnosticCount</b>: Integer read <a  href="Neslib.Clang.ICodeCompleteResults.html#GetDiagnosticCount">GetDiagnosticCount</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+The number of <a class="normal" href="Neslib.Clang.ICodeCompleteResults.html#Diagnostics">diagnostics</a> produced prior to the location where code completion was performed.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="Diagnostics"></a><code>property <b>Diagnostics</b>[constAIndex:Integer]: <a  href="Neslib.Clang.IDiagnostic.html">IDiagnostic</a> read <a  href="Neslib.Clang.ICodeCompleteResults.html#GetDiagnostic">GetDiagnostic</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+The <code>diagnostics</code> produced prior to the location where code completion was performed.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="Contexts"></a><code>property <b>Contexts</b>: UInt64 read <a  href="Neslib.Clang.ICodeCompleteResults.html#GetContexts">GetContexts</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+The kinds of completions that are appropriate for use along with the code completion <a class="normal" href="Neslib.Clang.ICodeCompleteResults.html#Results">results</a>.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="ContainerKind"></a><code>property <b>ContainerKind</b>: <a  href="Neslib.Clang.html#TCursorKind">TCursorKind</a> read <a  href="Neslib.Clang.ICodeCompleteResults.html#GetContainerKind">GetContainerKind</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+The cursor kind for the container for the current code completion context. The container is only guaranteed to be set for <a class="normal" href="Neslib.Clang.ICodeCompleteResults.html#Contexts">contexts</a> where a container exists (i.e. member accesses or Objective-C message sends); if there is not a container, this function will return InvalidCode.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="ContainerComplete"></a><code>property <b>ContainerComplete</b>: Boolean read <a  href="Neslib.Clang.ICodeCompleteResults.html#GetContainerComplete">GetContainerComplete</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Whether Clang has complete information about the container for the current code completion context.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="ContainerUsr"></a><code>property <b>ContainerUsr</b>: <a  href="Neslib.Clang.TUnifiedSymbolResolution.html">TUnifiedSymbolResolution</a> read <a  href="Neslib.Clang.ICodeCompleteResults.html#GetContainerUsr">GetContainerUsr</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+The USR for the container for the current code completion context. If there is not a container for the current context, this function will return the empty string.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="ObjCSelector"></a><code>property <b>ObjCSelector</b>: String read <a  href="Neslib.Clang.ICodeCompleteResults.html#GetObjCSelector">GetObjCSelector</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+The currently-entered selector for an Objective-C message send, formatted like &quot;initWithFoo:bar:&quot;. Only guaranteed to return a non-empty string for ObjCInstanceMessage and ObjCClassMessage.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="Handle"></a><code>property <b>Handle</b>: PCXCodeCompleteResults read <a  href="Neslib.Clang.ICodeCompleteResults.html#GetHandle">GetHandle</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Internal <code>handle</code> to C API</p>
+</td></tr>
+</table>
+<div style="height:1000px"></div><hr noshade size="1"><span class="appinfo"><em>Generated by <a  href="https://github.com/neslib/PasDocEx">PasDocEx</a>, based on <a  href="http://pasdoc.sourceforge.net/">PasDoc 0.14.0</a>. </em>
+</span>
+</td></tr></table></body></html>

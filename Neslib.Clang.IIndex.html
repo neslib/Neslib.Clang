@@ -1,0 +1,260 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/1999/REC-html401-19991224/loose.dtd">
+<html>
+<head>
+<title>Neslib.Clang: Neslib.Clang: Interface IIndex</title>
+<meta name="generator" content="PasDoc 0.14.0">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<link rel="StyleSheet" type="text/css" href="pasdoc.css">
+</head>
+<body>
+<table class="container"><tr><td class="navigation">
+<h2>Neslib.Clang</h2><p><a href="introduction.html" class="navigation">Neslib.Clang</a></p><p><a href="AllUnits.html" class="navigation">Units</a></p><p><a href="ClassHierarchy.html" class="navigation">Class Hierarchy</a></p><p><a href="AllClasses.html" class="navigation">Classes, Interfaces, Objects and Records</a></p><p><a href="AllTypes.html" class="navigation">Types</a></p><p><a href="AllVariables.html" class="navigation">Variables</a></p><p><a href="AllConstants.html" class="navigation">Constants</a></p><p><a href="AllFunctions.html" class="navigation">Functions and Procedures</a></p><p><a href="AllIdentifiers.html" class="navigation">Identifiers</a></p><p><a href="conclusion.html" class="navigation">License</a></p></td><td class="content">
+<a name="IIndex"></a><h1 class="cio">Interface IIndex</h1>
+<table class="sections wide_list">
+<tr>
+<td><a class="section" href="#PasDoc-Description">Description</a></td><td><a class="section" href="#PasDoc-Hierarchy">Hierarchy</a></td><td>Fields</td><td><a class="section" href="#PasDoc-Methods">Methods</a></td><td><a class="section" href="#PasDoc-Properties">Properties</a></td></tr></table>
+<a name="PasDoc-Description"></a><h2 class="unit">Unit</h2>
+<p class="unitlink">
+<a  href="Neslib.Clang.html">Neslib.Clang</a></p>
+<h2 class="declaration">Declaration</h2>
+<p class="declaration">
+<code>type IIndex = interface(IInterface)</code></p>
+<h2 class="description">Description</h2>
+<p>
+An &quot;index&quot; that consists of a set of translation units that would typically be linked together into an executable or library. Use <a class="normal" href="Neslib.Clang.TIndex.html">TIndex</a> to create an instance.</p>
+<h6 class="description_section">Attributes</h6>
+<dl class="attributes">
+  <dt>GUID['{F432C0B8-2E5F-459E-8514-BE601317F6F3}']</dt>
+  <dd></dd>
+</dl>
+<a name="PasDoc-Hierarchy"></a><h2 class="hierarchy">Hierarchy</h2>
+<ul class="hierarchy"><li class="ancestor">IInterface</li>
+<li class="thisitem">IIndex</li></ul><h2 class="overview">Overview</h2>
+<a name="PasDoc-Methods"></a><h3 class="summary">Methods</h3>
+<table class="summary wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a  href="Neslib.Clang.IIndex.html#GetGlobalOptions">GetGlobalOptions</a></b>: <a  href="Neslib.Clang.html#TGlobalOptions">TGlobalOptions</a>;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>procedure <b><a  href="Neslib.Clang.IIndex.html#SetGlobalOptions">SetGlobalOptions</a></b>(const AValue: <a  href="Neslib.Clang.html#TGlobalOptions">TGlobalOptions</a>);</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>procedure <b><a  href="Neslib.Clang.IIndex.html#SetInvocationEmissionPath">SetInvocationEmissionPath</a></b>(const AValue: String);</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a  href="Neslib.Clang.IIndex.html#GetHandle">GetHandle</a></b>: TCXIndex;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a  href="Neslib.Clang.IIndex.html#CreateTranslationUnitFromSource">CreateTranslationUnitFromSource</a></b>(const ASourceFilename: String; const AClangCommandLineArgs: array of String; const AUnsavedFiles: TArray&lt;<a  href="Neslib.Clang.TUnsavedFile.html">TUnsavedFile</a>&gt; = nil): <a  href="Neslib.Clang.ITranslationUnit.html">ITranslationUnit</a>; overload;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a  href="Neslib.Clang.IIndex.html#CreateTranslationUnitFromSource">CreateTranslationUnitFromSource</a></b>(const ASourceFilename: String; const AUnsavedFiles: TArray&lt;<a  href="Neslib.Clang.TUnsavedFile.html">TUnsavedFile</a>&gt; = nil): <a  href="Neslib.Clang.ITranslationUnit.html">ITranslationUnit</a>; overload;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a  href="Neslib.Clang.IIndex.html#CreateTranslationUnit">CreateTranslationUnit</a></b>(const AAstFilename: String): <a  href="Neslib.Clang.ITranslationUnit.html">ITranslationUnit</a>;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a  href="Neslib.Clang.IIndex.html#ParseTranslationUnit">ParseTranslationUnit</a></b>(const ASourceFilename: String; const AClangCommandLineArgs: array of String; const AUnsavedFiles: TArray&lt;<a  href="Neslib.Clang.TUnsavedFile.html">TUnsavedFile</a>&gt; = nil; const AOptions: <a  href="Neslib.Clang.html#TTranslationUnitFlags">TTranslationUnitFlags</a> = []): <a  href="Neslib.Clang.ITranslationUnit.html">ITranslationUnit</a>;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a  href="Neslib.Clang.IIndex.html#CreateIndexAction">CreateIndexAction</a></b>: <a  href="Neslib.Clang.IIndexAction.html">IIndexAction</a>;</code></td>
+</tr>
+</table>
+<a name="PasDoc-Properties"></a><h3 class="summary">Properties</h3>
+<table class="summary wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.IIndex.html#GlobalOptions">GlobalOptions</a></b>: <a  href="Neslib.Clang.html#TGlobalOptions">TGlobalOptions</a> read <a  href="Neslib.Clang.IIndex.html#GetGlobalOptions">GetGlobalOptions</a> write <a  href="Neslib.Clang.IIndex.html#SetGlobalOptions">SetGlobalOptions</a>;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.IIndex.html#InvocationEmissionPath">InvocationEmissionPath</a></b>: String write <a  href="Neslib.Clang.IIndex.html#SetInvocationEmissionPath">SetInvocationEmissionPath</a>;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.IIndex.html#Handle">Handle</a></b>: TCXIndex read <a  href="Neslib.Clang.IIndex.html#GetHandle">GetHandle</a>;</code></td>
+</tr>
+</table>
+<h2 class="description">Description</h2>
+<h3 class="detail">Methods</h3>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="GetGlobalOptions"></a><code>function <b>GetGlobalOptions</b>: <a  href="Neslib.Clang.html#TGlobalOptions">TGlobalOptions</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="SetGlobalOptions"></a><code>procedure <b>SetGlobalOptions</b>(const AValue: <a  href="Neslib.Clang.html#TGlobalOptions">TGlobalOptions</a>);</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="SetInvocationEmissionPath"></a><code>procedure <b>SetInvocationEmissionPath</b>(const AValue: String);</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="GetHandle"></a><code>function <b>GetHandle</b>: TCXIndex;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="CreateTranslationUnitFromSource"></a><code>function <b>CreateTranslationUnitFromSource</b>(const ASourceFilename: String; const AClangCommandLineArgs: array of String; const AUnsavedFiles: TArray&lt;<a  href="Neslib.Clang.TUnsavedFile.html">TUnsavedFile</a>&gt; = nil): <a  href="Neslib.Clang.ITranslationUnit.html">ITranslationUnit</a>; overload;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="CreateTranslationUnitFromSource"></a><code>function <b>CreateTranslationUnitFromSource</b>(const ASourceFilename: String; const AUnsavedFiles: TArray&lt;<a  href="Neslib.Clang.TUnsavedFile.html">TUnsavedFile</a>&gt; = nil): <a  href="Neslib.Clang.ITranslationUnit.html">ITranslationUnit</a>; overload;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Return the <a class="normal" href="Neslib.Clang.ITranslationUnit.html">ITranslationUnit</a> for a given source file and the provided command line arguments one would pass to the compiler.
+
+<p>   
+
+<p> Note: The ASourceFilename argument is optional. If the caller provides an empty string, the name of the source file is expected to reside in the specified command line arguments.
+
+<p>Note: When encountered in AClangCommandLineArgs, the following options are ignored:
+
+<p></p>
+
+<ul class="compact_spacing">
+  <li><p>'-c'</p></li>
+  <li><p>'-emit-ast'</p></li>
+  <li><p>'-fsyntax-only'</p></li>
+  <li><p>'-o &lt;output file&gt;' (both '-o' and '&lt;output file&gt;' are ignored)</p></li>
+</ul>
+
+<p></p>
+<h6 class="description_section">Parameters</h6>
+<dl class="parameters">
+<dt>ASourceFilename</dt>
+<dd>The name of the source file to load, or an empty string if the source file is included in AClangCommandLineArgs.</dd>
+<dt>AClangCommandLineArgs</dt>
+<dd>(optional) command-line arguments that would be passed to the clang executable if it were being invoked out-of-process. These command-line options will be parsed and will affect how the translation unit is parsed. Note that the following options are</dd>
+<dt>ignored</dt>
+<dd>'-c', '-emit-ast', '-fsyntax-only' (which is the default), and '-o &lt;output file&gt;'.</dd>
+<dt>AUnsavedFiles</dt>
+<dd>(optional) array of files that have not yet been saved to disk but may be required for code completion, including the contents of those files.</dd>
+</dl>
+<h6 class="description_section">Returns</h6>
+<p class="return">The translation unit or nil in case of an error (eg. file does not exist or parse error)</p></td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="CreateTranslationUnit"></a><code>function <b>CreateTranslationUnit</b>(const AAstFilename: String): <a  href="Neslib.Clang.ITranslationUnit.html">ITranslationUnit</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Create a translation unit from an AST file (-emit-ast).
+
+<p>
+
+<p></p>
+<h6 class="description_section">Parameters</h6>
+<dl class="parameters">
+<dt>AAstFilename</dt>
+<dd>name of the AST file to load.</dd>
+</dl>
+<h6 class="description_section">Returns</h6>
+<p class="return">The translation unit or nil in case of an error (eg. file does not exist or in invalid format)</p></td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="ParseTranslationUnit"></a><code>function <b>ParseTranslationUnit</b>(const ASourceFilename: String; const AClangCommandLineArgs: array of String; const AUnsavedFiles: TArray&lt;<a  href="Neslib.Clang.TUnsavedFile.html">TUnsavedFile</a>&gt; = nil; const AOptions: <a  href="Neslib.Clang.html#TTranslationUnitFlags">TTranslationUnitFlags</a> = []): <a  href="Neslib.Clang.ITranslationUnit.html">ITranslationUnit</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Parse the given source file and the translation unit corresponding to that file.
+
+<p>This routine is the main entry point for the Clang C API, providing the ability to parse a source file into a translation unit that can then be queried by other functions in the API. This routine accepts a set of command-line arguments so that the compilation can be configured in the same way that the compiler is configured on the command line.
+
+<p>    
+
+<p></p>
+<h6 class="description_section">Parameters</h6>
+<dl class="parameters">
+<dt>ASourceFilename</dt>
+<dd>The name of the source file to load, or an empty string if the source file is included in AClangCommandLineArgs.</dd>
+<dt>AClangCommandLineArgs</dt>
+<dd>(optional) command-line arguments that would be passed to the clang executable if it were being invoked out-of-process. These command-line options will be parsed and will affect how the translation unit is parsed. Note that the following options are</dd>
+<dt>ignored</dt>
+<dd>'-c', '-emit-ast', '-fsyntax-only' (which is the default), and '-o &lt;output file&gt;'.</dd>
+<dt>AUnsavedFiles</dt>
+<dd>(optional) array of files that have not yet been saved to disk but may be required for code completion, including the contents of those files.</dd>
+<dt>AOptions</dt>
+<dd>(optional) options that affects how the translation unit is managed but not its compilation.</dd>
+</dl>
+<h6 class="description_section">Returns</h6>
+<p class="return">The translation unit or nil in case of an error (eg. file does not exist or parse error)</p></td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="CreateIndexAction"></a><code>function <b>CreateIndexAction</b>: <a  href="Neslib.Clang.IIndexAction.html">IIndexAction</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Create an indexing action/session, to be applied to one or multiple translation units.
+
+<p></p>
+<h6 class="description_section">Returns</h6>
+<p class="return">The index action or nil in case of an error.</p></td></tr>
+</table>
+<h3 class="detail">Properties</h3>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="GlobalOptions"></a><code>property <b>GlobalOptions</b>: <a  href="Neslib.Clang.html#TGlobalOptions">TGlobalOptions</a> read <a  href="Neslib.Clang.IIndex.html#GetGlobalOptions">GetGlobalOptions</a> write <a  href="Neslib.Clang.IIndex.html#SetGlobalOptions">SetGlobalOptions</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+General options associated with an Index</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="InvocationEmissionPath"></a><code>property <b>InvocationEmissionPath</b>: String write <a  href="Neslib.Clang.IIndex.html#SetInvocationEmissionPath">SetInvocationEmissionPath</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+The invocation emission path. Specifies a path which will contain log files for certain libclang invocations. An empty string (default) implies that libclang invocations are not logged.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="Handle"></a><code>property <b>Handle</b>: TCXIndex read <a  href="Neslib.Clang.IIndex.html#GetHandle">GetHandle</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Internal <code>handle</code> to C API</p>
+</td></tr>
+</table>
+<div style="height:1000px"></div><hr noshade size="1"><span class="appinfo"><em>Generated by <a  href="https://github.com/neslib/PasDocEx">PasDocEx</a>, based on <a  href="http://pasdoc.sourceforge.net/">PasDoc 0.14.0</a>. </em>
+</span>
+</td></tr></table></body></html>

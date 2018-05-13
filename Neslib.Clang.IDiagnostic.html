@@ -1,0 +1,412 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/1999/REC-html401-19991224/loose.dtd">
+<html>
+<head>
+<title>Neslib.Clang: Neslib.Clang: Interface IDiagnostic</title>
+<meta name="generator" content="PasDoc 0.14.0">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<link rel="StyleSheet" type="text/css" href="pasdoc.css">
+</head>
+<body>
+<table class="container"><tr><td class="navigation">
+<h2>Neslib.Clang</h2><p><a href="introduction.html" class="navigation">Neslib.Clang</a></p><p><a href="AllUnits.html" class="navigation">Units</a></p><p><a href="ClassHierarchy.html" class="navigation">Class Hierarchy</a></p><p><a href="AllClasses.html" class="navigation">Classes, Interfaces, Objects and Records</a></p><p><a href="AllTypes.html" class="navigation">Types</a></p><p><a href="AllVariables.html" class="navigation">Variables</a></p><p><a href="AllConstants.html" class="navigation">Constants</a></p><p><a href="AllFunctions.html" class="navigation">Functions and Procedures</a></p><p><a href="AllIdentifiers.html" class="navigation">Identifiers</a></p><p><a href="conclusion.html" class="navigation">License</a></p></td><td class="content">
+<a name="IDiagnostic"></a><h1 class="cio">Interface IDiagnostic</h1>
+<table class="sections wide_list">
+<tr>
+<td><a class="section" href="#PasDoc-Description">Description</a></td><td><a class="section" href="#PasDoc-Hierarchy">Hierarchy</a></td><td>Fields</td><td><a class="section" href="#PasDoc-Methods">Methods</a></td><td><a class="section" href="#PasDoc-Properties">Properties</a></td></tr></table>
+<a name="PasDoc-Description"></a><h2 class="unit">Unit</h2>
+<p class="unitlink">
+<a  href="Neslib.Clang.html">Neslib.Clang</a></p>
+<h2 class="declaration">Declaration</h2>
+<p class="declaration">
+<code>type IDiagnostic = interface(IInterface)</code></p>
+<h2 class="description">Description</h2>
+<p>
+A single diagnostic, containing the diagnostic's <a class="normal" href="Neslib.Clang.IDiagnostic.html#Severity">severity</a>, <a class="normal" href="Neslib.Clang.IDiagnostic.html#Location">location</a>, text, source <a class="normal" href="Neslib.Clang.IDiagnostic.html#Ranges">ranges</a>, and fix-it hints.</p>
+<h6 class="description_section">Attributes</h6>
+<dl class="attributes">
+  <dt>GUID['{41A68BA7-543A-49DB-A7E0-636798B2D923}']</dt>
+  <dd></dd>
+</dl>
+<a name="PasDoc-Hierarchy"></a><h2 class="hierarchy">Hierarchy</h2>
+<ul class="hierarchy"><li class="ancestor">IInterface</li>
+<li class="thisitem">IDiagnostic</li></ul><h2 class="overview">Overview</h2>
+<a name="PasDoc-Methods"></a><h3 class="summary">Methods</h3>
+<table class="summary wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a  href="Neslib.Clang.IDiagnostic.html#GetChildDiagnostics">GetChildDiagnostics</a></b>: <a  href="Neslib.Clang.IDiagnosticSet.html">IDiagnosticSet</a>;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a  href="Neslib.Clang.IDiagnostic.html#GetSeverity">GetSeverity</a></b>: <a  href="Neslib.Clang.html#TDiagnosticSeverity">TDiagnosticSeverity</a>;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a  href="Neslib.Clang.IDiagnostic.html#GetLocation">GetLocation</a></b>: <a  href="Neslib.Clang.TSourceLocation.html">TSourceLocation</a>;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a  href="Neslib.Clang.IDiagnostic.html#GetSpelling">GetSpelling</a></b>: String;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a  href="Neslib.Clang.IDiagnostic.html#GetEnableOption">GetEnableOption</a></b>: String;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a  href="Neslib.Clang.IDiagnostic.html#GetDisableOption">GetDisableOption</a></b>: String;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a  href="Neslib.Clang.IDiagnostic.html#GetCategory">GetCategory</a></b>: Integer;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a  href="Neslib.Clang.IDiagnostic.html#GetCategoryText">GetCategoryText</a></b>: String;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a  href="Neslib.Clang.IDiagnostic.html#GetRangeCount">GetRangeCount</a></b>: Integer;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a  href="Neslib.Clang.IDiagnostic.html#GetRange">GetRange</a></b>(const AIndex: Integer): <a  href="Neslib.Clang.TSourceRange.html">TSourceRange</a>;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a  href="Neslib.Clang.IDiagnostic.html#GetFixItCount">GetFixItCount</a></b>: Integer;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a  href="Neslib.Clang.IDiagnostic.html#GetHandle">GetHandle</a></b>: TCXDiagnostic;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a  href="Neslib.Clang.IDiagnostic.html#Format">Format</a></b>(const AOptions: <a  href="Neslib.Clang.html#TDiagnosticDisplayOptions">TDiagnosticDisplayOptions</a>): String;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a  href="Neslib.Clang.IDiagnostic.html#FixIt">FixIt</a></b>(const AFixItIndex: Integer; out AReplacementRange: <a  href="Neslib.Clang.TSourceRange.html">TSourceRange</a>): String;</code></td>
+</tr>
+</table>
+<a name="PasDoc-Properties"></a><h3 class="summary">Properties</h3>
+<table class="summary wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.IDiagnostic.html#ChildDiagnostics">ChildDiagnostics</a></b>: <a  href="Neslib.Clang.IDiagnosticSet.html">IDiagnosticSet</a> read <a  href="Neslib.Clang.IDiagnostic.html#GetChildDiagnostics">GetChildDiagnostics</a>;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.IDiagnostic.html#Severity">Severity</a></b>: <a  href="Neslib.Clang.html#TDiagnosticSeverity">TDiagnosticSeverity</a> read <a  href="Neslib.Clang.IDiagnostic.html#GetSeverity">GetSeverity</a>;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.IDiagnostic.html#Location">Location</a></b>: <a  href="Neslib.Clang.TSourceLocation.html">TSourceLocation</a> read <a  href="Neslib.Clang.IDiagnostic.html#GetLocation">GetLocation</a>;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.IDiagnostic.html#Spelling">Spelling</a></b>: String read <a  href="Neslib.Clang.IDiagnostic.html#GetSpelling">GetSpelling</a>;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.IDiagnostic.html#EnableOption">EnableOption</a></b>: String read <a  href="Neslib.Clang.IDiagnostic.html#GetEnableOption">GetEnableOption</a>;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.IDiagnostic.html#DisableOption">DisableOption</a></b>: String read <a  href="Neslib.Clang.IDiagnostic.html#GetDisableOption">GetDisableOption</a>;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.IDiagnostic.html#Category">Category</a></b>: Integer read <a  href="Neslib.Clang.IDiagnostic.html#GetCategory">GetCategory</a>;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.IDiagnostic.html#CategoryText">CategoryText</a></b>: String read <a  href="Neslib.Clang.IDiagnostic.html#GetCategoryText">GetCategoryText</a>;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.IDiagnostic.html#RangeCount">RangeCount</a></b>: Integer read <a  href="Neslib.Clang.IDiagnostic.html#GetRangeCount">GetRangeCount</a>;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.IDiagnostic.html#Ranges">Ranges</a></b>[constAIndex:Integer]: <a  href="Neslib.Clang.TSourceRange.html">TSourceRange</a> read <a  href="Neslib.Clang.IDiagnostic.html#GetRange">GetRange</a>;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.IDiagnostic.html#FixItCount">FixItCount</a></b>: Integer read <a  href="Neslib.Clang.IDiagnostic.html#GetFixItCount">GetFixItCount</a>;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.IDiagnostic.html#Handle">Handle</a></b>: TCXDiagnostic read <a  href="Neslib.Clang.IDiagnostic.html#GetHandle">GetHandle</a>;</code></td>
+</tr>
+</table>
+<h2 class="description">Description</h2>
+<h3 class="detail">Methods</h3>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="GetChildDiagnostics"></a><code>function <b>GetChildDiagnostics</b>: <a  href="Neslib.Clang.IDiagnosticSet.html">IDiagnosticSet</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="GetSeverity"></a><code>function <b>GetSeverity</b>: <a  href="Neslib.Clang.html#TDiagnosticSeverity">TDiagnosticSeverity</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="GetLocation"></a><code>function <b>GetLocation</b>: <a  href="Neslib.Clang.TSourceLocation.html">TSourceLocation</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="GetSpelling"></a><code>function <b>GetSpelling</b>: String;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="GetEnableOption"></a><code>function <b>GetEnableOption</b>: String;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="GetDisableOption"></a><code>function <b>GetDisableOption</b>: String;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="GetCategory"></a><code>function <b>GetCategory</b>: Integer;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="GetCategoryText"></a><code>function <b>GetCategoryText</b>: String;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="GetRangeCount"></a><code>function <b>GetRangeCount</b>: Integer;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="GetRange"></a><code>function <b>GetRange</b>(const AIndex: Integer): <a  href="Neslib.Clang.TSourceRange.html">TSourceRange</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="GetFixItCount"></a><code>function <b>GetFixItCount</b>: Integer;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="GetHandle"></a><code>function <b>GetHandle</b>: TCXDiagnostic;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="Format"></a><code>function <b>Format</b>(const AOptions: <a  href="Neslib.Clang.html#TDiagnosticDisplayOptions">TDiagnosticDisplayOptions</a>): String;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+<code>Format</code> the diagnostic in a manner that is suitable for display.
+
+<p>
+
+<p> This routine will <code>format</code> the diagnostic to a string, renderingthe diagnostic according to the various options given. The <a class="normal" href="Neslib.Clang.html#GetDefaultDiagnosticDisplayOptions">GetDefaultDiagnosticDisplayOptions</a> function returns the set of options that most closely mimics the behavior of the clang compiler.</p>
+<h6 class="description_section">Parameters</h6>
+<dl class="parameters">
+<dt>AOptions</dt>
+<dd>a set of options that control the diagnostic display.</dd>
+</dl>
+<h6 class="description_section">Returns</h6>
+<p class="return">The formatted diagnostic.</p></td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="FixIt"></a><code>function <b>FixIt</b>(const AFixItIndex: Integer; out AReplacementRange: <a  href="Neslib.Clang.TSourceRange.html">TSourceRange</a>): String;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Retrieve the replacement information for a given fix-it.
+
+<p> 
+
+<p> Fix-its are described in terms of a source range whose contents should be replaced by a string. This approach generalizes over three kinds of operations: removal of source code (the range covers the code to be removed and the replacement string is empty), replacement of source code (the range covers the code to be replaced and the replacement string provides the new code), and insertion (both the start and end of the range point at the insertion <a class="normal" href="Neslib.Clang.IDiagnostic.html#Location">location</a>, and the replacement string provides the text to insert).</p>
+<h6 class="description_section">Parameters</h6>
+<dl class="parameters">
+<dt>AFixItIndex</dt>
+<dd>the zero-based index of the fix-it (0..FixItCount-1).</dd>
+<dt>AReplacementRange</dt>
+<dd>is set to the source range whose contents should be replaced with the returned replacement string. Note that source <a class="normal" href="Neslib.Clang.IDiagnostic.html#Ranges">ranges</a> are half-open <a class="normal" href="Neslib.Clang.IDiagnostic.html#Ranges">ranges</a> [a, b), so the source code should be replaced from a and up to (but not including) b.</dd>
+</dl>
+<h6 class="description_section">Returns</h6>
+<p class="return">A string containing text that should be replace the source code indicated by AReplacementRange.</p></td></tr>
+</table>
+<h3 class="detail">Properties</h3>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="ChildDiagnostics"></a><code>property <b>ChildDiagnostics</b>: <a  href="Neslib.Clang.IDiagnosticSet.html">IDiagnosticSet</a> read <a  href="Neslib.Clang.IDiagnostic.html#GetChildDiagnostics">GetChildDiagnostics</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Child diagnostics</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="Severity"></a><code>property <b>Severity</b>: <a  href="Neslib.Clang.html#TDiagnosticSeverity">TDiagnosticSeverity</a> read <a  href="Neslib.Clang.IDiagnostic.html#GetSeverity">GetSeverity</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+The <code>severity</code> of the diagnostic.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="Location"></a><code>property <b>Location</b>: <a  href="Neslib.Clang.TSourceLocation.html">TSourceLocation</a> read <a  href="Neslib.Clang.IDiagnostic.html#GetLocation">GetLocation</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+The source <code>location</code> of the diagnostic.
+
+<p>This <code>location</code> is where Clang would print the caret ('&circ;') when displaying the diagnostic on the command line.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="Spelling"></a><code>property <b>Spelling</b>: String read <a  href="Neslib.Clang.IDiagnostic.html#GetSpelling">GetSpelling</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+The text of the diagnostic.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="EnableOption"></a><code>property <b>EnableOption</b>: String read <a  href="Neslib.Clang.IDiagnostic.html#GetEnableOption">GetEnableOption</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+The name of the command-line option that enabled this diagnostic, such as &quot;-Wconversion&quot; or &quot;-pedantic&quot;.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="DisableOption"></a><code>property <b>DisableOption</b>: String read <a  href="Neslib.Clang.IDiagnostic.html#GetDisableOption">GetDisableOption</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+The name of the command-line option that disables this diagnostic.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="Category"></a><code>property <b>Category</b>: Integer read <a  href="Neslib.Clang.IDiagnostic.html#GetCategory">GetCategory</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+The <code>category</code> number for this diagnostic.
+
+<p>Diagnostics can be categorized into groups along with other, related diagnostics (e.g., diagnostics under the same warning flag). This property retrieves the <code>category</code> number for the diagnostic, or zero if this diagnostic is uncategorized.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="CategoryText"></a><code>property <b>CategoryText</b>: String read <a  href="Neslib.Clang.IDiagnostic.html#GetCategoryText">GetCategoryText</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+The diagnostic <a class="normal" href="Neslib.Clang.IDiagnostic.html#Category">category</a> text for the diagnostic.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="RangeCount"></a><code>property <b>RangeCount</b>: Integer read <a  href="Neslib.Clang.IDiagnostic.html#GetRangeCount">GetRangeCount</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+The number of source <a class="normal" href="Neslib.Clang.IDiagnostic.html#Ranges">ranges</a> associated with the given diagnostic.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="Ranges"></a><code>property <b>Ranges</b>[constAIndex:Integer]: <a  href="Neslib.Clang.TSourceRange.html">TSourceRange</a> read <a  href="Neslib.Clang.IDiagnostic.html#GetRange">GetRange</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Source <code>ranges</code> associated with the diagnostic.
+
+<p>A diagnostic's source <code>ranges</code> highlight important elements in the source code. On the command line, Clang displays source <code>ranges</code> by underlining them with '&tilde;' characters.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="FixItCount"></a><code>property <b>FixItCount</b>: Integer read <a  href="Neslib.Clang.IDiagnostic.html#GetFixItCount">GetFixItCount</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+The number of fix-it hints associated with the given diagnostic.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="Handle"></a><code>property <b>Handle</b>: TCXDiagnostic read <a  href="Neslib.Clang.IDiagnostic.html#GetHandle">GetHandle</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Internal <code>handle</code> to C API</p>
+</td></tr>
+</table>
+<div style="height:1000px"></div><hr noshade size="1"><span class="appinfo"><em>Generated by <a  href="https://github.com/neslib/PasDocEx">PasDocEx</a>, based on <a  href="http://pasdoc.sourceforge.net/">PasDoc 0.14.0</a>. </em>
+</span>
+</td></tr></table></body></html>

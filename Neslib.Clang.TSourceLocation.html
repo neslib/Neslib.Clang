@@ -1,0 +1,234 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/1999/REC-html401-19991224/loose.dtd">
+<html>
+<head>
+<title>Neslib.Clang: Neslib.Clang: record TSourceLocation</title>
+<meta name="generator" content="PasDoc 0.14.0">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<link rel="StyleSheet" type="text/css" href="pasdoc.css">
+</head>
+<body>
+<table class="container"><tr><td class="navigation">
+<h2>Neslib.Clang</h2><p><a href="introduction.html" class="navigation">Neslib.Clang</a></p><p><a href="AllUnits.html" class="navigation">Units</a></p><p><a href="ClassHierarchy.html" class="navigation">Class Hierarchy</a></p><p><a href="AllClasses.html" class="navigation">Classes, Interfaces, Objects and Records</a></p><p><a href="AllTypes.html" class="navigation">Types</a></p><p><a href="AllVariables.html" class="navigation">Variables</a></p><p><a href="AllConstants.html" class="navigation">Constants</a></p><p><a href="AllFunctions.html" class="navigation">Functions and Procedures</a></p><p><a href="AllIdentifiers.html" class="navigation">Identifiers</a></p><p><a href="conclusion.html" class="navigation">License</a></p></td><td class="content">
+<a name="TSourceLocation"></a><h1 class="cio">record TSourceLocation</h1>
+<table class="sections wide_list">
+<tr>
+<td><a class="section" href="#PasDoc-Description">Description</a></td><td>Hierarchy</td><td>Fields</td><td><a class="section" href="#PasDoc-Methods">Methods</a></td><td><a class="section" href="#PasDoc-Properties">Properties</a></td></tr></table>
+<a name="PasDoc-Description"></a><h2 class="unit">Unit</h2>
+<p class="unitlink">
+<a  href="Neslib.Clang.html">Neslib.Clang</a></p>
+<h2 class="declaration">Declaration</h2>
+<p class="declaration">
+<code>type TSourceLocation = record</code></p>
+<h2 class="description">Description</h2>
+<p>
+Identifies a specific source location within a translation unit.</p>
+<h2 class="overview">Overview</h2>
+<a name="PasDoc-Methods"></a><h3 class="summary">Methods</h3>
+<table class="summary wide_list">
+<tr class="list">
+<td class="itemcode"><code>class operator <b><a  href="Neslib.Clang.TSourceLocation.html#Equal">Equal</a></b>(const ALeft, ARight: <a  href="Neslib.Clang.TSourceLocation.html">TSourceLocation</a>): Boolean; inline; static;</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>class operator <b><a  href="Neslib.Clang.TSourceLocation.html#NotEqual">NotEqual</a></b>(const ALeft, ARight: <a  href="Neslib.Clang.TSourceLocation.html">TSourceLocation</a>): Boolean; inline; static;</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>class function <b><a  href="Neslib.Clang.TSourceLocation.html#Null">Null</a></b>: <a  href="Neslib.Clang.TSourceLocation.html">TSourceLocation</a>; inline; static;</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>procedure <b><a  href="Neslib.Clang.TSourceLocation.html#GetExpansionLocation">GetExpansionLocation</a></b>(out AFile: <a  href="Neslib.Clang.TFile.html">TFile</a>; out ALine, AColumn, AOffset: Integer); inline;</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>procedure <b><a  href="Neslib.Clang.TSourceLocation.html#GetPresumedLocation">GetPresumedLocation</a></b>(out AFilename: String; out ALine, AColumn: Integer); inline;</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>procedure <b><a  href="Neslib.Clang.TSourceLocation.html#GetSpellingLocation">GetSpellingLocation</a></b>(out AFile: <a  href="Neslib.Clang.TFile.html">TFile</a>; out ALine, AColumn, AOffset: Integer); inline;</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>procedure <b><a  href="Neslib.Clang.TSourceLocation.html#GetFileLocation">GetFileLocation</a></b>(out AFile: <a  href="Neslib.Clang.TFile.html">TFile</a>; out ALine, AColumn, AOffset: Integer); inline;</code></td>
+</tr>
+</table>
+<a name="PasDoc-Properties"></a><h3 class="summary">Properties</h3>
+<table class="summary wide_list">
+<tr class="list">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TSourceLocation.html#IsInSystemHeader">IsInSystemHeader</a></b>: Boolean read GetIsInSystemHeader;</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TSourceLocation.html#IsFromMainFile">IsFromMainFile</a></b>: Boolean read GetIsFromMainFile;</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.TSourceLocation.html#Handle">Handle</a></b>: TCXSourceLocation read FHandle;</code></td>
+</tr>
+</table>
+<h2 class="description">Description</h2>
+<h3 class="detail">Methods</h3>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="Equal"></a><code>class operator <b>Equal</b>(const ALeft, ARight: <a  href="Neslib.Clang.TSourceLocation.html">TSourceLocation</a>): Boolean; inline; static;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Equality operators. Determine whether two source locations, which must refer into the same translation unit, refer to exactly the same point in the source code.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="NotEqual"></a><code>class operator <b>NotEqual</b>(const ALeft, ARight: <a  href="Neslib.Clang.TSourceLocation.html">TSourceLocation</a>): Boolean; inline; static;</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="Null"></a><code>class function <b>Null</b>: <a  href="Neslib.Clang.TSourceLocation.html">TSourceLocation</a>; inline; static;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+A <code>Null</code> (invalid) source location</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="GetExpansionLocation"></a><code>procedure <b>GetExpansionLocation</b>(out AFile: <a  href="Neslib.Clang.TFile.html">TFile</a>; out ALine, AColumn, AOffset: Integer); inline;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Retrieve the file, line, column, and offset represented by the source location.
+
+<p>If the location refers into a macro expansion, retrieves the location of the macro expansion.
+
+<p>   </p>
+<h6 class="description_section">Parameters</h6>
+<dl class="parameters">
+<dt>AFile</dt>
+<dd>will be set to the file to which the given source location points.</dd>
+<dt>ALine</dt>
+<dd>will be set to the line to which the given source location points.</dd>
+<dt>AColumn</dt>
+<dd>will be set to the column to which the given source location points.</dd>
+<dt>AOffset</dt>
+<dd>will be set to the offset into the buffer to which the given source location points.</dd>
+</dl>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="GetPresumedLocation"></a><code>procedure <b>GetPresumedLocation</b>(out AFilename: String; out ALine, AColumn: Integer); inline;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Retrieve the file, line and column represented by the source location, as specified in a #line directive.
+
+<p>  
+
+<p>Example: given the following source code in a file somefile.c
+
+<p></p>
+
+<pre class="preformatted">
+        #123 &quot;dummy.c&quot; 1
+
+        static int func(void)
+        {
+            return 0;
+        }
+      </pre>
+
+<p>
+
+<p>the location information returned by this function would be
+
+<p>File: dummy.c Line: 124 Column: 12
+
+<p>whereas <a class="normal" href="Neslib.Clang.TSourceLocation.html#GetExpansionLocation">GetExpansionLocation</a> would have returned
+
+<p>File: somefile.c Line: 3 Column: 12</p>
+<h6 class="description_section">Parameters</h6>
+<dl class="parameters">
+<dt>AFilename</dt>
+<dd>will be set to the filename of the source location. Note that filenames returned will be for &quot;virtual&quot; files, which don't necessarily exist on the machine running clang - e.g. when parsing preprocessed output obtained from a different environment. For an invalid source location, an empty string is returned.</dd>
+<dt>ALine</dt>
+<dd>will be set to the line number of the source location. For an invalid source location, zero is returned.</dd>
+<dt>AColumn</dt>
+<dd>will be set to the column number of the source location. For an invalid source location, zero is returned.</dd>
+</dl>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="GetSpellingLocation"></a><code>procedure <b>GetSpellingLocation</b>(out AFile: <a  href="Neslib.Clang.TFile.html">TFile</a>; out ALine, AColumn, AOffset: Integer); inline;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Retrieve the file, line, column, and offset represented by the source location.
+
+<p>If the location refers into a macro instantiation, return where the location was originally spelled in the source file.
+
+<p>   </p>
+<h6 class="description_section">Parameters</h6>
+<dl class="parameters">
+<dt>AFile</dt>
+<dd>will be set to the file to which the given source location points.</dd>
+<dt>ALine</dt>
+<dd>will be set to the line to which the given source location points.</dd>
+<dt>AColumn</dt>
+<dd>will be set to the column to which the given source location points.</dd>
+<dt>AOffset</dt>
+<dd>will be set to the offset into the buffer to which the given source location points.</dd>
+</dl>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="GetFileLocation"></a><code>procedure <b>GetFileLocation</b>(out AFile: <a  href="Neslib.Clang.TFile.html">TFile</a>; out ALine, AColumn, AOffset: Integer); inline;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Retrieve the file, line, column, and offset represented by the source location.
+
+<p>If the location refers into a macro expansion, return where the macro was expanded or where the macro argument was written, if the location points at a macro argument.
+
+<p>   </p>
+<h6 class="description_section">Parameters</h6>
+<dl class="parameters">
+<dt>AFile</dt>
+<dd>will be set to the file to which the given source location points.</dd>
+<dt>ALine</dt>
+<dd>will be set to the line to which the given source location points.</dd>
+<dt>AColumn</dt>
+<dd>will be set to the column to which the given source location points.</dd>
+<dt>AOffset</dt>
+<dd>will be set to the offset into the buffer to which the given source location points.</dd>
+</dl>
+</td></tr>
+</table>
+<h3 class="detail">Properties</h3>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="IsInSystemHeader"></a><code>property <b>IsInSystemHeader</b>: Boolean read GetIsInSystemHeader;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Whether the source location is in a system header.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="IsFromMainFile"></a><code>property <b>IsFromMainFile</b>: Boolean read GetIsFromMainFile;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Whether the source location is in the main file of the corresponding translation unit.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="Handle"></a><code>property <b>Handle</b>: TCXSourceLocation read FHandle;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Internal <code>handle</code> to C API</p>
+</td></tr>
+</table>
+<div style="height:1000px"></div><hr noshade size="1"><span class="appinfo"><em>Generated by <a  href="https://github.com/neslib/PasDocEx">PasDocEx</a>, based on <a  href="http://pasdoc.sourceforge.net/">PasDoc 0.14.0</a>. </em>
+</span>
+</td></tr></table></body></html>

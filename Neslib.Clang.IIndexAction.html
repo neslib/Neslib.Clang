@@ -1,0 +1,152 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/1999/REC-html401-19991224/loose.dtd">
+<html>
+<head>
+<title>Neslib.Clang: Neslib.Clang: Interface IIndexAction</title>
+<meta name="generator" content="PasDoc 0.14.0">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<link rel="StyleSheet" type="text/css" href="pasdoc.css">
+</head>
+<body>
+<table class="container"><tr><td class="navigation">
+<h2>Neslib.Clang</h2><p><a href="introduction.html" class="navigation">Neslib.Clang</a></p><p><a href="AllUnits.html" class="navigation">Units</a></p><p><a href="ClassHierarchy.html" class="navigation">Class Hierarchy</a></p><p><a href="AllClasses.html" class="navigation">Classes, Interfaces, Objects and Records</a></p><p><a href="AllTypes.html" class="navigation">Types</a></p><p><a href="AllVariables.html" class="navigation">Variables</a></p><p><a href="AllConstants.html" class="navigation">Constants</a></p><p><a href="AllFunctions.html" class="navigation">Functions and Procedures</a></p><p><a href="AllIdentifiers.html" class="navigation">Identifiers</a></p><p><a href="conclusion.html" class="navigation">License</a></p></td><td class="content">
+<a name="IIndexAction"></a><h1 class="cio">Interface IIndexAction</h1>
+<table class="sections wide_list">
+<tr>
+<td><a class="section" href="#PasDoc-Description">Description</a></td><td><a class="section" href="#PasDoc-Hierarchy">Hierarchy</a></td><td>Fields</td><td><a class="section" href="#PasDoc-Methods">Methods</a></td><td><a class="section" href="#PasDoc-Properties">Properties</a></td></tr></table>
+<a name="PasDoc-Description"></a><h2 class="unit">Unit</h2>
+<p class="unitlink">
+<a  href="Neslib.Clang.html">Neslib.Clang</a></p>
+<h2 class="declaration">Declaration</h2>
+<p class="declaration">
+<code>type IIndexAction = interface(IInterface)</code></p>
+<h2 class="description">Description</h2>
+<p>
+An indexing action/session, to be applied to one or multiple translation units.</p>
+<h6 class="description_section">Attributes</h6>
+<dl class="attributes">
+  <dt>GUID['{E5988F80-CA12-4EBA-B4E9-2B78EE81A5D9}']</dt>
+  <dd></dd>
+</dl>
+<a name="PasDoc-Hierarchy"></a><h2 class="hierarchy">Hierarchy</h2>
+<ul class="hierarchy"><li class="ancestor">IInterface</li>
+<li class="thisitem">IIndexAction</li></ul><h2 class="overview">Overview</h2>
+<a name="PasDoc-Methods"></a><h3 class="summary">Methods</h3>
+<table class="summary wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a  href="Neslib.Clang.IIndexAction.html#GetHandle">GetHandle</a></b>: TCXIndexAction;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a  href="Neslib.Clang.IIndexAction.html#IndexSourceFile">IndexSourceFile</a></b>(const AListener: <a  href="Neslib.Clang.IIndexerListener.html">IIndexerListener</a>; const AOptions: <a  href="Neslib.Clang.html#TIndexOptions">TIndexOptions</a>; const ASourceFilename: String; const AClangCommandLineArgs: array of String; const AUnsavedFiles: TArray&lt;<a  href="Neslib.Clang.TUnsavedFile.html">TUnsavedFile</a>&gt; = nil; const ATUOptions: <a  href="Neslib.Clang.html#TTranslationUnitFlags">TTranslationUnitFlags</a> = []): <a  href="Neslib.Clang.html#TError">TError</a>; overload;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a  href="Neslib.Clang.IIndexAction.html#IndexSourceFile">IndexSourceFile</a></b>(const AListener: <a  href="Neslib.Clang.IIndexerListener.html">IIndexerListener</a>; const AOptions: <a  href="Neslib.Clang.html#TIndexOptions">TIndexOptions</a>; const ASourceFilename: String; const AClangCommandLineArgs: array of String; const AUnsavedFiles: TArray&lt;<a  href="Neslib.Clang.TUnsavedFile.html">TUnsavedFile</a>&gt;; const ATUOptions: <a  href="Neslib.Clang.html#TTranslationUnitFlags">TTranslationUnitFlags</a>; out ATranslationUnit: <a  href="Neslib.Clang.ITranslationUnit.html">ITranslationUnit</a>): <a  href="Neslib.Clang.html#TError">TError</a>; overload;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a  href="Neslib.Clang.IIndexAction.html#IndexTranslationUnit">IndexTranslationUnit</a></b>(const AListener: <a  href="Neslib.Clang.IIndexerListener.html">IIndexerListener</a>; const AOptions: <a  href="Neslib.Clang.html#TIndexOptions">TIndexOptions</a>; const ATranslationUnit: <a  href="Neslib.Clang.ITranslationUnit.html">ITranslationUnit</a>): <a  href="Neslib.Clang.html#TError">TError</a>;</code></td>
+</tr>
+</table>
+<a name="PasDoc-Properties"></a><h3 class="summary">Properties</h3>
+<table class="summary wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>property <b><a  href="Neslib.Clang.IIndexAction.html#Handle">Handle</a></b>: TCXIndexAction read <a  href="Neslib.Clang.IIndexAction.html#GetHandle">GetHandle</a>;</code></td>
+</tr>
+</table>
+<h2 class="description">Description</h2>
+<h3 class="detail">Methods</h3>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="GetHandle"></a><code>function <b>GetHandle</b>: TCXIndexAction;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="IndexSourceFile"></a><code>function <b>IndexSourceFile</b>(const AListener: <a  href="Neslib.Clang.IIndexerListener.html">IIndexerListener</a>; const AOptions: <a  href="Neslib.Clang.html#TIndexOptions">TIndexOptions</a>; const ASourceFilename: String; const AClangCommandLineArgs: array of String; const AUnsavedFiles: TArray&lt;<a  href="Neslib.Clang.TUnsavedFile.html">TUnsavedFile</a>&gt; = nil; const ATUOptions: <a  href="Neslib.Clang.html#TTranslationUnitFlags">TTranslationUnitFlags</a> = []): <a  href="Neslib.Clang.html#TError">TError</a>; overload;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="IndexSourceFile"></a><code>function <b>IndexSourceFile</b>(const AListener: <a  href="Neslib.Clang.IIndexerListener.html">IIndexerListener</a>; const AOptions: <a  href="Neslib.Clang.html#TIndexOptions">TIndexOptions</a>; const ASourceFilename: String; const AClangCommandLineArgs: array of String; const AUnsavedFiles: TArray&lt;<a  href="Neslib.Clang.TUnsavedFile.html">TUnsavedFile</a>&gt;; const ATUOptions: <a  href="Neslib.Clang.html#TTranslationUnitFlags">TTranslationUnitFlags</a>; out ATranslationUnit: <a  href="Neslib.Clang.ITranslationUnit.html">ITranslationUnit</a>): <a  href="Neslib.Clang.html#TError">TError</a>; overload;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Index the given source file and the translation unit corresponding to that file via callbacks implemented through <a class="normal" href="Neslib.Clang.IIndexerListener.html">IIndexerListener</a>.
+
+<p>       
+
+<p></p>
+<h6 class="description_section">Parameters</h6>
+<dl class="parameters">
+<dt>AListener</dt>
+<dd>indexing callbacks that the client implements.</dd>
+<dt>AOptions</dt>
+<dd>options that affects how indexing is performed.</dd>
+<dt>ASourceFilename</dt>
+<dd>The name of the source file to load, or an empty string if the source file is included in AClangCommandLineArgs.</dd>
+<dt>AClangCommandLineArgs</dt>
+<dd>(optional) command-line arguments that would be passed to the clang executable if it were being invoked out-of-process. These command-line options will be parsed and will affect how the translation unit is parsed. Note that the following options are</dd>
+<dt>ignored</dt>
+<dd>'-c', '-emit-ast', '-fsyntax-only' (which is the default), and '-o &lt;output file&gt;'.</dd>
+<dt>AUnsavedFiles</dt>
+<dd>(optional) array of files that have not yet been saved to disk but may be required for code completion, including the contents of those files.</dd>
+<dt>ATUOptions</dt>
+<dd>(optional) options that affects how the translation unit is managed but not its compilation.</dd>
+<dt>ATranslationUnit</dt>
+<dd>(optional) is set to a translation unit that can be reused after indexing is finished.</dd>
+</dl>
+<h6 class="description_section">Returns</h6>
+<p class="return">Error code. If there were errors from which the compiler could recover, then this is not reported as an error. Only if there is a failure from which there is no recovery, will an error be returned.</p></td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="IndexTranslationUnit"></a><code>function <b>IndexTranslationUnit</b>(const AListener: <a  href="Neslib.Clang.IIndexerListener.html">IIndexerListener</a>; const AOptions: <a  href="Neslib.Clang.html#TIndexOptions">TIndexOptions</a>; const ATranslationUnit: <a  href="Neslib.Clang.ITranslationUnit.html">ITranslationUnit</a>): <a  href="Neslib.Clang.html#TError">TError</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Index the given translation unit via callbacks implemented through IndexerListener.
+
+<p>  
+
+<p> The order of callback invocations is not guaranteed to be the same as when indexing a source file. The high level order will be: </p>
+
+<ul class="compact_spacing">
+  <li><p>Preprocessor callbacks invocations</p></li>
+  <li><p>Declaration/reference callbacks invocations</p></li>
+  <li><p>Diagnostic callback invocations</p></li>
+</ul>
+
+<p></p>
+<h6 class="description_section">Parameters</h6>
+<dl class="parameters">
+<dt>AListener</dt>
+<dd>indexing callbacks that the client implements.</dd>
+<dt>AOptions</dt>
+<dd>options that affects how indexing is performed.</dd>
+<dt>ATranslationUnit</dt>
+<dd>the translation unit to index.</dd>
+</dl>
+<h6 class="description_section">Returns</h6>
+<p class="return">Error code. If there were errors from which the compiler could recover, then this is not reported as an error. Only if there is a failure from which there is no recovery, will an error be returned.</p></td></tr>
+</table>
+<h3 class="detail">Properties</h3>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="Handle"></a><code>property <b>Handle</b>: TCXIndexAction read <a  href="Neslib.Clang.IIndexAction.html#GetHandle">GetHandle</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Internal <code>handle</code> to C API</p>
+</td></tr>
+</table>
+<div style="height:1000px"></div><hr noshade size="1"><span class="appinfo"><em>Generated by <a  href="https://github.com/neslib/PasDocEx">PasDocEx</a>, based on <a  href="http://pasdoc.sourceforge.net/">PasDoc 0.14.0</a>. </em>
+</span>
+</td></tr></table></body></html>

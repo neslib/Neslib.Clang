@@ -1,0 +1,99 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/1999/REC-html401-19991224/loose.dtd">
+<html>
+<head>
+<title>Neslib.Clang: Neslib.Clang: Class TIndex</title>
+<meta name="generator" content="PasDoc 0.14.0">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<link rel="StyleSheet" type="text/css" href="pasdoc.css">
+</head>
+<body>
+<table class="container"><tr><td class="navigation">
+<h2>Neslib.Clang</h2><p><a href="introduction.html" class="navigation">Neslib.Clang</a></p><p><a href="AllUnits.html" class="navigation">Units</a></p><p><a href="ClassHierarchy.html" class="navigation">Class Hierarchy</a></p><p><a href="AllClasses.html" class="navigation">Classes, Interfaces, Objects and Records</a></p><p><a href="AllTypes.html" class="navigation">Types</a></p><p><a href="AllVariables.html" class="navigation">Variables</a></p><p><a href="AllConstants.html" class="navigation">Constants</a></p><p><a href="AllFunctions.html" class="navigation">Functions and Procedures</a></p><p><a href="AllIdentifiers.html" class="navigation">Identifiers</a></p><p><a href="conclusion.html" class="navigation">License</a></p></td><td class="content">
+<a name="TIndex"></a><h1 class="cio">Class TIndex</h1>
+<table class="sections wide_list">
+<tr>
+<td><a class="section" href="#PasDoc-Description">Description</a></td><td><a class="section" href="#PasDoc-Hierarchy">Hierarchy</a></td><td>Fields</td><td><a class="section" href="#PasDoc-Methods">Methods</a></td><td>Properties</td></tr></table>
+<a name="PasDoc-Description"></a><h2 class="unit">Unit</h2>
+<p class="unitlink">
+<a  href="Neslib.Clang.html">Neslib.Clang</a></p>
+<h2 class="declaration">Declaration</h2>
+<p class="declaration">
+<code>type TIndex = class(TInterfacedObject, <a class="normal" href="Neslib.Clang.IIndex.html">IIndex</a>)</code></p>
+<h2 class="description">Description</h2>
+<p>
+Implements <a class="normal" href="Neslib.Clang.IIndex.html">IIndex</a></p>
+<a name="PasDoc-Hierarchy"></a><h2 class="hierarchy">Hierarchy</h2>
+<ul class="hierarchy"><li class="ancestor">TInterfacedObject</li>
+<li class="thisitem">TIndex</li></ul><h2 class="overview">Overview</h2>
+<a name="PasDoc-Methods"></a><h3 class="summary">Methods</h3>
+<table class="summary wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>constructor <b><a  href="Neslib.Clang.TIndex.html#Create">Create</a></b>(const AExcludeDeclarationsFromPCH, ADisplayDiagnostics: Boolean);</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>destructor <b><a  href="Neslib.Clang.TIndex.html#Destroy">Destroy</a></b>; override;</code></td>
+</tr>
+</table>
+<h2 class="description">Description</h2>
+<h3 class="detail">Methods</h3>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="Create"></a><code>constructor <b>Create</b>(const AExcludeDeclarationsFromPCH, ADisplayDiagnostics: Boolean);</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Provides a shared context for creating translation units.
+
+<p> 
+
+<p>Example:
+
+<p></p>
+
+<pre class="longcode">
+      <span class="pascal_keyword">var</span>
+        Idx: IIndex;
+        TU: ITranslationUnit;
+      <span class="pascal_keyword">begin</span>
+        Idx := TIndex.Create(True, True);
+
+        <span class="pascal_comment">// IndexTest.pch was produced with the following command:</span>
+        <span class="pascal_comment">// &quot;clang -x c IndexTest.h -emit-ast -o IndexTest.pch&quot;</span>
+        TU := Idx.CreateTranslationUnit(<span class="pascal_string">'IndexTest.pch'</span>);
+
+        <span class="pascal_comment">// This will load all the symbols from 'IndexTest.pch'</span>
+        TU.Cursor.VisitChildren(MyVisitor);
+
+        <span class="pascal_comment">// This will load all the symbols from 'IndexTest.c', excluding symbols</span>
+        <span class="pascal_comment">// from 'IndexTest.pch'.</span>
+        TU := Idx.CreateTranslationUnitFromSource(<span class="pascal_string">'IndexTest.c'</span>, [<span class="pascal_string">'-Xclang'</span>,
+          <span class="pascal_string">'-include-pch=IndexTest.pch'</span>]);
+        TU.Cursor.VisitChildren(MyVisitor);
+      <span class="pascal_keyword">end</span>;</pre>
+
+<p>
+
+<p>This process of creating the 'pch', loading it separately, and using it (via -include-pch) allows 'AExcludeDeclsFromPCH' to remove redundant callbacks (which gives the indexer the same performance benefit as the compiler).</p>
+<h6 class="description_section">Parameters</h6>
+<dl class="parameters">
+<dt>AExcludeDeclarationsFromPCH</dt>
+<dd>When True, allows enumeration of &quot;local&quot; declarations (when loading any new translation units). A &quot;local&quot; declaration is one that belongs in the translation unit itself and not in a precompiled header that was used by the translation unit. If False, all declarations will be enumerated.</dd>
+<dt>ADisplayDiagnostics</dt>
+<dd>TBD</dd>
+</dl>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="Destroy"></a><code>destructor <b>Destroy</b>; override;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<div style="height:1000px"></div><hr noshade size="1"><span class="appinfo"><em>Generated by <a  href="https://github.com/neslib/PasDocEx">PasDocEx</a>, based on <a  href="http://pasdoc.sourceforge.net/">PasDoc 0.14.0</a>. </em>
+</span>
+</td></tr></table></body></html>
