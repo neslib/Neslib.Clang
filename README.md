@@ -10,7 +10,7 @@ The unit Neslib.Clang.Api providers the header translations for libclang  versio
 
 The unit Neslib.Clang provides a higher level abstraction of the libclang  API. It provides a thin class model on top of the libclang API, making it easier  to use from Delphi. In addition, it provides automatic memory management so you  don't have to worry about what resources to release and when.  
 
-Documentation for the Neslib.Clang unit can be found in the Neslib.Clang.Chm file.
+Documentation for the Neslib.Clang unit can be found in the Neslib.Clang.Chm file or on-line at https://neslib.github.io/Neslib.Clang.
 
 ## License
 
