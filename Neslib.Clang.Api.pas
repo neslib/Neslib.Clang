@@ -5064,10 +5064,14 @@ function clang_Type_visitFields(T: TCXType; visitor: TCXFieldVisitor; client_dat
  * \brief A parsed comment.
  *)
 type
+  {$IFDEF WIN32}
+  TCXComment = UInt64;
+  {$ELSE}
   TCXComment = record
     ASTNode: Pointer;
     TranslationUnit: TCXTranslationUnit;
   end;
+  {$ENDIF}
   PCXComment = ^TCXComment;
 
 (**

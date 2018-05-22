@@ -2,7 +2,9 @@
 
 Libclang is the C Interface to Clang's C family of compilers. It provides a  relatively small API that exposes facilities for parsing source code into an  abstract syntax tree (AST), loading already-parsed ASTs, traversing the AST,  associating physical source locations with elements within the AST, and other  facilities that support Clang-based development tools.  
 
-This C interface to Clang will never provide all of the information  representation stored in Clang's C++ AST, nor should it: the intent is to  maintain an API that is relatively stable from one release to the next,  providing only the basic functionality needed to support development tools.  
+This C interface to Clang will never provide all of the information  representation stored in Clang's C++ AST, nor should it: the intent is to  maintain an API that is relatively stable from one release to the next,  providing only the basic functionality needed to support development tools.
+
+You can find an article about *libclang for Delphi* on [my blog](https://blog.grijjy.com/2018/05/15/libclang-for-delphi/).
 
 Neslib.Clang leverages libclang in two ways:  
 

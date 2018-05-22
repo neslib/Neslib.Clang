@@ -300,7 +300,7 @@ type
     LinkageSpec = CXCursor_LinkageSpec,
 
     { A C++ constructor. }
-    Cor = CXCursor_Constructor,
+    Ctor = CXCursor_Constructor,
 
     { A C++ destructor. }
     Dtor = CXCursor_Destructor,
@@ -3465,7 +3465,7 @@ type
     property CompletionString: TCompletionString read GetCompletionString;
 
     { Given a cursor that represents a documentable entity (e.g., declaration),
-      return the associated parsed comment as aFullComment AST node. }
+      return the associated parsed comment as a FullComment AST node. }
     property ParsedComment: TComment read GetParsedComment;
 
     { Internal handle to C API }
