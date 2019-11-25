@@ -1,5 +1,5 @@
 unit Neslib.Clang.Api;
-{< LibClang 6.0.0 Header Translation }
+{< LibClang 9.0.0 Header Translation }
 
 {$IFNDEF MSWINDOWS}
   {$MESSAGE Error 'Clang for Delphi (currently) only works on Windows'}
@@ -20,10 +20,10 @@ type
 {$REGION 'CXErrorCode.h'}
 (*===-- clang-c/CXErrorCode.h - C Index Error Codes  --------------*- C -*-===*\
 |*                                                                            *|
-|*                     The LLVM Compiler Infrastructure                       *|
-|*                                                                            *|
-|* This file is distributed under the University of Illinois Open Source      *|
-|* License. See LICENSE.TXT for details.                                      *|
+|* Part of the LLVM Project, under the Apache License v2.0 with LLVM          *|
+|* Exceptions.                                                                *|
+|* See https://llvm.org/LICENSE.txt for license information.                  *|
+|* SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception                    *|
 |*                                                                            *|
 |*===----------------------------------------------------------------------===*|
 |*                                                                            *|
@@ -32,7 +32,7 @@ type
 \*===----------------------------------------------------------------------===*)
 
 (**
- * \brief Error codes returned by libclang routines.
+ * Error codes returned by libclang routines.
  *
  * Zero (\c CXError_Success) is the only error code indicating success.  Other
  * error codes, including not yet assigned non-zero values, indicate errors.
@@ -52,10 +52,10 @@ const
 {$REGION 'CXString.h'}
 (*===-- clang-c/CXString.h - C Index strings  --------------------*- C -*-===*\
 |*                                                                            *|
-|*                     The LLVM Compiler Infrastructure                       *|
-|*                                                                            *|
-|* This file is distributed under the University of Illinois Open Source      *|
-|* License. See LICENSE.TXT for details.                                      *|
+|* Part of the LLVM Project, under the Apache License v2.0 with LLVM          *|
+|* Exceptions.                                                                *|
+|* See https://llvm.org/LICENSE.txt for license information.                  *|
+|* SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception                    *|
 |*                                                                            *|
 |*===----------------------------------------------------------------------===*|
 |*                                                                            *|
@@ -71,7 +71,7 @@ const
  *)
 
 (**
- * \brief A character string.
+ * A character string.
  *
  * The \c CXString type is used to return strings from the interface when
  * the ownership of that string might differ from one call to the next.
@@ -100,17 +100,17 @@ type
   PCXStringSet = ^TCXStringSet;
 
 (**
- * \brief Retrieve the character data associated with the given string.
+ * Retrieve the character data associated with the given string.
  *)
 function clang_getCString(_string: TCXString): PAnsiChar; cdecl external LIBCLANG;
 
 (**
- * \brief Free the given string.
+ * Free the given string.
  *)
 procedure clang_disposeString(_string: TCXString); cdecl external LIBCLANG;
 
 (**
- * \brief Free the given string set.
+ * Free the given string set.
  *)
 procedure clang_disposeStringSet(_set: PCXStringSet); cdecl external LIBCLANG;
 {$ENDREGION 'CXString.h'}
@@ -118,10 +118,10 @@ procedure clang_disposeStringSet(_set: PCXStringSet); cdecl external LIBCLANG;
 {$REGION 'CXCompilationDatabase.h'}
 (*===-- clang-c/CXCompilationDatabase.h - Compilation database  ---*- C -*-===*\
 |*                                                                            *|
-|*                     The LLVM Compiler Infrastructure                       *|
-|*                                                                            *|
-|* This file is distributed under the University of Illinois Open Source      *|
-|* License. See LICENSE.TXT for details.                                      *|
+|* Part of the LLVM Project, under the Apache License v2.0 with LLVM          *|
+|* Exceptions.                                                                *|
+|* See https://llvm.org/LICENSE.txt for license information.                  *|
+|* SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception                    *|
 |*                                                                            *|
 |*===----------------------------------------------------------------------===*|
 |*                                                                            *|
@@ -146,7 +146,7 @@ procedure clang_disposeStringSet(_set: PCXStringSet); cdecl external LIBCLANG;
 type TCXCompilationDatabase = Pointer;
 
 (**
- * \brief Contains the results of a search in the compilation database
+ * Contains the results of a search in the compilation database
  *
  * When searching for the compile command for a file, the compilation db can
  * return several commands, as the file may have been compiled with
@@ -157,12 +157,12 @@ type TCXCompilationDatabase = Pointer;
 type TCXCompileCommands = Pointer;
 
 (**
- * \brief Represents the command line invocation to compile a specific file.
+ * Represents the command line invocation to compile a specific file.
  *)
 type TCXCompileCommand = Pointer;
 
 (**
- * \brief Error codes for Compilation Database
+ * Error codes for Compilation Database
  *)
 type
   TCXCompilationDatabase_Error = Integer;
@@ -173,7 +173,7 @@ const
   CXCompilationDatabase_CanNotLoadDatabase = 1;
 
 (**
- * \brief Creates a compilation database from the database found in directory
+ * Creates a compilation database from the database found in directory
  * buildDir. For example, CMake can output a compile_commands.json which can
  * be used to build the database.
  *
@@ -182,56 +182,56 @@ const
 function clang_CompilationDatabase_fromDirectory(const BuildDir: PAnsiChar; ErrorCode: PCXCompilationDatabase_Error): TCXCompilationDatabase; cdecl external LIBCLANG;
 
 (**
- * \brief Free the given compilation database
+ * Free the given compilation database
  *)
 procedure clang_CompilationDatabase_dispose(p1: TCXCompilationDatabase); cdecl external LIBCLANG;
 
 (**
- * \brief Find the compile commands used for a file. The compile commands
+ * Find the compile commands used for a file. The compile commands
  * must be freed by \c clang_CompileCommands_dispose.
  *)
 function clang_CompilationDatabase_getCompileCommands(p1: TCXCompilationDatabase; const CompleteFileName: PAnsiChar): TCXCompileCommands; cdecl external LIBCLANG;
 
 (**
- * \brief Get all the compile commands in the given compilation database.
+ * Get all the compile commands in the given compilation database.
  *)
 function clang_CompilationDatabase_getAllCompileCommands(p1: TCXCompilationDatabase): TCXCompileCommands; cdecl external LIBCLANG;
 
 (**
- * \brief Free the given CompileCommands
+ * Free the given CompileCommands
  *)
 procedure clang_CompileCommands_dispose(p1: TCXCompileCommands); cdecl external LIBCLANG;
 
 (**
- * \brief Get the number of CompileCommand we have for a file
+ * Get the number of CompileCommand we have for a file
  *)
 function clang_CompileCommands_getSize(p1: TCXCompileCommands): Cardinal; cdecl external LIBCLANG;
 
 (**
- * \brief Get the I'th CompileCommand for a file
+ * Get the I'th CompileCommand for a file
  *
  * Note : 0 <= i < clang_CompileCommands_getSize(CXCompileCommands)
  *)
 function clang_CompileCommands_getCommand(p1: TCXCompileCommands; I: Cardinal): TCXCompileCommand; cdecl external LIBCLANG;
 
 (**
- * \brief Get the working directory where the CompileCommand was executed from
+ * Get the working directory where the CompileCommand was executed from
  *)
 function clang_CompileCommand_getDirectory(p1: TCXCompileCommand): TCXString; cdecl external LIBCLANG;
 
 (**
- * \brief Get the filename associated with the CompileCommand.
+ * Get the filename associated with the CompileCommand.
  *)
 function clang_CompileCommand_getFilename(p1: TCXCompileCommand): TCXString; cdecl external LIBCLANG;
 
 (**
- * \brief Get the number of arguments in the compiler invocation.
+ * Get the number of arguments in the compiler invocation.
  *
  *)
 function clang_CompileCommand_getNumArgs(p1: TCXCompileCommand): Cardinal; cdecl external LIBCLANG;
 
 (**
- * \brief Get the I'th argument value in the compiler invocations
+ * Get the I'th argument value in the compiler invocations
  *
  * Invariant :
  *  - argument 0 is the compiler executable
@@ -239,17 +239,17 @@ function clang_CompileCommand_getNumArgs(p1: TCXCompileCommand): Cardinal; cdecl
 function clang_CompileCommand_getArg(p1: TCXCompileCommand; I: Cardinal): TCXString; cdecl external LIBCLANG;
 
 (**
- * \brief Get the number of source mappings for the compiler invocation.
+ * Get the number of source mappings for the compiler invocation.
  *)
 function clang_CompileCommand_getNumMappedSources(p1: TCXCompileCommand): Cardinal; cdecl external LIBCLANG;
 
 (**
- * \brief Get the I'th mapped source path for the compiler invocation.
+ * Get the I'th mapped source path for the compiler invocation.
  *)
 function clang_CompileCommand_getMappedSourcePath(p1: TCXCompileCommand; I: Cardinal): TCXString; cdecl external LIBCLANG;
 
 (**
- * \brief Get the I'th mapped source content for the compiler invocation.
+ * Get the I'th mapped source content for the compiler invocation.
  *)
 function clang_CompileCommand_getMappedSourceContent(p1: TCXCompileCommand; I: Cardinal): TCXString; cdecl external LIBCLANG;
 {$ENDREGION 'CXCompilationDatabase.h'}
@@ -257,10 +257,10 @@ function clang_CompileCommand_getMappedSourceContent(p1: TCXCompileCommand; I: C
 {$REGION 'BuildSystem.h'}
 (*==-- clang-c/BuildSystem.h - Utilities for use by build systems -*- C -*-===*\
 |*                                                                            *|
-|*                     The LLVM Compiler Infrastructure                       *|
-|*                                                                            *|
-|* This file is distributed under the University of Illinois Open Source      *|
-|* License. See LICENSE.TXT for details.                                      *|
+|* Part of the LLVM Project, under the Apache License v2.0 with LLVM          *|
+|* Exceptions.                                                                *|
+|* See https://llvm.org/LICENSE.txt for license information.                  *|
+|* SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception                    *|
 |*                                                                            *|
 |*===----------------------------------------------------------------------===*|
 |*                                                                            *|
@@ -274,19 +274,19 @@ function clang_CompileCommand_getMappedSourceContent(p1: TCXCompileCommand; I: C
  *)
 
 (**
- * \brief Return the timestamp for use with Clang's
+ * Return the timestamp for use with Clang's
  * \c -fbuild-session-timestamp= option.
  *)
 function clang_getBuildSessionTimestamp(): UInt64; cdecl external LIBCLANG;
 
 (**
- * \brief Object encapsulating information about overlaying virtual
+ * Object encapsulating information about overlaying virtual
  * file/directories over the real file system.
  *)
 type TCXVirtualFileOverlay = Pointer;
 
 (**
- * \brief Create a \c CXVirtualFileOverlay object.
+ * Create a \c CXVirtualFileOverlay object.
  * Must be disposed with \c clang_VirtualFileOverlay_dispose().
  *
  * \param options is reserved, always pass 0.
@@ -294,14 +294,14 @@ type TCXVirtualFileOverlay = Pointer;
 function clang_VirtualFileOverlay_create(options: Cardinal): TCXVirtualFileOverlay; cdecl external LIBCLANG;
 
 (**
- * \brief Map an absolute virtual file path to an absolute real one.
+ * Map an absolute virtual file path to an absolute real one.
  * The virtual path must be canonicalized (not contain "."/"..").
  * \returns 0 for success, non-zero to indicate an error.
  *)
 function clang_VirtualFileOverlay_addFileMapping(p1: TCXVirtualFileOverlay; const virtualPath: PAnsiChar; const realPath: PAnsiChar): TCXErrorCode; cdecl external LIBCLANG;
 
 (**
- * \brief Set the case sensitivity for the \c CXVirtualFileOverlay object.
+ * Set the case sensitivity for the \c CXVirtualFileOverlay object.
  * The \c CXVirtualFileOverlay object is case-sensitive by default, this
  * option can be used to override the default.
  * \returns 0 for success, non-zero to indicate an error.
@@ -309,7 +309,7 @@ function clang_VirtualFileOverlay_addFileMapping(p1: TCXVirtualFileOverlay; cons
 function clang_VirtualFileOverlay_setCaseSensitivity(p1: TCXVirtualFileOverlay; caseSensitive: Integer): TCXErrorCode; cdecl external LIBCLANG;
 
 (**
- * \brief Write out the \c CXVirtualFileOverlay object to a char buffer.
+ * Write out the \c CXVirtualFileOverlay object to a char buffer.
  *
  * \param options is reserved, always pass 0.
  * \param out_buffer_ptr pointer to receive the buffer pointer, which should be
@@ -320,7 +320,7 @@ function clang_VirtualFileOverlay_setCaseSensitivity(p1: TCXVirtualFileOverlay; 
 function clang_VirtualFileOverlay_writeToBuffer(p1: TCXVirtualFileOverlay; options: Cardinal; out_buffer_ptr: PPAnsiChar; out_buffer_size: PCardinal): TCXErrorCode; cdecl external LIBCLANG;
 
 (**
- * \brief free memory allocated by libclang, such as the buffer returned by
+ * free memory allocated by libclang, such as the buffer returned by
  * \c CXVirtualFileOverlay() or \c clang_ModuleMapDescriptor_writeToBuffer().
  *
  * \param buffer memory pointer to free.
@@ -328,17 +328,17 @@ function clang_VirtualFileOverlay_writeToBuffer(p1: TCXVirtualFileOverlay; optio
 procedure clang_free(buffer: Pointer); cdecl external LIBCLANG;
 
 (**
- * \brief Dispose a \c CXVirtualFileOverlay object.
+ * Dispose a \c CXVirtualFileOverlay object.
  *)
 procedure clang_VirtualFileOverlay_dispose(p1: TCXVirtualFileOverlay); cdecl external LIBCLANG;
 
 (**
- * \brief Object encapsulating information about a module.map file.
+ * Object encapsulating information about a module.map file.
  *)
 type TCXModuleMapDescriptor = Pointer;
 
 (**
- * \brief Create a \c CXModuleMapDescriptor object.
+ * Create a \c CXModuleMapDescriptor object.
  * Must be disposed with \c clang_ModuleMapDescriptor_dispose().
  *
  * \param options is reserved, always pass 0.
@@ -346,19 +346,19 @@ type TCXModuleMapDescriptor = Pointer;
 function clang_ModuleMapDescriptor_create(options: Cardinal): TCXModuleMapDescriptor; cdecl external LIBCLANG;
 
 (**
- * \brief Sets the framework module name that the module.map describes.
+ * Sets the framework module name that the module.map describes.
  * \returns 0 for success, non-zero to indicate an error.
  *)
 function clang_ModuleMapDescriptor_setFrameworkModuleName(p1: TCXModuleMapDescriptor; const name: PAnsiChar): TCXErrorCode; cdecl external LIBCLANG;
 
 (**
- * \brief Sets the umbrealla header name that the module.map describes.
+ * Sets the umbrealla header name that the module.map describes.
  * \returns 0 for success, non-zero to indicate an error.
  *)
 function clang_ModuleMapDescriptor_setUmbrellaHeader(p1: TCXModuleMapDescriptor; const name: PAnsiChar): TCXErrorCode; cdecl external LIBCLANG;
 
 (**
- * \brief Write out the \c CXModuleMapDescriptor object to a char buffer.
+ * Write out the \c CXModuleMapDescriptor object to a char buffer.
  *
  * \param options is reserved, always pass 0.
  * \param out_buffer_ptr pointer to receive the buffer pointer, which should be
@@ -369,7 +369,7 @@ function clang_ModuleMapDescriptor_setUmbrellaHeader(p1: TCXModuleMapDescriptor;
 function clang_ModuleMapDescriptor_writeToBuffer(p1: TCXModuleMapDescriptor; options: Cardinal; out_buffer_ptr: PPAnsiChar; out_buffer_size: PCardinal): TCXErrorCode; cdecl external LIBCLANG;
 
 (**
- * \brief Dispose a \c CXModuleMapDescriptor object.
+ * Dispose a \c CXModuleMapDescriptor object.
  *)
 procedure clang_ModuleMapDescriptor_dispose(p1: TCXModuleMapDescriptor); cdecl external LIBCLANG;
 {$ENDREGION 'BuildSystem.h'}
@@ -377,10 +377,10 @@ procedure clang_ModuleMapDescriptor_dispose(p1: TCXModuleMapDescriptor); cdecl e
 {$REGION 'Index.h'}
 (*===-- clang-c/Index.h - Indexing Public C Interface -------------*- C -*-===*\
 |*                                                                            *|
-|*                     The LLVM Compiler Infrastructure                       *|
-|*                                                                            *|
-|* This file is distributed under the University of Illinois Open Source      *|
-|* License. See LICENSE.TXT for details.                                      *|
+|* Part of the LLVM Project, under the Apache License v2.0 with LLVM          *|
+|* Exceptions.                                                                *|
+|* See https://llvm.org/LICENSE.txt for license information.                  *|
+|* SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception                    *|
 |*                                                                            *|
 |*===----------------------------------------------------------------------===*|
 |*                                                                            *|
@@ -391,7 +391,7 @@ procedure clang_ModuleMapDescriptor_dispose(p1: TCXModuleMapDescriptor); cdecl e
 \*===----------------------------------------------------------------------===*)
 
 (**
- * \brief The version constants for the libclang API.
+ * The version constants for the libclang API.
  * CINDEX_VERSION_MINOR should increase when there are API additions.
  * CINDEX_VERSION_MAJOR is intended for "major" source/ABI breaking changes.
  *
@@ -399,7 +399,7 @@ procedure clang_ModuleMapDescriptor_dispose(p1: TCXModuleMapDescriptor); cdecl e
  * compatible, thus CINDEX_VERSION_MAJOR is expected to remain stable.
  *)
 const CINDEX_VERSION_MAJOR = 0;
-const CINDEX_VERSION_MINOR = 45;
+const CINDEX_VERSION_MINOR = 59;
 
 {!#define CINDEX_VERSION_ENCODE(major, minor) (
       ((major) * 10000)
@@ -412,7 +412,7 @@ const CINDEX_VERSION = (CINDEX_VERSION_MAJOR * 10000) + CINDEX_VERSION_MINOR;
 {!#define CINDEX_VERSION_STRINGIZE(major, minor)
     CINDEX_VERSION_STRINGIZE_(major, minor)}
 
-const CINDEX_VERSION_STRING = '0.45';
+const CINDEX_VERSION_STRING = '0.59';
 
 (** \defgroup CINDEX libclang: C Interface to Clang
  *
@@ -434,31 +434,31 @@ const CINDEX_VERSION_STRING = '0.45';
  *)
 
 (**
- * \brief An "index" that consists of a set of translation units that would
+ * An "index" that consists of a set of translation units that would
  * typically be linked together into an executable or library.
  *)
 type TCXIndex = Pointer;
 
 (**
- * \brief An opaque type representing target information for a given translation
+ * An opaque type representing target information for a given translation
  * unit.
  *)
 type TCXTargetInfo = Pointer;
 
 (**
- * \brief A single translation unit, which resides in an index.
+ * A single translation unit, which resides in an index.
  *)
 type TCXTranslationUnit = Pointer;
 type PCXTranslationUnit = ^TCXTranslationUnit;
 
 (**
- * \brief Opaque pointer representing client data that will be passed through
+ * Opaque pointer representing client data that will be passed through
  * to various callbacks and visitors.
  *)
 type TCXClientData = Pointer;
 
 (**
- * \brief Provides the contents of a file that has not yet been saved to disk.
+ * Provides the contents of a file that has not yet been saved to disk.
  *
  * Each CXUnsavedFile instance provides the name of a file on the
  * system along with the current contents of that file that have not
@@ -473,7 +473,7 @@ type
   PCXUnsavedFile = ^TCXUnsavedFile;
 
 (**
- * \brief Describes the availability of a particular entity, which indicates
+ * Describes the availability of a particular entity, which indicates
  * whether the use of this entity will result in a warning or error due to
  * it being deprecated or unavailable.
  *)
@@ -487,7 +487,7 @@ const
   CXAvailability_NotAccessible = CXAvailability_NotAvailable + 1;
 
 (**
- * \brief Describes a version number of the form major.minor.subminor.
+ * Describes a version number of the form major.minor.subminor.
  *)
 type
   TCXVersion = record
@@ -498,7 +498,7 @@ type
   PCXVersion = ^TCXVersion;
 
 (**
- * \brief Describes the exception specification of a cursor.
+ * Describes the exception specification of a cursor.
  *
  * A negative value indicates that the cursor is not a function declaration.
  *)
@@ -515,9 +515,10 @@ const
   CXCursor_ExceptionSpecificationKind_Unevaluated = CXCursor_ExceptionSpecificationKind_ComputedNoexcept + 1;
   CXCursor_ExceptionSpecificationKind_Uninstantiated = CXCursor_ExceptionSpecificationKind_Unevaluated + 1;
   CXCursor_ExceptionSpecificationKind_Unparsed = CXCursor_ExceptionSpecificationKind_Uninstantiated + 1;
+  CXCursor_ExceptionSpecificationKind_NoThrow = CXCursor_ExceptionSpecificationKind_Unparsed + 1;
 
 (**
- * \brief Provides a shared context for creating translation units.
+ * Provides a shared context for creating translation units.
  *
  * It provides two options:
  *
@@ -559,7 +560,7 @@ const
 function clang_createIndex(excludeDeclarationsFromPCH: Integer; displayDiagnostics: Integer): TCXIndex; cdecl external LIBCLANG;
 
 (**
- * \brief Destroy the given index.
+ * Destroy the given index.
  *
  * The index must not be destroyed until all of the translation units created
  * within that index have been destroyed.
@@ -577,7 +578,7 @@ const
     or CXGlobalOpt_ThreadBackgroundPriorityForEditing;
 
 (**
- * \brief Sets general options associated with a CXIndex.
+ * Sets general options associated with a CXIndex.
  *
  * For example:
  * \code
@@ -592,7 +593,7 @@ const
 procedure clang_CXIndex_setGlobalOptions(p1: TCXIndex; options: Cardinal); cdecl external LIBCLANG;
 
 (**
- * \brief Gets the general options associated with a CXIndex.
+ * Gets the general options associated with a CXIndex.
  *
  * \returns A bitmask of options, a bitwise OR of CXGlobalOpt_XXX flags that
  * are associated with the given CXIndex object.
@@ -600,7 +601,7 @@ procedure clang_CXIndex_setGlobalOptions(p1: TCXIndex; options: Cardinal); cdecl
 function clang_CXIndex_getGlobalOptions(p1: TCXIndex): Cardinal; cdecl external LIBCLANG;
 
 (**
- * \brief Sets the invocation emission path option in a CXIndex.
+ * Sets the invocation emission path option in a CXIndex.
  *
  * The invocation emission path specifies a path which will contain log
  * files for certain libclang invocations. A null value (default) implies that
@@ -615,23 +616,23 @@ procedure clang_CXIndex_setInvocationEmissionPathOption(p1: TCXIndex; const Path
  *)
 
 (**
- * \brief A particular source file that is part of a translation unit.
+ * A particular source file that is part of a translation unit.
  *)
 type TCXFile = Pointer;
 type PCXFile = ^TCXFile;
 
 (**
- * \brief Retrieve the complete file and path name of the given file.
+ * Retrieve the complete file and path name of the given file.
  *)
 function clang_getFileName(SFile: TCXFile): TCXString; cdecl external LIBCLANG;
 
 (**
- * \brief Retrieve the last modification time of the given file.
+ * Retrieve the last modification time of the given file.
  *)
 function clang_getFileTime(SFile: TCXFile): time_t; cdecl external LIBCLANG;
 
 (**
- * \brief Uniquely identifies a CXFile, that refers to the same underlying file,
+ * Uniquely identifies a CXFile, that refers to the same underlying file,
  * across an indexing session.
  *)
 type
@@ -641,7 +642,7 @@ type
   PCXFileUniqueID = ^TCXFileUniqueID;
 
 (**
- * \brief Retrieve the unique ID for the given \c file.
+ * Retrieve the unique ID for the given \c file.
  *
  * \param file the file to get the ID for.
  * \param outID stores the returned CXFileUniqueID.
@@ -651,14 +652,14 @@ type
 function clang_getFileUniqueID(_file: TCXFile; outID: PCXFileUniqueID): Integer; cdecl external LIBCLANG;
 
 (**
- * \brief Determine whether the given header is guarded against
+ * Determine whether the given header is guarded against
  * multiple inclusions, either with the conventional
  * \#ifndef/\#define/\#endif macro guards or with \#pragma once.
  *)
 function clang_isFileMultipleIncludeGuarded(tu: TCXTranslationUnit; _file: TCXFile): Cardinal; cdecl external LIBCLANG;
 
 (**
- * \brief Retrieve a file handle within the given translation unit.
+ * Retrieve a file handle within the given translation unit.
  *
  * \param tu the translation unit
  *
@@ -670,7 +671,7 @@ function clang_isFileMultipleIncludeGuarded(tu: TCXTranslationUnit; _file: TCXFi
 function clang_getFile(tu: TCXTranslationUnit; const file_name: PAnsiChar): TCXFile; cdecl external LIBCLANG;
 
 (**
- * \brief Retrieve the buffer associated with the given file.
+ * Retrieve the buffer associated with the given file.
  *
  * \param tu the translation unit
  *
@@ -684,10 +685,17 @@ function clang_getFile(tu: TCXTranslationUnit; const file_name: PAnsiChar): TCXF
 function clang_getFileContents(tu: TCXTranslationUnit; _file: TCXFile; size: PSIZE_T): PAnsiChar; cdecl external LIBCLANG;
 
 (**
- * \brief Returns non-zero if the \c file1 and \c file2 point to the same file,
+ * Returns non-zero if the \c file1 and \c file2 point to the same file,
  * or they are both NULL.
  *)
 function clang_File_isEqual(file1: TCXFile; file2: TCXFile): Integer; cdecl external LIBCLANG;
+
+(**
+ * Returns the real path name of \c file.
+ *
+ * An empty string may be returned. Use \c clang_getFileName() in that case.
+ *)
+function clang_File_tryGetRealPathName(_file: TCXFile): TCXString; cdecl external LIBCLANG;
 
 (**
  * @}
@@ -707,7 +715,7 @@ function clang_File_isEqual(file1: TCXFile; file2: TCXFile): Integer; cdecl exte
  *)
 
 (**
- * \brief Identifies a specific source location within a translation
+ * Identifies a specific source location within a translation
  * unit.
  *
  * Use clang_getExpansionLocation() or clang_getSpellingLocation()
@@ -721,7 +729,7 @@ type
   PCXSourceLocation = ^TCXSourceLocation;
 
 (**
- * \brief Identifies a half-open character range in the source code.
+ * Identifies a half-open character range in the source code.
  *
  * Use clang_getRangeStart() and clang_getRangeEnd() to retrieve the
  * starting and end locations from a source range, respectively.
@@ -735,12 +743,12 @@ type
   PCXSourceRange = ^TCXSourceRange;
 
 (**
- * \brief Retrieve a NULL (invalid) source location.
+ * Retrieve a NULL (invalid) source location.
  *)
 function clang_getNullLocation(): TCXSourceLocation; cdecl external LIBCLANG;
 
 (**
- * \brief Determine whether two source locations, which must refer into
+ * Determine whether two source locations, which must refer into
  * the same translation unit, refer to exactly the same point in the source
  * code.
  *
@@ -750,52 +758,52 @@ function clang_getNullLocation(): TCXSourceLocation; cdecl external LIBCLANG;
 function clang_equalLocations(loc1: TCXSourceLocation; loc2: TCXSourceLocation): Cardinal; cdecl external LIBCLANG;
 
 (**
- * \brief Retrieves the source location associated with a given file/line/column
+ * Retrieves the source location associated with a given file/line/column
  * in a particular translation unit.
  *)
 function clang_getLocation(tu: TCXTranslationUnit; _file: TCXFile; line: Cardinal; column: Cardinal): TCXSourceLocation; cdecl external LIBCLANG;
 (**
- * \brief Retrieves the source location associated with a given character offset
+ * Retrieves the source location associated with a given character offset
  * in a particular translation unit.
  *)
 function clang_getLocationForOffset(tu: TCXTranslationUnit; _file: TCXFile; offset: Cardinal): TCXSourceLocation; cdecl external LIBCLANG;
 
 (**
- * \brief Returns non-zero if the given source location is in a system header.
+ * Returns non-zero if the given source location is in a system header.
  *)
 function clang_Location_isInSystemHeader(location: TCXSourceLocation): Integer; cdecl external LIBCLANG;
 
 (**
- * \brief Returns non-zero if the given source location is in the main file of
+ * Returns non-zero if the given source location is in the main file of
  * the corresponding translation unit.
  *)
 function clang_Location_isFromMainFile(location: TCXSourceLocation): Integer; cdecl external LIBCLANG;
 
 (**
- * \brief Retrieve a NULL (invalid) source range.
+ * Retrieve a NULL (invalid) source range.
  *)
 function clang_getNullRange(): TCXSourceRange; cdecl external LIBCLANG;
 
 (**
- * \brief Retrieve a source range given the beginning and ending source
+ * Retrieve a source range given the beginning and ending source
  * locations.
  *)
 function clang_getRange(_begin: TCXSourceLocation; _end: TCXSourceLocation): TCXSourceRange; cdecl external LIBCLANG;
 
 (**
- * \brief Determine whether two ranges are equivalent.
+ * Determine whether two ranges are equivalent.
  *
  * \returns non-zero if the ranges are the same, zero if they differ.
  *)
 function clang_equalRanges(range1: TCXSourceRange; range2: TCXSourceRange): Cardinal; cdecl external LIBCLANG;
 
 (**
- * \brief Returns non-zero if \p range is null.
+ * Returns non-zero if \p range is null.
  *)
 function clang_Range_isNull(range: TCXSourceRange): Integer; cdecl external LIBCLANG;
 
 (**
- * \brief Retrieve the file, line, column, and offset represented by
+ * Retrieve the file, line, column, and offset represented by
  * the given source location.
  *
  * If the location refers into a macro expansion, retrieves the
@@ -819,7 +827,7 @@ function clang_Range_isNull(range: TCXSourceRange): Integer; cdecl external LIBC
 procedure clang_getExpansionLocation(location: TCXSourceLocation; _file: PCXFile; line: PCardinal; column: PCardinal; offset: PCardinal); cdecl external LIBCLANG;
 
 (**
- * \brief Retrieve the file, line and column represented by the given source
+ * Retrieve the file, line and column represented by the given source
  * location, as specified in a # line directive.
  *
  * Example: given the following source code in a file somefile.c
@@ -861,7 +869,7 @@ procedure clang_getExpansionLocation(location: TCXSourceLocation; _file: PCXFile
 procedure clang_getPresumedLocation(location: TCXSourceLocation; filename: PCXString; line: PCardinal; column: PCardinal); cdecl external LIBCLANG;
 
 (**
- * \brief Legacy API to retrieve the file, line, column, and offset represented
+ * Legacy API to retrieve the file, line, column, and offset represented
  * by the given source location.
  *
  * This interface has been replaced by the newer interface
@@ -871,7 +879,7 @@ procedure clang_getPresumedLocation(location: TCXSourceLocation; filename: PCXSt
 procedure clang_getInstantiationLocation(location: TCXSourceLocation; _file: PCXFile; line: PCardinal; column: PCardinal; offset: PCardinal); cdecl external LIBCLANG;
 
 (**
- * \brief Retrieve the file, line, column, and offset represented by
+ * Retrieve the file, line, column, and offset represented by
  * the given source location.
  *
  * If the location refers into a macro instantiation, return where the
@@ -895,7 +903,7 @@ procedure clang_getInstantiationLocation(location: TCXSourceLocation; _file: PCX
 procedure clang_getSpellingLocation(location: TCXSourceLocation; _file: PCXFile; line: PCardinal; column: PCardinal; offset: PCardinal); cdecl external LIBCLANG;
 
 (**
- * \brief Retrieve the file, line, column, and offset represented by
+ * Retrieve the file, line, column, and offset represented by
  * the given source location.
  *
  * If the location refers into a macro expansion, return where the macro was
@@ -920,19 +928,19 @@ procedure clang_getSpellingLocation(location: TCXSourceLocation; _file: PCXFile;
 procedure clang_getFileLocation(location: TCXSourceLocation; _file: PCXFile; line: PCardinal; column: PCardinal; offset: PCardinal); cdecl external LIBCLANG;
 
 (**
- * \brief Retrieve a source location representing the first character within a
+ * Retrieve a source location representing the first character within a
  * source range.
  *)
 function clang_getRangeStart(range: TCXSourceRange): TCXSourceLocation; cdecl external LIBCLANG;
 
 (**
- * \brief Retrieve a source location representing the last character within a
+ * Retrieve a source location representing the last character within a
  * source range.
  *)
 function clang_getRangeEnd(range: TCXSourceRange): TCXSourceLocation; cdecl external LIBCLANG;
 
 (**
- * \brief Identifies an array of ranges.
+ * Identifies an array of ranges.
  *)
 type
   TCXSourceRangeList = record
@@ -942,7 +950,7 @@ type
   PCXSourceRangeList = ^TCXSourceRangeList;
 
 (**
- * \brief Retrieve all ranges that were skipped by the preprocessor.
+ * Retrieve all ranges that were skipped by the preprocessor.
  *
  * The preprocessor will skip lines when they are surrounded by an
  * if/ifdef/ifndef directive whose condition does not evaluate to true.
@@ -950,7 +958,7 @@ type
 function clang_getSkippedRanges(tu: TCXTranslationUnit; _file: TCXFile): PCXSourceRangeList; cdecl external LIBCLANG;
 
 (**
- * \brief Retrieve all ranges from all files that were skipped by the
+ * Retrieve all ranges from all files that were skipped by the
  * preprocessor.
  *
  * The preprocessor will skip lines when they are surrounded by an
@@ -959,7 +967,7 @@ function clang_getSkippedRanges(tu: TCXTranslationUnit; _file: TCXFile): PCXSour
 function clang_getAllSkippedRanges(tu: TCXTranslationUnit): PCXSourceRangeList; cdecl external LIBCLANG;
 
 (**
- * \brief Destroy the given \c CXSourceRangeList.
+ * Destroy the given \c CXSourceRangeList.
  *)
 procedure clang_disposeSourceRangeList(ranges: PCXSourceRangeList); cdecl external LIBCLANG;
 
@@ -974,7 +982,7 @@ procedure clang_disposeSourceRangeList(ranges: PCXSourceRangeList); cdecl extern
  *)
 
 (**
- * \brief Describes the severity of a particular diagnostic.
+ * Describes the severity of a particular diagnostic.
  *)
 type
   TCXDiagnosticSeverity = Integer;
@@ -987,23 +995,23 @@ const
   CXDiagnostic_Fatal = 4;
 
 (**
- * \brief A single diagnostic, containing the diagnostic's severity,
+ * A single diagnostic, containing the diagnostic's severity,
  * location, text, source ranges, and fix-it hints.
  *)
 type TCXDiagnostic = Pointer;
 
 (**
- * \brief A group of CXDiagnostics.
+ * A group of CXDiagnostics.
  *)
 type TCXDiagnosticSet = Pointer;
 
 (**
- * \brief Determine the number of diagnostics in a CXDiagnosticSet.
+ * Determine the number of diagnostics in a CXDiagnosticSet.
  *)
 function clang_getNumDiagnosticsInSet(Diags: TCXDiagnosticSet): Cardinal; cdecl external LIBCLANG;
 
 (**
- * \brief Retrieve a diagnostic associated with the given CXDiagnosticSet.
+ * Retrieve a diagnostic associated with the given CXDiagnosticSet.
  *
  * \param Diags the CXDiagnosticSet to query.
  * \param Index the zero-based diagnostic number to retrieve.
@@ -1014,7 +1022,7 @@ function clang_getNumDiagnosticsInSet(Diags: TCXDiagnosticSet): Cardinal; cdecl 
 function clang_getDiagnosticInSet(Diags: TCXDiagnosticSet; Index: Cardinal): TCXDiagnostic; cdecl external LIBCLANG;
 
 (**
- * \brief Describes the kind of error that occurred (if any) in a call to
+ * Describes the kind of error that occurred (if any) in a call to
  * \c clang_loadDiagnostics.
  *)
 type
@@ -1028,7 +1036,7 @@ const
   CXLoadDiag_InvalidFile = 3;
 
 (**
- * \brief Deserialize a set of diagnostics from a Clang diagnostics bitcode
+ * Deserialize a set of diagnostics from a Clang diagnostics bitcode
  * file.
  *
  * \param file The name of the file to deserialize.
@@ -1043,12 +1051,12 @@ const
 function clang_loadDiagnostics(const _file: PAnsiChar; error: PCXLoadDiag_Error; errorString: PCXString): TCXDiagnosticSet; cdecl external LIBCLANG;
 
 (**
- * \brief Release a CXDiagnosticSet and all of its contained diagnostics.
+ * Release a CXDiagnosticSet and all of its contained diagnostics.
  *)
 procedure clang_disposeDiagnosticSet(Diags: TCXDiagnosticSet); cdecl external LIBCLANG;
 
 (**
- * \brief Retrieve the child diagnostics of a CXDiagnostic.
+ * Retrieve the child diagnostics of a CXDiagnostic.
  *
  * This CXDiagnosticSet does not need to be released by
  * clang_disposeDiagnosticSet.
@@ -1056,13 +1064,13 @@ procedure clang_disposeDiagnosticSet(Diags: TCXDiagnosticSet); cdecl external LI
 function clang_getChildDiagnostics(D: TCXDiagnostic): TCXDiagnosticSet; cdecl external LIBCLANG;
 
 (**
- * \brief Determine the number of diagnostics produced for the given
+ * Determine the number of diagnostics produced for the given
  * translation unit.
  *)
 function clang_getNumDiagnostics(_Unit: TCXTranslationUnit): Cardinal; cdecl external LIBCLANG;
 
 (**
- * \brief Retrieve a diagnostic associated with the given translation unit.
+ * Retrieve a diagnostic associated with the given translation unit.
  *
  * \param Unit the translation unit to query.
  * \param Index the zero-based diagnostic number to retrieve.
@@ -1073,7 +1081,7 @@ function clang_getNumDiagnostics(_Unit: TCXTranslationUnit): Cardinal; cdecl ext
 function clang_getDiagnostic(_Unit: TCXTranslationUnit; Index: Cardinal): TCXDiagnostic; cdecl external LIBCLANG;
 
 (**
- * \brief Retrieve the complete set of diagnostics associated with a
+ * Retrieve the complete set of diagnostics associated with a
  *        translation unit.
  *
  * \param Unit the translation unit to query.
@@ -1081,12 +1089,12 @@ function clang_getDiagnostic(_Unit: TCXTranslationUnit; Index: Cardinal): TCXDia
 function clang_getDiagnosticSetFromTU(_Unit: TCXTranslationUnit): TCXDiagnosticSet; cdecl external LIBCLANG;
 
 (**
- * \brief Destroy a diagnostic.
+ * Destroy a diagnostic.
  *)
 procedure clang_disposeDiagnostic(Diagnostic: TCXDiagnostic); cdecl external LIBCLANG;
 
 (**
- * \brief Options to control the display of diagnostics.
+ * Options to control the display of diagnostics.
  *
  * The values in this enum are meant to be combined to customize the
  * behavior of \c clang_formatDiagnostic().
@@ -1103,7 +1111,7 @@ const
   CXDiagnostic_DisplayCategoryName = $20;
 
 (**
- * \brief Format the given diagnostic in a manner that is suitable for display.
+ * Format the given diagnostic in a manner that is suitable for display.
  *
  * This routine will format the given diagnostic to a string, rendering
  * the diagnostic according to the various options given. The
@@ -1120,7 +1128,7 @@ const
 function clang_formatDiagnostic(Diagnostic: TCXDiagnostic; Options: Cardinal): TCXString; cdecl external LIBCLANG;
 
 (**
- * \brief Retrieve the set of display options most similar to the
+ * Retrieve the set of display options most similar to the
  * default behavior of the clang compiler.
  *
  * \returns A set of display options suitable for use with \c
@@ -1129,12 +1137,12 @@ function clang_formatDiagnostic(Diagnostic: TCXDiagnostic; Options: Cardinal): T
 function clang_defaultDiagnosticDisplayOptions(): Cardinal; cdecl external LIBCLANG;
 
 (**
- * \brief Determine the severity of the given diagnostic.
+ * Determine the severity of the given diagnostic.
  *)
 function clang_getDiagnosticSeverity(p1: TCXDiagnostic): TCXDiagnosticSeverity; cdecl external LIBCLANG;
 
 (**
- * \brief Retrieve the source location of the given diagnostic.
+ * Retrieve the source location of the given diagnostic.
  *
  * This location is where Clang would print the caret ('^') when
  * displaying the diagnostic on the command line.
@@ -1142,12 +1150,12 @@ function clang_getDiagnosticSeverity(p1: TCXDiagnostic): TCXDiagnosticSeverity; 
 function clang_getDiagnosticLocation(p1: TCXDiagnostic): TCXSourceLocation; cdecl external LIBCLANG;
 
 (**
- * \brief Retrieve the text of the given diagnostic.
+ * Retrieve the text of the given diagnostic.
  *)
 function clang_getDiagnosticSpelling(p1: TCXDiagnostic): TCXString; cdecl external LIBCLANG;
 
 (**
- * \brief Retrieve the name of the command-line option that enabled this
+ * Retrieve the name of the command-line option that enabled this
  * diagnostic.
  *
  * \param Diag The diagnostic to be queried.
@@ -1161,7 +1169,7 @@ function clang_getDiagnosticSpelling(p1: TCXDiagnostic): TCXString; cdecl extern
 function clang_getDiagnosticOption(Diag: TCXDiagnostic; Disable: PCXString): TCXString; cdecl external LIBCLANG;
 
 (**
- * \brief Retrieve the category number for this diagnostic.
+ * Retrieve the category number for this diagnostic.
  *
  * Diagnostics can be categorized into groups along with other, related
  * diagnostics (e.g., diagnostics under the same warning flag). This routine
@@ -1173,7 +1181,7 @@ function clang_getDiagnosticOption(Diag: TCXDiagnostic; Disable: PCXString): TCX
 function clang_getDiagnosticCategory(p1: TCXDiagnostic): Cardinal; cdecl external LIBCLANG;
 
 (**
- * \brief Retrieve the name of a particular diagnostic category.  This
+ * Retrieve the name of a particular diagnostic category.  This
  *  is now deprecated.  Use clang_getDiagnosticCategoryText()
  *  instead.
  *
@@ -1185,20 +1193,20 @@ function clang_getDiagnosticCategory(p1: TCXDiagnostic): Cardinal; cdecl externa
 function clang_getDiagnosticCategoryName(Category: Cardinal): TCXString; cdecl external LIBCLANG;
 
 (**
- * \brief Retrieve the diagnostic category text for a given diagnostic.
+ * Retrieve the diagnostic category text for a given diagnostic.
  *
  * \returns The text of the given diagnostic category.
  *)
 function clang_getDiagnosticCategoryText(p1: TCXDiagnostic): TCXString; cdecl external LIBCLANG;
 
 (**
- * \brief Determine the number of source ranges associated with the given
+ * Determine the number of source ranges associated with the given
  * diagnostic.
  *)
 function clang_getDiagnosticNumRanges(p1: TCXDiagnostic): Cardinal; cdecl external LIBCLANG;
 
 (**
- * \brief Retrieve a source range associated with the diagnostic.
+ * Retrieve a source range associated with the diagnostic.
  *
  * A diagnostic's source ranges highlight important elements in the source
  * code. On the command line, Clang displays source ranges by
@@ -1213,13 +1221,13 @@ function clang_getDiagnosticNumRanges(p1: TCXDiagnostic): Cardinal; cdecl extern
 function clang_getDiagnosticRange(Diagnostic: TCXDiagnostic; Range: Cardinal): TCXSourceRange; cdecl external LIBCLANG;
 
 (**
- * \brief Determine the number of fix-it hints associated with the
+ * Determine the number of fix-it hints associated with the
  * given diagnostic.
  *)
 function clang_getDiagnosticNumFixIts(Diagnostic: TCXDiagnostic): Cardinal; cdecl external LIBCLANG;
 
 (**
- * \brief Retrieve the replacement information for a given fix-it.
+ * Retrieve the replacement information for a given fix-it.
  *
  * Fix-its are described in terms of a source range whose contents
  * should be replaced by a string. This approach generalizes over
@@ -1260,12 +1268,12 @@ function clang_getDiagnosticFixIt(Diagnostic: TCXDiagnostic; FixIt: Cardinal; Re
  *)
 
 (**
- * \brief Get the original translation unit source file name.
+ * Get the original translation unit source file name.
  *)
 function clang_getTranslationUnitSpelling(CTUnit: TCXTranslationUnit): TCXString; cdecl external LIBCLANG;
 
 (**
- * \brief Return the CXTranslationUnit for a given source file and the provided
+ * Return the CXTranslationUnit for a given source file and the provided
  * command line arguments one would pass to the compiler.
  *
  * Note: The 'source_filename' argument is optional.  If the caller provides a
@@ -1307,7 +1315,7 @@ function clang_getTranslationUnitSpelling(CTUnit: TCXTranslationUnit): TCXString
 function clang_createTranslationUnitFromSourceFile(CIdx: TCXIndex; const source_filename: PAnsiChar; num_clang_command_line_args: Integer; const clang_command_line_args: PPAnsiChar; num_unsaved_files: Cardinal; unsaved_files: PCXUnsavedFile): TCXTranslationUnit; cdecl external LIBCLANG;
 
 (**
- * \brief Same as \c clang_createTranslationUnit2, but returns
+ * Same as \c clang_createTranslationUnit2, but returns
  * the \c CXTranslationUnit instead of an error code.  In case of an error this
  * routine returns a \c NULL \c CXTranslationUnit, without further detailed
  * error codes.
@@ -1315,7 +1323,7 @@ function clang_createTranslationUnitFromSourceFile(CIdx: TCXIndex; const source_
 function clang_createTranslationUnit(CIdx: TCXIndex; const ast_filename: PAnsiChar): TCXTranslationUnit; cdecl external LIBCLANG;
 
 (**
- * \brief Create a translation unit from an AST file (\c -emit-ast).
+ * Create a translation unit from an AST file (\c -emit-ast).
  *
  * \param[out] out_TU A non-NULL pointer to store the created
  * \c CXTranslationUnit.
@@ -1325,7 +1333,7 @@ function clang_createTranslationUnit(CIdx: TCXIndex; const ast_filename: PAnsiCh
 function clang_createTranslationUnit2(CIdx: TCXIndex; const ast_filename: PAnsiChar; out_TU: PCXTranslationUnit): TCXErrorCode; cdecl external LIBCLANG;
 
 (**
- * \brief Flags that control the creation of translation units.
+ * Flags that control the creation of translation units.
  *
  * The enumerators in this enumeration type are meant to be bitwise
  * ORed together to specify which options should be used when
@@ -1347,9 +1355,13 @@ const
   CXTranslationUnit_CreatePreambleOnFirstParse = $100;
   CXTranslationUnit_KeepGoing = $200;
   CXTranslationUnit_SingleFileParse = $400;
+  CXTranslationUnit_LimitSkipFunctionBodiesToPreamble = $800;
+  CXTranslationUnit_IncludeAttributedTypes = $1000;
+  CXTranslationUnit_VisitImplicitAttributes = $2000;
+  CXTranslationUnit_IgnoreNonErrorsFromIncludedFiles = $4000;
 
 (**
- * \brief Returns the set of flags that is suitable for parsing a translation
+ * Returns the set of flags that is suitable for parsing a translation
  * unit that is being edited.
  *
  * The set of flags returned provide options for \c clang_parseTranslationUnit()
@@ -1363,7 +1375,7 @@ const
 function clang_defaultEditingTranslationUnitOptions(): Cardinal; cdecl external LIBCLANG;
 
 (**
- * \brief Same as \c clang_parseTranslationUnit2, but returns
+ * Same as \c clang_parseTranslationUnit2, but returns
  * the \c CXTranslationUnit instead of an error code.  In case of an error this
  * routine returns a \c NULL \c CXTranslationUnit, without further detailed
  * error codes.
@@ -1371,7 +1383,7 @@ function clang_defaultEditingTranslationUnitOptions(): Cardinal; cdecl external 
 function clang_parseTranslationUnit(CIdx: TCXIndex; const source_filename: PAnsiChar; const command_line_args: PPAnsiChar; num_command_line_args: Integer; unsaved_files: PCXUnsavedFile; num_unsaved_files: Cardinal; options: Cardinal): TCXTranslationUnit; cdecl external LIBCLANG;
 
 (**
- * \brief Parse the given source file and the translation unit corresponding
+ * Parse the given source file and the translation unit corresponding
  * to that file.
  *
  * This routine is the main entry point for the Clang C API, providing the
@@ -1417,14 +1429,14 @@ function clang_parseTranslationUnit(CIdx: TCXIndex; const source_filename: PAnsi
 function clang_parseTranslationUnit2(CIdx: TCXIndex; const source_filename: PAnsiChar; const command_line_args: PPAnsiChar; num_command_line_args: Integer; unsaved_files: PCXUnsavedFile; num_unsaved_files: Cardinal; options: Cardinal; out_TU: PCXTranslationUnit): TCXErrorCode; cdecl external LIBCLANG;
 
 (**
- * \brief Same as clang_parseTranslationUnit2 but requires a full command line
+ * Same as clang_parseTranslationUnit2 but requires a full command line
  * for \c command_line_args including argv[0]. This is useful if the standard
  * library paths are relative to the binary.
  *)
 function clang_parseTranslationUnit2FullArgv(CIdx: TCXIndex; const source_filename: PAnsiChar; const command_line_args: PPAnsiChar; num_command_line_args: Integer; unsaved_files: PCXUnsavedFile; num_unsaved_files: Cardinal; options: Cardinal; out_TU: PCXTranslationUnit): TCXErrorCode; cdecl external LIBCLANG;
 
 (**
- * \brief Flags that control how translation units are saved.
+ * Flags that control how translation units are saved.
  *
  * The enumerators in this enumeration type are meant to be bitwise
  * ORed together to specify which options should be used when
@@ -1437,7 +1449,7 @@ const
   CXSaveTranslationUnit_None = $0;
 
 (**
- * \brief Returns the set of flags that is suitable for saving a translation
+ * Returns the set of flags that is suitable for saving a translation
  * unit.
  *
  * The set of flags returned provide options for
@@ -1448,7 +1460,7 @@ const
 function clang_defaultSaveOptions(TU: TCXTranslationUnit): Cardinal; cdecl external LIBCLANG;
 
 (**
- * \brief Describes the kind of error that occurred (if any) in a call to
+ * Describes the kind of error that occurred (if any) in a call to
  * \c clang_saveTranslationUnit().
  *)
 type
@@ -1461,7 +1473,7 @@ const
   CXSaveError_InvalidTU = 3;
 
 (**
- * \brief Saves a translation unit into a serialized representation of
+ * Saves a translation unit into a serialized representation of
  * that translation unit on disk.
  *
  * Any translation unit that was parsed without error can be saved
@@ -1486,7 +1498,7 @@ const
 function clang_saveTranslationUnit(TU: TCXTranslationUnit; const FileName: PAnsiChar; options: Cardinal): Integer; cdecl external LIBCLANG;
 
 (**
- * \brief Suspend a translation unit in order to free memory associated with it.
+ * Suspend a translation unit in order to free memory associated with it.
  *
  * A suspended translation unit uses significantly less memory but on the other
  * side does not support any other calls than \c clang_reparseTranslationUnit
@@ -1495,12 +1507,12 @@ function clang_saveTranslationUnit(TU: TCXTranslationUnit; const FileName: PAnsi
 function clang_suspendTranslationUnit(p1: TCXTranslationUnit): Cardinal; cdecl external LIBCLANG;
 
 (**
- * \brief Destroy the specified CXTranslationUnit object.
+ * Destroy the specified CXTranslationUnit object.
  *)
 procedure clang_disposeTranslationUnit(p1: TCXTranslationUnit); cdecl external LIBCLANG;
 
 (**
- * \brief Flags that control the reparsing of translation units.
+ * Flags that control the reparsing of translation units.
  *
  * The enumerators in this enumeration type are meant to be bitwise
  * ORed together to specify which options should be used when
@@ -1513,7 +1525,7 @@ const
   CXReparse_None = $0;
 
 (**
- * \brief Returns the set of flags that is suitable for reparsing a translation
+ * Returns the set of flags that is suitable for reparsing a translation
  * unit.
  *
  * The set of flags returned provide options for
@@ -1525,7 +1537,7 @@ const
 function clang_defaultReparseOptions(TU: TCXTranslationUnit): Cardinal; cdecl external LIBCLANG;
 
 (**
- * \brief Reparse the source files that produced this translation unit.
+ * Reparse the source files that produced this translation unit.
  *
  * This routine can be used to re-parse the source files that originally
  * created the given translation unit, for example because those source files
@@ -1566,7 +1578,7 @@ function clang_defaultReparseOptions(TU: TCXTranslationUnit): Cardinal; cdecl ex
 function clang_reparseTranslationUnit(TU: TCXTranslationUnit; num_unsaved_files: Cardinal; unsaved_files: PCXUnsavedFile; options: Cardinal): Integer; cdecl external LIBCLANG;
 
 (**
-  * \brief Categorizes how memory is being used by a translation unit.
+  * Categorizes how memory is being used by a translation unit.
   *)
 type
   TCXTUResourceUsageKind = Integer;
@@ -1592,7 +1604,7 @@ const
   CXTUResourceUsage_Last = CXTUResourceUsage_Preprocessor_HeaderSearch;
 
 (**
-  * \brief Returns the human-readable null-terminated C string that represents
+  * Returns the human-readable null-terminated C string that represents
   *  the name of the memory category.  This string should never be freed.
   *)
 function clang_getTUResourceUsageName(kind: TCXTUResourceUsageKind): PAnsiChar; cdecl external LIBCLANG;
@@ -1605,7 +1617,7 @@ type
   PCXTUResourceUsageEntry = ^TCXTUResourceUsageEntry;
 
 (**
-  * \brief The memory usage of a CXTranslationUnit, broken into categories.
+  * The memory usage of a CXTranslationUnit, broken into categories.
   *)
 type
   TCXTUResourceUsage = record
@@ -1616,7 +1628,7 @@ type
   PCXTUResourceUsage = ^TCXTUResourceUsage;
 
 (**
-  * \brief Return the memory usage of a translation unit.  This object
+  * Return the memory usage of a translation unit.  This object
   *  should be released with clang_disposeCXTUResourceUsage().
   *)
 function clang_getCXTUResourceUsage(TU: TCXTranslationUnit): TCXTUResourceUsage; cdecl external LIBCLANG;
@@ -1624,26 +1636,26 @@ function clang_getCXTUResourceUsage(TU: TCXTranslationUnit): TCXTUResourceUsage;
 procedure clang_disposeCXTUResourceUsage(usage: TCXTUResourceUsage); cdecl external LIBCLANG;
 
 (**
- * \brief Get target information for this translation unit.
+ * Get target information for this translation unit.
  *
  * The CXTargetInfo object cannot outlive the CXTranslationUnit object.
  *)
 function clang_getTranslationUnitTargetInfo(CTUnit: TCXTranslationUnit): TCXTargetInfo; cdecl external LIBCLANG;
 
 (**
- * \brief Destroy the CXTargetInfo object.
+ * Destroy the CXTargetInfo object.
  *)
 procedure clang_TargetInfo_dispose(Info: TCXTargetInfo); cdecl external LIBCLANG;
 
 (**
- * \brief Get the normalized target triple as a string.
+ * Get the normalized target triple as a string.
  *
  * Returns the empty string in case of any error.
  *)
 function clang_TargetInfo_getTriple(Info: TCXTargetInfo): TCXString; cdecl external LIBCLANG;
 
 (**
- * \brief Get the pointer width of the target in bits.
+ * Get the pointer width of the target in bits.
  *
  * Returns -1 in case of error.
  *)
@@ -1654,7 +1666,7 @@ function clang_TargetInfo_getPointerWidth(Info: TCXTargetInfo): Integer; cdecl e
  *)
 
 (**
- * \brief Describes the kind of entity that a cursor refers to.
+ * Describes the kind of entity that a cursor refers to.
  *)
 type
   TCXCursorKind = Integer;
@@ -1771,7 +1783,8 @@ const
   CXCursor_ObjCSelfExpr = 146;
   CXCursor_OMPArraySectionExpr = 147;
   CXCursor_ObjCAvailabilityCheckExpr = 148;
-  CXCursor_LastExpr = CXCursor_ObjCAvailabilityCheckExpr;
+  CXCursor_FixedPointLiteral = 149;
+  CXCursor_LastExpr = CXCursor_FixedPointLiteral;
   CXCursor_FirstStmt = 200;
   CXCursor_UnexposedStmt = 200;
   CXCursor_LabelStmt = 201;
@@ -1854,7 +1867,8 @@ const
   CXCursor_OMPTargetTeamsDistributeParallelForDirective = 277;
   CXCursor_OMPTargetTeamsDistributeParallelForSimdDirective = 278;
   CXCursor_OMPTargetTeamsDistributeSimdDirective = 279;
-  CXCursor_LastStmt = CXCursor_OMPTargetTeamsDistributeSimdDirective;
+  CXCursor_BuiltinBitCastExpr = 280;
+  CXCursor_LastStmt = CXCursor_BuiltinBitCastExpr;
   CXCursor_TranslationUnit = 300;
   CXCursor_FirstAttr = 400;
   CXCursor_UnexposedAttr = 400;
@@ -1877,7 +1891,29 @@ const
   CXCursor_VisibilityAttr = 417;
   CXCursor_DLLExport = 418;
   CXCursor_DLLImport = 419;
-  CXCursor_LastAttr = CXCursor_DLLImport;
+  CXCursor_NSReturnsRetained = 420;
+  CXCursor_NSReturnsNotRetained = 421;
+  CXCursor_NSReturnsAutoreleased = 422;
+  CXCursor_NSConsumesSelf = 423;
+  CXCursor_NSConsumed = 424;
+  CXCursor_ObjCException = 425;
+  CXCursor_ObjCNSObject = 426;
+  CXCursor_ObjCIndependentClass = 427;
+  CXCursor_ObjCPreciseLifetime = 428;
+  CXCursor_ObjCReturnsInnerPointer = 429;
+  CXCursor_ObjCRequiresSuper = 430;
+  CXCursor_ObjCRootClass = 431;
+  CXCursor_ObjCSubclassingRestricted = 432;
+  CXCursor_ObjCExplicitProtocolImpl = 433;
+  CXCursor_ObjCDesignatedInitializer = 434;
+  CXCursor_ObjCRuntimeVisible = 435;
+  CXCursor_ObjCBoxable = 436;
+  CXCursor_FlagEnum = 437;
+  CXCursor_ConvergentAttr = 438;
+  CXCursor_WarnUnusedAttr = 439;
+  CXCursor_WarnUnusedResultAttr = 440;
+  CXCursor_AlignedAttr = 441;
+  CXCursor_LastAttr = CXCursor_AlignedAttr;
   CXCursor_PreprocessingDirective = 500;
   CXCursor_MacroDefinition = 501;
   CXCursor_MacroExpansion = 502;
@@ -1894,7 +1930,7 @@ const
   CXCursor_OverloadCandidate = 700;
 
 (**
- * \brief A cursor representing some element in the abstract syntax tree for
+ * A cursor representing some element in the abstract syntax tree for
  * a translation unit.
  *
  * The cursor abstraction unifies the different kinds of entities in a
@@ -1927,12 +1963,12 @@ type
  *)
 
 (**
- * \brief Retrieve the NULL cursor, which represents no entity.
+ * Retrieve the NULL cursor, which represents no entity.
  *)
 function clang_getNullCursor(): TCXCursor; cdecl external LIBCLANG;
 
 (**
- * \brief Retrieve the cursor that represents the given translation unit.
+ * Retrieve the cursor that represents the given translation unit.
  *
  * The translation unit cursor can be used to start traversing the
  * various declarations within the given translation unit.
@@ -1940,32 +1976,42 @@ function clang_getNullCursor(): TCXCursor; cdecl external LIBCLANG;
 function clang_getTranslationUnitCursor(p1: TCXTranslationUnit): TCXCursor; cdecl external LIBCLANG;
 
 (**
- * \brief Determine whether two cursors are equivalent.
+ * Determine whether two cursors are equivalent.
  *)
 function clang_equalCursors(p1: TCXCursor; p2: TCXCursor): Cardinal; cdecl external LIBCLANG;
 
 (**
- * \brief Returns non-zero if \p cursor is null.
+ * Returns non-zero if \p cursor is null.
  *)
 function clang_Cursor_isNull(cursor: TCXCursor): Integer; cdecl external LIBCLANG;
 
 (**
- * \brief Compute a hash value for the given cursor.
+ * Compute a hash value for the given cursor.
  *)
 function clang_hashCursor(p1: TCXCursor): Cardinal; cdecl external LIBCLANG;
 
 (**
- * \brief Retrieve the kind of the given cursor.
+ * Retrieve the kind of the given cursor.
  *)
 function clang_getCursorKind(p1: TCXCursor): TCXCursorKind; cdecl external LIBCLANG;
 
 (**
- * \brief Determine whether the given cursor kind represents a declaration.
+ * Determine whether the given cursor kind represents a declaration.
  *)
 function clang_isDeclaration(p1: TCXCursorKind): Cardinal; cdecl external LIBCLANG;
 
 (**
- * \brief Determine whether the given cursor kind represents a simple
+ * Determine whether the given declaration is invalid.
+ *
+ * A declaration is invalid if it could not be parsed successfully.
+ *
+ * \returns non-zero if the cursor represents a declaration and it is
+ * invalid, otherwise NULL.
+ *)
+function clang_isInvalidDeclaration(p1: TCXCursor): Cardinal; cdecl external LIBCLANG;
+
+(**
+ * Determine whether the given cursor kind represents a simple
  * reference.
  *
  * Note that other kinds of cursors (such as expressions) can also refer to
@@ -1975,51 +2021,51 @@ function clang_isDeclaration(p1: TCXCursorKind): Cardinal; cdecl external LIBCLA
 function clang_isReference(p1: TCXCursorKind): Cardinal; cdecl external LIBCLANG;
 
 (**
- * \brief Determine whether the given cursor kind represents an expression.
+ * Determine whether the given cursor kind represents an expression.
  *)
 function clang_isExpression(p1: TCXCursorKind): Cardinal; cdecl external LIBCLANG;
 
 (**
- * \brief Determine whether the given cursor kind represents a statement.
+ * Determine whether the given cursor kind represents a statement.
  *)
 function clang_isStatement(p1: TCXCursorKind): Cardinal; cdecl external LIBCLANG;
 
 (**
- * \brief Determine whether the given cursor kind represents an attribute.
+ * Determine whether the given cursor kind represents an attribute.
  *)
 function clang_isAttribute(p1: TCXCursorKind): Cardinal; cdecl external LIBCLANG;
 
 (**
- * \brief Determine whether the given cursor has any attributes.
+ * Determine whether the given cursor has any attributes.
  *)
 function clang_Cursor_hasAttrs(C: TCXCursor): Cardinal; cdecl external LIBCLANG;
 
 (**
- * \brief Determine whether the given cursor kind represents an invalid
+ * Determine whether the given cursor kind represents an invalid
  * cursor.
  *)
 function clang_isInvalid(p1: TCXCursorKind): Cardinal; cdecl external LIBCLANG;
 
 (**
- * \brief Determine whether the given cursor kind represents a translation
+ * Determine whether the given cursor kind represents a translation
  * unit.
  *)
 function clang_isTranslationUnit(p1: TCXCursorKind): Cardinal; cdecl external LIBCLANG;
 
 (***
- * \brief Determine whether the given cursor represents a preprocessing
+ * Determine whether the given cursor represents a preprocessing
  * element, such as a preprocessor directive or macro instantiation.
  *)
 function clang_isPreprocessing(p1: TCXCursorKind): Cardinal; cdecl external LIBCLANG;
 
 (***
- * \brief Determine whether the given cursor represents a currently
+ * Determine whether the given cursor represents a currently
  *  unexposed piece of the AST (e.g., CXCursor_UnexposedStmt).
  *)
 function clang_isUnexposed(p1: TCXCursorKind): Cardinal; cdecl external LIBCLANG;
 
 (**
- * \brief Describe the linkage of the entity referred to by a cursor.
+ * Describe the linkage of the entity referred to by a cursor.
  *)
 type
   TCXLinkageKind = Integer;
@@ -2032,7 +2078,7 @@ const
   CXLinkage_External = CXLinkage_UniqueExternal + 1;
 
 (**
- * \brief Determine the linkage of the entity referred to by a given cursor.
+ * Determine the linkage of the entity referred to by a given cursor.
  *)
 function clang_getCursorLinkage(cursor: TCXCursor): TCXLinkageKind; cdecl external LIBCLANG;
 
@@ -2046,7 +2092,7 @@ const
   CXVisibility_Default = CXVisibility_Protected + 1;
 
 (**
- * \brief Describe the visibility of the entity referred to by a cursor.
+ * Describe the visibility of the entity referred to by a cursor.
  *
  * This returns the default visibility if not explicitly specified by
  * a visibility attribute. The default visibility may be changed by
@@ -2059,7 +2105,7 @@ const
 function clang_getCursorVisibility(cursor: TCXCursor): TCXVisibilityKind; cdecl external LIBCLANG;
 
 (**
- * \brief Determine the availability of the entity that this cursor refers to,
+ * Determine the availability of the entity that this cursor refers to,
  * taking the current target platform into account.
  *
  * \param cursor The cursor to query.
@@ -2084,7 +2130,7 @@ type
   PCXPlatformAvailability = ^TCXPlatformAvailability;
 
 (**
- * \brief Determine the availability of the entity that this cursor refers to
+ * Determine the availability of the entity that this cursor refers to
  * on any platforms for which availability information is known.
  *
  * \param cursor The cursor to query.
@@ -2122,12 +2168,12 @@ type
 function clang_getCursorPlatformAvailability(cursor: TCXCursor; always_deprecated: PInteger; deprecated_message: PCXString; always_unavailable: PInteger; unavailable_message: PCXString; availability: PCXPlatformAvailability; availability_size: Integer): Integer; cdecl external LIBCLANG;
 
 (**
- * \brief Free the memory associated with a \c CXPlatformAvailability structure.
+ * Free the memory associated with a \c CXPlatformAvailability structure.
  *)
 procedure clang_disposeCXPlatformAvailability(availability: PCXPlatformAvailability); cdecl external LIBCLANG;
 
 (**
- * \brief Describe the "language" of the entity referred to by a cursor.
+ * Describe the "language" of the entity referred to by a cursor.
  *)
 type
   TCXLanguageKind = Integer;
@@ -2139,12 +2185,12 @@ const
   CXLanguage_CPlusPlus = CXLanguage_ObjC + 1;
 
 (**
- * \brief Determine the "language" of the entity referred to by a given cursor.
+ * Determine the "language" of the entity referred to by a given cursor.
  *)
 function clang_getCursorLanguage(cursor: TCXCursor): TCXLanguageKind; cdecl external LIBCLANG;
 
 (**
- * \brief Describe the "thread-local storage (TLS) kind" of the declaration
+ * Describe the "thread-local storage (TLS) kind" of the declaration
  * referred to by a cursor.
  *)
 type
@@ -2156,47 +2202,47 @@ const
   CXTLS_Static = CXTLS_Dynamic + 1;
 
 (**
- * \brief Determine the "thread-local storage (TLS) kind" of the declaration
+ * Determine the "thread-local storage (TLS) kind" of the declaration
  * referred to by a cursor.
  *)
 function clang_getCursorTLSKind(cursor: TCXCursor): TCXTLSKind; cdecl external LIBCLANG;
 
 (**
- * \brief Returns the translation unit that a cursor originated from.
+ * Returns the translation unit that a cursor originated from.
  *)
 function clang_Cursor_getTranslationUnit(p1: TCXCursor): TCXTranslationUnit; cdecl external LIBCLANG;
 
 (**
- * \brief A fast container representing a set of CXCursors.
+ * A fast container representing a set of CXCursors.
  *)
 type TCXCursorSet = Pointer;
 
 (**
- * \brief Creates an empty CXCursorSet.
+ * Creates an empty CXCursorSet.
  *)
 function clang_createCXCursorSet(): TCXCursorSet; cdecl external LIBCLANG;
 
 (**
- * \brief Disposes a CXCursorSet and releases its associated memory.
+ * Disposes a CXCursorSet and releases its associated memory.
  *)
 procedure clang_disposeCXCursorSet(cset: TCXCursorSet); cdecl external LIBCLANG;
 
 (**
- * \brief Queries a CXCursorSet to see if it contains a specific CXCursor.
+ * Queries a CXCursorSet to see if it contains a specific CXCursor.
  *
  * \returns non-zero if the set contains the specified cursor.
 *)
 function clang_CXCursorSet_contains(cset: TCXCursorSet; cursor: TCXCursor): Cardinal; cdecl external LIBCLANG;
 
 (**
- * \brief Inserts a CXCursor into a CXCursorSet.
+ * Inserts a CXCursor into a CXCursorSet.
  *
  * \returns zero if the CXCursor was already in the set, and non-zero otherwise.
 *)
 function clang_CXCursorSet_insert(cset: TCXCursorSet; cursor: TCXCursor): Cardinal; cdecl external LIBCLANG;
 
 (**
- * \brief Determine the semantic parent of the given cursor.
+ * Determine the semantic parent of the given cursor.
  *
  * The semantic parent of a cursor is the cursor that semantically contains
  * the given \p cursor. For many declarations, the lexical and semantic parents
@@ -2231,7 +2277,7 @@ function clang_CXCursorSet_insert(cset: TCXCursorSet; cursor: TCXCursor): Cardin
 function clang_getCursorSemanticParent(cursor: TCXCursor): TCXCursor; cdecl external LIBCLANG;
 
 (**
- * \brief Determine the lexical parent of the given cursor.
+ * Determine the lexical parent of the given cursor.
  *
  * The lexical parent of a cursor is the cursor in which the given \p cursor
  * was actually written. For many declarations, the lexical and semantic parents
@@ -2267,7 +2313,7 @@ function clang_getCursorSemanticParent(cursor: TCXCursor): TCXCursor; cdecl exte
 function clang_getCursorLexicalParent(cursor: TCXCursor): TCXCursor; cdecl external LIBCLANG;
 
 (**
- * \brief Determine the set of methods that are overridden by the given
+ * Determine the set of methods that are overridden by the given
  * method.
  *
  * In both Objective-C and C++, a method (aka virtual member function,
@@ -2312,13 +2358,13 @@ function clang_getCursorLexicalParent(cursor: TCXCursor): TCXCursor; cdecl exter
 procedure clang_getOverriddenCursors(cursor: TCXCursor; overridden: PPCXCursor; num_overridden: PCardinal); cdecl external LIBCLANG;
 
 (**
- * \brief Free the set of overridden cursors returned by \c
+ * Free the set of overridden cursors returned by \c
  * clang_getOverriddenCursors().
  *)
 procedure clang_disposeOverriddenCursors(overridden: PCXCursor); cdecl external LIBCLANG;
 
 (**
- * \brief Retrieve the file that is included by the given inclusion directive
+ * Retrieve the file that is included by the given inclusion directive
  * cursor.
  *)
 function clang_getIncludedFile(cursor: TCXCursor): TCXFile; cdecl external LIBCLANG;
@@ -2339,7 +2385,7 @@ function clang_getIncludedFile(cursor: TCXCursor): TCXFile; cdecl external LIBCL
  *)
 
 (**
- * \brief Map a source location to the cursor that describes the entity at that
+ * Map a source location to the cursor that describes the entity at that
  * location in the source code.
  *
  * clang_getCursor() maps an arbitrary source location within a translation
@@ -2356,7 +2402,7 @@ function clang_getIncludedFile(cursor: TCXCursor): TCXFile; cdecl external LIBCL
 function clang_getCursor(p1: TCXTranslationUnit; p2: TCXSourceLocation): TCXCursor; cdecl external LIBCLANG;
 
 (**
- * \brief Retrieve the physical location of the source constructor referenced
+ * Retrieve the physical location of the source constructor referenced
  * by the given cursor.
  *
  * The location of a declaration is typically the location of the name of that
@@ -2368,7 +2414,7 @@ function clang_getCursor(p1: TCXTranslationUnit; p2: TCXSourceLocation): TCXCurs
 function clang_getCursorLocation(p1: TCXCursor): TCXSourceLocation; cdecl external LIBCLANG;
 
 (**
- * \brief Retrieve the physical extent of the source construct referenced by
+ * Retrieve the physical extent of the source construct referenced by
  * the given cursor.
  *
  * The extent of a cursor starts with the file/line/column pointing at the
@@ -2391,7 +2437,7 @@ function clang_getCursorExtent(p1: TCXCursor): TCXSourceRange; cdecl external LI
  *)
 
 (**
- * \brief Describes the kind of type
+ * Describes the kind of type
  *)
 type
   TCXTypeKind = Integer;
@@ -2430,8 +2476,14 @@ const
   CXType_Float128 = 30;
   CXType_Half = 31;
   CXType_Float16 = 32;
+  CXType_ShortAccum = 33;
+  CXType_Accum = 34;
+  CXType_LongAccum = 35;
+  CXType_UShortAccum = 36;
+  CXType_UAccum = 37;
+  CXType_ULongAccum = 38;
   CXType_FirstBuiltin = CXType_Void;
-  CXType_LastBuiltin = CXType_Float16;
+  CXType_LastBuiltin = CXType_ULongAccum;
   CXType_Complex = 100;
   CXType_Pointer = 101;
   CXType_BlockPointer = 102;
@@ -2493,9 +2545,25 @@ const
   CXType_OCLEvent = 158;
   CXType_OCLQueue = 159;
   CXType_OCLReserveID = 160;
+  CXType_ObjCObject = 161;
+  CXType_ObjCTypeParam = 162;
+  CXType_Attributed = 163;
+  CXType_OCLIntelSubgroupAVCMcePayload = 164;
+  CXType_OCLIntelSubgroupAVCImePayload = 165;
+  CXType_OCLIntelSubgroupAVCRefPayload = 166;
+  CXType_OCLIntelSubgroupAVCSicPayload = 167;
+  CXType_OCLIntelSubgroupAVCMceResult = 168;
+  CXType_OCLIntelSubgroupAVCImeResult = 169;
+  CXType_OCLIntelSubgroupAVCRefResult = 170;
+  CXType_OCLIntelSubgroupAVCSicResult = 171;
+  CXType_OCLIntelSubgroupAVCImeResultSingleRefStreamout = 172;
+  CXType_OCLIntelSubgroupAVCImeResultDualRefStreamout = 173;
+  CXType_OCLIntelSubgroupAVCImeSingleRefStreamin = 174;
+  CXType_OCLIntelSubgroupAVCImeDualRefStreamin = 175;
+  CXType_ExtVector = 176;
 
 (**
- * \brief Describes the calling convention of a function type
+ * Describes the calling convention of a function type
  *)
 type
   TCXCallingConv = Integer;
@@ -2518,11 +2586,12 @@ const
   CXCallingConv_Swift = 13;
   CXCallingConv_PreserveMost = 14;
   CXCallingConv_PreserveAll = 15;
+  CXCallingConv_AArch64VectorCall = 16;
   CXCallingConv_Invalid = 100;
   CXCallingConv_Unexposed = 200;
 
 (**
- * \brief The type of an element in the abstract syntax tree.
+ * The type of an element in the abstract syntax tree.
  *
  *)
 type
@@ -2533,12 +2602,12 @@ type
   PCXType = ^TCXType;
 
 (**
- * \brief Retrieve the type of a CXCursor (if any).
+ * Retrieve the type of a CXCursor (if any).
  *)
 function clang_getCursorType(C: TCXCursor): TCXType; cdecl external LIBCLANG;
 
 (**
- * \brief Pretty-print the underlying type using the rules of the
+ * Pretty-print the underlying type using the rules of the
  * language of the translation unit from which it came.
  *
  * If the type is invalid, an empty string is returned.
@@ -2546,7 +2615,7 @@ function clang_getCursorType(C: TCXCursor): TCXType; cdecl external LIBCLANG;
 function clang_getTypeSpelling(CT: TCXType): TCXString; cdecl external LIBCLANG;
 
 (**
- * \brief Retrieve the underlying type of a typedef declaration.
+ * Retrieve the underlying type of a typedef declaration.
  *
  * If the cursor does not reference a typedef declaration, an invalid type is
  * returned.
@@ -2554,7 +2623,7 @@ function clang_getTypeSpelling(CT: TCXType): TCXString; cdecl external LIBCLANG;
 function clang_getTypedefDeclUnderlyingType(C: TCXCursor): TCXType; cdecl external LIBCLANG;
 
 (**
- * \brief Retrieve the integer type of an enum declaration.
+ * Retrieve the integer type of an enum declaration.
  *
  * If the cursor does not reference an enum declaration, an invalid type is
  * returned.
@@ -2562,7 +2631,7 @@ function clang_getTypedefDeclUnderlyingType(C: TCXCursor): TCXType; cdecl extern
 function clang_getEnumDeclIntegerType(C: TCXCursor): TCXType; cdecl external LIBCLANG;
 
 (**
- * \brief Retrieve the integer value of an enum constant declaration as a signed
+ * Retrieve the integer value of an enum constant declaration as a signed
  *  long long.
  *
  * If the cursor does not reference an enum constant declaration, LLONG_MIN is returned.
@@ -2572,7 +2641,7 @@ function clang_getEnumDeclIntegerType(C: TCXCursor): TCXType; cdecl external LIB
 function clang_getEnumConstantDeclValue(C: TCXCursor): Int64; cdecl external LIBCLANG;
 
 (**
- * \brief Retrieve the integer value of an enum constant declaration as an unsigned
+ * Retrieve the integer value of an enum constant declaration as an unsigned
  *  long long.
  *
  * If the cursor does not reference an enum constant declaration, ULLONG_MAX is returned.
@@ -2582,14 +2651,14 @@ function clang_getEnumConstantDeclValue(C: TCXCursor): Int64; cdecl external LIB
 function clang_getEnumConstantDeclUnsignedValue(C: TCXCursor): UInt64; cdecl external LIBCLANG;
 
 (**
- * \brief Retrieve the bit width of a bit field declaration as an integer.
+ * Retrieve the bit width of a bit field declaration as an integer.
  *
  * If a cursor that is not a bit field declaration is passed in, -1 is returned.
  *)
 function clang_getFieldDeclBitWidth(C: TCXCursor): Integer; cdecl external LIBCLANG;
 
 (**
- * \brief Retrieve the number of non-variadic arguments associated with a given
+ * Retrieve the number of non-variadic arguments associated with a given
  * cursor.
  *
  * The number of arguments can be determined for calls as well as for
@@ -2598,7 +2667,7 @@ function clang_getFieldDeclBitWidth(C: TCXCursor): Integer; cdecl external LIBCL
 function clang_Cursor_getNumArguments(C: TCXCursor): Integer; cdecl external LIBCLANG;
 
 (**
- * \brief Retrieve the argument cursor of a function or method.
+ * Retrieve the argument cursor of a function or method.
  *
  * The argument cursor can be determined for calls as well as for declarations
  * of functions or methods. For other cursors and for invalid indices, an
@@ -2607,7 +2676,7 @@ function clang_Cursor_getNumArguments(C: TCXCursor): Integer; cdecl external LIB
 function clang_Cursor_getArgument(C: TCXCursor; i: Cardinal): TCXCursor; cdecl external LIBCLANG;
 
 (**
- * \brief Describes the kind of a template argument.
+ * Describes the kind of a template argument.
  *
  * See the definition of llvm::clang::TemplateArgument::ArgKind for full
  * element descriptions.
@@ -2628,7 +2697,7 @@ const
   CXTemplateArgumentKind_Invalid = CXTemplateArgumentKind_Pack + 1;
 
 (**
- *\brief Returns the number of template args of a function decl representing a
+ *Returns the number of template args of a function decl representing a
  * template specialization.
  *
  * If the argument cursor cannot be converted into a template function
@@ -2646,7 +2715,7 @@ const
 function clang_Cursor_getNumTemplateArguments(C: TCXCursor): Integer; cdecl external LIBCLANG;
 
 (**
- * \brief Retrieve the kind of the I'th template argument of the CXCursor C.
+ * Retrieve the kind of the I'th template argument of the CXCursor C.
  *
  * If the argument CXCursor does not represent a FunctionDecl, an invalid
  * template argument kind is returned.
@@ -2664,7 +2733,7 @@ function clang_Cursor_getNumTemplateArguments(C: TCXCursor): Integer; cdecl exte
 function clang_Cursor_getTemplateArgumentKind(C: TCXCursor; I: Cardinal): TCXTemplateArgumentKind; cdecl external LIBCLANG;
 
 (**
- * \brief Retrieve a CXType representing the type of a TemplateArgument of a
+ * Retrieve a CXType representing the type of a TemplateArgument of a
  *  function decl representing a template specialization.
  *
  * If the argument CXCursor does not represent a FunctionDecl whose I'th
@@ -2684,7 +2753,7 @@ function clang_Cursor_getTemplateArgumentKind(C: TCXCursor; I: Cardinal): TCXTem
 function clang_Cursor_getTemplateArgumentType(C: TCXCursor; I: Cardinal): TCXType; cdecl external LIBCLANG;
 
 (**
- * \brief Retrieve the value of an Integral TemplateArgument (of a function
+ * Retrieve the value of an Integral TemplateArgument (of a function
  *  decl representing a template specialization) as a signed long long.
  *
  * It is undefined to call this function on a CXCursor that does not represent a
@@ -2703,7 +2772,7 @@ function clang_Cursor_getTemplateArgumentType(C: TCXCursor; I: Cardinal): TCXTyp
 function clang_Cursor_getTemplateArgumentValue(C: TCXCursor; I: Cardinal): Int64; cdecl external LIBCLANG;
 
 (**
- * \brief Retrieve the value of an Integral TemplateArgument (of a function
+ * Retrieve the value of an Integral TemplateArgument (of a function
  *  decl representing a template specialization) as an unsigned long long.
  *
  * It is undefined to call this function on a CXCursor that does not represent a
@@ -2722,7 +2791,7 @@ function clang_Cursor_getTemplateArgumentValue(C: TCXCursor; I: Cardinal): Int64
 function clang_Cursor_getTemplateArgumentUnsignedValue(C: TCXCursor; I: Cardinal): UInt64; cdecl external LIBCLANG;
 
 (**
- * \brief Determine whether two CXTypes represent the same type.
+ * Determine whether two CXTypes represent the same type.
  *
  * \returns non-zero if the CXTypes represent the same type and
  *          zero otherwise.
@@ -2730,7 +2799,7 @@ function clang_Cursor_getTemplateArgumentUnsignedValue(C: TCXCursor; I: Cardinal
 function clang_equalTypes(A: TCXType; B: TCXType): Cardinal; cdecl external LIBCLANG;
 
 (**
- * \brief Return the canonical type for a CXType.
+ * Return the canonical type for a CXType.
  *
  * Clang's type system explicitly models typedefs and all the ways
  * a specific type can be represented.  The canonical type is the underlying
@@ -2740,61 +2809,61 @@ function clang_equalTypes(A: TCXType; B: TCXType): Cardinal; cdecl external LIBC
 function clang_getCanonicalType(T: TCXType): TCXType; cdecl external LIBCLANG;
 
 (**
- * \brief Determine whether a CXType has the "const" qualifier set,
+ * Determine whether a CXType has the "const" qualifier set,
  * without looking through typedefs that may have added "const" at a
  * different level.
  *)
 function clang_isConstQualifiedType(T: TCXType): Cardinal; cdecl external LIBCLANG;
 
 (**
- * \brief Determine whether a  CXCursor that is a macro, is
+ * Determine whether a  CXCursor that is a macro, is
  * function like.
  *)
 function clang_Cursor_isMacroFunctionLike(C: TCXCursor): Cardinal; cdecl external LIBCLANG;
 
 (**
- * \brief Determine whether a  CXCursor that is a macro, is a
+ * Determine whether a  CXCursor that is a macro, is a
  * builtin one.
  *)
 function clang_Cursor_isMacroBuiltin(C: TCXCursor): Cardinal; cdecl external LIBCLANG;
 
 (**
- * \brief Determine whether a  CXCursor that is a function declaration, is an
+ * Determine whether a  CXCursor that is a function declaration, is an
  * inline declaration.
  *)
 function clang_Cursor_isFunctionInlined(C: TCXCursor): Cardinal; cdecl external LIBCLANG;
 
 (**
- * \brief Determine whether a CXType has the "volatile" qualifier set,
+ * Determine whether a CXType has the "volatile" qualifier set,
  * without looking through typedefs that may have added "volatile" at
  * a different level.
  *)
 function clang_isVolatileQualifiedType(T: TCXType): Cardinal; cdecl external LIBCLANG;
 
 (**
- * \brief Determine whether a CXType has the "restrict" qualifier set,
+ * Determine whether a CXType has the "restrict" qualifier set,
  * without looking through typedefs that may have added "restrict" at a
  * different level.
  *)
 function clang_isRestrictQualifiedType(T: TCXType): Cardinal; cdecl external LIBCLANG;
 
 (**
- * \brief Returns the address space of the given type.
+ * Returns the address space of the given type.
  *)
 function clang_getAddressSpace(T: TCXType): Cardinal; cdecl external LIBCLANG;
 
 (**
- * \brief Returns the typedef name of the given type.
+ * Returns the typedef name of the given type.
  *)
 function clang_getTypedefName(CT: TCXType): TCXString; cdecl external LIBCLANG;
 
 (**
- * \brief For pointer types, returns the type of the pointee.
+ * For pointer types, returns the type of the pointee.
  *)
 function clang_getPointeeType(T: TCXType): TCXType; cdecl external LIBCLANG;
 
 (**
- * \brief Return the cursor for the declaration of the given type.
+ * Return the cursor for the declaration of the given type.
  *)
 function clang_getTypeDeclaration(T: TCXType): TCXCursor; cdecl external LIBCLANG;
 
@@ -2809,33 +2878,33 @@ function clang_getDeclObjCTypeEncoding(C: TCXCursor): TCXString; cdecl external 
 function clang_Type_getObjCEncoding(_type: TCXType): TCXString; cdecl external LIBCLANG;
 
 (**
- * \brief Retrieve the spelling of a given CXTypeKind.
+ * Retrieve the spelling of a given CXTypeKind.
  *)
 function clang_getTypeKindSpelling(K: TCXTypeKind): TCXString; cdecl external LIBCLANG;
 
 (**
- * \brief Retrieve the calling convention associated with a function type.
+ * Retrieve the calling convention associated with a function type.
  *
  * If a non-function type is passed in, CXCallingConv_Invalid is returned.
  *)
 function clang_getFunctionTypeCallingConv(T: TCXType): TCXCallingConv; cdecl external LIBCLANG;
 
 (**
- * \brief Retrieve the return type associated with a function type.
+ * Retrieve the return type associated with a function type.
  *
  * If a non-function type is passed in, an invalid type is returned.
  *)
 function clang_getResultType(T: TCXType): TCXType; cdecl external LIBCLANG;
 
 (**
- * \brief Retrieve the exception specification type associated with a function type.
- *
+ * Retrieve the exception specification type associated with a function type.
+ * This is a value of type CXCursor_ExceptionSpecificationKind.
  * If a non-function type is passed in, an error code of -1 is returned.
  *)
 function clang_getExceptionSpecificationType(T: TCXType): Integer; cdecl external LIBCLANG;
 
 (**
- * \brief Retrieve the number of non-variadic parameters associated with a
+ * Retrieve the number of non-variadic parameters associated with a
  * function type.
  *
  * If a non-function type is passed in, -1 is returned.
@@ -2843,7 +2912,7 @@ function clang_getExceptionSpecificationType(T: TCXType): Integer; cdecl externa
 function clang_getNumArgTypes(T: TCXType): Integer; cdecl external LIBCLANG;
 
 (**
- * \brief Retrieve the type of a parameter of a function type.
+ * Retrieve the type of a parameter of a function type.
  *
  * If a non-function type is passed in or the function does not have enough
  * parameters, an invalid type is returned.
@@ -2851,32 +2920,70 @@ function clang_getNumArgTypes(T: TCXType): Integer; cdecl external LIBCLANG;
 function clang_getArgType(T: TCXType; i: Cardinal): TCXType; cdecl external LIBCLANG;
 
 (**
- * \brief Return 1 if the CXType is a variadic function type, and 0 otherwise.
+ * Retrieves the base type of the ObjCObjectType.
+ *
+ * If the type is not an ObjC object, an invalid type is returned.
+ *)
+function clang_Type_getObjCObjectBaseType(T: TCXType): TCXType; cdecl external LIBCLANG;
+
+(**
+ * Retrieve the number of protocol references associated with an ObjC object/id.
+ *
+ * If the type is not an ObjC object, 0 is returned.
+ *)
+function clang_Type_getNumObjCProtocolRefs(T: TCXType): Cardinal; cdecl external LIBCLANG;
+
+(**
+ * Retrieve the decl for a protocol reference for an ObjC object/id.
+ *
+ * If the type is not an ObjC object or there are not enough protocol
+ * references, an invalid cursor is returned.
+ *)
+function clang_Type_getObjCProtocolDecl(T: TCXType; i: Cardinal): TCXCursor; cdecl external LIBCLANG;
+
+(**
+ * Retreive the number of type arguments associated with an ObjC object.
+ *
+ * If the type is not an ObjC object, 0 is returned.
+ *)
+function clang_Type_getNumObjCTypeArgs(T: TCXType): Cardinal; cdecl external LIBCLANG;
+
+(**
+ * Retrieve a type argument associated with an ObjC object.
+ *
+ * If the type is not an ObjC or the index is not valid,
+ * an invalid type is returned.
+ *)
+function clang_Type_getObjCTypeArg(T: TCXType; i: Cardinal): TCXType; cdecl external LIBCLANG;
+
+(**
+ * Return 1 if the CXType is a variadic function type, and 0 otherwise.
  *)
 function clang_isFunctionTypeVariadic(T: TCXType): Cardinal; cdecl external LIBCLANG;
 
 (**
- * \brief Retrieve the return type associated with a given cursor.
+ * Retrieve the return type associated with a given cursor.
  *
  * This only returns a valid type if the cursor refers to a function or method.
  *)
 function clang_getCursorResultType(C: TCXCursor): TCXType; cdecl external LIBCLANG;
 
 (**
- * \brief Retrieve the exception specification type associated with a given cursor.
+ * Retrieve the exception specification type associated with a given cursor.
+ * This is a value of type CXCursor_ExceptionSpecificationKind.
  *
  * This only returns a valid result if the cursor refers to a function or method.
  *)
 function clang_getCursorExceptionSpecificationType(C: TCXCursor): Integer; cdecl external LIBCLANG;
 
 (**
- * \brief Return 1 if the CXType is a POD (plain old data) type, and 0
+ * Return 1 if the CXType is a POD (plain old data) type, and 0
  *  otherwise.
  *)
 function clang_isPODType(T: TCXType): Cardinal; cdecl external LIBCLANG;
 
 (**
- * \brief Return the element type of an array, complex, or vector type.
+ * Return the element type of an array, complex, or vector type.
  *
  * If a type is passed in that is not an array, complex, or vector type,
  * an invalid type is returned.
@@ -2884,7 +2991,7 @@ function clang_isPODType(T: TCXType): Cardinal; cdecl external LIBCLANG;
 function clang_getElementType(T: TCXType): TCXType; cdecl external LIBCLANG;
 
 (**
- * \brief Return the number of elements of an array or vector type.
+ * Return the number of elements of an array or vector type.
  *
  * If a type is passed in that is not an array or vector type,
  * -1 is returned.
@@ -2892,28 +2999,28 @@ function clang_getElementType(T: TCXType): TCXType; cdecl external LIBCLANG;
 function clang_getNumElements(T: TCXType): Int64; cdecl external LIBCLANG;
 
 (**
- * \brief Return the element type of an array type.
+ * Return the element type of an array type.
  *
  * If a non-array type is passed in, an invalid type is returned.
  *)
 function clang_getArrayElementType(T: TCXType): TCXType; cdecl external LIBCLANG;
 
 (**
- * \brief Return the array size of a constant array.
+ * Return the array size of a constant array.
  *
  * If a non-array type is passed in, -1 is returned.
  *)
 function clang_getArraySize(T: TCXType): Int64; cdecl external LIBCLANG;
 
 (**
- * \brief Retrieve the type named by the qualified-id.
+ * Retrieve the type named by the qualified-id.
  *
  * If a non-elaborated type is passed in, an invalid type is returned.
  *)
 function clang_Type_getNamedType(T: TCXType): TCXType; cdecl external LIBCLANG;
 
 (**
- * \brief Determine if a typedef is 'transparent' tag.
+ * Determine if a typedef is 'transparent' tag.
  *
  * A typedef is considered 'transparent' if it shares a name and spelling
  * location with its underlying tag type, as is the case with the NS_ENUM macro.
@@ -2922,8 +3029,22 @@ function clang_Type_getNamedType(T: TCXType): TCXType; cdecl external LIBCLANG;
  *)
 function clang_Type_isTransparentTagTypedef(T: TCXType): Cardinal; cdecl external LIBCLANG;
 
+type
+  TCXTypeNullabilityKind = Integer;
+
+const
+  CXTypeNullability_NonNull = 0;
+  CXTypeNullability_Nullable = 1;
+  CXTypeNullability_Unspecified = 2;
+  CXTypeNullability_Invalid = 3;
+
 (**
- * \brief List the possible error codes for \c clang_Type_getSizeOf,
+ * Retrieve the nullability kind of a pointer type.
+ *)
+function clang_Type_getNullability(T: TCXType): TCXTypeNullabilityKind; cdecl external LIBCLANG;
+
+(**
+ * List the possible error codes for \c clang_Type_getSizeOf,
  *   \c clang_Type_getAlignOf, \c clang_Type_getOffsetOf and
  *   \c clang_Cursor_getOffsetOf.
  *
@@ -2939,9 +3060,10 @@ const
   CXTypeLayoutError_Dependent = -3;
   CXTypeLayoutError_NotConstantSize = -4;
   CXTypeLayoutError_InvalidFieldName = -5;
+  CXTypeLayoutError_Undeduced = -6;
 
 (**
- * \brief Return the alignment of a type in bytes as per C++[expr.alignof]
+ * Return the alignment of a type in bytes as per C++[expr.alignof]
  *   standard.
  *
  * If the type declaration is invalid, CXTypeLayoutError_Invalid is returned.
@@ -2955,14 +3077,14 @@ const
 function clang_Type_getAlignOf(T: TCXType): Int64; cdecl external LIBCLANG;
 
 (**
- * \brief Return the class type of an member pointer type.
+ * Return the class type of an member pointer type.
  *
  * If a non-member-pointer type is passed in, an invalid type is returned.
  *)
 function clang_Type_getClassType(T: TCXType): TCXType; cdecl external LIBCLANG;
 
 (**
- * \brief Return the size of a type in bytes as per C++[expr.sizeof] standard.
+ * Return the size of a type in bytes as per C++[expr.sizeof] standard.
  *
  * If the type declaration is invalid, CXTypeLayoutError_Invalid is returned.
  * If the type declaration is an incomplete type, CXTypeLayoutError_Incomplete
@@ -2973,7 +3095,7 @@ function clang_Type_getClassType(T: TCXType): TCXType; cdecl external LIBCLANG;
 function clang_Type_getSizeOf(T: TCXType): Int64; cdecl external LIBCLANG;
 
 (**
- * \brief Return the offset of a field named S in a record of type T in bits
+ * Return the offset of a field named S in a record of type T in bits
  *   as it would be returned by __offsetof__ as per C++11[18.2p4]
  *
  * If the cursor is not a record field declaration, CXTypeLayoutError_Invalid
@@ -2988,7 +3110,14 @@ function clang_Type_getSizeOf(T: TCXType): Int64; cdecl external LIBCLANG;
 function clang_Type_getOffsetOf(T: TCXType; const S: PAnsiChar): Int64; cdecl external LIBCLANG;
 
 (**
- * \brief Return the offset of the field represented by the Cursor.
+ * Return the type that was modified by this attributed type.
+ *
+ * If the type is not an attributed type, an invalid type is returned.
+ *)
+function clang_Type_getModifiedType(T: TCXType): TCXType; cdecl external LIBCLANG;
+
+(**
+ * Return the offset of the field represented by the Cursor.
  *
  * If the cursor is not a field declaration, -1 is returned.
  * If the cursor semantic parent is not a record field declaration,
@@ -3003,10 +3132,22 @@ function clang_Type_getOffsetOf(T: TCXType; const S: PAnsiChar): Int64; cdecl ex
 function clang_Cursor_getOffsetOfField(C: TCXCursor): Int64; cdecl external LIBCLANG;
 
 (**
- * \brief Determine whether the given cursor represents an anonymous record
- * declaration.
+ * Determine whether the given cursor represents an anonymous
+ * tag or namespace.
  *)
 function clang_Cursor_isAnonymous(C: TCXCursor): Cardinal; cdecl external LIBCLANG;
+
+(**
+ * Determine whether the given cursor represents an anonymous record
+ * declaration.
+ *)
+function clang_Cursor_isAnonymousRecordDecl(C: TCXCursor): Cardinal; cdecl external LIBCLANG;
+
+(**
+ * Determine whether the given cursor represents an inline namespace
+ * declaration.
+ *)
+function clang_Cursor_isInlineNamespace(C: TCXCursor): Cardinal; cdecl external LIBCLANG;
 
 type
   TCXRefQualifierKind = Integer;
@@ -3017,13 +3158,13 @@ const
   CXRefQualifier_RValue = CXRefQualifier_LValue + 1;
 
 (**
- * \brief Returns the number of template arguments for given template
+ * Returns the number of template arguments for given template
  * specialization, or -1 if type \c T is not a template specialization.
  *)
 function clang_Type_getNumTemplateArguments(T: TCXType): Integer; cdecl external LIBCLANG;
 
 (**
- * \brief Returns the type template argument of a template class specialization
+ * Returns the type template argument of a template class specialization
  * at given index.
  *
  * This function only returns template type arguments and does not handle
@@ -3032,7 +3173,7 @@ function clang_Type_getNumTemplateArguments(T: TCXType): Integer; cdecl external
 function clang_Type_getTemplateArgumentAsType(T: TCXType; i: Cardinal): TCXType; cdecl external LIBCLANG;
 
 (**
- * \brief Retrieve the ref-qualifier kind of a function or method.
+ * Retrieve the ref-qualifier kind of a function or method.
  *
  * The ref-qualifier is returned for C++ functions or methods. For other types
  * or non-C++ declarations, CXRefQualifier_None is returned.
@@ -3040,19 +3181,19 @@ function clang_Type_getTemplateArgumentAsType(T: TCXType; i: Cardinal): TCXType;
 function clang_Type_getCXXRefQualifier(T: TCXType): TCXRefQualifierKind; cdecl external LIBCLANG;
 
 (**
- * \brief Returns non-zero if the cursor specifies a Record member that is a
+ * Returns non-zero if the cursor specifies a Record member that is a
  *   bitfield.
  *)
 function clang_Cursor_isBitField(C: TCXCursor): Cardinal; cdecl external LIBCLANG;
 
 (**
- * \brief Returns 1 if the base class specified by the cursor with kind
+ * Returns 1 if the base class specified by the cursor with kind
  *   CX_CXXBaseSpecifier is virtual.
  *)
 function clang_isVirtualBase(p1: TCXCursor): Cardinal; cdecl external LIBCLANG;
 
 (**
- * \brief Represents the C++ access control level to a base class for a
+ * Represents the C++ access control level to a base class for a
  * cursor with kind CX_CXXBaseSpecifier.
  *)
 type
@@ -3065,7 +3206,7 @@ const
   CX_CXXPrivate = CX_CXXProtected + 1;
 
 (**
- * \brief Returns the access control level for the referenced object.
+ * Returns the access control level for the referenced object.
  *
  * If the cursor refers to a C++ declaration, its access control level within its
  * parent scope is returned. Otherwise, if the cursor refers to a base specifier or
@@ -3074,7 +3215,7 @@ const
 function clang_getCXXAccessSpecifier(p1: TCXCursor): TCX_CXXAccessSpecifier; cdecl external LIBCLANG;
 
 (**
- * \brief Represents the storage classes as declared in the source. CX_SC_Invalid
+ * Represents the storage classes as declared in the source. CX_SC_Invalid
  * was added for the case that the passed cursor in not a declaration.
  *)
 type
@@ -3091,7 +3232,7 @@ const
   CX_SC_Register = CX_SC_Auto + 1;
 
 (**
- * \brief Returns the storage class for a function or variable declaration.
+ * Returns the storage class for a function or variable declaration.
  *
  * If the passed in Cursor is not a function or variable declaration,
  * CX_SC_Invalid is returned else the storage class.
@@ -3099,7 +3240,7 @@ const
 function clang_Cursor_getStorageClass(p1: TCXCursor): TCX_StorageClass; cdecl external LIBCLANG;
 
 (**
- * \brief Determine the number of overloaded declarations referenced by a
+ * Determine the number of overloaded declarations referenced by a
  * \c CXCursor_OverloadedDeclRef cursor.
  *
  * \param cursor The cursor whose overloaded declarations are being queried.
@@ -3110,7 +3251,7 @@ function clang_Cursor_getStorageClass(p1: TCXCursor): TCX_StorageClass; cdecl ex
 function clang_getNumOverloadedDecls(cursor: TCXCursor): Cardinal; cdecl external LIBCLANG;
 
 (**
- * \brief Retrieve a cursor for one of the overloaded declarations referenced
+ * Retrieve a cursor for one of the overloaded declarations referenced
  * by a \c CXCursor_OverloadedDeclRef cursor.
  *
  * \param cursor The cursor whose overloaded declarations are being queried.
@@ -3136,7 +3277,7 @@ function clang_getOverloadedDecl(cursor: TCXCursor; index: Cardinal): TCXCursor;
  *)
 
 (**
- * \brief For cursors representing an iboutletcollection attribute,
+ * For cursors representing an iboutletcollection attribute,
  *  this function returns the collection element type.
  *
  *)
@@ -3156,7 +3297,7 @@ function clang_getIBOutletCollectionType(p1: TCXCursor): TCXType; cdecl external
  *)
 
 (**
- * \brief Describes how the traversal of the children of a particular
+ * Describes how the traversal of the children of a particular
  * cursor should proceed after visiting a particular child cursor.
  *
  * A value of this enumeration type should be returned by each
@@ -3171,7 +3312,7 @@ const
   CXChildVisit_Recurse = CXChildVisit_Continue + 1;
 
 (**
- * \brief Visitor invoked for each cursor found by a traversal.
+ * Visitor invoked for each cursor found by a traversal.
  *
  * This visitor function will be invoked for each cursor found by
  * clang_visitCursorChildren(). Its first argument is the cursor being
@@ -3185,7 +3326,7 @@ const
 type TCXCursorVisitor = function(cursor: TCXCursor; parent: TCXCursor; client_data: TCXClientData): TCXChildVisitResult; cdecl;
 
 (**
- * \brief Visit the children of a particular cursor.
+ * Visit the children of a particular cursor.
  *
  * This function visits all the direct children of the given cursor,
  * invoking the given \p visitor function with the cursors of each
@@ -3224,7 +3365,7 @@ function clang_visitChildren(parent: TCXCursor; visitor: TCXCursorVisitor; clien
  *)
 
 (**
- * \brief Retrieve a Unified Symbol Resolution (USR) for the entity referenced
+ * Retrieve a Unified Symbol Resolution (USR) for the entity referenced
  * by the given cursor.
  *
  * A Unified Symbol Resolution (USR) is a string that identifies a particular
@@ -3235,45 +3376,45 @@ function clang_visitChildren(parent: TCXCursor; visitor: TCXCursorVisitor; clien
 function clang_getCursorUSR(p1: TCXCursor): TCXString; cdecl external LIBCLANG;
 
 (**
- * \brief Construct a USR for a specified Objective-C class.
+ * Construct a USR for a specified Objective-C class.
  *)
 function clang_constructUSR_ObjCClass(const class_name: PAnsiChar): TCXString; cdecl external LIBCLANG;
 
 (**
- * \brief Construct a USR for a specified Objective-C category.
+ * Construct a USR for a specified Objective-C category.
  *)
 function clang_constructUSR_ObjCCategory(const class_name: PAnsiChar; const category_name: PAnsiChar): TCXString; cdecl external LIBCLANG;
 
 (**
- * \brief Construct a USR for a specified Objective-C protocol.
+ * Construct a USR for a specified Objective-C protocol.
  *)
 function clang_constructUSR_ObjCProtocol(const protocol_name: PAnsiChar): TCXString; cdecl external LIBCLANG;
 
 (**
- * \brief Construct a USR for a specified Objective-C instance variable and
+ * Construct a USR for a specified Objective-C instance variable and
  *   the USR for its containing class.
  *)
 function clang_constructUSR_ObjCIvar(const name: PAnsiChar; classUSR: TCXString): TCXString; cdecl external LIBCLANG;
 
 (**
- * \brief Construct a USR for a specified Objective-C method and
+ * Construct a USR for a specified Objective-C method and
  *   the USR for its containing class.
  *)
 function clang_constructUSR_ObjCMethod(const name: PAnsiChar; isInstanceMethod: Cardinal; classUSR: TCXString): TCXString; cdecl external LIBCLANG;
 
 (**
- * \brief Construct a USR for a specified Objective-C property and the USR
+ * Construct a USR for a specified Objective-C property and the USR
  *  for its containing class.
  *)
 function clang_constructUSR_ObjCProperty(const _property: PAnsiChar; classUSR: TCXString): TCXString; cdecl external LIBCLANG;
 
 (**
- * \brief Retrieve a name for the entity referenced by this cursor.
+ * Retrieve a name for the entity referenced by this cursor.
  *)
 function clang_getCursorSpelling(p1: TCXCursor): TCXString; cdecl external LIBCLANG;
 
 (**
- * \brief Retrieve a range for a piece that forms the cursors spelling name.
+ * Retrieve a range for a piece that forms the cursors spelling name.
  * Most of the times there is only one range for the complete spelling but for
  * Objective-C methods and Objective-C message expressions, there are multiple
  * pieces for each selector identifier.
@@ -3285,8 +3426,88 @@ function clang_getCursorSpelling(p1: TCXCursor): TCXString; cdecl external LIBCL
  *)
 function clang_Cursor_getSpellingNameRange(p1: TCXCursor; pieceIndex: Cardinal; options: Cardinal): TCXSourceRange; cdecl external LIBCLANG;
 
+type
+  (**
+   * Opaque pointer representing a policy that controls pretty printing
+   * for \c clang_getCursorPrettyPrinted.
+   *)
+  TCXPrintingPolicy = Pointer;
+
+type
+  (**
+   * Properties for the printing policy.
+   *
+   * See \c clang::PrintingPolicy for more information.
+   *)
+  TCXPrintingPolicyProperty = Integer;
+
+const
+  CXPrintingPolicy_Indentation = 0;
+  CXPrintingPolicy_SuppressSpecifiers = 1;
+  CXPrintingPolicy_SuppressTagKeyword = 2;
+  CXPrintingPolicy_IncludeTagDefinition = 3;
+  CXPrintingPolicy_SuppressScope = 4;
+  CXPrintingPolicy_SuppressUnwrittenScope = 5;
+  CXPrintingPolicy_SuppressInitializers = 6;
+  CXPrintingPolicy_ConstantArraySizeAsWritten = 7;
+  CXPrintingPolicy_AnonymousTagLocations = 8;
+  CXPrintingPolicy_SuppressStrongLifetime = 9;
+  CXPrintingPolicy_SuppressLifetimeQualifiers = 10;
+  CXPrintingPolicy_SuppressTemplateArgsInCXXConstructors = 11;
+  CXPrintingPolicy_Bool = 12;
+  CXPrintingPolicy_Restrict = 13;
+  CXPrintingPolicy_Alignof = 14;
+  CXPrintingPolicy_UnderscoreAlignof = 15;
+  CXPrintingPolicy_UseVoidForZeroParams = 16;
+  CXPrintingPolicy_TerseOutput = 17;
+  CXPrintingPolicy_PolishForDeclaration = 18;
+  CXPrintingPolicy_Half = 19;
+  CXPrintingPolicy_MSWChar = 20;
+  CXPrintingPolicy_IncludeNewlines = 21;
+  CXPrintingPolicy_MSVCFormatting = 22;
+  CXPrintingPolicy_ConstantsAsWritten = 23;
+  CXPrintingPolicy_SuppressImplicitBase = 24;
+  CXPrintingPolicy_FullyQualifiedName = 25;
+  CXPrintingPolicy_LastProperty = CXPrintingPolicy_FullyQualifiedName;
+
 (**
- * \brief Retrieve the display name for the entity referenced by this cursor.
+ * Get a property value for the given printing policy.
+ *)
+function clang_PrintingPolicy_getProperty(Policy: TCXPrintingPolicy; _Property: TCXPrintingPolicyProperty): Cardinal; cdecl external LIBCLANG;
+
+(**
+ * Set a property value for the given printing policy.
+ *)
+procedure clang_PrintingPolicy_setProperty(Policy: TCXPrintingPolicy; _Property: TCXPrintingPolicyProperty; Value: Cardinal); cdecl external LIBCLANG;
+
+(**
+ * Retrieve the default policy for the cursor.
+ *
+ * The policy should be released after use with \c
+ * clang_PrintingPolicy_dispose.
+ *)
+function clang_getCursorPrintingPolicy(p1: TCXCursor): TCXPrintingPolicy; cdecl external LIBCLANG;
+
+(**
+ * Release a printing policy.
+ *)
+procedure clang_PrintingPolicy_dispose(Policy: TCXPrintingPolicy); cdecl external LIBCLANG;
+
+(**
+ * Pretty print declarations.
+ *
+ * \param Cursor The cursor representing a declaration.
+ *
+ * \param Policy The policy to control the entities being printed. If
+ * NULL, a default policy is used.
+ *
+ * \returns The pretty printed declaration or the empty string for
+ * other cursors.
+ *)
+function clang_getCursorPrettyPrinted(Cursor: TCXCursor; Policy: TCXPrintingPolicy): TCXString; cdecl external LIBCLANG;
+
+(**
+ * Retrieve the display name for the entity referenced by this cursor.
  *
  * The display name contains extra information that helps identify the cursor,
  * such as the parameters of a function or template or the arguments of a
@@ -3294,7 +3515,7 @@ function clang_Cursor_getSpellingNameRange(p1: TCXCursor; pieceIndex: Cardinal; 
  *)
 function clang_getCursorDisplayName(p1: TCXCursor): TCXString; cdecl external LIBCLANG;
 
-(** \brief For a cursor that is a reference, retrieve a cursor representing the
+(** For a cursor that is a reference, retrieve a cursor representing the
  * entity that it references.
  *
  * Reference cursors refer to other entities in the AST. For example, an
@@ -3307,7 +3528,7 @@ function clang_getCursorDisplayName(p1: TCXCursor): TCXString; cdecl external LI
 function clang_getCursorReferenced(p1: TCXCursor): TCXCursor; cdecl external LIBCLANG;
 
 (**
- *  \brief For a cursor that is either a reference to or a declaration
+ *  For a cursor that is either a reference to or a declaration
  *  of some entity, retrieve a cursor that describes the definition of
  *  that entity.
  *
@@ -3337,13 +3558,13 @@ function clang_getCursorReferenced(p1: TCXCursor): TCXCursor; cdecl external LIB
 function clang_getCursorDefinition(p1: TCXCursor): TCXCursor; cdecl external LIBCLANG;
 
 (**
- * \brief Determine whether the declaration pointed to by this cursor
+ * Determine whether the declaration pointed to by this cursor
  * is also a definition of that entity.
  *)
 function clang_isCursorDefinition(p1: TCXCursor): Cardinal; cdecl external LIBCLANG;
 
 (**
- * \brief Retrieve the canonical cursor corresponding to the given cursor.
+ * Retrieve the canonical cursor corresponding to the given cursor.
  *
  * In the C family of languages, many kinds of entities can be declared several
  * times within a single translation unit. For example, a structure type can
@@ -3369,7 +3590,7 @@ function clang_isCursorDefinition(p1: TCXCursor): Cardinal; cdecl external LIBCL
 function clang_getCanonicalCursor(p1: TCXCursor): TCXCursor; cdecl external LIBCLANG;
 
 (**
- * \brief If the cursor points to a selector identifier in an Objective-C
+ * If the cursor points to a selector identifier in an Objective-C
  * method or message expression, this returns the selector index.
  *
  * After getting a cursor with #clang_getCursor, this can be called to
@@ -3382,7 +3603,7 @@ function clang_getCanonicalCursor(p1: TCXCursor): TCXCursor; cdecl external LIBC
 function clang_Cursor_getObjCSelectorIndex(p1: TCXCursor): Integer; cdecl external LIBCLANG;
 
 (**
- * \brief Given a cursor pointing to a C++ method call or an Objective-C
+ * Given a cursor pointing to a C++ method call or an Objective-C
  * message, returns non-zero if the method/message is "dynamic", meaning:
  *
  * For a C++ method: the call is virtual.
@@ -3395,13 +3616,13 @@ function clang_Cursor_getObjCSelectorIndex(p1: TCXCursor): Integer; cdecl extern
 function clang_Cursor_isDynamicCall(C: TCXCursor): Integer; cdecl external LIBCLANG;
 
 (**
- * \brief Given a cursor pointing to an Objective-C message or property
+ * Given a cursor pointing to an Objective-C message or property
  * reference, or C++ method call, returns the CXType of the receiver.
  *)
 function clang_Cursor_getReceiverType(C: TCXCursor): TCXType; cdecl external LIBCLANG;
 
 (**
- * \brief Property attributes for a \c CXCursor_ObjCPropertyDecl.
+ * Property attributes for a \c CXCursor_ObjCPropertyDecl.
  *)
 type
   TCXObjCPropertyAttrKind = Integer;
@@ -3423,7 +3644,7 @@ const
   CXObjCPropertyAttr_class = $1000;
 
 (**
- * \brief Given a cursor that represents a property declaration, return the
+ * Given a cursor that represents a property declaration, return the
  * associated property attributes. The bits are formed from
  * \c CXObjCPropertyAttrKind.
  *
@@ -3432,7 +3653,19 @@ const
 function clang_Cursor_getObjCPropertyAttributes(C: TCXCursor; reserved: Cardinal): Cardinal; cdecl external LIBCLANG;
 
 (**
- * \brief 'Qualifiers' written next to the return and parameter types in
+ * Given a cursor that represents a property declaration, return the
+ * name of the method that implements the getter.
+ *)
+function clang_Cursor_getObjCPropertyGetterName(C: TCXCursor): TCXString; cdecl external LIBCLANG;
+
+(**
+ * Given a cursor that represents a property declaration, return the
+ * name of the method that implements the setter, if any.
+ *)
+function clang_Cursor_getObjCPropertySetterName(C: TCXCursor): TCXString; cdecl external LIBCLANG;
+
+(**
+ * 'Qualifiers' written next to the return and parameter types in
  * Objective-C method declarations.
  *)
 type
@@ -3448,7 +3681,7 @@ const
   CXObjCDeclQualifier_Oneway = $20;
 
 (**
- * \brief Given a cursor that represents an Objective-C method or parameter
+ * Given a cursor that represents an Objective-C method or parameter
  * declaration, return the associated Objective-C qualifiers for the return
  * type or the parameter respectively. The bits are formed from
  * CXObjCDeclQualifierKind.
@@ -3456,19 +3689,19 @@ const
 function clang_Cursor_getObjCDeclQualifiers(C: TCXCursor): Cardinal; cdecl external LIBCLANG;
 
 (**
- * \brief Given a cursor that represents an Objective-C method or property
+ * Given a cursor that represents an Objective-C method or property
  * declaration, return non-zero if the declaration was affected by "\@optional".
  * Returns zero if the cursor is not such a declaration or it is "\@required".
  *)
 function clang_Cursor_isObjCOptional(C: TCXCursor): Cardinal; cdecl external LIBCLANG;
 
 (**
- * \brief Returns non-zero if the given cursor is a variadic function or method.
+ * Returns non-zero if the given cursor is a variadic function or method.
  *)
 function clang_Cursor_isVariadic(C: TCXCursor): Cardinal; cdecl external LIBCLANG;
 
 (**
- * \brief Returns non-zero if the given cursor points to a symbol marked with
+ * Returns non-zero if the given cursor points to a symbol marked with
  * external_source_symbol attribute.
  *
  * \param language If non-NULL, and the attribute is present, will be set to
@@ -3483,21 +3716,21 @@ function clang_Cursor_isVariadic(C: TCXCursor): Cardinal; cdecl external LIBCLAN
 function clang_Cursor_isExternalSymbol(C: TCXCursor; language: PCXString; definedIn: PCXString; isGenerated: PCardinal): Cardinal; cdecl external LIBCLANG;
 
 (**
- * \brief Given a cursor that represents a declaration, return the associated
+ * Given a cursor that represents a declaration, return the associated
  * comment's source range.  The range may include multiple consecutive comments
  * with whitespace in between.
  *)
 function clang_Cursor_getCommentRange(C: TCXCursor): TCXSourceRange; cdecl external LIBCLANG;
 
 (**
- * \brief Given a cursor that represents a declaration, return the associated
+ * Given a cursor that represents a declaration, return the associated
  * comment text, including comment markers.
  *)
 function clang_Cursor_getRawCommentText(C: TCXCursor): TCXString; cdecl external LIBCLANG;
 
 (**
- * \brief Given a cursor that represents a documentable entity (e.g.,
- * declaration), return the associated \\brief paragraph; otherwise return the
+ * Given a cursor that represents a documentable entity (e.g.,
+ * declaration), return the associated \paragraph; otherwise return the
  * first paragraph.
  *)
 function clang_Cursor_getBriefCommentText(C: TCXCursor): TCXString; cdecl external LIBCLANG;
@@ -3512,18 +3745,18 @@ function clang_Cursor_getBriefCommentText(C: TCXCursor): TCXString; cdecl extern
  *)
 
 (**
- * \brief Retrieve the CXString representing the mangled name of the cursor.
+ * Retrieve the CXString representing the mangled name of the cursor.
  *)
 function clang_Cursor_getMangling(p1: TCXCursor): TCXString; cdecl external LIBCLANG;
 
 (**
- * \brief Retrieve the CXStrings representing the mangled symbols of the C++
+ * Retrieve the CXStrings representing the mangled symbols of the C++
  * constructor or destructor at the cursor.
  *)
 function clang_Cursor_getCXXManglings(p1: TCXCursor): PCXStringSet; cdecl external LIBCLANG;
 
 (**
- * \brief Retrieve the CXStrings representing the mangled symbols of the ObjC
+ * Retrieve the CXStrings representing the mangled symbols of the ObjC
  * class interface or implementation at the cursor.
  *)
 function clang_Cursor_getObjCManglings(p1: TCXCursor): PCXStringSet; cdecl external LIBCLANG;
@@ -3543,12 +3776,12 @@ function clang_Cursor_getObjCManglings(p1: TCXCursor): PCXStringSet; cdecl exter
 type TCXModule = Pointer;
 
 (**
- * \brief Given a CXCursor_ModuleImportDecl cursor, return the associated module.
+ * Given a CXCursor_ModuleImportDecl cursor, return the associated module.
  *)
 function clang_Cursor_getModule(C: TCXCursor): TCXModule; cdecl external LIBCLANG;
 
 (**
- * \brief Given a CXFile header file, return the module that contains it, if one
+ * Given a CXFile header file, return the module that contains it, if one
  * exists.
  *)
 function clang_getModuleForFile(p1: TCXTranslationUnit; p2: TCXFile): TCXModule; cdecl external LIBCLANG;
@@ -3620,73 +3853,73 @@ function clang_Module_getTopLevelHeader(p1: TCXTranslationUnit; Module: TCXModul
  *)
 
 (**
- * \brief Determine if a C++ constructor is a converting constructor.
+ * Determine if a C++ constructor is a converting constructor.
  *)
 function clang_CXXConstructor_isConvertingConstructor(C: TCXCursor): Cardinal; cdecl external LIBCLANG;
 
 (**
- * \brief Determine if a C++ constructor is a copy constructor.
+ * Determine if a C++ constructor is a copy constructor.
  *)
 function clang_CXXConstructor_isCopyConstructor(C: TCXCursor): Cardinal; cdecl external LIBCLANG;
 
 (**
- * \brief Determine if a C++ constructor is the default constructor.
+ * Determine if a C++ constructor is the default constructor.
  *)
 function clang_CXXConstructor_isDefaultConstructor(C: TCXCursor): Cardinal; cdecl external LIBCLANG;
 
 (**
- * \brief Determine if a C++ constructor is a move constructor.
+ * Determine if a C++ constructor is a move constructor.
  *)
 function clang_CXXConstructor_isMoveConstructor(C: TCXCursor): Cardinal; cdecl external LIBCLANG;
 
 (**
- * \brief Determine if a C++ field is declared 'mutable'.
+ * Determine if a C++ field is declared 'mutable'.
  *)
 function clang_CXXField_isMutable(C: TCXCursor): Cardinal; cdecl external LIBCLANG;
 
 (**
- * \brief Determine if a C++ method is declared '= default'.
+ * Determine if a C++ method is declared '= default'.
  *)
 function clang_CXXMethod_isDefaulted(C: TCXCursor): Cardinal; cdecl external LIBCLANG;
 
 (**
- * \brief Determine if a C++ member function or member function template is
+ * Determine if a C++ member function or member function template is
  * pure virtual.
  *)
 function clang_CXXMethod_isPureVirtual(C: TCXCursor): Cardinal; cdecl external LIBCLANG;
 
 (**
- * \brief Determine if a C++ member function or member function template is
+ * Determine if a C++ member function or member function template is
  * declared 'static'.
  *)
 function clang_CXXMethod_isStatic(C: TCXCursor): Cardinal; cdecl external LIBCLANG;
 
 (**
- * \brief Determine if a C++ member function or member function template is
+ * Determine if a C++ member function or member function template is
  * explicitly declared 'virtual' or if it overrides a virtual method from
  * one of the base classes.
  *)
 function clang_CXXMethod_isVirtual(C: TCXCursor): Cardinal; cdecl external LIBCLANG;
 
 (**
- * \brief Determine if a C++ record is abstract, i.e. whether a class or struct
+ * Determine if a C++ record is abstract, i.e. whether a class or struct
  * has a pure virtual member function.
  *)
 function clang_CXXRecord_isAbstract(C: TCXCursor): Cardinal; cdecl external LIBCLANG;
 
 (**
- * \brief Determine if an enum declaration refers to a scoped enum.
+ * Determine if an enum declaration refers to a scoped enum.
  *)
 function clang_EnumDecl_isScoped(C: TCXCursor): Cardinal; cdecl external LIBCLANG;
 
 (**
- * \brief Determine if a C++ member function or member function template is
+ * Determine if a C++ member function or member function template is
  * declared 'const'.
  *)
 function clang_CXXMethod_isConst(C: TCXCursor): Cardinal; cdecl external LIBCLANG;
 
 (**
- * \brief Given a cursor that represents a template, determine
+ * Given a cursor that represents a template, determine
  * the cursor kind of the specializations would be generated by instantiating
  * the template.
  *
@@ -3705,7 +3938,7 @@ function clang_CXXMethod_isConst(C: TCXCursor): Cardinal; cdecl external LIBCLAN
 function clang_getTemplateCursorKind(C: TCXCursor): TCXCursorKind; cdecl external LIBCLANG;
 
 (**
- * \brief Given a cursor that may represent a specialization or instantiation
+ * Given a cursor that may represent a specialization or instantiation
  * of a template, retrieve the cursor that represents the template that it
  * specializes or from which it was instantiated.
  *
@@ -3735,7 +3968,7 @@ function clang_getTemplateCursorKind(C: TCXCursor): TCXCursorKind; cdecl externa
 function clang_getSpecializedCursorTemplate(C: TCXCursor): TCXCursor; cdecl external LIBCLANG;
 
 (**
- * \brief Given a cursor that references something else, return the source range
+ * Given a cursor that references something else, return the source range
  * covering that reference.
  *
  * \param C A cursor pointing to a member reference, a declaration reference, or
@@ -3778,7 +4011,7 @@ const
  *)
 
 (**
- * \brief Describes a kind of token.
+ * Describes a kind of token.
  *)
 type
   TCXTokenKind = Integer;
@@ -3791,7 +4024,7 @@ const
   CXToken_Comment = CXToken_Literal + 1;
 
 (**
- * \brief Describes a single preprocessing token.
+ * Describes a single preprocessing token.
  *)
 type
   TCXToken = record
@@ -3802,12 +4035,25 @@ type
   PPCXToken = ^PCXToken;
 
 (**
- * \brief Determine the kind of the given token.
+ * Get the raw lexical token starting with the given location.
+ *
+ * \param TU the translation unit whose text is being tokenized.
+ *
+ * \param Location the source location with which the token starts.
+ *
+ * \returns The token starting with the given location or NULL if no such token
+ * exist. The returned pointer must be freed with clang_disposeTokens before the
+ * translation unit is destroyed.
+ *)
+function clang_getToken(TU: TCXTranslationUnit; Location: TCXSourceLocation): PCXToken; cdecl external LIBCLANG;
+
+(**
+ * Determine the kind of the given token.
  *)
 function clang_getTokenKind(p1: TCXToken): TCXTokenKind; cdecl external LIBCLANG;
 
 (**
- * \brief Determine the spelling of the given token.
+ * Determine the spelling of the given token.
  *
  * The spelling of a token is the textual representation of that token, e.g.,
  * the text of an identifier or keyword.
@@ -3815,17 +4061,17 @@ function clang_getTokenKind(p1: TCXToken): TCXTokenKind; cdecl external LIBCLANG
 function clang_getTokenSpelling(p1: TCXTranslationUnit; p2: TCXToken): TCXString; cdecl external LIBCLANG;
 
 (**
- * \brief Retrieve the source location of the given token.
+ * Retrieve the source location of the given token.
  *)
 function clang_getTokenLocation(p1: TCXTranslationUnit; p2: TCXToken): TCXSourceLocation; cdecl external LIBCLANG;
 
 (**
- * \brief Retrieve a source range that covers the given token.
+ * Retrieve a source range that covers the given token.
  *)
 function clang_getTokenExtent(p1: TCXTranslationUnit; p2: TCXToken): TCXSourceRange; cdecl external LIBCLANG;
 
 (**
- * \brief Tokenize the source code described by the given range into raw
+ * Tokenize the source code described by the given range into raw
  * lexical tokens.
  *
  * \param TU the translation unit whose text is being tokenized.
@@ -3844,7 +4090,7 @@ function clang_getTokenExtent(p1: TCXTranslationUnit; p2: TCXToken): TCXSourceRa
 procedure clang_tokenize(TU: TCXTranslationUnit; Range: TCXSourceRange; Tokens: PPCXToken; NumTokens: PCardinal); cdecl external LIBCLANG;
 
 (**
- * \brief Annotate the given set of tokens by providing cursors for each token
+ * Annotate the given set of tokens by providing cursors for each token
  * that can be mapped to a specific entity within the abstract syntax tree.
  *
  * This token-annotation routine is equivalent to invoking
@@ -3876,7 +4122,7 @@ procedure clang_tokenize(TU: TCXTranslationUnit; Range: TCXSourceRange; Tokens: 
 procedure clang_annotateTokens(TU: TCXTranslationUnit; Tokens: PCXToken; NumTokens: Cardinal; Cursors: PCXCursor); cdecl external LIBCLANG;
 
 (**
- * \brief Free the given set of tokens.
+ * Free the given set of tokens.
  *)
 procedure clang_disposeTokens(TU: TCXTranslationUnit; Tokens: PCXToken; NumTokens: Cardinal); cdecl external LIBCLANG;
 
@@ -3919,7 +4165,7 @@ procedure clang_executeOnThread(func: Tclang_threadFunc; user_data: Pointer; sta
  *)
 
 (**
- * \brief A semantic string that describes a code-completion result.
+ * A semantic string that describes a code-completion result.
  *
  * A semantic string that describes the formatting of a code-completion
  * result as a single "template" of text that should be inserted into the
@@ -3934,7 +4180,7 @@ procedure clang_executeOnThread(func: Tclang_threadFunc; user_data: Pointer; sta
 type TCXCompletionString = Pointer;
 
 (**
- * \brief A single result of code completion.
+ * A single result of code completion.
  *)
 type
   TCXCompletionResult = record
@@ -3944,7 +4190,7 @@ type
   PCXCompletionResult = ^TCXCompletionResult;
 
 (**
- * \brief Describes a single piece of text within a code-completion string.
+ * Describes a single piece of text within a code-completion string.
  *
  * Each "chunk" within a code-completion string (\c CXCompletionString) is
  * either a piece of text with a specific "kind" that describes how that text
@@ -3977,7 +4223,7 @@ const
   CXCompletionChunk_VerticalSpace = CXCompletionChunk_HorizontalSpace + 1;
 
 (**
- * \brief Determine the kind of a particular chunk within a completion string.
+ * Determine the kind of a particular chunk within a completion string.
  *
  * \param completion_string the completion string to query.
  *
@@ -3988,7 +4234,7 @@ const
 function clang_getCompletionChunkKind(completion_string: TCXCompletionString; chunk_number: Cardinal): TCXCompletionChunkKind; cdecl external LIBCLANG;
 
 (**
- * \brief Retrieve the text associated with a particular chunk within a
+ * Retrieve the text associated with a particular chunk within a
  * completion string.
  *
  * \param completion_string the completion string to query.
@@ -4000,7 +4246,7 @@ function clang_getCompletionChunkKind(completion_string: TCXCompletionString; ch
 function clang_getCompletionChunkText(completion_string: TCXCompletionString; chunk_number: Cardinal): TCXString; cdecl external LIBCLANG;
 
 (**
- * \brief Retrieve the completion string associated with a particular chunk
+ * Retrieve the completion string associated with a particular chunk
  * within a completion string.
  *
  * \param completion_string the completion string to query.
@@ -4013,12 +4259,12 @@ function clang_getCompletionChunkText(completion_string: TCXCompletionString; ch
 function clang_getCompletionChunkCompletionString(completion_string: TCXCompletionString; chunk_number: Cardinal): TCXCompletionString; cdecl external LIBCLANG;
 
 (**
- * \brief Retrieve the number of chunks in the given code-completion string.
+ * Retrieve the number of chunks in the given code-completion string.
  *)
 function clang_getNumCompletionChunks(completion_string: TCXCompletionString): Cardinal; cdecl external LIBCLANG;
 
 (**
- * \brief Determine the priority of this code completion.
+ * Determine the priority of this code completion.
  *
  * The priority of a code completion indicates how likely it is that this
  * particular completion is the completion that the user will select. The
@@ -4032,7 +4278,7 @@ function clang_getNumCompletionChunks(completion_string: TCXCompletionString): C
 function clang_getCompletionPriority(completion_string: TCXCompletionString): Cardinal; cdecl external LIBCLANG;
 
 (**
- * \brief Determine the availability of the entity that this code-completion
+ * Determine the availability of the entity that this code-completion
  * string refers to.
  *
  * \param completion_string The completion string to query.
@@ -4042,7 +4288,7 @@ function clang_getCompletionPriority(completion_string: TCXCompletionString): Ca
 function clang_getCompletionAvailability(completion_string: TCXCompletionString): TCXAvailabilityKind; cdecl external LIBCLANG;
 
 (**
- * \brief Retrieve the number of annotations associated with the given
+ * Retrieve the number of annotations associated with the given
  * completion string.
  *
  * \param completion_string the completion string to query.
@@ -4053,7 +4299,7 @@ function clang_getCompletionAvailability(completion_string: TCXCompletionString)
 function clang_getCompletionNumAnnotations(completion_string: TCXCompletionString): Cardinal; cdecl external LIBCLANG;
 
 (**
- * \brief Retrieve the annotation associated with the given completion string.
+ * Retrieve the annotation associated with the given completion string.
  *
  * \param completion_string the completion string to query.
  *
@@ -4066,7 +4312,7 @@ function clang_getCompletionNumAnnotations(completion_string: TCXCompletionStrin
 function clang_getCompletionAnnotation(completion_string: TCXCompletionString; annotation_number: Cardinal): TCXString; cdecl external LIBCLANG;
 
 (**
- * \brief Retrieve the parent context of the given completion string.
+ * Retrieve the parent context of the given completion string.
  *
  * The parent context of a completion string is the semantic parent of
  * the declaration (if any) that the code completion represents. For example,
@@ -4084,13 +4330,13 @@ function clang_getCompletionAnnotation(completion_string: TCXCompletionString; a
 function clang_getCompletionParent(completion_string: TCXCompletionString; kind: PCXCursorKind): TCXString; cdecl external LIBCLANG;
 
 (**
- * \brief Retrieve the brief documentation comment attached to the declaration
+ * Retrieve the brief documentation comment attached to the declaration
  * that corresponds to the given completion string.
  *)
 function clang_getCompletionBriefComment(completion_string: TCXCompletionString): TCXString; cdecl external LIBCLANG;
 
 (**
- * \brief Retrieve a completion string for an arbitrary declaration or macro
+ * Retrieve a completion string for an arbitrary declaration or macro
  * definition cursor.
  *
  * \param cursor The cursor to query.
@@ -4101,7 +4347,7 @@ function clang_getCompletionBriefComment(completion_string: TCXCompletionString)
 function clang_getCursorCompletionString(cursor: TCXCursor): TCXCompletionString; cdecl external LIBCLANG;
 
 (**
- * \brief Contains the results of code-completion.
+ * Contains the results of code-completion.
  *
  * This data structure contains the results of code completion, as
  * produced by \c clang_codeCompleteAt(). Its contents must be freed by
@@ -4115,7 +4361,67 @@ type
   PCXCodeCompleteResults = ^TCXCodeCompleteResults;
 
 (**
- * \brief Flags that can be passed to \c clang_codeCompleteAt() to
+ * Retrieve the number of fix-its for the given completion index.
+ *
+ * Calling this makes sense only if CXCodeComplete_IncludeCompletionsWithFixIts
+ * option was set.
+ *
+ * \param results The structure keeping all completion results
+ *
+ * \param completion_index The index of the completion
+ *
+ * \return The number of fix-its which must be applied before the completion at
+ * completion_index can be applied
+ *)
+function clang_getCompletionNumFixIts(results: PCXCodeCompleteResults; completion_index: Cardinal): Cardinal; cdecl external LIBCLANG;
+
+(**
+ * Fix-its that *must* be applied before inserting the text for the
+ * corresponding completion.
+ *
+ * By default, clang_codeCompleteAt() only returns completions with empty
+ * fix-its. Extra completions with non-empty fix-its should be explicitly
+ * requested by setting CXCodeComplete_IncludeCompletionsWithFixIts.
+ *
+ * For the clients to be able to compute position of the cursor after applying
+ * fix-its, the following conditions are guaranteed to hold for
+ * replacement_range of the stored fix-its:
+ *  - Ranges in the fix-its are guaranteed to never contain the completion
+ *  point (or identifier under completion point, if any) inside them, except
+ *  at the start or at the end of the range.
+ *  - If a fix-it range starts or ends with completion point (or starts or
+ *  ends after the identifier under completion point), it will contain at
+ *  least one character. It allows to unambiguously recompute completion
+ *  point after applying the fix-it.
+ *
+ * The intuition is that provided fix-its change code around the identifier we
+ * complete, but are not allowed to touch the identifier itself or the
+ * completion point. One example of completions with corrections are the ones
+ * replacing '.' with '->' and vice versa:
+ *
+ * std::unique_ptr<std::vector<int>> vec_ptr;
+ * In 'vec_ptr.^', one of the completions is 'push_back', it requires
+ * replacing '.' with '->'.
+ * In 'vec_ptr->^', one of the completions is 'release', it requires
+ * replacing '->' with '.'.
+ *
+ * \param results The structure keeping all completion results
+ *
+ * \param completion_index The index of the completion
+ *
+ * \param fixit_index The index of the fix-it for the completion at
+ * completion_index
+ *
+ * \param replacement_range The fix-it range that must be replaced before the
+ * completion at completion_index can be applied
+ *
+ * \returns The fix-it string that must replace the code at replacement_range
+ * before the completion at completion_index can be applied
+ *)
+function clang_getCompletionFixIt(results: PCXCodeCompleteResults; completion_index, fixit_index: Cardinal; replacement_range: PCXSourceRange): TCXString; cdecl external LIBCLANG;
+
+(**
+ * Flags that can be passed to \c clang_codeCompleteAt() to
  * modify its behavior.
  *
  * The enumerators in this enumeration can be bitwise-OR'd together to
@@ -4128,9 +4434,11 @@ const
   CXCodeComplete_IncludeMacros = $01;
   CXCodeComplete_IncludeCodePatterns = $02;
   CXCodeComplete_IncludeBriefComments = $04;
+  CXCodeComplete_SkipPreamble = $08;
+  CXCodeComplete_IncludeCompletionsWithFixIts = $10;
 
 (**
- * \brief Bits that represent the context under which completion is occurring.
+ * Bits that represent the context under which completion is occurring.
  *
  * The enumerators in this enumeration may be bitwise-OR'd together if multiple
  * contexts are occurring simultaneously.
@@ -4162,16 +4470,17 @@ const
   CXCompletionContext_ObjCSelectorName = 1  shl  19;
   CXCompletionContext_MacroName = 1  shl  20;
   CXCompletionContext_NaturalLanguage = 1  shl  21;
-  CXCompletionContext_Unknown = ((1  shl  22) - 1);
+  CXCompletionContext_IncludedFile = 1 shl 22;
+  CXCompletionContext_Unknown = ((1 shl 23) - 1);
 
 (**
- * \brief Returns a default set of code-completion options that can be
+ * Returns a default set of code-completion options that can be
  * passed to\c clang_codeCompleteAt().
  *)
 function clang_defaultCodeCompleteOptions(): Cardinal; cdecl external LIBCLANG;
 
 (**
- * \brief Perform code completion at a given location in a translation unit.
+ * Perform code completion at a given location in a translation unit.
  *
  * This function performs code completion at a particular file, line, and
  * column within source code, providing results that suggest potential
@@ -4241,7 +4550,7 @@ function clang_defaultCodeCompleteOptions(): Cardinal; cdecl external LIBCLANG;
 function clang_codeCompleteAt(TU: TCXTranslationUnit; const complete_filename: PAnsiChar; complete_line: Cardinal; complete_column: Cardinal; unsaved_files: PCXUnsavedFile; num_unsaved_files: Cardinal; options: Cardinal): PCXCodeCompleteResults; cdecl external LIBCLANG;
 
 (**
- * \brief Sort the code-completion results in case-insensitive alphabetical
+ * Sort the code-completion results in case-insensitive alphabetical
  * order.
  *
  * \param Results The set of results to sort.
@@ -4250,18 +4559,18 @@ function clang_codeCompleteAt(TU: TCXTranslationUnit; const complete_filename: P
 procedure clang_sortCodeCompletionResults(Results: PCXCompletionResult; NumResults: Cardinal); cdecl external LIBCLANG;
 
 (**
- * \brief Free the given set of code-completion results.
+ * Free the given set of code-completion results.
  *)
 procedure clang_disposeCodeCompleteResults(Results: PCXCodeCompleteResults); cdecl external LIBCLANG;
 
 (**
- * \brief Determine the number of diagnostics produced prior to the
+ * Determine the number of diagnostics produced prior to the
  * location where code completion was performed.
  *)
 function clang_codeCompleteGetNumDiagnostics(Results: PCXCodeCompleteResults): Cardinal; cdecl external LIBCLANG;
 
 (**
- * \brief Retrieve a diagnostic associated with the given code completion.
+ * Retrieve a diagnostic associated with the given code completion.
  *
  * \param Results the code completion results to query.
  * \param Index the zero-based diagnostic number to retrieve.
@@ -4272,7 +4581,7 @@ function clang_codeCompleteGetNumDiagnostics(Results: PCXCodeCompleteResults): C
 function clang_codeCompleteGetDiagnostic(Results: PCXCodeCompleteResults; Index: Cardinal): TCXDiagnostic; cdecl external LIBCLANG;
 
 (**
- * \brief Determines what completions are appropriate for the context
+ * Determines what completions are appropriate for the context
  * the given code completion.
  *
  * \param Results the code completion results to query
@@ -4283,7 +4592,7 @@ function clang_codeCompleteGetDiagnostic(Results: PCXCodeCompleteResults; Index:
 function clang_codeCompleteGetContexts(Results: PCXCodeCompleteResults): UInt64; cdecl external LIBCLANG;
 
 (**
- * \brief Returns the cursor kind for the container for the current code
+ * Returns the cursor kind for the container for the current code
  * completion context. The container is only guaranteed to be set for
  * contexts where a container exists (i.e. member accesses or Objective-C
  * message sends); if there is not a container, this function will return
@@ -4301,7 +4610,7 @@ function clang_codeCompleteGetContexts(Results: PCXCodeCompleteResults): UInt64;
 function clang_codeCompleteGetContainerKind(Results: PCXCodeCompleteResults; IsIncomplete: PCardinal): TCXCursorKind; cdecl external LIBCLANG;
 
 (**
- * \brief Returns the USR for the container for the current code completion
+ * Returns the USR for the container for the current code completion
  * context. If there is not a container for the current context, this
  * function will return the empty string.
  *
@@ -4312,7 +4621,7 @@ function clang_codeCompleteGetContainerKind(Results: PCXCodeCompleteResults; IsI
 function clang_codeCompleteGetContainerUSR(Results: PCXCodeCompleteResults): TCXString; cdecl external LIBCLANG;
 
 (**
- * \brief Returns the currently-entered selector for an Objective-C message
+ * Returns the currently-entered selector for an Objective-C message
  * send, formatted like "initWithFoo:bar:". Only guaranteed to return a
  * non-empty string for CXCompletionContext_ObjCInstanceMessage and
  * CXCompletionContext_ObjCClassMessage.
@@ -4335,13 +4644,13 @@ function clang_codeCompleteGetObjCSelector(Results: PCXCodeCompleteResults): TCX
  *)
 
 (**
- * \brief Return a version string, suitable for showing to a user, but not
+ * Return a version string, suitable for showing to a user, but not
  *        intended to be parsed (the format is not guaranteed to be stable).
  *)
 function clang_getClangVersion(): TCXString; cdecl external LIBCLANG;
 
 (**
- * \brief Enable/disable crash recovery.
+ * Enable/disable crash recovery.
  *
  * \param isEnabled Flag to indicate if crash recovery is enabled.  A non-zero
  *        value enables crash recovery, while 0 disables it.
@@ -4349,7 +4658,7 @@ function clang_getClangVersion(): TCXString; cdecl external LIBCLANG;
 procedure clang_toggleCrashRecovery(isEnabled: Cardinal); cdecl external LIBCLANG;
 
  (**
-  * \brief Visitor invoked for each file in a translation unit
+  * Visitor invoked for each file in a translation unit
   *        (used with clang_getInclusions()).
   *
   * This visitor function will be invoked by clang_getInclusions() for each
@@ -4362,7 +4671,7 @@ procedure clang_toggleCrashRecovery(isEnabled: Cardinal); cdecl external LIBCLAN
 type TCXInclusionVisitor = procedure(included_file: TCXFile; inclusion_stack: PCXSourceLocation; include_len: Cardinal; client_data: TCXClientData); cdecl;
 
 (**
- * \brief Visit the set of preprocessor inclusions in a translation unit.
+ * Visit the set of preprocessor inclusions in a translation unit.
  *   The visitor function is called with the provided data for every included
  *   file.  This does not include headers included by the PCH file (unless one
  *   is inspecting the inclusions in the PCH file itself).
@@ -4382,55 +4691,55 @@ const
   CXEval_UnExposed = 0;
 
 (**
- * \brief Evaluation result of a cursor
+ * Evaluation result of a cursor
  *)
 type TCXEvalResult = Pointer;
 
 (**
- * \brief If cursor is a statement declaration tries to evaluate the
+ * If cursor is a statement declaration tries to evaluate the
  * statement and if its variable, tries to evaluate its initializer,
  * into its corresponding type.
  *)
 function clang_Cursor_Evaluate(C: TCXCursor): TCXEvalResult; cdecl external LIBCLANG;
 
 (**
- * \brief Returns the kind of the evaluated result.
+ * Returns the kind of the evaluated result.
  *)
 function clang_EvalResult_getKind(E: TCXEvalResult): TCXEvalResultKind; cdecl external LIBCLANG;
 
 (**
- * \brief Returns the evaluation result as integer if the
+ * Returns the evaluation result as integer if the
  * kind is Int.
  *)
 function clang_EvalResult_getAsInt(E: TCXEvalResult): Integer; cdecl external LIBCLANG;
 
 (**
- * \brief Returns the evaluation result as a long long integer if the
+ * Returns the evaluation result as a long long integer if the
  * kind is Int. This prevents overflows that may happen if the result is
  * returned with clang_EvalResult_getAsInt.
  *)
 function clang_EvalResult_getAsLongLong(E: TCXEvalResult): Int64; cdecl external LIBCLANG;
 
 (**
- * \brief Returns a non-zero value if the kind is Int and the evaluation
+ * Returns a non-zero value if the kind is Int and the evaluation
  * result resulted in an unsigned integer.
  *)
 function clang_EvalResult_isUnsignedInt(E: TCXEvalResult): Cardinal; cdecl external LIBCLANG;
 
 (**
- * \brief Returns the evaluation result as an unsigned integer if
+ * Returns the evaluation result as an unsigned integer if
  * the kind is Int and clang_EvalResult_isUnsignedInt is non-zero.
  *)
 function clang_EvalResult_getAsUnsigned(E: TCXEvalResult): UInt64; cdecl external LIBCLANG;
 
 (**
- * \brief Returns the evaluation result as double if the
+ * Returns the evaluation result as double if the
  * kind is double.
  *)
 function clang_EvalResult_getAsDouble(E: TCXEvalResult): Double; cdecl external LIBCLANG;
 
 (**
- * \brief Returns the evaluation result as a constant string if the
+ * Returns the evaluation result as a constant string if the
  * kind is other than Int or float. User must not free this pointer,
  * instead call clang_EvalResult_dispose on the CXEvalResult returned
  * by clang_Cursor_Evaluate.
@@ -4438,7 +4747,7 @@ function clang_EvalResult_getAsDouble(E: TCXEvalResult): Double; cdecl external 
 function clang_EvalResult_getAsStr(E: TCXEvalResult): PAnsiChar; cdecl external LIBCLANG;
 
 (**
- * \brief Disposes the created Eval memory.
+ * Disposes the created Eval memory.
  *)
 procedure clang_EvalResult_dispose(E: TCXEvalResult); cdecl external LIBCLANG;
 (**
@@ -4451,12 +4760,12 @@ procedure clang_EvalResult_dispose(E: TCXEvalResult); cdecl external LIBCLANG;
  *)
 
 (**
- * \brief A remapping of original source files and their translated files.
+ * A remapping of original source files and their translated files.
  *)
 type TCXRemapping = Pointer;
 
 (**
- * \brief Retrieve a remapping.
+ * Retrieve a remapping.
  *
  * \param path the path that contains metadata about remappings.
  *
@@ -4466,7 +4775,7 @@ type TCXRemapping = Pointer;
 function clang_getRemappings(const path: PAnsiChar): TCXRemapping; cdecl external LIBCLANG;
 
 (**
- * \brief Retrieve a remapping.
+ * Retrieve a remapping.
  *
  * \param filePaths pointer to an array of file paths containing remapping info.
  *
@@ -4478,12 +4787,12 @@ function clang_getRemappings(const path: PAnsiChar): TCXRemapping; cdecl externa
 function clang_getRemappingsFromFileList(const filePaths: PPAnsiChar; numFiles: Cardinal): TCXRemapping; cdecl external LIBCLANG;
 
 (**
- * \brief Determine the number of remappings.
+ * Determine the number of remappings.
  *)
 function clang_remap_getNumFiles(p1: TCXRemapping): Cardinal; cdecl external LIBCLANG;
 
 (**
- * \brief Get the original and the associated filename from the remapping.
+ * Get the original and the associated filename from the remapping.
  *
  * \param original If non-NULL, will be set to the original filename.
  *
@@ -4493,7 +4802,7 @@ function clang_remap_getNumFiles(p1: TCXRemapping): Cardinal; cdecl external LIB
 procedure clang_remap_getFilenames(p1: TCXRemapping; index: Cardinal; original: PCXString; transformed: PCXString); cdecl external LIBCLANG;
 
 (**
- * \brief Dispose the remapping.
+ * Dispose the remapping.
  *)
 procedure clang_remap_dispose(p1: TCXRemapping); cdecl external LIBCLANG;
 
@@ -4529,7 +4838,7 @@ const
   CXResult_VisitBreak = 2;
 
 (**
- * \brief Find references of a declaration in a specific file.
+ * Find references of a declaration in a specific file.
  *
  * \param cursor pointing to a declaration or a reference of one.
  *
@@ -4545,7 +4854,7 @@ const
 function clang_findReferencesInFile(cursor: TCXCursor; _file: TCXFile; visitor: TCXCursorAndRangeVisitor): TCXResult; cdecl external LIBCLANG;
 
 (**
- * \brief Find #import/#include directives in a specific file.
+ * Find #import/#include directives in a specific file.
  *
  * \param TU translation unit containing the file to query.
  *
@@ -4559,30 +4868,30 @@ function clang_findReferencesInFile(cursor: TCXCursor; _file: TCXFile; visitor: 
 function clang_findIncludesInFile(TU: TCXTranslationUnit; _file: TCXFile; visitor: TCXCursorAndRangeVisitor): TCXResult; cdecl external LIBCLANG;
 
 (**
- * \brief The client's data object that is associated with a CXFile.
+ * The client's data object that is associated with a CXFile.
  *)
 type TCXIdxClientFile = Pointer;
 type PCXIdxClientFile = ^TCXIdxClientFile;
 
 (**
- * \brief The client's data object that is associated with a semantic entity.
+ * The client's data object that is associated with a semantic entity.
  *)
 type TCXIdxClientEntity = Pointer;
 
 (**
- * \brief The client's data object that is associated with a semantic container
+ * The client's data object that is associated with a semantic container
  * of entities.
  *)
 type TCXIdxClientContainer = Pointer;
 
 (**
- * \brief The client's data object that is associated with an AST file (PCH
+ * The client's data object that is associated with an AST file (PCH
  * or module).
  *)
 type TCXIdxClientASTFile = Pointer;
 
 (**
- * \brief Source location passed to index callbacks.
+ * Source location passed to index callbacks.
  *)
 type
   TCXIdxLoc = record
@@ -4592,7 +4901,7 @@ type
   PCXIdxLoc = ^TCXIdxLoc;
 
 (**
- * \brief Data for ppIncludedFile callback.
+ * Data for ppIncludedFile callback.
  *)
 type
   TCXIdxIncludedFileInfo = record
@@ -4606,7 +4915,7 @@ type
   PCXIdxIncludedFileInfo = ^TCXIdxIncludedFileInfo;
 
 (**
- * \brief Data for IndexerCallbacks#importedASTFile.
+ * Data for IndexerCallbacks#importedASTFile.
  *)
 type
   TCXIdxImportedASTFileInfo = record
@@ -4660,7 +4969,7 @@ const
   CXIdxEntityLang_Swift = 4;
 
 (**
- * \brief Extra C++ template information for an entity. This can apply to:
+ * Extra C++ template information for an entity. This can apply to:
  * CXIdxEntity_Function
  * CXIdxEntity_CXXClass
  * CXIdxEntity_CXXStaticMethod
@@ -4823,7 +5132,7 @@ type
   PCXIdxCXXClassDeclInfo = ^TCXIdxCXXClassDeclInfo;
 
 (**
- * \brief Data for IndexerCallbacks#indexEntityReference.
+ * Data for IndexerCallbacks#indexEntityReference.
  *)
 type
   TCXIdxEntityRefKind = Integer;
@@ -4833,7 +5142,28 @@ const
   CXIdxEntityRef_Implicit = 2;
 
 (**
- * \brief Data for IndexerCallbacks#indexEntityReference.
+ * Roles that are attributed to symbol occurrences.
+ *
+ * Internal: this currently mirrors low 9 bits of clang::index::SymbolRole with
+ * higher bits zeroed. These high bits may be exposed in the future.
+ *)
+type
+  TCXSymbolRole = Integer;
+
+const
+  CXSymbolRole_None = 0;
+  CXSymbolRole_Declaration = 1 shl 0;
+  CXSymbolRole_Definition = 1 shl 1;
+  CXSymbolRole_Reference = 1 shl 2;
+  CXSymbolRole_Read = 1 shl 3;
+  CXSymbolRole_Write = 1 shl 4;
+  CXSymbolRole_Call = 1 shl 5;
+  CXSymbolRole_Dynamic = 1 shl 6;
+  CXSymbolRole_AddressOf = 1 shl 7;
+  CXSymbolRole_Implicit = 1 shl 8;
+
+(**
+ * Data for IndexerCallbacks#indexEntityReference.
  *)
 type
   TCXIdxEntityRefInfo = record
@@ -4843,11 +5173,12 @@ type
     referencedEntity: PCXIdxEntityInfo;
     parentEntity: PCXIdxEntityInfo;
     container: PCXIdxContainerInfo;
+    role: TCXSymbolRole;
   end;
   PCXIdxEntityRefInfo = ^TCXIdxEntityRefInfo;
 
 (**
- * \brief A group of callbacks used by #clang_indexSourceFile and
+ * A group of callbacks used by #clang_indexSourceFile and
  * #clang_indexTranslationUnit.
  *)
 type
@@ -4879,35 +5210,35 @@ function clang_index_getIBOutletCollectionAttrInfo(const p1: PCXIdxAttrInfo): PC
 function clang_index_getCXXClassDeclInfo(const p1: PCXIdxDeclInfo): PCXIdxCXXClassDeclInfo; cdecl external LIBCLANG;
 
 (**
- * \brief For retrieving a custom CXIdxClientContainer attached to a
+ * For retrieving a custom CXIdxClientContainer attached to a
  * container.
  *)
 function clang_index_getClientContainer(const p1: PCXIdxContainerInfo): TCXIdxClientContainer; cdecl external LIBCLANG;
 
 (**
- * \brief For setting a custom CXIdxClientContainer attached to a
+ * For setting a custom CXIdxClientContainer attached to a
  * container.
  *)
 procedure clang_index_setClientContainer(const p1: PCXIdxContainerInfo; p2: TCXIdxClientContainer); cdecl external LIBCLANG;
 
 (**
- * \brief For retrieving a custom CXIdxClientEntity attached to an entity.
+ * For retrieving a custom CXIdxClientEntity attached to an entity.
  *)
 function clang_index_getClientEntity(const p1: PCXIdxEntityInfo): TCXIdxClientEntity; cdecl external LIBCLANG;
 
 (**
- * \brief For setting a custom CXIdxClientEntity attached to an entity.
+ * For setting a custom CXIdxClientEntity attached to an entity.
  *)
 procedure clang_index_setClientEntity(const p1: PCXIdxEntityInfo; p2: TCXIdxClientEntity); cdecl external LIBCLANG;
 
 (**
- * \brief An indexing action/session, to be applied to one or multiple
+ * An indexing action/session, to be applied to one or multiple
  * translation units.
  *)
 type TCXIndexAction = Pointer;
 
 (**
- * \brief An indexing action/session, to be applied to one or multiple
+ * An indexing action/session, to be applied to one or multiple
  * translation units.
  *
  * \param CIdx The index object with which the index action will be associated.
@@ -4915,7 +5246,7 @@ type TCXIndexAction = Pointer;
 function clang_IndexAction_create(CIdx: TCXIndex): TCXIndexAction; cdecl external LIBCLANG;
 
 (**
- * \brief Destroy the given index action.
+ * Destroy the given index action.
  *
  * The index action must not be destroyed until all of the translation units
  * created within that index action have been destroyed.
@@ -4934,7 +5265,7 @@ const
   CXIndexOpt_SkipParsedBodiesInSession = $10;
 
 (**
- * \brief Index the given source file and the translation unit corresponding
+ * Index the given source file and the translation unit corresponding
  * to that file via callbacks implemented through #IndexerCallbacks.
  *
  * \param client_data pointer data supplied by the client, which will
@@ -4961,14 +5292,14 @@ const
 function clang_indexSourceFile(p1: TCXIndexAction; client_data: TCXClientData; index_callbacks: PIndexerCallbacks; index_callbacks_size: Cardinal; index_options: Cardinal; const source_filename: PAnsiChar; const command_line_args: PPAnsiChar; num_command_line_args: Integer; unsaved_files: PCXUnsavedFile; num_unsaved_files: Cardinal; out_TU: PCXTranslationUnit; TU_options: Cardinal): Integer; cdecl external LIBCLANG;
 
 (**
- * \brief Same as clang_indexSourceFile but requires a full command line
+ * Same as clang_indexSourceFile but requires a full command line
  * for \c command_line_args including argv[0]. This is useful if the standard
  * library paths are relative to the binary.
  *)
 function clang_indexSourceFileFullArgv(p1: TCXIndexAction; client_data: TCXClientData; index_callbacks: PIndexerCallbacks; index_callbacks_size: Cardinal; index_options: Cardinal; const source_filename: PAnsiChar; const command_line_args: PPAnsiChar; num_command_line_args: Integer; unsaved_files: PCXUnsavedFile; num_unsaved_files: Cardinal; out_TU: PCXTranslationUnit; TU_options: Cardinal): Integer; cdecl external LIBCLANG;
 
 (**
- * \brief Index the given translation unit via callbacks implemented through
+ * Index the given translation unit via callbacks implemented through
  * #IndexerCallbacks.
  *
  * The order of callback invocations is not guaranteed to be the same as
@@ -4986,7 +5317,7 @@ function clang_indexSourceFileFullArgv(p1: TCXIndexAction; client_data: TCXClien
 function clang_indexTranslationUnit(p1: TCXIndexAction; client_data: TCXClientData; index_callbacks: PIndexerCallbacks; index_callbacks_size: Cardinal; index_options: Cardinal; p6: TCXTranslationUnit): Integer; cdecl external LIBCLANG;
 
 (**
- * \brief Retrieve the CXIdxFile, file, line, column, and offset represented by
+ * Retrieve the CXIdxFile, file, line, column, and offset represented by
  * the given CXIdxLoc.
  *
  * If the location refers into a macro expansion, retrieves the
@@ -4996,12 +5327,12 @@ function clang_indexTranslationUnit(p1: TCXIndexAction; client_data: TCXClientDa
 procedure clang_indexLoc_getFileLocation(loc: TCXIdxLoc; indexFile: PCXIdxClientFile; _file: PCXFile; line: PCardinal; column: PCardinal; offset: PCardinal); cdecl external LIBCLANG;
 
 (**
- * \brief Retrieve the CXSourceLocation represented by the given CXIdxLoc.
+ * Retrieve the CXSourceLocation represented by the given CXIdxLoc.
  *)
 function clang_indexLoc_getCXSourceLocation(loc: TCXIdxLoc): TCXSourceLocation; cdecl external LIBCLANG;
 
 (**
- * \brief Visitor invoked for each field found by a traversal.
+ * Visitor invoked for each field found by a traversal.
  *
  * This visitor function will be invoked for each field found by
  * \c clang_Type_visitFields. Its first argument is the cursor being
@@ -5014,7 +5345,7 @@ function clang_indexLoc_getCXSourceLocation(loc: TCXIdxLoc): TCXSourceLocation; 
 type TCXFieldVisitor = function(C: TCXCursor; client_data: TCXClientData): TCXVisitorResult; cdecl;
 
 (**
- * \brief Visit the fields of a particular type.
+ * Visit the fields of a particular type.
  *
  * This function visits all the direct fields of the given cursor,
  * invoking the given \p visitor function with the cursors of each
@@ -5038,10 +5369,10 @@ function clang_Type_visitFields(T: TCXType; visitor: TCXFieldVisitor; client_dat
 {$REGION 'Documentation.h'}
 (*==-- clang-c/Documentation.h - Utilities for comment processing -*- C -*-===*\
 |*                                                                            *|
-|*                     The LLVM Compiler Infrastructure                       *|
-|*                                                                            *|
-|* This file is distributed under the University of Illinois Open Source      *|
-|* License. See LICENSE.TXT for details.                                      *|
+|* Part of the LLVM Project, under the Apache License v2.0 with LLVM          *|
+|* Exceptions.                                                                *|
+|* See https://llvm.org/LICENSE.txt for license information.                  *|
+|* SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception                    *|
 |*                                                                            *|
 |*===----------------------------------------------------------------------===*|
 |*                                                                            *|
@@ -5061,7 +5392,7 @@ function clang_Type_visitFields(T: TCXType; visitor: TCXFieldVisitor; client_dat
  *)
 
 (**
- * \brief A parsed comment.
+ * A parsed comment.
  *)
 type
   {$IFDEF WIN32}
@@ -5075,14 +5406,14 @@ type
   PCXComment = ^TCXComment;
 
 (**
- * \brief Given a cursor that represents a documentable entity (e.g.,
+ * Given a cursor that represents a documentable entity (e.g.,
  * declaration), return the associated parsed comment as a
  * \c CXComment_FullComment AST node.
  *)
 function clang_Cursor_getParsedComment(C: TCXCursor): TCXComment; cdecl external LIBCLANG;
 
 (**
- * \brief Describes the type of the comment AST node (\c CXComment).  A comment
+ * Describes the type of the comment AST node (\c CXComment).  A comment
  * node can be considered block content (e. g., paragraph), inline content
  * (plain text) or neither (the root AST node).
  *)
@@ -5105,7 +5436,7 @@ const
   CXComment_FullComment = 12;
 
 (**
- * \brief The most appropriate rendering mode for an inline command, chosen on
+ * The most appropriate rendering mode for an inline command, chosen on
  * command semantics in Doxygen.
  *)
 type
@@ -5118,7 +5449,7 @@ const
   CXCommentInlineCommandRenderKind_Emphasized = CXCommentInlineCommandRenderKind_Monospaced + 1;
 
 (**
- * \brief Describes parameter passing direction for \\param or \\arg command.
+ * Describes parameter passing direction for \\param or \\arg command.
  *)
 type
   TCXCommentParamPassDirection = Integer;
@@ -5152,7 +5483,7 @@ function clang_Comment_getNumChildren(Comment: TCXComment): Cardinal; cdecl exte
 function clang_Comment_getChild(Comment: TCXComment; ChildIdx: Cardinal): TCXComment; cdecl external LIBCLANG;
 
 (**
- * \brief A \c CXComment_Paragraph node is considered whitespace if it contains
+ * A \c CXComment_Paragraph node is considered whitespace if it contains
  * only \c CXComment_Text nodes that are empty or whitespace.
  *
  * Other AST nodes (except \c CXComment_Paragraph and \c CXComment_Text) are
@@ -5384,7 +5715,7 @@ function clang_VerbatimBlockLineComment_getText(Comment: TCXComment): TCXString;
 function clang_VerbatimLineComment_getText(Comment: TCXComment): TCXString; cdecl external LIBCLANG;
 
 (**
- * \brief Convert an HTML tag AST node to string.
+ * Convert an HTML tag AST node to string.
  *
  * \param Comment a \c CXComment_HTMLStartTag or \c CXComment_HTMLEndTag AST
  * node.
@@ -5394,13 +5725,13 @@ function clang_VerbatimLineComment_getText(Comment: TCXComment): TCXString; cdec
 function clang_HTMLTagComment_getAsString(Comment: TCXComment): TCXString; cdecl external LIBCLANG;
 
 (**
- * \brief Convert a given full parsed comment to an HTML fragment.
+ * Convert a given full parsed comment to an HTML fragment.
  *
  * Specific details of HTML layout are subject to change.  Don't try to parse
  * this HTML back into an AST, use other APIs instead.
  *
  * Currently the following CSS classes are used:
- * \li "para-brief" for \\brief paragraph and equivalent commands;
+ * \li "para-brief" for \paragraph and equivalent commands;
  * \li "para-returns" for \\returns paragraph and equivalent commands;
  * \li "word-returns" for the "Returns" word in \\returns paragraph.
  *
@@ -5427,7 +5758,7 @@ function clang_HTMLTagComment_getAsString(Comment: TCXComment): TCXString; cdecl
 function clang_FullComment_getAsHTML(Comment: TCXComment): TCXString; cdecl external LIBCLANG;
 
 (**
- * \brief Convert a given full parsed comment to an XML document.
+ * Convert a given full parsed comment to an XML document.
  *
  * A Relax NG schema for the XML can be found in comment-xml-schema.rng file
  * inside clang source tree.

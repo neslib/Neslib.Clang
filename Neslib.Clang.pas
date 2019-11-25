@@ -137,7 +137,27 @@ type
     KeepGoing,
 
     { Sets the preprocessor in a mode for parsing a single file only. }
-    SingleFileParse);
+    SingleFileParse,
+
+    { Used in combination with SkipFunctionBodies to constrain the skipping of
+      function bodies to the preamble.
+
+      The function bodies of the main file are not skipped. }
+    LimitSkipFunctionBodiesToPreamble,
+
+    { Used to indicate that attributed types should be included in TCXType. }
+    IncludeAttributedTypes,
+
+    { Used to indicate that implicit attributes should be visited. }
+    VisitImplicitAttributes,
+
+    { Used to indicate that non-errors from included files should be ignored.
+
+      If set, TTranslationUnit.GetAllDiagnostics will not report e.g. warnings
+      from included files anymore. This speeds up GetAllDiagnostics for the case
+      where these warnings are not of interest, as for an IDE for example, which
+      typically shows only the diagnostics in the main file. }
+    IgnoreNonErrorsFromIncludedFiles);
   TTranslationUnitFlags = set of TTranslationUnitFlag;
 
 type
@@ -177,7 +197,17 @@ type
 
     { Whether to include brief documentation within the set of code completions
       returned. }
-    IncludeBriefComments);
+    IncludeBriefComments,
+
+    { Whether to speed up completion by omitting top- or namespace-level
+      entities defined in the preamble. There's no guarantee any particular
+      entity is omitted. This may be useful if the headers are indexed
+      externally. }
+    SkipPreamble,
+
+    { Whether to include completions with small fix-its, e.g. change '.' to '->'
+      on member access, etc. }
+    IncludeCompletionsWithFixIts);
   TCodeCompleteFlags = set of TCodeCompleteFlag;
 
 type
@@ -643,6 +673,9 @@ type
     { Represents an @@available(...) check. }
     ObjCAvailabilityCheckExpr = CXCursor_ObjCAvailabilityCheckExpr,
 
+    { Fixed point literal }
+    FixedPointLiteral = CXCursor_FixedPointLiteral,
+
     LastExpr = CXCursor_LastExpr,
 
     (* Statements *)
@@ -905,6 +938,9 @@ type
     { OpenMP target teams distribute simd directive. }
     OMPTargetTeamsDistributeSimdDirective = CXCursor_OMPTargetTeamsDistributeSimdDirective,
 
+    { C++2a std::bit_cast expression. }
+    BuiltinBitCastExpr = CXCursor_BuiltinBitCastExpr,
+
     LastStmt = CXCursor_LastStmt,
 
     { Cursor that represents the translation unit itself.
@@ -938,6 +974,28 @@ type
     VisibilityAttr = CXCursor_VisibilityAttr,
     DLLExport = CXCursor_DLLExport,
     DLLImport = CXCursor_DLLImport,
+    NSReturnsRetained = CXCursor_NSReturnsRetained,
+    NSReturnsNotRetained = CXCursor_NSReturnsNotRetained,
+    NSReturnsAutoreleased = CXCursor_NSReturnsAutoreleased,
+    NSConsumesSelf = CXCursor_NSConsumesSelf,
+    NSConsumed = CXCursor_NSConsumed,
+    ObjCException = CXCursor_ObjCException,
+    ObjCNSObject = CXCursor_ObjCNSObject,
+    ObjCIndependentClass = CXCursor_ObjCIndependentClass,
+    ObjCPreciseLifetime = CXCursor_ObjCPreciseLifetime,
+    ObjCReturnsInnerPointer = CXCursor_ObjCReturnsInnerPointer,
+    ObjCRequiresSuper = CXCursor_ObjCRequiresSuper,
+    ObjCRootClass = CXCursor_ObjCRootClass,
+    ObjCSubclassingRestricted = CXCursor_ObjCSubclassingRestricted,
+    ObjCExplicitProtocolImpl = CXCursor_ObjCExplicitProtocolImpl,
+    ObjCDesignatedInitializer = CXCursor_ObjCDesignatedInitializer,
+    ObjCRuntimeVisible = CXCursor_ObjCRuntimeVisible,
+    ObjCBoxable = CXCursor_ObjCBoxable,
+    FlagEnum = CXCursor_FlagEnum,
+    ConvergentAttr = CXCursor_ConvergentAttr,
+    WarnUnusedAttr = CXCursor_WarnUnusedAttr,
+    WarnUnusedResultAttr = CXCursor_WarnUnusedResultAttr,
+    AlignedAttr = CXCursor_AlignedAttr,
     LastAttr = CXCursor_LastAttr,
 
     (* Preprocessing *)
@@ -1020,6 +1078,12 @@ type
     Float128 = CXType_Float128,
     Half = CXType_Half,
     Float16 = CXType_Float16,
+    ShortAccum = CXType_ShortAccum,
+    Accum = CXType_Accum,
+    LongAccum = CXType_LongAccum,
+    UShortAccum = CXType_UShortAccum,
+    UAccum = CXType_UAccum,
+    ULongAccum = CXType_ULongAccum,
     FirstBuiltin = CXType_FirstBuiltin,
     LastBuiltin = CXType_LastBuiltin,
 
@@ -1090,7 +1154,23 @@ type
     OCLSampler = CXType_OCLSampler,
     OCLEvent = CXType_OCLEvent,
     OCLQueue = CXType_OCLQueue,
-    OCLReserveID = CXType_OCLReserveID);
+    OCLReserveID = CXType_OCLReserveID,
+    ObjCObject = CXType_ObjCObject,
+    ObjCTypeParam = CXType_ObjCTypeParam,
+    Attributed = CXType_Attributed,
+    OCLIntelSubgroupAVCMcePayload = CXType_OCLIntelSubgroupAVCMcePayload,
+    OCLIntelSubgroupAVCImePayload = CXType_OCLIntelSubgroupAVCImePayload,
+    OCLIntelSubgroupAVCRefPayload = CXType_OCLIntelSubgroupAVCRefPayload,
+    OCLIntelSubgroupAVCSicPayload = CXType_OCLIntelSubgroupAVCSicPayload,
+    OCLIntelSubgroupAVCMceResult = CXType_OCLIntelSubgroupAVCMceResult,
+    OCLIntelSubgroupAVCImeResult = CXType_OCLIntelSubgroupAVCImeResult,
+    OCLIntelSubgroupAVCRefResult = CXType_OCLIntelSubgroupAVCRefResult,
+    OCLIntelSubgroupAVCSicResult = CXType_OCLIntelSubgroupAVCSicResult,
+    OCLIntelSubgroupAVCImeResultSingleRefStreamout = CXType_OCLIntelSubgroupAVCImeResultSingleRefStreamout,
+    OCLIntelSubgroupAVCImeResultDualRefStreamout = CXType_OCLIntelSubgroupAVCImeResultDualRefStreamout,
+    OCLIntelSubgroupAVCImeSingleRefStreamin = CXType_OCLIntelSubgroupAVCImeSingleRefStreamin,
+    OCLIntelSubgroupAVCImeDualRefStreamin = CXType_OCLIntelSubgroupAVCImeDualRefStreamin,
+    ExtVector = CXType_ExtVector);
 
 type
   { Describes the kind of a template argument. }
@@ -1377,6 +1457,7 @@ type
     Swift = CXCallingConv_Swift,
     PreserveMost = CXCallingConv_PreserveMost,
     PreserveAll = CXCallingConv_PreserveAll,
+    AArch64VectorCall = CXCallingConv_AArch64VectorCall,
     Invalid = CXCallingConv_Invalid,
     Unexposed = CXCallingConv_Unexposed);
 
@@ -1729,6 +1810,9 @@ const
   { The Field name is not valid for this record. }
   TYPE_LAYOUT_ERROR_INVALID_FIELDNAME = CXTypeLayoutError_InvalidFieldName;
 
+  { The type is undeduced. }
+  TYPE_LAYOUT_ERROR_UNDEDUCED = CXTypeLayoutError_Undeduced;
+
 type
   { Describes a version number of the form major.minor.subminor. }
   TVersion = record
@@ -1794,6 +1878,59 @@ type
   end;
 
 type
+  { Describes the exception specification of a cursor. }
+  TExceptionSpecificationKind  = (
+    { Indicates that the cursor is not a function declaration. }
+    Error = -1,
+
+    { The cursor has no exception specification. }
+    None = CXCursor_ExceptionSpecificationKind_None,
+
+    { The cursor has exception specification throw() }
+    DynamicNone = CXCursor_ExceptionSpecificationKind_DynamicNone,
+
+    { The cursor has exception specification throw(T1, T2) }
+    Dynamic = CXCursor_ExceptionSpecificationKind_Dynamic,
+
+    { The cursor has exception specification throw(...). }
+    MSAny = CXCursor_ExceptionSpecificationKind_MSAny,
+
+    { The cursor has exception specification basic noexcept. }
+    BasicNoexcept = CXCursor_ExceptionSpecificationKind_BasicNoexcept,
+
+    { The cursor has exception specification computed noexcept. }
+    ComputedNoexcept = CXCursor_ExceptionSpecificationKind_ComputedNoexcept,
+
+    { The exception specification has not yet been evaluated. }
+    Unevalutated = CXCursor_ExceptionSpecificationKind_Unevaluated,
+
+    { The exception specification has not yet been instantiated. }
+    Uninstantiated = CXCursor_ExceptionSpecificationKind_Uninstantiated,
+
+    { The exception specification has not been parsed yet. }
+    Unparsed = CXCursor_ExceptionSpecificationKind_Unparsed,
+
+    { The cursor has a __declspec(nothrow) exception specification. }
+    NoThrow = CXCursor_ExceptionSpecificationKind_NoThrow);
+
+type
+  TTypeNullabilityKind = (
+    { Values of this type can never be null. }
+    NonNull = CXTypeNullability_NonNull,
+
+    { Values of this type can be null. }
+    Nullable = CXTypeNullability_Nullable,
+
+    { Whether values of this type can be null is (explicitly)
+      unspecified. This captures a (fairly rare) case where we
+      can't conclude anything about the nullability of the type even
+      though it has been considered. }
+    Unspecified = CXTypeNullability_Unspecified,
+
+    { Nullability is not applicable to this type. }
+    Invalid = CXTypeNullability_Invalid);
+
+type
   { The type of an element in the abstract syntax tree. }
   TType = record
   {$REGION 'Internal Declarations'}
@@ -1815,7 +1952,7 @@ type
     function GetObjCEncoding: String; inline;
     function GetFunctionCallingConv: TCallingConv; inline;
     function GetResultType: TType; inline;
-    function GetExceptionSpecificationType: Integer; inline;
+    function GetExceptionSpecificationType: TExceptionSpecificationKind; inline;
     function GetArgTypeCount: Integer; inline;
     function GetArgType(const AIndex: Integer): TType; inline;
     function GetElementType: TType; inline;
@@ -1829,6 +1966,13 @@ type
     function GetTemplateArgumentCount: Integer; inline;
     function GetTemplateArgumentType(const AIndex: Integer): TType; inline;
     function GetCxxRefQualifier: TRefQualifierKind; inline;
+    function GetObjCObjectBaseType: TType; inline;
+    function GetObjCProtocolDecl(const AIndex: Integer): TCXCursor; inline;
+    function GetObjCProtocolRefCount: Integer; inline;
+    function GetObjCTypeArg(const AIndex: Integer): TType; inline;
+    function GetObjCTypeArgCount: Integer; inline;
+    function GetNullability: TTypeNullabilityKind; inline;
+    function GetModifiedType: TType; inline;
   {$ENDREGION 'Internal Declarations'}
   public
     { Equality operators. Determine whether two TType's represent the same
@@ -1918,8 +2062,9 @@ type
 
     { The exception specification type associated with a function type.
 
-      If a non-function type is passed in, an error code of -1 is returned. }
-    property ExceptionSpecificationType: Integer read GetExceptionSpecificationType;
+      If a non-function type is passed in, TExceptionSpecificationKind.Error is
+      returned. }
+    property ExceptionSpecificationType: TExceptionSpecificationKind read GetExceptionSpecificationType;
 
     { The number of non-variadic parameters associated with a function type.
 
@@ -2002,6 +2147,35 @@ type
       types or non-C++ declarations, None is returned. }
     property CxxRefQualifier: TRefQualifierKind read GetCxxRefQualifier;
 
+    { The base type of the ObjCObjectType.
+      If the type is not an ObjC object, an invalid type is returned. }
+    property ObjCObjectBaseType: TType read GetObjCObjectBaseType;
+
+    { The number of protocol references associated with an ObjC object/id.
+      If the type is not an ObjC object, 0 is returned. }
+    property ObjCProtocolRefCount: Integer read GetObjCProtocolRefCount;
+
+    { The decls for a protocol reference for an ObjC object/id.
+      If the type is not an ObjC object or there are not enough protocol
+      references, an invalid cursor is returned. }
+    property ObjCProtocolDecls[const AIndex: Integer]: TCXCursor read GetObjCProtocolDecl;
+
+    { The number of type arguments associated with an ObjC object.
+      If the type is not an ObjC object, 0 is returned. }
+    property ObjCTypeArgCount: Integer read GetObjCTypeArgCount;
+
+    { The type arguments associated with an ObjC object.
+      If the type is not an ObjC or the index is not valid,
+      an invalid type is returned. }
+    property ObjCTypeArgs[const AIndex: Integer]: TType read GetObjCTypeArg;
+
+    { The nullability kind of a pointer type. }
+    property Nullability: TTypeNullabilityKind read GetNullability;
+
+    { The type that was modified by this attributed type.
+      If the type is not an attributed type, an invalid type is returned. }
+    property ModifiedType: TType read GetModifiedType;
+
     { Internal handle to C API }
     property Handle: TCXType read FHandle;
   end;
@@ -2035,6 +2209,7 @@ type
     function GetFilename: String; inline;
     function GetFileTime: TDateTime; inline;
     function GetUniqueId: TFileUniqueId; inline;
+    function GetRealPathName: String; inline;
   {$ENDREGION 'Internal Declarations'}
   public
     { Equality operators. Check if two TFile objects point to the same file,
@@ -2054,6 +2229,10 @@ type
     { The unique ID of the file.
       Returns an invalid ID on error. }
     property UniqueId: TFileUniqueId read GetUniqueId;
+
+    { The real path name.
+      An empty string may be returned. Use FileName in that case. }
+    property RealPathName: String read GetRealPathName;
 
     { Internal handle to C API }
     property Handle: TCXFile read FHandle;
@@ -2646,6 +2825,54 @@ type
   end;
 
 type
+  { Properties for the printing policy. }
+  TPrintingPolicyProperty = (
+    Indentation = CXPrintingPolicy_Indentation,
+    SuppressSpecifiers = CXPrintingPolicy_SuppressSpecifiers,
+    SuppressTagKeyword = CXPrintingPolicy_SuppressTagKeyword,
+    IncludeTagDefinition = CXPrintingPolicy_IncludeTagDefinition,
+    SuppressScope = CXPrintingPolicy_SuppressScope,
+    SuppressUnwrittenScope = CXPrintingPolicy_SuppressUnwrittenScope,
+    SuppressInitializers = CXPrintingPolicy_SuppressInitializers,
+    ConstantArraySizeAsWritten = CXPrintingPolicy_ConstantArraySizeAsWritten,
+    AnonymousTagLocations = CXPrintingPolicy_AnonymousTagLocations,
+    SuppressStrongLifetime = CXPrintingPolicy_SuppressStrongLifetime,
+    SuppressLifetimeQualifiers = CXPrintingPolicy_SuppressLifetimeQualifiers,
+    SuppressTemplateArgsInCXXConstructors = CXPrintingPolicy_SuppressTemplateArgsInCXXConstructors,
+    Bool = CXPrintingPolicy_Bool,
+    Restrict = CXPrintingPolicy_Restrict,
+    Alignof = CXPrintingPolicy_Alignof,
+    UnderscoreAlignof = CXPrintingPolicy_UnderscoreAlignof,
+    UseVoidForZeroParams = CXPrintingPolicy_UseVoidForZeroParams,
+    TerseOutput = CXPrintingPolicy_TerseOutput,
+    PolishForDeclaration = CXPrintingPolicy_PolishForDeclaration,
+    Half = CXPrintingPolicy_Half,
+    MSWChar = CXPrintingPolicy_MSWChar,
+    IncludeNewlines = CXPrintingPolicy_IncludeNewlines,
+    MSVCFormatting = CXPrintingPolicy_MSVCFormatting,
+    ConstantsAsWritten = CXPrintingPolicy_ConstantsAsWritten,
+    SuppressImplicitBase = CXPrintingPolicy_SuppressImplicitBase,
+    FullyQualifiedName = CXPrintingPolicy_FullyQualifiedName,
+    LastProperty = CXPrintingPolicy_LastProperty);
+
+type
+  { A policy that controls pretty printing for TCursor.PrettyPrinted }
+  IPrintingPolicy = interface
+  ['{AAEE40F0-049F-461A-B817-C9D7CC655A59}']
+    {$REGION 'Internal Declarations'}
+    function GetProperty(const AProp: TPrintingPolicyProperty): Integer;
+    procedure SetProperty(const AProp: TPrintingPolicyProperty; const AValue: Integer);
+    function GetHandle: TCXPrintingPolicy;
+    {$ENDREGION 'Internal Declarations'}
+
+    { Get or set property values }
+    property Properties[const AProp: TPrintingPolicyProperty]: Integer read GetProperty write SetProperty;
+
+    { Internal handle to C API }
+    property Handle: TCXPrintingPolicy read GetHandle;
+  end;
+
+type
   { A cursor representing some element in the abstract syntax tree for
     a translation unit.
 
@@ -2670,6 +2897,7 @@ type
     function GetKind: TCursorKind; inline;
     function GetIsNull: Boolean; inline;
     function GetIsDeclaration: Boolean; inline;
+    function GetIsInvalidDeclaration: Boolean; inline;
     function GetIsReference: Boolean; inline;
     function GetIsExpression: Boolean; inline;
     function GetIsStatement: Boolean; inline;
@@ -2707,7 +2935,7 @@ type
     function GetIsFunctionInlined: Boolean; inline;
     function GetDeclObjCTypeEncoding: String; inline;
     function GetResultType: TType; inline;
-    function GetExceptionSpecificationType: Integer; inline;
+    function GetExceptionSpecificationType: TExceptionSpecificationKind; inline;
     function GetOffsetOfField: Int64; inline;
     function GetIsAnonymous: Boolean; inline;
     function GetIsBitField: Boolean; inline;
@@ -2754,6 +2982,11 @@ type
     function GetSpecializedCursorTemplate: TCursor; inline;
     function GetCompletionString: TCompletionString; inline;
     function GetParsedComment: TComment; inline;
+    function GetIsAnonymousRecordDecl: Boolean; inline;
+    function GetIsInlineNamespace: Boolean; inline;
+    function GetPrintingPolicy: IPrintingPolicy;
+    function GetObjCPropertyGetterName: String; inline;
+    function GetObjCPropertySetterName: String; inline;
   private
     class function GetNull: TCursor; inline; static;
   {$ENDREGION 'Internal Declarations'}
@@ -2855,6 +3088,16 @@ type
       type. }
     function Evaluate: IEvalResult;
 
+    { Pretty print declarations.
+
+      Parameters:
+        APolicy: (optional) policy to control the entities being printed.
+          If nil, a default policy is used.
+
+      Returns:
+        The pretty printed declaration or the empty string for other cursors. }
+    function PrettyPrinted(const APolicy: IPrintingPolicy = nil): String; inline;
+
     { The Null cursor, which represents no entity. }
     class property Null: TCursor read GetNull;
 
@@ -2866,6 +3109,11 @@ type
 
     { Whether the cursor represents a declaration. }
     property IsDeclaration: Boolean read GetIsDeclaration;
+
+    { Whether the given declaration is invalid.
+
+      A declaration is invalid if it could not be parsed successfully. }
+    property IsInvalidDeclaration: Boolean read GetIsInvalidDeclaration;
 
     { Whether the cursor represents a simple reference.
 
@@ -3180,7 +3428,7 @@ type
 
       This only returns a valid result if the cursor refers to a function or
       method. }
-    property ExceptionSpecificationType: Integer read GetExceptionSpecificationType;
+    property ExceptionSpecificationType: TExceptionSpecificationKind read GetExceptionSpecificationType;
 
     { The offset of the field represented by the Cursor.
 
@@ -3195,8 +3443,14 @@ type
         is returned. }
     property OffsetOfField: Int64 read GetOffsetOfField;
 
-    { Whether the cursor represents an anonymous record declaration.}
+    { Whether the cursor represents an anonymous tag or namespace.}
     property IsAnonymous: Boolean read GetIsAnonymous;
+
+    { Whether the cursor represents an anonymous record declaration. }
+    property IsAnonymousRecordDecl: Boolean read GetIsAnonymousRecordDecl;
+
+    { Whether the cursor represents an inline namespace declaration. }
+    property IsInlineNamespace: Boolean read GetIsInlineNamespace;
 
     { Whether the cursor specifies a Record member that is a bitfield. }
     property IsBitField: Boolean read GetIsBitField;
@@ -3342,6 +3596,14 @@ type
       associated property attributes. }
     property ObjCPropertyAttributes: TObjCPropertyAttrKinds read GetObjCPropertyAttributes;
 
+    { Given a cursor that represents a property declaration, return the
+      name of the method that implements the getter. }
+    property ObjCPropertyGetterName: String read GetObjCPropertyGetterName;
+
+    { Given a cursor that represents a property declaration, return the
+      name of the method that implements the setter, if any. }
+    property ObjCPropertySetterName: String read GetObjCPropertySetterName;
+
     { Given a cursor that represents an Objective-C method or parameter
       declaration, return the associated Objective-C qualifiers for the return
       type or the parameter respectively. }
@@ -3467,6 +3729,10 @@ type
     { Given a cursor that represents a documentable entity (e.g., declaration),
       return the associated parsed comment as a FullComment AST node. }
     property ParsedComment: TComment read GetParsedComment;
+
+    { The default policy for the cursor.
+      Can be used with PrettyPrinted. }
+    property PrintingPolicy: IPrintingPolicy read GetPrintingPolicy;
 
     { Internal handle to C API }
     property Handle: TCXCursor read FHandle;
@@ -3797,8 +4063,54 @@ type
     function GetContainerComplete: Boolean;
     function GetContainerUsr: TUnifiedSymbolResolution;
     function GetObjCSelector: String;
+    function GetFixItCount(const AIndex: Integer): Integer;
     function GetHandle: PCXCodeCompleteResults;
     {$ENDREGION 'Internal Declarations'}
+
+    { Fix-its that *must* be applied before inserting the text for the
+      corresponding completion.
+
+      Parameters:
+        AIndex: The index of the completion.
+        AFixItIndex: The index of the fix-it for the completion at AIndex
+          (see FixItCount).
+        AReplacementRange: The fix-it range that must be replaced before the
+          completion at AIndex can be applied.
+
+      Returns:
+        The fix-it string that must replace the code at AReplacementRange
+        before the completion at AIndex can be applied.
+
+      By default, TTranslationUnit.CodeCompleteAt only returns completions with
+      empty fix-its. Extra completions with non-empty fix-its should be
+      explicitly requested by setting
+      TCodeCompleteFlag.IncludeCompletionsWithFixIts.
+
+      For the clients to be able to compute position of the cursor after
+      applying fix-its, the following conditions are guaranteed to hold for
+      replacement_range of the stored fix-its:
+      * Ranges in the fix-its are guaranteed to never contain the completion
+        point (or identifier under completion point, if any) inside them, except
+        at the start or at the end of the range.
+      * If a fix-it range starts or ends with completion point (or starts or
+        ends after the identifier under completion point), it will contain at
+        least one character. It allows to unambiguously recompute completion
+        point after applying the fix-it.
+
+      The intuition is that provided fix-its change code around the identifier
+      we complete, but are not allowed to touch the identifier itself or the
+      completion point. One example of completions with corrections are the ones
+      replacing '.' with '->' and vice versa:
+
+        std::unique_ptr<std::vector<int>> vec_ptr;
+
+      In 'vec_ptr.^', one of the completions is 'push_back', it requires
+      replacing '.' with '->'.
+
+      In 'vec_ptr->^', one of the completions is 'release', it requires
+      replacing '->' with '.'. }
+    function GetCompletionFixIt(const AIndex, AFixItIndex: Integer;
+      const AReplacementRange: TSourceRange): String;
 
     { Number of code completion results }
     property Count: Integer read GetCount;
@@ -3837,6 +4149,19 @@ type
       like "initWithFoo:bar:". Only guaranteed to return a non-empty string for
       ObjCInstanceMessage and ObjCClassMessage. }
     property ObjCSelector: String read GetObjCSelector;
+
+    { The number of fix-its for the given completion index.
+
+      Calling this makes sense only if
+      TCodeCompleteFlag.IncludeCompletionsWithFixIts option was set.
+
+      Parameters:
+        AIndex: The index of the completion
+
+      Returns:
+        The number of fix-its which must be applied before the completion at
+        completion_index can be applied }
+    property FixItCount[const AIndex: Integer]: Integer read GetFixItCount;
 
     { Internal handle to C API }
     property Handle: PCXCodeCompleteResults read GetHandle;
@@ -4178,6 +4503,16 @@ type
       const AVisitor: TCursorAndRangeVisitor): TVisitResult; overload;
     function FindIncludesInFile(const AFile: TFile;
       const AVisitor: TCursorAndRangeVisitorMethod): TVisitResult; overload;
+
+    { Get the raw lexical token starting with the given location.
+
+      Parameters:
+        ALocation: the source location with which the token starts.
+
+      Returns:
+        A list containing the single token starting with the given location or
+        nil if no such token  exist. }
+    function GetToken(const ALocation: TSourceLocation): ITokenList;
 
     { The number of diagnostics produced for this translation unit. }
     property DiagnosticCount: Integer read GetDiagnosticCount;
@@ -4674,7 +5009,10 @@ type
   end;
 
 type
-  { Data for IIndexerListener.IndexEntityReference. }
+  { Data for IIndexerListener.IndexEntityReference.
+
+    This may be deprecated in a future version as this duplicates the
+    TSymbolRole.Implicit flag. }
   TIdxEntityRefKind = (
     { The entity is referenced directly in user's code. }
     Direct = CXIdxEntityRef_Direct,
@@ -4682,6 +5020,20 @@ type
     { An implicit reference, e.g. a reference of an Objective-C method via the
       dot syntax. }
     Implicit = CXIdxEntityRef_Implicit);
+
+type
+  { Roles that are attributed to symbol occurrences. }
+  TSymbolRole = (
+    Declaration,
+    Definition,
+    Reference,
+    Read,
+    Write,
+    Call,
+    Dynamic,
+    AddressOf,
+    Implicit);
+  TSymbolRoles = set of TSymbolRole;
 
 type
   { Data for IIndexerListener.IndexEntityReference. }
@@ -4695,6 +5047,7 @@ type
     function GetReferencedEntity: TIdxEntityInfo; inline;
     function GetParentEntity: TIdxEntityInfo; inline;
     function GetContainer: TIdxContainerInfo; inline;
+    function GetRoles: TSymbolRoles; inline;
   {$ENDREGION 'Internal Declarations'}
   public
     property Kind: TIdxEntityRefKind read GetKind;
@@ -4720,6 +5073,9 @@ type
 
     { Lexical container context of the reference. }
     property Container: TIdxContainerInfo read GetContainer;
+
+    { Sets of symbol roles of the reference. }
+    property Roles: TSymbolRoles read GetRoles;
 
     { Internal handle to C API }
     property Handle: PCXIdxEntityRefInfo read FHandle;
@@ -5473,6 +5829,7 @@ type
       const AVisitor: TCursorAndRangeVisitor): TVisitResult; overload;
     function FindIncludesInFile(const AFile: TFile;
       const AVisitor: TCursorAndRangeVisitorMethod): TVisitResult; overload;
+    function GetToken(const ALocation: TSourceLocation): ITokenList;
   public
     constructor Create(const AHandle: TCXTranslationUnit);
   {$ENDREGION 'Internal Declarations'}
@@ -5624,7 +5981,11 @@ type
     function GetContainerComplete: Boolean;
     function GetContainerUsr: TUnifiedSymbolResolution;
     function GetObjCSelector: String;
+    function GetFixItCount(const AIndex: Integer): Integer;
     function GetHandle: PCXCodeCompleteResults;
+
+    function GetCompletionFixIt(const AIndex, AFixItIndex: Integer;
+      const AReplacementRange: TSourceRange): String;
   public
     constructor Create(const AHandle: PCXCodeCompleteResults);
   {$ENDREGION 'Internal Declarations'}
@@ -5683,6 +6044,23 @@ type
     function GetHandle: TCXEvalResult;
   public
     constructor Create(const AHandle: TCXEvalResult);
+  {$ENDREGION 'Internal Declarations'}
+  public
+    destructor Destroy; override;
+  end;
+
+type
+  TPrintingPolicy = class(TInterfacedObject, IPrintingPolicy)
+  {$REGION 'Internal Declarations'}
+  private
+    FHandle: TCXPrintingPolicy;
+  protected
+    { IPrintingPolicy }
+    function GetProperty(const AProp: TPrintingPolicyProperty): Integer;
+    procedure SetProperty(const AProp: TPrintingPolicyProperty; const AValue: Integer);
+    function GetHandle: TCXPrintingPolicy;
+  public
+    constructor Create(const AHandle: TCXPrintingPolicy);
   {$ENDREGION 'Internal Declarations'}
   public
     destructor Destroy; override;
@@ -5820,6 +6198,11 @@ end;
 function TFile.GetFileTime: TDateTime;
 begin
   Result := UnixToDateTime(clang_getFileTime(FHandle));
+end;
+
+function TFile.GetRealPathName: String;
+begin
+  Result := CXStringToString(clang_File_tryGetRealPathName(FHandle));
 end;
 
 function TFile.GetUniqueId: TFileUniqueId;
@@ -6352,6 +6735,18 @@ begin
     Result := TTargetInfo.Create(TI);
 end;
 
+function TTranslationUnit.GetToken(
+  const ALocation: TSourceLocation): ITokenList;
+var
+  Token: PCXToken;
+begin
+  Token := clang_getToken(FHandle, ALocation.FHandle);
+  if (Token = nil) then
+    Result := nil
+  else
+    Result := TTokenList.Create(Self, Token, 1);
+end;
+
 function TTranslationUnit.GetTokenExtent(const AToken: TToken): TSourceRange;
 begin
   Result.FHandle := clang_getTokenExtent(FHandle, AToken.FHandle);
@@ -6857,6 +7252,13 @@ begin
   inherited;
 end;
 
+function TCodeCompleteResults.GetCompletionFixIt(const AIndex,
+  AFixItIndex: Integer; const AReplacementRange: TSourceRange): String;
+begin
+  Result := CXStringToString(clang_getCompletionFixIt(FHandle, AIndex,
+    AFixItIndex, @AReplacementRange.FHandle));
+end;
+
 function TCodeCompleteResults.GetContainerComplete: Boolean;
 var
   C: Cardinal;
@@ -6901,6 +7303,11 @@ end;
 function TCodeCompleteResults.GetDiagnosticCount: Integer;
 begin
   Result := clang_codeCompleteGetNumDiagnostics(FHandle);
+end;
+
+function TCodeCompleteResults.GetFixItCount(const AIndex: Integer): Integer;
+begin
+  Result := clang_getCompletionNumFixIts(FHandle, AIndex);
 end;
 
 function TCodeCompleteResults.GetHandle: PCXCodeCompleteResults;
@@ -7087,9 +7494,9 @@ begin
   Result := (clang_EnumDecl_isScoped(FHandle) <> 0);
 end;
 
-function TCursor.GetExceptionSpecificationType: Integer;
+function TCursor.GetExceptionSpecificationType: TExceptionSpecificationKind;
 begin
-  Result := clang_getCursorExceptionSpecificationType(FHandle);
+  Result := TExceptionSpecificationKind(clang_getCursorExceptionSpecificationType(FHandle));
 end;
 
 function TCursor.GetExtent: TSourceRange;
@@ -7120,6 +7527,11 @@ end;
 function TCursor.GetIsAnonymous: Boolean;
 begin
   Result := (clang_Cursor_isAnonymous(FHandle) <> 0);
+end;
+
+function TCursor.GetIsAnonymousRecordDecl: Boolean;
+begin
+  Result := (clang_Cursor_isAnonymousRecordDecl(FHandle) <> 0);
 end;
 
 function TCursor.GetIsAttribute: Boolean;
@@ -7157,9 +7569,19 @@ begin
   Result := (clang_Cursor_isFunctionInlined(FHandle) <> 0);
 end;
 
+function TCursor.GetIsInlineNamespace: Boolean;
+begin
+  Result := (clang_Cursor_isInlineNamespace(FHandle) <> 0);
+end;
+
 function TCursor.GetIsInvalid: Boolean;
 begin
   Result := (clang_isInvalid(clang_getCursorKind(FHandle)) <> 0);
+end;
+
+function TCursor.GetIsInvalidDeclaration: Boolean;
+begin
+  Result := (clang_isInvalidDeclaration(FHandle) <> 0);
 end;
 
 function TCursor.GetIsMacroBuiltin: Boolean;
@@ -7282,6 +7704,16 @@ begin
   Word(Result) := clang_Cursor_getObjCPropertyAttributes(FHandle, 0);
 end;
 
+function TCursor.GetObjCPropertyGetterName: String;
+begin
+  Result := CXStringToString(clang_Cursor_getObjCPropertyGetterName(FHandle));
+end;
+
+function TCursor.GetObjCPropertySetterName: String;
+begin
+  Result := CXStringToString(clang_Cursor_getObjCPropertySetterName(FHandle));
+end;
+
 function TCursor.GetObjCSelectorIndex: Integer;
 begin
   Result := clang_Cursor_getObjCSelectorIndex(FHandle);
@@ -7350,6 +7782,11 @@ begin
     clang_disposeCXPlatformAvailability(P);
     Inc(P);
   end;
+end;
+
+function TCursor.GetPrintingPolicy: IPrintingPolicy;
+begin
+  Result := TPrintingPolicy.Create(clang_getCursorPrintingPolicy(FHandle));
 end;
 
 function TCursor.GetRawComment: String;
@@ -7483,6 +7920,18 @@ end;
 class operator TCursor.NotEqual(const ALeft, ARight: TCursor): Boolean;
 begin
   Result := (clang_equalCursors(ALeft.FHandle, ARight.FHandle) = 0);
+end;
+
+function TCursor.PrettyPrinted(const APolicy: IPrintingPolicy): String;
+var
+  Policy: TCXPrintingPolicy;
+begin
+  if (APolicy = nil) then
+    Policy := nil
+  else
+    Policy := APolicy.Handle;
+
+  Result := CXStringToString(clang_getCursorPrettyPrinted(FHandle, Policy));
 end;
 
 { TCursorHelper }
@@ -8025,9 +8474,9 @@ begin
   Result.FHandle := clang_getElementType(FHandle);
 end;
 
-function TType.GetExceptionSpecificationType: Integer;
+function TType.GetExceptionSpecificationType: TExceptionSpecificationKind;
 begin
-  Result := clang_getExceptionSpecificationType(FHandle);
+  Result := TExceptionSpecificationKind(clang_getExceptionSpecificationType(FHandle));
 end;
 
 function TType.GetFunctionCallingConv: TCallingConv;
@@ -8075,14 +8524,49 @@ begin
   Result := CXStringToString(clang_getTypeKindSpelling(FHandle.kind));
 end;
 
+function TType.GetModifiedType: TType;
+begin
+  Result.FHandle := clang_Type_getModifiedType(FHandle);
+end;
+
 function TType.GetNamedType: TType;
 begin
   Result.FHandle := clang_Type_getNamedType(FHandle);
 end;
 
+function TType.GetNullability: TTypeNullabilityKind;
+begin
+  Result := TTypeNullabilityKind(clang_Type_getNullability(FHandle));
+end;
+
 function TType.GetObjCEncoding: String;
 begin
   Result := CXStringToString(clang_Type_getObjCEncoding(FHandle));
+end;
+
+function TType.GetObjCObjectBaseType: TType;
+begin
+  Result.FHandle := clang_Type_getObjCObjectBaseType(FHandle);
+end;
+
+function TType.GetObjCProtocolDecl(const AIndex: Integer): TCXCursor;
+begin
+  Result := clang_Type_getObjCProtocolDecl(FHandle, AIndex);
+end;
+
+function TType.GetObjCProtocolRefCount: Integer;
+begin
+  Result := clang_Type_getNumObjCProtocolRefs(FHandle);
+end;
+
+function TType.GetObjCTypeArg(const AIndex: Integer): TType;
+begin
+  Result.FHandle := clang_Type_getObjCTypeArg(FHandle, AIndex);
+end;
+
+function TType.GetObjCTypeArgCount: Integer;
+begin
+  Result := clang_Type_getNumObjCTypeArgs(FHandle);
 end;
 
 function TType.GetOffsetOf(const AFieldName: String): Int64;
@@ -8278,6 +8762,37 @@ end;
 function TEvalResult.GetKind: TEvalResultKind;
 begin
   Result := TEvalResultKind(clang_EvalResult_getKind(FHandle));
+end;
+
+{ TPrintingPolicy }
+
+constructor TPrintingPolicy.Create(const AHandle: TCXPrintingPolicy);
+begin
+  inherited Create;
+  FHandle := AHandle;
+end;
+
+destructor TPrintingPolicy.Destroy;
+begin
+  clang_PrintingPolicy_dispose(FHandle);
+  inherited;
+end;
+
+function TPrintingPolicy.GetHandle: TCXPrintingPolicy;
+begin
+  Result := FHandle;
+end;
+
+function TPrintingPolicy.GetProperty(
+  const AProp: TPrintingPolicyProperty): Integer;
+begin
+  Result := clang_PrintingPolicy_getProperty(FHandle, Ord(AProp));
+end;
+
+procedure TPrintingPolicy.SetProperty(const AProp: TPrintingPolicyProperty;
+  const AValue: Integer);
+begin
+  clang_PrintingPolicy_setProperty(FHandle, Ord(AProp), AValue);
 end;
 
 { TRemapping }
@@ -8594,6 +9109,11 @@ end;
 function TIdxEntityRefInfo.GetReferencedEntity: TIdxEntityInfo;
 begin
   Result.FHandle := FHandle.referencedEntity;
+end;
+
+function TIdxEntityRefInfo.GetRoles: TSymbolRoles;
+begin
+  Word(Result) := FHandle.role;
 end;
 
 { TIdxObjCContainerDeclInfo }
