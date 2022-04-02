@@ -1,5 +1,5 @@
 unit Neslib.Clang.Api;
-{< LibClang 9.0.0 Header Translation }
+{< LibClang 14.0.0 Header Translation }
 
 {$IFNDEF MSWINDOWS}
   {$MESSAGE Error 'Clang for Delphi (currently) only works on Windows'}
@@ -399,7 +399,7 @@ procedure clang_ModuleMapDescriptor_dispose(p1: TCXModuleMapDescriptor); cdecl e
  * compatible, thus CINDEX_VERSION_MAJOR is expected to remain stable.
  *)
 const CINDEX_VERSION_MAJOR = 0;
-const CINDEX_VERSION_MINOR = 59;
+const CINDEX_VERSION_MINOR = 62;
 
 {!#define CINDEX_VERSION_ENCODE(major, minor) (
       ((major) * 10000)
@@ -412,7 +412,7 @@ const CINDEX_VERSION = (CINDEX_VERSION_MAJOR * 10000) + CINDEX_VERSION_MINOR;
 {!#define CINDEX_VERSION_STRINGIZE(major, minor)
     CINDEX_VERSION_STRINGIZE_(major, minor)}
 
-const CINDEX_VERSION_STRING = '0.59';
+const CINDEX_VERSION_STRING = '0.60';
 
 (** \defgroup CINDEX libclang: C Interface to Clang
  *
@@ -1359,6 +1359,7 @@ const
   CXTranslationUnit_IncludeAttributedTypes = $1000;
   CXTranslationUnit_VisitImplicitAttributes = $2000;
   CXTranslationUnit_IgnoreNonErrorsFromIncludedFiles = $4000;
+  CXTranslationUnit_RetainExcludedConditionalBlocks = $8000;
 
 (**
  * Returns the set of flags that is suitable for parsing a translation
@@ -1784,7 +1785,10 @@ const
   CXCursor_OMPArraySectionExpr = 147;
   CXCursor_ObjCAvailabilityCheckExpr = 148;
   CXCursor_FixedPointLiteral = 149;
-  CXCursor_LastExpr = CXCursor_FixedPointLiteral;
+  CXCursor_OMPArrayShapingExpr = 150;
+  CXCursor_OMPIteratorExpr = 151;
+  CXCursor_CXXAddrspaceCastExpr = 152;
+  CXCursor_LastExpr = CXCursor_CXXAddrspaceCastExpr;
   CXCursor_FirstStmt = 200;
   CXCursor_UnexposedStmt = 200;
   CXCursor_LabelStmt = 201;
@@ -1868,7 +1872,22 @@ const
   CXCursor_OMPTargetTeamsDistributeParallelForSimdDirective = 278;
   CXCursor_OMPTargetTeamsDistributeSimdDirective = 279;
   CXCursor_BuiltinBitCastExpr = 280;
-  CXCursor_LastStmt = CXCursor_BuiltinBitCastExpr;
+  CXCursor_OMPMasterTaskLoopDirective = 281;
+  CXCursor_OMPParallelMasterTaskLoopDirective = 282;
+  CXCursor_OMPMasterTaskLoopSimdDirective = 283;
+  CXCursor_OMPParallelMasterTaskLoopSimdDirective = 284;
+  CXCursor_OMPParallelMasterDirective = 285;
+  CXCursor_OMPDepobjDirective = 286;
+  CXCursor_OMPScanDirective = 287;
+  CXCursor_OMPTileDirective = 288;
+  CXCursor_OMPCanonicalLoop = 289;
+  CXCursor_OMPInteropDirective = 290;
+  CXCursor_OMPDispatchDirective = 291;
+  CXCursor_OMPMaskedDirective = 292;
+  CXCursor_OMPUnrollDirective = 293;
+  CXCursor_OMPMetaDirective = 294;
+  CXCursor_OMPGenericLoopDirective = 295;
+  CXCursor_LastStmt = CXCursor_OMPGenericLoopDirective;
   CXCursor_TranslationUnit = 300;
   CXCursor_FirstAttr = 400;
   CXCursor_UnexposedAttr = 400;
@@ -2171,6 +2190,26 @@ function clang_getCursorPlatformAvailability(cursor: TCXCursor; always_deprecate
  * Free the memory associated with a \c CXPlatformAvailability structure.
  *)
 procedure clang_disposeCXPlatformAvailability(availability: PCXPlatformAvailability); cdecl external LIBCLANG;
+
+(**
+ * If cursor refers to a variable declaration and it has initializer returns
+ * cursor referring to the initializer otherwise return null cursor.
+ *)
+function clang_Cursor_getVarDeclInitializer(cursor: TCXCursor): TCXCursor; cdecl external LIBCLANG;
+
+(**
+ * If cursor refers to a variable declaration that has global storage returns 1.
+ * If cursor refers to a variable declaration that doesn't have global storage
+ * returns 0. Otherwise returns -1.
+ *)
+function clang_Cursor_hasVarDeclGlobalStorage(cursor: TCXCursor): Integer; cdecl external LIBCLANG;
+
+(**
+ * If cursor refers to a variable declaration that has external storage
+ * returns 1. If cursor refers to a variable declaration that doesn't have
+ * external storage returns 0. Otherwise returns -1.
+ *)
+function clang_Cursor_hasVarDeclExternalStorage(cursor: TCXCursor): Integer; cdecl external LIBCLANG;
 
 (**
  * Describe the "language" of the entity referred to by a cursor.
@@ -2482,8 +2521,10 @@ const
   CXType_UShortAccum = 36;
   CXType_UAccum = 37;
   CXType_ULongAccum = 38;
+  CXType_BFloat16 = 39;
+  CXType_Ibm128 = 40;
   CXType_FirstBuiltin = CXType_Void;
-  CXType_LastBuiltin = CXType_ULongAccum;
+  CXType_LastBuiltin = CXType_Ibm128;
   CXType_Complex = 100;
   CXType_Pointer = 101;
   CXType_BlockPointer = 102;
@@ -2561,6 +2602,7 @@ const
   CXType_OCLIntelSubgroupAVCImeSingleRefStreamin = 174;
   CXType_OCLIntelSubgroupAVCImeDualRefStreamin = 175;
   CXType_ExtVector = 176;
+  CXType_Atomic = 177;
 
 (**
  * Describes the calling convention of a function type
@@ -2587,6 +2629,7 @@ const
   CXCallingConv_PreserveMost = 14;
   CXCallingConv_PreserveAll = 15;
   CXCallingConv_AArch64VectorCall = 16;
+  CXCallingConv_SwiftAsync = 17;
   CXCallingConv_Invalid = 100;
   CXCallingConv_Unexposed = 200;
 
@@ -3037,6 +3080,8 @@ const
   CXTypeNullability_Nullable = 1;
   CXTypeNullability_Unspecified = 2;
   CXTypeNullability_Invalid = 3;
+  CXTypeNullability_NullableResult = 4;
+
 
 (**
  * Retrieve the nullability kind of a pointer type.
@@ -3115,6 +3160,13 @@ function clang_Type_getOffsetOf(T: TCXType; const S: PAnsiChar): Int64; cdecl ex
  * If the type is not an attributed type, an invalid type is returned.
  *)
 function clang_Type_getModifiedType(T: TCXType): TCXType; cdecl external LIBCLANG;
+
+(**
+ * Gets the type contained by this atomic type.
+ *
+ * If a non-atomic type is passed in, an invalid type is returned.
+ *)
+function clang_Type_getValueType(CT: TCXType): TCXType; cdecl external LIBCLANG;
 
 (**
  * Return the offset of the field represented by the Cursor.
@@ -5447,6 +5499,8 @@ const
   CXCommentInlineCommandRenderKind_Bold = CXCommentInlineCommandRenderKind_Normal + 1;
   CXCommentInlineCommandRenderKind_Monospaced = CXCommentInlineCommandRenderKind_Bold + 1;
   CXCommentInlineCommandRenderKind_Emphasized = CXCommentInlineCommandRenderKind_Monospaced + 1;
+  CXCommentInlineCommandRenderKind_Anchor = CXCommentInlineCommandRenderKind_Emphasized + 1;
+
 
 (**
  * Describes parameter passing direction for \\param or \\arg command.
@@ -5769,6 +5823,28 @@ function clang_FullComment_getAsHTML(Comment: TCXComment): TCXString; cdecl exte
  *)
 function clang_FullComment_getAsXML(Comment: TCXComment): TCXString; cdecl external LIBCLANG;
 {$ENDREGION 'Documentation.h'}
+
+{$REGION 'FatalErrorHandler.h'}
+(*===-- clang-c/FatalErrorHandler.h - Fatal Error Handling --------*- C -*-===*\
+|*                                                                            *|
+|* Part of the LLVM Project, under the Apache License v2.0 with LLVM          *|
+|* Exceptions.                                                                *|
+|* See https://llvm.org/LICENSE.txt for license information.                  *|
+|* SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception                    *|
+|*                                                                            *|
+\*===----------------------------------------------------------------------===*)
+(**
+ * Installs error handler that prints error message to stderr and calls abort().
+ * Replaces currently installed error handler (if any).
+ *)
+procedure clang_install_aborting_llvm_fatal_error_handler; cdecl external LIBCLANG;
+(**
+ * Removes currently installed error handler (if any).
+ * If no error handler is intalled, the default strategy is to print error
+ * message to stderr and call exit(1).
+ *)
+procedure clang_uninstall_llvm_fatal_error_handler; cdecl external LIBCLANG;
+{$ENDREGION 'FatalErrorHandler.h'}
 
 implementation
 

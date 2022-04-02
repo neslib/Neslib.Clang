@@ -1,5 +1,5 @@
 unit Neslib.Clang;
-{< Delphi wrappers for LibClang 6.0.0.
+{< Delphi wrappers for LibClang 14.0.0.
    The main entry point to LibClang is TIndex.Create. }
 
 {$SCOPEDENUMS ON}
@@ -157,7 +157,10 @@ type
       from included files anymore. This speeds up GetAllDiagnostics for the case
       where these warnings are not of interest, as for an IDE for example, which
       typically shows only the diagnostics in the main file. }
-    IgnoreNonErrorsFromIncludedFiles);
+    IgnoreNonErrorsFromIncludedFiles,
+
+    { Tells the preprocessor not to skip excluded conditional blocks. }
+    RetainExcludedConditionalBlocks);
   TTranslationUnitFlags = set of TTranslationUnitFlag;
 
 type
@@ -676,6 +679,15 @@ type
     { Fixed point literal }
     FixedPointLiteral = CXCursor_FixedPointLiteral,
 
+    { OpenMP 5.0 [2.1.4, Array Shaping]. }
+    OMPArrayShapingExpr = CXCursor_OMPArrayShapingExpr,
+
+    { OpenMP 5.0 [2.1.6 Iterators] }
+    OMPIteratorExpr = CXCursor_OMPIteratorExpr,
+
+    { OpenCL's addrspace_cast<> expression. }
+    CXXAddrspaceCastExpr = CXCursor_CXXAddrspaceCastExpr,
+
     LastExpr = CXCursor_LastExpr,
 
     (* Statements *)
@@ -941,6 +953,51 @@ type
     { C++2a std::bit_cast expression. }
     BuiltinBitCastExpr = CXCursor_BuiltinBitCastExpr,
 
+    { OpenMP master taskloop directive. }
+    OMPMasterTaskLoopDirective = CXCursor_OMPMasterTaskLoopDirective,
+
+    { OpenMP parallel master taskloop directive. }
+    OMPParallelMasterTaskLoopDirective = CXCursor_OMPParallelMasterTaskLoopDirective,
+
+    { OpenMP master taskloop simd directive. }
+    OMPMasterTaskLoopSimdDirective = CXCursor_OMPMasterTaskLoopSimdDirective,
+
+    { OpenMP parallel master taskloop simd directive. }
+    OMPParallelMasterTaskLoopSimdDirective = CXCursor_OMPParallelMasterTaskLoopSimdDirective,
+
+    { OpenMP parallel master directive. }
+    OMPParallelMasterDirective = CXCursor_OMPParallelMasterDirective,
+
+    { OpenMP depobj directive. }
+    OMPDepobjDirective = CXCursor_OMPDepobjDirective,
+
+    { OpenMP scan directive. }
+    OMPScanDirective = CXCursor_OMPScanDirective,
+
+    { OpenMP tile directive. }
+    OMPTileDirective = CXCursor_OMPTileDirective,
+
+    { OpenMP canonical loop. }
+    OMPCanonicalLoop = CXCursor_OMPCanonicalLoop,
+
+    { OpenMP interop directive. }
+    OMPInteropDirective = CXCursor_OMPInteropDirective,
+
+    { OpenMP dispatch directive. }
+    OMPDispatchDirective = CXCursor_OMPDispatchDirective,
+
+    { OpenMP masked directive. }
+    OMPMaskedDirective = CXCursor_OMPMaskedDirective,
+
+    { OpenMP unroll directive. }
+    OMPUnrollDirective = CXCursor_OMPUnrollDirective,
+
+    { OpenMP metadirective directive. }
+    OMPMetaDirective = CXCursor_OMPMetaDirective,
+
+    { OpenMP loop directive. }
+    OMPGenericLoopDirective = CXCursor_OMPGenericLoopDirective,
+
     LastStmt = CXCursor_LastStmt,
 
     { Cursor that represents the translation unit itself.
@@ -1084,6 +1141,8 @@ type
     UShortAccum = CXType_UShortAccum,
     UAccum = CXType_UAccum,
     ULongAccum = CXType_ULongAccum,
+    BFloat16 = CXType_BFloat16,
+    Ibm128 = CXType_Ibm128,
     FirstBuiltin = CXType_FirstBuiltin,
     LastBuiltin = CXType_LastBuiltin,
 
@@ -1170,7 +1229,8 @@ type
     OCLIntelSubgroupAVCImeResultDualRefStreamout = CXType_OCLIntelSubgroupAVCImeResultDualRefStreamout,
     OCLIntelSubgroupAVCImeSingleRefStreamin = CXType_OCLIntelSubgroupAVCImeSingleRefStreamin,
     OCLIntelSubgroupAVCImeDualRefStreamin = CXType_OCLIntelSubgroupAVCImeDualRefStreamin,
-    ExtVector = CXType_ExtVector);
+    ExtVector = CXType_ExtVector,
+    Atomic = CXType_Atomic);
 
 type
   { Describes the kind of a template argument. }
@@ -1458,6 +1518,7 @@ type
     PreserveMost = CXCallingConv_PreserveMost,
     PreserveAll = CXCallingConv_PreserveAll,
     AArch64VectorCall = CXCallingConv_AArch64VectorCall,
+    SwiftAsync = CXCallingConv_SwiftAsync,
     Invalid = CXCallingConv_Invalid,
     Unexposed = CXCallingConv_Unexposed);
 
@@ -1777,7 +1838,10 @@ type
     Monospaced = CXCommentInlineCommandRenderKind_Monospaced,
 
     { Command argument should be rendered emphasized (typically italic font). }
-    Emphasized = CXCommentInlineCommandRenderKind_Emphasized);
+    Emphasized = CXCommentInlineCommandRenderKind_Emphasized,
+
+    { Command argument should not be rendered (since it only defines an anchor). }
+    Anchor = CXCommentInlineCommandRenderKind_Anchor);
 
 type
   { Describes parameter passing direction for \param or \arg command. }
@@ -1928,7 +1992,13 @@ type
     Unspecified = CXTypeNullability_Unspecified,
 
     { Nullability is not applicable to this type. }
-    Invalid = CXTypeNullability_Invalid);
+    Invalid = CXTypeNullability_Invalid,
+
+    { Generally behaves like Nullable, except when used in a block parameter
+      that was imported into a swift async method. There, swift will assume that
+      the parameter can get null even if no error occured. _Nullable parameters
+      are assumed to only get null on error. }
+    NullableResult = CXTypeNullability_NullableResult);
 
 type
   { The type of an element in the abstract syntax tree. }
@@ -1973,6 +2043,7 @@ type
     function GetObjCTypeArgCount: Integer; inline;
     function GetNullability: TTypeNullabilityKind; inline;
     function GetModifiedType: TType; inline;
+    function GetValueType: TType; inline;
   {$ENDREGION 'Internal Declarations'}
   public
     { Equality operators. Determine whether two TType's represent the same
@@ -2175,6 +2246,10 @@ type
     { The type that was modified by this attributed type.
       If the type is not an attributed type, an invalid type is returned. }
     property ModifiedType: TType read GetModifiedType;
+
+    { The type contained by this atomic type.
+      If a non-atomic type is passed in, an invalid type is returned. }
+    property ValueType: TType read GetValueType;
 
     { Internal handle to C API }
     property Handle: TCXType read FHandle;
@@ -2910,6 +2985,9 @@ type
     function GetLinkage: TLinkageKind; inline;
     function GetVisibility: TVisibility; inline;
     function GetAvailability: TAvailabilityKind; inline;
+    function GetHasVarDeclExternalStorage: Boolean; inline;
+    function GetHasVarDeclGlobalStorage: Boolean; inline;
+    function GetVarDeclInitializer: TCursor; inline;
     function GetLanguage: TLanguageKind; inline;
     function GetTlsKind: TTlsKind; inline;
     function GetSemanticParent: TCursor; inline;
@@ -3161,6 +3239,19 @@ type
     { The availability of the entity that this cursor refers to, taking the
       current target platform into account. }
     property Availability: TAvailabilityKind read GetAvailability;
+
+    { If the cursor refers to a variable declaration and it has an initializer,
+      then this returns the cursor referring to the initializer.
+      Otherwise it returns a null cursor. }
+    property VarDeclInitializer: TCursor read GetVarDeclInitializer;
+
+    { True if the cursor refers to a variable declaration that has global
+      storage, False otherwise }
+    property HasVarDeclGlobalStorage: Boolean read GetHasVarDeclGlobalStorage;
+
+    { True if the cursor refers to a variable declaration that has external
+      storage, False otherwise }
+    property HasVarDeclExternalStorage: Boolean read GetHasVarDeclExternalStorage;
 
     { The "language" of the entity referred to by the cursor. }
     property Language: TLanguageKind read GetLanguage;
@@ -7514,6 +7605,16 @@ begin
   Result := (clang_Cursor_hasAttrs(FHandle) <> 0);
 end;
 
+function TCursor.GetHasVarDeclExternalStorage: Boolean;
+begin
+  Result := (clang_Cursor_hasVarDeclExternalStorage(FHandle) <> 0);
+end;
+
+function TCursor.GetHasVarDeclGlobalStorage: Boolean;
+begin
+  Result := (clang_Cursor_hasVarDeclGlobalStorage(FHandle) <> 0);
+end;
+
 function TCursor.GetIBOutletCollectionType: TType;
 begin
   Result.FHandle := clang_getIBOutletCollectionType(FHandle);
@@ -7885,6 +7986,11 @@ end;
 function TCursor.GetUsr: TUnifiedSymbolResolution;
 begin
   Result.FHandle := clang_getCursorUSR(FHandle);
+end;
+
+function TCursor.GetVarDeclInitializer: TCursor;
+begin
+  Result.FHandle := clang_Cursor_getVarDeclInitializer(FHandle);
 end;
 
 function TCursor.GetVisibility: TVisibility;
@@ -8607,6 +8713,11 @@ end;
 function TType.GetTypedefName: String;
 begin
   Result := CXStringToString(clang_getTypedefName(FHandle));
+end;
+
+function TType.GetValueType: TType;
+begin
+  Result.FHandle := clang_Type_getValueType(FHandle);
 end;
 
 class operator TType.NotEqual(const ALeft, ARight: TType): Boolean;
